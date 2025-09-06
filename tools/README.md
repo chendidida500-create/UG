@@ -1,100 +1,72 @@
-# 工具脚本目录
+# UG 管理系统工具集
 
-此目录包含用于开发、调试和维护的工具脚本。
+该目录包含用于项目开发、测试和部署的各种工具脚本。
 
 ## 脚本说明
 
-### 1. 数据库连接测试
-- **文件**: `test-db-connection.js`
-- **用途**: 测试数据库连接是否正常
-- **使用方法**: 
-  ```bash
-  node test-db-connection.js
-  ```
-  或
-  ```bash
-  npm run test-connection
-  ```
+### 环境检测工具
+- `check-environment.js` - Node.js 环境检测工具
+- `check-environment.bat` - Windows 环境检测脚本
 
-### 2. 权限插入测试
-- **文件**: `test-permission-insert.js`
-- **用途**: 测试权限数据插入功能
-- **使用方法**: 
-  ```bash
-  node test-permission-insert.js
-  ```
-  或
-  ```bash
-  npm run test-permission-insert
-  ```
+### 启动脚本
+- `start-all.bat` - 启动前后端服务
+- `start-backend.bat` - 启动后端服务
+- `start-frontend.bat` - 启动前端服务
+- `start-with-check.bat` - 带环境检测的启动脚本
+- `smart-start.bat` - 智能启动脚本（检查进程、环境并启动）
 
-### 3. 权限更新测试
-- **文件**: `test-permission-update.js`
-- **用途**: 测试权限数据更新功能
-- **使用方法**: 
-  ```bash
-  node test-permission-update.js
-  ```
-  或
-  ```bash
-  npm run test-permission-update
-  ```
+### 测试脚本
+- `test-auth.js` - 认证接口测试
+- `test-db-connection.js` - 数据库连接测试
+- `test-permission-insert.js` - 权限插入测试
+- `test-permission-update.js` - 权限更新测试
 
-### 4. 外键约束检查
-- **文件**: `check-foreign-keys.js`
-- **用途**: 检查数据库外键约束
-- **使用方法**: 
-  ```bash
-  node check-foreign-keys.js
-  ```
-  或
-  ```bash
-  npm run check-foreign-keys
-  ```
+### 检查脚本
+- `check-foreign-keys.js` - 外键检查
+- `check-passwords.js` - 密码检查
+- `check-permission-structure.js` - 权限结构检查
+- `check-table-structure.js` - 表结构检查
+- `check-user-roles-table.js` - 用户角色表检查
+- `check-users.js` - 用户数据检查
 
-### 5. 权限结构检查
-- **文件**: `check-permission-structure.js`
-- **用途**: 检查权限数据结构和父子关系
-- **使用方法**: 
-  ```bash
-  node check-permission-structure.js
-  ```
-  或
-  ```bash
-  npm run check-permission-structure
-  ```
+## 使用方法
 
-## 使用说明
+### 环境检测
+```cmd
+# 检查环境
+tools\check-environment.bat
 
-所有脚本都会自动从项目配置文件中读取数据库连接信息，无需手动修改连接参数。
+# 带环境检测的启动
+tools\start-with-check.bat
 
-确保在项目根目录下运行这些脚本，因为它们依赖于相对路径引用的配置文件。
-
-## 安装依赖
-
-在tools目录下运行以下命令安装依赖：
-
-```bash
-npm install
+# 智能启动（推荐）
+tools\smart-start.bat
 ```
 
-## 快捷命令
+### 分别启动服务
+```cmd
+# 启动后端
+tools\start-backend.bat
 
-可以使用npm脚本快速运行工具：
+# 启动前端
+tools\start-frontend.bat
 
-```bash
+# 启动全部
+tools\start-all.bat
+```
+
+### 测试脚本
+```cmd
+# 测试认证
+node tools/test-auth.js
+
 # 测试数据库连接
-npm run test-connection
-
-# 测试权限插入
-npm run test-permission-insert
-
-# 测试权限更新
-npm run test-permission-update
-
-# 检查外键约束
-npm run check-foreign-keys
-
-# 检查权限结构
-npm run check-permission-structure
+node tools/test-db-connection.js
 ```
+
+## 注意事项
+
+1. 所有脚本应在项目根目录下运行
+2. 确保已安装 Node.js 和 npm
+3. 确保数据库服务已启动并可访问
+4. 部分脚本可能需要先运行 `npm install` 安装依赖
