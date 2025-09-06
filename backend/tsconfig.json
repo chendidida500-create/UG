@@ -12,7 +12,7 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "commonjs",
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -59,9 +59,7 @@
       "range-parser",
       "send",
       "serve-static"
-    ],
-    // 忽略弃用警告
-    "ignoreDeprecations": "6.0"
+    ]
   },
   "include": [
     "**/*.ts",
