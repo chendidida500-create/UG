@@ -5,10 +5,12 @@
 ## 脚本说明
 
 ### 环境检测工具
+
 - `check-environment.js` - Node.js 环境检测工具
 - `check-environment.bat` - Windows 环境检测脚本
 
 ### 启动脚本
+
 - `start-all.bat` - 启动前后端服务
 - `start-backend.bat` - 启动后端服务
 - `start-frontend.bat` - 启动前端服务
@@ -16,12 +18,14 @@
 - `smart-start.bat` - 智能启动脚本（检查进程、环境并启动）
 
 ### 测试脚本
+
 - `test-auth.js` - 认证接口测试
 - `test-db-connection.js` - 数据库连接测试
 - `test-permission-insert.js` - 权限插入测试
 - `test-permission-update.js` - 权限更新测试
 
 ### 检查脚本
+
 - `check-foreign-keys.js` - 外键检查
 - `check-passwords.js` - 密码检查
 - `check-permission-structure.js` - 权限结构检查
@@ -32,6 +36,7 @@
 ## 使用方法
 
 ### 环境检测
+
 ```cmd
 # 检查环境
 tools\check-environment.bat
@@ -44,6 +49,7 @@ tools\smart-start.bat
 ```
 
 ### 分别启动服务
+
 ```cmd
 # 启动后端
 tools\start-backend.bat
@@ -56,6 +62,7 @@ tools\start-all.bat
 ```
 
 ### 测试脚本
+
 ```cmd
 # 测试认证
 node tools/test-auth.js
