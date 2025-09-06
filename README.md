@@ -35,6 +35,13 @@ UG/
 │   └── logs/           # 日志文件
 ├── docs/               # 项目文档
 ├── scripts/            # 脚本文件
+├── tools/              # 工具脚本
+│   ├── check-environment.js    # 环境检测工具
+│   ├── check-environment.bat   # 环境检测脚本
+│   ├── start-with-check.bat    # 带检测的启动脚本
+│   ├── start-all.bat           # 启动脚本
+│   ├── start-backend.bat       # 启动后端脚本
+│   └── start-frontend.bat      # 启动前端脚本
 ├── .vscode/            # VSCode 配置
 ├── tsconfig.json       # TypeScript 配置
 ├── typings.d.ts        # 类型声明
@@ -117,6 +124,34 @@ npm install
 npm start
 ```
 
+## 程序启动检测
+
+为了确保项目能够正常启动，我们提供了环境检测工具来检查系统环境和依赖项。
+
+### 使用方法
+
+1. **运行环境检测工具**：
+```bash
+# Windows (CMD)
+tools\check-environment.bat
+
+# 跨平台（需要 Node.js）
+node tools/check-environment.js
+```
+
+2. **运行带检测的启动脚本**：
+```bash
+# Windows (CMD)
+tools\start-with-check.bat
+```
+
+检测工具会检查以下项目：
+- Node.js 和 npm 版本
+- 项目依赖文件 (package.json) 是否存在
+- 数据库配置是否正确
+- 端口占用情况
+- 必需的环境变量
+
 ## Node.js 版本限制
 
 为了确保项目在所有环境中的兼容性和一致性，我们已将 Node.js 版本严格限制为 `20.14.0`：
@@ -197,74 +232,3 @@ crontab -e
 # 添加定时任务（例如每小时执行一次）
 0 * * * * cd /path/to/your/project && node scripts/git-auto-backup.js
 ```
-
-## 核心特性
-
-### 1. 动态权限控制
-- **菜单权限**: 基于用户权限动态生成导航菜单
-- **按钮权限**: 页面操作按钮的显示/隐藏控制
-- **API权限**: 后端接口访问权限验证
-- **路由守卫**: 前端路由级别的权限控制
-
-### 2. 组件化设计
-- **动态表格**: 配置化表格组件，支持搜索、分页、排序、批量操作
-- **动态表单**: 基于配置的表单生成，支持验证、联动、条件显示
-- **CRUD组件**: 一体化增删改查组件，大幅减少重复代码
-- **权限组件**: 基于权限的组件显示控制
-
-### 3. 用户体验优化
-- **响应式设计**: 完美适配桌面端和移动端
-- **加载状态**: 全局Loading、按钮Loading、骨架屏
-- **错误处理**: 统一错误处理、友好错误提示
-- **交互反馈**: 操作确认、成功提示、进度指示
-
-## 部署
-
-### 开发环境
-```bash
-# 后端
-cd backend && npm run dev
-
-# 前端
-cd frontend && npm start
-```
-
-### 生产环境
-```bash
-# 后端构建
-cd backend && npm install --production && npm start
-
-# 前端构建
-cd frontend && npm install && npm run build
-```
-
-### Docker部署
-```bash
-# 使用Docker Compose一键部署
-docker-compose -f docker-compose.prod.yml up -d
-```
-
-## 默认账号
-
-### 管理员账号
-- **用户名**: admin
-- **密码**: 123456
-- **权限**: 超级管理员，拥有所有权限
-
-### 普通用户账号
-- **用户名**: user
-- **密码**: 123456
-- **权限**: 普通用户，基础权限
-
-## 文档
-
-- [部署文档](docs/DEPLOYMENT.md) - 详细的部署指南
-- [开发环境配置](docs/DEVELOPMENT.md) - VSCode开发环境配置
-- [项目完成报告](docs/PROJECT_COMPLETION.md) - 项目开发完成报告
-- [最终完成报告](docs/FINAL_COMPLETION_REPORT.md) - 项目最终完成报告
-- [代码索引](docs/CODE_INDEX.md) - 代码文件索引，方便开发时查找
-- [数据库设计](docs/DATABASE.md) - 数据库表结构、接口和配置详细说明
-
-## 许可证
-
-MIT License
