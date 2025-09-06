@@ -25,7 +25,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.less';
 // 修复UMI 4.x导入方式
-import { Outlet, useLocation, useModel, useNavigate } from 'umi';
+// import { Outlet, useLocation, useModel, useNavigate } from 'umi';
 // 使用React Router的Hook
 // import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 // // 使用模拟实现
@@ -58,6 +58,8 @@ import { Outlet, useLocation, useModel, useNavigate } from 'umi';
 //       return {};
 //   }
 // };
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useModel } from '../../utils/umiMock';
 
 const { Header, Sider, Content } = Layout;
 const { Text } = Typography;

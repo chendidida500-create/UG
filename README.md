@@ -84,7 +84,7 @@ UG/
 ## 快速开始
 
 ### 环境要求
-- Node.js >= 16.0.0
+- Node.js 20.14.0
 - MySQL >= 8.0
 - npm >= 7.0.0
 
@@ -115,6 +115,87 @@ npm run dev
 cd frontend
 npm install
 npm start
+```
+
+## Node.js 版本限制
+
+为了确保项目在所有环境中的兼容性和一致性，我们已将 Node.js 版本严格限制为 `20.14.0`：
+
+- **前端项目**: `frontend/package.json` 中的 `engines.node`
+- **后端项目**: `backend/package.json` 中的 `engines.node`
+- **根项目**: `package.json` 中的 `engines.node`
+
+项目根目录下的 [.nvmrc](file:///e:/YSY/UG/.nvmrc) 文件也已设置为 `20.14.0`，方便使用 nvm 管理 Node.js 版本。
+
+如果使用 nvm，可以通过以下命令切换到指定版本：
+```bash
+nvm install 20.14.0
+nvm use 20.14.0
+```
+
+## TypeScript 版本统一
+
+为了确保项目的一致性和兼容性，我们已将所有子项目的 TypeScript 版本统一为 `^5.2.2`：
+
+- **前端项目**: [frontend/package.json](file:///e:/YSY/UG/frontend/package.json) 中的 `devDependencies.typescript`
+- **后端项目**: [backend/package.json](file:///e:/YSY/UG/backend/package.json) 中的 `devDependencies.typescript`
+- **根项目**: [package.json](file:///e:/YSY/UG/package.json) 中的 `devDependencies.typescript`
+
+如果需要更新 TypeScript 版本，可以使用项目中的统一更新脚本：
+```bash
+# Windows
+scripts\update-typescript-version.bat
+
+# macOS/Linux
+scripts/update-typescript-version.sh
+```
+
+## Git 自动备份和更新
+
+为了解决 Git 不能自动备份和更新的问题，项目提供了自动备份和更新脚本：
+
+### 使用方法
+
+1. **配置远程仓库**（如果尚未配置）：
+```bash
+git remote add origin <你的仓库地址>
+```
+
+2. **运行自动备份脚本**：
+```bash
+# Windows
+scripts\git-auto-backup.bat
+
+# macOS/Linux
+scripts/git-auto-backup.sh
+
+# 跨平台（需要 Node.js）
+node scripts/git-auto-backup.js
+```
+
+脚本会自动执行以下操作：
+- 检查是否有未提交的更改
+- 自动提交所有更改
+- 拉取远程更新
+- 推送本地更改到远程仓库
+
+### 定时自动备份
+
+你也可以设置定时任务来自动执行备份：
+
+**Windows 任务计划程序**：
+1. 打开"任务计划程序"
+2. 创建基本任务
+3. 设置触发器（如每天、每小时等）
+4. 设置操作为运行 [scripts\git-auto-backup.bat](file:///e:/YSY/UG/scripts/git-auto-backup.bat)
+
+**Linux/macOS Cron**：
+```bash
+# 编辑 crontab
+crontab -e
+
+# 添加定时任务（例如每小时执行一次）
+0 * * * * cd /path/to/your/project && node scripts/git-auto-backup.js
 ```
 
 ## 核心特性

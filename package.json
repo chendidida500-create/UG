@@ -23,7 +23,8 @@
     "@types/prop-types": "^15.7.15",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
-    "@types/yargs-parser": "^21.0.3"
+    "@types/yargs-parser": "^21.0.3",
+    "typescript": "^5.2.2"
   },
   "dependencies": {
     "@types/echarts": "^5.0.0",
@@ -34,5 +35,8 @@
     "egg-bin": "^6.13.0",
     "react-router-dom": "^7.8.2",
     "umi-request": "^1.4.0"
+  },
+  "engines": {
+    "node": "20.14.0"
   }
 }

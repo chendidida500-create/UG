@@ -28,8 +28,8 @@ import {
 import * as echarts from 'echarts';
 import React, { useEffect, useState } from 'react';
 // 修复UMI 4.x导入方式
-import { useModel } from 'umi';
-// import { useModel } from '../../utils/umiMock';
+// import { useModel } from 'umi';
+import { useModel } from '../../utils/umiMock';
 import styles from './index.module.less';
 
 const { Title, Text } = Typography;

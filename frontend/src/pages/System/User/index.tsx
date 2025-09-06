@@ -25,12 +25,12 @@ import {
 } from 'antd';
 import React, { useEffect, useState } from 'react';
 // 修复UMI 4.x导入方式
-import { useModel } from 'umi';
-// import { useModel } from '../../../utils/umiMock';
+// import { useModel } from 'umi';
 import CrudComponent from '../../../components/CrudComponent';
 import type { FormConfig } from '../../../components/DynamicForm';
 import type { PaginationParams, TableConfig } from '../../../components/DynamicTable';
 import type { User } from '../../../types';
+import { useModel } from '../../../utils/umiMock';
 import styles from './index.module.less';
 
 const { Text } = Typography;

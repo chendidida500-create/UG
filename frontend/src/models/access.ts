@@ -2,9 +2,8 @@
 // 使用模拟的useModel
 import type { Permission, User } from '../types';
 // 修复UMI 4.x导入方式
-import { useModel } from 'umi';
-// import type { Permission, Role, User } from '../types';
-// import { useModel } from '../utils/umiMock';
+// import { useModel } from 'umi';
+import { useModel } from '../utils/umiMock';
 
 // 权限访问控制，与后端权限中间件逻辑保持一致
 export default function useAccessModel() {
