@@ -1,0 +1,167 @@
+@import '~antd/es/style/themes/default.less';
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.registerCard {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: none;
+
+  :global(.ant-card-body) {
+    padding: 40px;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: @primary-color;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: @text-color-secondary;
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+}
+
+.steps {
+  margin-bottom: 32px;
+
+  :global(.ant-steps-item-title) {
+    font-size: 14px;
+  }
+}
+
+.form {
+  .stepContent {
+    min-height: 200px;
+    margin-bottom: 24px;
+
+    :global(.ant-form-item) {
+      margin-bottom: 16px;
+    }
+
+    :global(.ant-input-affix-wrapper),
+    :global(.ant-input),
+    :global(.ant-input-password) {
+      height: 44px;
+      border-radius: 8px;
+      border: 1px solid @border-color-base;
+      transition: all 0.3s ease;
+
+      &:hover,
+      &:focus {
+        border-color: @primary-color;
+        box-shadow: 0 0 0 2px fade(@primary-color, 20%);
+      }
+    }
+
+    :global(.ant-input-prefix) {
+      color: @text-color-secondary;
+      margin-right: 12px;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  button {
+    height: 44px;
+    border-radius: 8px;
+    font-weight: 500;
+    flex: 1;
+  }
+}
+
+.prevButton {
+  background: @component-background;
+  border: 1px solid @border-color-base;
+  color: @text-color;
+
+  &:hover,
+  &:focus {
+    border-color: @primary-color;
+    color: @primary-color;
+  }
+}
+
+.submitButton {
+  background: @primary-color;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background: @primary-color-hover;
+  }
+
+  &:loading {
+    background: @primary-color-active;
+  }
+}
+
+.footer {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid @border-color-split;
+  color: @text-color-secondary;
+
+  :global(.ant-btn-link) {
+    color: @primary-color;
+    padding: 0 4px;
+
+    &:hover,
+    &:focus {
+      color: @primary-color-hover;
+    }
+  }
+}
+
+// 响应式设计
+@media (max-width: 576px) {
+  .container {
+    padding: 16px;
+  }
+
+  .registerCard {
+    :global(.ant-card-body) {
+      padding: 24px;
+    }
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .steps {
+    :global(.ant-steps-item-title) {
+      font-size: 12px;
+    }
+  }
+
+  .actions {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
+}

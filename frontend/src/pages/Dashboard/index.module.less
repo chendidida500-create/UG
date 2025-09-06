@@ -1,0 +1,187 @@
+@import '~antd/es/style/themes/default.less';
+
+.dashboard {
+  .welcomeCard {
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+
+    :global(.ant-card-body) {
+      padding: 24px;
+    }
+  }
+
+  .welcomeTitle {
+    color: white !important;
+    margin-bottom: 8px;
+  }
+
+  .statsRow {
+    margin-bottom: 24px;
+
+    :global(.ant-card) {
+      border-radius: 8px;
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+      :global(.ant-card-body) {
+        padding: 20px;
+      }
+
+      :global(.ant-statistic-title) {
+        color: @text-color-secondary;
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      :global(.ant-statistic-content) {
+        font-size: 24px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .progress {
+    margin-top: 16px;
+  }
+
+  .chartsRow {
+    margin-bottom: 24px;
+
+    :global(.ant-card) {
+      border-radius: 8px;
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      height: 400px;
+
+      :global(.ant-card-body) {
+        padding: 20px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  .chart {
+    flex: 1;
+    min-height: 300px;
+  }
+
+  .contentRow {
+    :global(.ant-card) {
+      border-radius: 8px;
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+      :global(.ant-card-body) {
+        padding: 20px;
+      }
+    }
+  }
+
+  .healthCard {
+    .healthItem {
+      margin-bottom: 16px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      :global(.ant-typography) {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: @text-color;
+      }
+    }
+  }
+}
+
+// 响应式设计
+@media (max-width: 1200px) {
+  .dashboard {
+    .chartsRow {
+      :global(.ant-col) {
+        margin-bottom: 16px;
+      }
+    }
+
+    .contentRow {
+      :global(.ant-col) {
+        margin-bottom: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .dashboard {
+    .statsRow {
+      :global(.ant-col) {
+        margin-bottom: 16px;
+      }
+    }
+
+    .chart {
+      min-height: 250px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    .welcomeCard {
+      :global(.ant-row) {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 16px;
+      }
+    }
+
+    .chartsRow {
+      :global(.ant-card) {
+        height: auto;
+      }
+    }
+
+    .chart {
+      min-height: 200px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard {
+    .welcomeCard {
+      margin: 0 -16px 24px;
+      border-radius: 0;
+    }
+
+    .statsRow,
+    .chartsRow,
+    .contentRow {
+      margin: 0 -16px 24px;
+
+      :global(.ant-card) {
+        border-radius: 0;
+        margin: 0 0 16px 0;
+      }
+    }
+  }
+}
+
+// 暗黑模式适配
+@media (prefers-color-scheme: dark) {
+  .dashboard {
+    .welcomeCard {
+      background: linear-gradient(135deg, #434343 0%, #000000 100%);
+    }
+
+    :global(.ant-card) {
+      background: @component-background;
+      border-color: @border-color-base;
+    }
+  }
+}

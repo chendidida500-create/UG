@@ -1,0 +1,84 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "es6"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "declaration": false,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@/components/*": [
+        "./components/*"
+      ],
+      "@/utils/*": [
+        "./utils/*"
+      ],
+      "@/services/*": [
+        "./services/*"
+      ],
+      "@/types/*": [
+        "./types/*"
+      ]
+    },
+    // 添加类型定义路径配置
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types"
+    ],
+    // 添加特定模块的类型解析配置
+    "types": [
+      "node",
+      "react",
+      "react-dom",
+      "accepts",
+      "body-parser",
+      "connect",
+      "content-disposition",
+      "cookies",
+      "depd",
+      "express",
+      "express-serve-static-core",
+      "http-assert",
+      "http-errors",
+      "keygrip",
+      "mime",
+      "qs",
+      "range-parser",
+      "send",
+      "serve-static"
+    ]
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "typings.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ]
+}
