@@ -61,7 +61,7 @@
       "serve-static"
     ],
     // 忽略弃用警告
-    "ignoreDeprecations": "5.0"
+    "ignoreDeprecations": "6.0"
   },
   "include": [
     "**/*.ts",

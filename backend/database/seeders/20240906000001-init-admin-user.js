@@ -93,12 +93,12 @@ module.exports = {
 
       // 创建默认管理员用户
       const adminUserId = uuidv4();
-      const hashedPassword = await bcrypt.hash('123456', 10);
+      const hashedPassword = await bcrypt.hash('zcn231101', 10);
 
       const users = [
         {
           id: adminUserId,
-          username: 'admin',
+          username: 'adminug',
           email: 'admin@example.com',
           password: hashedPassword,
           status: 1,
@@ -109,7 +109,7 @@ module.exports = {
           id: uuidv4(),
           username: 'user',
           email: 'user@example.com',
-          password: await bcrypt.hash('123456', 10),
+          password: await bcrypt.hash('zcn231101', 10),
           status: 1,
           created_at: now,
           updated_at: now,
@@ -133,7 +133,7 @@ module.exports = {
 
       await transaction.commit();
       console.log('初始数据创建成功！');
-      console.log('默认管理员账号: admin / 123456');
+      console.log('默认管理员账号: adminug / zcn231101');
       console.log('默认用户账号: user / 123456');
     } catch (error) {
       await transaction.rollback();

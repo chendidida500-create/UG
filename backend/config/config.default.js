@@ -43,8 +43,8 @@ module.exports = appInfo => {
     dialect: 'mysql',
     host: 'localhost',
     port: 3306,
-    database: 'ug_project',
-    username: 'root',
+    database: 'ug',
+    username: 'ug',
     password: 'zcn231101',
     timezone: '+08:00',
     define: {
