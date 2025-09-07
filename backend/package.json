@@ -38,6 +38,7 @@
     "uuid": "^12.0.0"
   },
   "devDependencies": {
+    "cspell": "^9.2.1",
     "egg-bin": "^6.13.0",
     "egg-ci": "^2.1.0",
     "egg-mock": "^5.10.0",

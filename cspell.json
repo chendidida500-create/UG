@@ -92,6 +92,5 @@
     ".umi-production/**",
     "frontend/.umi/**",
     "frontend/.umi-production/**"
-  ],
-  "extends": "./config/cspell/base.json"
+  ]
 }

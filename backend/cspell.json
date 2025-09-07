@@ -53,5 +53,7 @@
     ".umi/**",
     ".umi-production/**"
   ],
-  "extends": "../config/cspell/backend.json"
+  "import": [
+    "../config/cspell/backend.json"
+  ]
 }
