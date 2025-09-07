@@ -5,7 +5,7 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "es6"
+      "es2020"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -52,21 +52,15 @@
         "./src/styles/*"
       ]
     },
-    // 继承根目录的类型定义路径配置
+    // 配置类型定义路径
     "typeRoots": [
-      "../node_modules/@types",
-      "./node_modules/@types"
-    ],
-    // 继承根目录的特定模块类型解析配置
-    "types": [
-      "node",
-      "react",
-      "react-dom"
+      "./node_modules/@types",
+      "../node_modules/@types"
     ]
   },
   "include": [
-    "src/**/*",
-    ".umirc.ts"
+    "../frontend/src/**/*",
+    "../frontend/.umirc.ts"
   ],
   "exclude": [
     "node_modules",

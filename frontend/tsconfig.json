@@ -1,4 +1,18 @@
 {
   "extends": "../config/tsconfig/frontend.json",
-  "include": ["src/**/*", ".umirc.ts", "../typings.d.ts"]
+  "compilerOptions": {
+    // 覆盖 baseUrl 为当前目录
+    "baseUrl": ".",
+    // 配置类型定义路径，确保能解析根目录和当前项目的类型定义
+    "typeRoots": [
+      "./node_modules/@types",
+      "../node_modules/@types"
+    ],
+    // 清空 types 数组，让 TypeScript 自动解析类型
+    "types": []
+  },
+  "include": [
+    "src/**/*",
+    ".umirc.ts"
+  ]
 }

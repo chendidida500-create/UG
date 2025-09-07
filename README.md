@@ -115,6 +115,10 @@ pnpm spellcheck
 
 详细信息请参考 [docs/spell-checking-guide.md](docs/spell-checking-guide.md)。
 
+## TypeScript 配置问题修复
+
+本项目在开发过程中遇到了一些 TypeScript 配置问题，包括类型定义文件缺失、rootDir 配置问题等。详细信息和解决方案请参考 [docs/TYPESCRIPT_FIXES.md](docs/TYPESCRIPT_FIXES.md)。
+
 ## 依赖更新日志
 
-项目依赖的更新历史和解决的警告问题请参考 [docs/DEPENDENCY_UPDATES.md](docs/DEPENDENCY_UPDATES.md).
+项目依赖的更新历史和解决的警告问题请参考 [docs/DEPENDENCY_UPDATES.md](docs/DEPENDENCY_UPDATES.md)。
