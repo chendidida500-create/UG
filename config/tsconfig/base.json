@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "target": "es2020",
-    "lib": ["es2020"],
+    "lib": [
+      "es2020"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -17,12 +19,15 @@
     "declaration": false,
     "sourceMap": true,
     "outDir": "./dist",
-    "rootDir": ".",
     "baseUrl": ".",
     // 添加类型定义路径配置
-    "typeRoots": ["./node_modules/@types"],
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
     // 添加特定模块的类型解析配置
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     // 忽略弃用警告
     "ignoreDeprecations": "6.0"
   },

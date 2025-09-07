@@ -19,7 +19,7 @@
     "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
     "db:seed": "npx sequelize-cli db:seed:all",
     "db:seed:undo": "npx sequelize-cli db:seed:undo:all",
-    "spellcheck": "cspell \"**/*.{js,ts,jsx,tsx,json,md}\""
+    "spellcheck": "node ../node_modules/.pnpm/cspell@9.2.1/node_modules/cspell/bin.mjs lint app/**/*"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",

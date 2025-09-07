@@ -87,6 +87,34 @@ cd frontend
 pnpm dev
 ```
 
+## 拼写检查
+
+本项目使用 cspell 进行代码拼写检查，确保代码中的注释、字符串和标识符没有拼写错误。
+
+### 运行拼写检查
+
+```bash
+# 前端项目拼写检查
+cd frontend
+pnpm spellcheck
+
+# 后端项目拼写检查
+cd backend
+pnpm spellcheck
+
+# 整个项目拼写检查
+./scripts/spellcheck-all.bat
+```
+
+### 拼写检查配置
+
+- 全局配置: [cspell.json](cspell.json)
+- 前端配置: [frontend/cspell.json](frontend/cspell.json)
+- 后端配置: [backend/cspell.json](backend/cspell.json)
+- 配置继承: [config/cspell/](config/cspell/)
+
+详细信息请参考 [docs/spell-checking-guide.md](docs/spell-checking-guide.md)。
+
 ## 依赖更新日志
 
 项目依赖的更新历史和解决的警告问题请参考 [docs/DEPENDENCY_UPDATES.md](docs/DEPENDENCY_UPDATES.md).

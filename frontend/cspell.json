@@ -48,7 +48,9 @@
     "pzcn",
     "keygrip",
     "Sider",
-    "sider"
+    "sider",
+    "Siderbar",
+    "npminstall"
   ],
   "ignorePaths": [
     "node_modules/**",
