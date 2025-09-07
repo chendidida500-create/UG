@@ -1,5 +1,5 @@
 import { useModel } from '@/utils/umiMock';
-import { CameraOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
+import { CameraOutlined, UserOutlined } from '@ant-design/icons';
 import {
   Button,
   Card,
@@ -219,38 +219,23 @@ const ProfilePage: React.FC = () => {
                   name="oldPassword"
                   rules={[{ required: true, message: '请输入原密码' }]}
                 >
-                  <Input.Password
-                    prefix={<LockOutlined />}
-                    placeholder="请输入原密码"
-                  />
+                  <Input.Password placeholder="请输入原密码" />
                 </Form.Item>
 
                 <Form.Item
                   label="新密码"
                   name="newPassword"
-                  rules={[
-                    { required: true, message: '请输入新密码' },
-                    { min: 6, message: '密码至少6位' },
-                  ]}
+                  rules={[{ required: true, message: '请输入新密码' }]}
                 >
-                  <Input.Password
-                    prefix={<LockOutlined />}
-                    placeholder="请输入新密码"
-                  />
+                  <Input.Password placeholder="请输入新密码" />
                 </Form.Item>
 
                 <Form.Item
-                  label="确认新密码"
+                  label="确认密码"
                   name="confirmPassword"
-                  rules={[
-                    { required: true, message: '请确认新密码' },
-                    { min: 6, message: '密码至少6位' },
-                  ]}
+                  rules={[{ required: true, message: '请确认新密码' }]}
                 >
-                  <Input.Password
-                    prefix={<LockOutlined />}
-                    placeholder="请确认新密码"
-                  />
+                  <Input.Password placeholder="请再次输入新密码" />
                 </Form.Item>
 
                 <Form.Item>

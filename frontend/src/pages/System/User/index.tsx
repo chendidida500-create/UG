@@ -198,35 +198,45 @@ const UserManagement: React.FC = () => {
       {
         key: 'status',
         label: '状态',
-        type: 'switch',
-        props: {
-          checkedChildren: '启用',
-          unCheckedChildren: '禁用',
-        },
+        type: 'select',
+        required: true,
+        options: [
+          { label: '启用', value: 1 },
+          { label: '禁用', value: 0 },
+        ],
       },
     ],
-    layout: 'vertical',
+    layout: 'horizontal',
+    labelCol: { span: 6 },
+    wrapperCol: { span: 18 },
   };
 
   // 搜索配置
   const searchConfig = {
     fields: [
       {
-        name: 'keyword',
-        label: '关键词',
-        type: 'input' as const,
+        name: 'username',
+        label: '用户名',
+        type: 'input',
         props: {
-          placeholder: '用户名/邮箱/昵称',
+          placeholder: '请输入用户名',
+        },
+      },
+      {
+        name: 'email',
+        label: '邮箱',
+        type: 'input',
+        props: {
+          placeholder: '请输入邮箱',
         },
       },
       {
         name: 'status',
         label: '状态',
-        type: 'select' as const,
+        type: 'select',
         props: {
           placeholder: '请选择状态',
           options: [
-            { label: '全部', value: '' },
             { label: '启用', value: 1 },
             { label: '禁用', value: 0 },
           ],
@@ -235,29 +245,123 @@ const UserManagement: React.FC = () => {
     ],
   };
 
-  // 加载用户列表
-  const loadUsers = async (params?: PaginationParams) => {
-    // setLoading(true);
-    try {
-      const result = await getUserList?.(params);
-      if (result?.success) {
-        setUsers(result.data.list);
-        // 更新统计信息
-        setStats({
-          total: result.data.total,
-          active: result.data.list.filter((user: User) => user.status === 1).length,
-          inactive: result.data.list.filter((user: User) => user.status === 0).length,
-          locked: 0, // 假设没有锁定状态
-        });
+  // API接口
+  const api = {
+    list: async (params: PaginationParams) => {
+      try {
+        const result = await getUserList?.(params);
+        if (result?.success) {
+          return {
+            success: true,
+            data: {
+              list: result.data.list,
+              pagination: result.data.pagination,
+            },
+          };
+        } else {
+          return {
+            success: false,
+            message: result?.message || '获取用户列表失败',
+          };
+        }
+      } catch (error: any) {
+        return {
+          success: false,
+          message: error.message || '获取用户列表失败',
+        };
       }
-    } catch (error: any) {
-      message.error(error.message || '加载用户列表失败');
-    } finally {
-      // setLoading(false);
+    },
+    create: async (data: any) => {
+      try {
+        const result = await createUser?.(data);
+        if (result?.success) {
+          message.success('用户创建成功');
+          return { success: true };
+        } else {
+          return {
+            success: false,
+            message: result?.message || '用户创建失败',
+          };
+        }
+      } catch (error: any) {
+        return {
+          success: false,
+          message: error.message || '用户创建失败',
+        };
+      }
+    },
+    update: async (id: string, data: any) => {
+      try {
+        const result = await updateUser?.(id, data);
+        if (result?.success) {
+          message.success('用户更新成功');
+          return { success: true };
+        } else {
+          return {
+            success: false,
+            message: result?.message || '用户更新失败',
+          };
+        }
+      } catch (error: any) {
+        return {
+          success: false,
+          message: error.message || '用户更新失败',
+        };
+      }
+    },
+    delete: async (id: string) => {
+      try {
+        const result = await deleteUser?.(id);
+        if (result?.success) {
+          message.success('用户删除成功');
+          return { success: true };
+        } else {
+          return {
+            success: false,
+            message: result?.message || '用户删除失败',
+          };
+        }
+      } catch (error: any) {
+        return {
+          success: false,
+          message: error.message || '用户删除失败',
+        };
+      }
+    },
+    detail: async (id: string) => {
+      // 这里应该调用获取用户详情的API
+      // 暂时返回空实现
+      return { success: true, data: {} };
+    },
+  };
+
+  // 权限配置
+  const permissions = {
+    view: 'system:user:view',
+    create: 'system:user:create',
+    update: 'system:user:update',
+    delete: 'system:user:delete',
+  };
+
+  // 自定义操作
+  const handleCustomAction = (action: string, record: any) => {
+    if (action === 'resetPassword') {
+      Modal.confirm({
+        title: '重置密码',
+        content: `确定要重置用户 ${record.username} 的密码吗？`,
+        onOk: async () => {
+          try {
+            // 这里应该调用重置密码的API
+            message.success('密码重置成功');
+          } catch (error: any) {
+            message.error(error.message || '密码重置失败');
+          }
+        },
+      });
     }
   };
 
-  // 处理批量删除用户
+  // 批量删除
   const handleBatchDelete = async () => {
     if (selectedRowKeys.length === 0) {
       message.warning('请先选择要删除的用户');
@@ -265,55 +369,63 @@ const UserManagement: React.FC = () => {
     }
 
     Modal.confirm({
-      title: '确认删除',
+      title: '批量删除',
       content: `确定要删除选中的 ${selectedRowKeys.length} 个用户吗？`,
       onOk: async () => {
         try {
           const result = await batchDeleteUsers?.(selectedRowKeys as string[]);
           if (result?.success) {
-            message.success('用户批量删除成功');
+            message.success('批量删除成功');
             setSelectedRowKeys([]);
-            loadUsers();
+          } else {
+            message.error(result?.message || '批量删除失败');
           }
         } catch (error: any) {
-          message.error(error.message || '用户批量删除失败');
+          message.error(error.message || '批量删除失败');
         }
       },
     });
   };
 
-  // 处理导出用户
+  // 导出用户
   const handleExport = async () => {
     try {
-      await exportUsers?.();
+      const result = await exportUsers?.();
+      if (result?.success) {
+        message.success('用户导出成功');
+      } else {
+        message.error(result?.message || '用户导出失败');
+      }
     } catch (error: any) {
-      message.error(error.message || '导出失败');
+      message.error(error.message || '用户导出失败');
     }
   };
 
-  // 处理重置密码
-  const handleResetPassword = async (id: string) => {
-    Modal.confirm({
-      title: '重置密码',
-      content: '确定要重置该用户的密码吗？',
-      onOk: async () => {
-        try {
-          // 这里应该调用重置密码的API
-          message.success('密码重置成功');
-        } catch (error: any) {
-          message.error(error.message || '密码重置失败');
-        }
-      },
+  // 导入用户
+  const handleImport = () => {
+    // 这里应该实现用户导入功能
+    message.info('用户导入功能待实现');
+  };
+
+  // 获取统计数据
+  const loadStats = async () => {
+    // 这里应该调用获取统计数据的API
+    // 暂时使用模拟数据
+    setStats({
+      total: 1234,
+      active: 1100,
+      inactive: 100,
+      locked: 34,
     });
   };
 
+  // 初始化数据
   useEffect(() => {
-    loadUsers();
+    loadStats();
   }, []);
 
   return (
-    <div className={styles.container}>
-      {/* 统计卡片 */}
+    <div className={styles.userManagement}>
       <Row gutter={16} className={styles.statsRow}>
         <Col span={6}>
           <Card>
@@ -332,77 +444,87 @@ const UserManagement: React.FC = () => {
         </Col>
         <Col span={6}>
           <Card>
-            <Statistic title="锁定用户" value={stats.locked} />
+            <Statistic title="锁定用户" value={stats.locked} valueStyle={{ color: '#fa8c16' }} />
           </Card>
         </Col>
       </Row>
 
-      {/* 用户管理表格 */}
-      <Card className={styles.card}>
-        <CrudComponent
-          title="用户"
-          tableConfig={tableConfig}
-          formConfig={formConfig}
-          searchConfig={searchConfig}
-          api={{
-            list: getUserList,
-            create: createUser,
-            update: updateUser,
-            delete: deleteUser,
-            detail: undefined as any, // 如果需要查看详情，可以实现这个方法
-          }}
-          permissions={{
-            create: 'system:user:create',
-            update: 'system:user:update',
-            delete: 'system:user:delete',
-          }}
-          hasPermission={hasPermission}
-          onCustomAction={(action: string, record: any) => {
-            if (action === 'resetPassword') {
-              handleResetPassword(record.id);
-            }
-          }}
-          extraActions={
-            <Space>
-              <Button
-                icon={<ExportOutlined />}
-                onClick={handleExport}
-                disabled={!hasPermission('system:user:export')}
-              >
-                导出
-              </Button>
-              <Button
-                icon={<ImportOutlined />}
-                disabled={!hasPermission('system:user:import')}
-              >
-                导入
-              </Button>
-              <Button
-                icon={<DeleteOutlined />}
-                danger
-                onClick={handleBatchDelete}
-                disabled={selectedRowKeys.length === 0 || !hasPermission('system:user:delete')}
-              >
-                批量删除
-              </Button>
-              <Dropdown
-                menu={{
-                  items: [
-                    {
-                      key: 'refresh',
-                      icon: <ReloadOutlined />,
-                      label: '刷新',
-                      onClick: () => loadUsers(),
-                    },
-                  ],
-                }}
-              >
-                <Button icon={<MoreOutlined />}>更多</Button>
-              </Dropdown>
-            </Space>
-          }
-        />
+      <Card className={styles.actionBar}>
+        <Space>
+          <Button
+            type="primary"
+            icon={<DeleteOutlined />}
+            onClick={handleBatchDelete}
+            disabled={!hasPermission('system:user:delete') || selectedRowKeys.length === 0}
+          >
+            批量删除
+          </Button>
+          <Button
+            icon={<ExportOutlined />}
+            onClick={handleExport}
+            disabled={!hasPermission('system:user:export')}
+          >
+            导出
+          </Button>
+          <Button
+            icon={<ImportOutlined />}
+            onClick={handleImport}
+            disabled={!hasPermission('system:user:import')}
+          >
+            导入
+          </Button>
+          <Button icon={<ReloadOutlined />} onClick={loadStats}>
+            刷新
+          </Button>
+        </Space>
       </Card>
+
+      <CrudComponent
+        title="用户"
+        tableConfig={tableConfig}
+        formConfig={formConfig}
+        searchConfig={searchConfig}
+        api={api}
+        permissions={permissions}
+        hasPermission={hasPermission}
+        onCustomAction={handleCustomAction}
+        extraActions={
+          <Dropdown
+            menu={{
+              items: [
+                {
+                  key: 'batchDelete',
+                  icon: <DeleteOutlined />,
+                  label: '批量删除',
+                  disabled: !hasPermission('system:user:delete') || selectedRowKeys.length === 0,
+                  onClick: handleBatchDelete,
+                },
+                {
+                  key: 'export',
+                  icon: <ExportOutlined />,
+                  label: '导出用户',
+                  disabled: !hasPermission('system:user:export'),
+                  onClick: handleExport,
+                },
+                {
+                  key: 'import',
+                  icon: <ImportOutlined />,
+                  label: '导入用户',
+                  disabled: !hasPermission('system:user:import'),
+                  onClick: handleImport,
+                },
+              ],
+            }}
+          >
+            <Button>
+              <Space>
+                更多操作
+                <MoreOutlined />
+              </Space>
+            </Button>
+          </Dropdown>
+        }
+      />
     </div>
   );
 };

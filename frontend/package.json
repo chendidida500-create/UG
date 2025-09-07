@@ -11,7 +11,7 @@
     "setup": "umi setup",
     "start": "pnpm dev",
     "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
-    "lint:fix": "pnpm lint -- --fix",
+    "lint:fix": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src --fix",
     "lint:strict": "eslint --ext .js,.jsx,.ts,.tsx --format=pretty ./src --max-warnings 0",
     "preview": "umi preview",
     "test": "umi test",

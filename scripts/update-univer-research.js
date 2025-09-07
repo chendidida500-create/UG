@@ -17,22 +17,22 @@ try {
     console.log('✗ UNIVER 组件技术调研文档不存在');
     process.exit(1);
   }
-  
+
   // 读取文档内容
   let content = fs.readFileSync(univerResearchPath, 'utf8');
-  
+
   // 更新最后更新时间
   const now = new Date();
   const updateTime = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-  
+
   content = content.replace(
     /_本文档最后更新时间：\d{4}-\d{2}-\d{2}_/,
     `_本文档最后更新时间：${updateTime}_`
   );
-  
+
   // 写入更新后的内容
   fs.writeFileSync(univerResearchPath, content, 'utf8');
-  
+
   console.log('✓ UNIVER 组件技术调研文档更新成功！');
   console.log(`更新时间：${updateTime}`);
 } catch (error) {

@@ -209,36 +209,42 @@ const PermissionManagement: React.FC = () => {
           button: { text: '按钮', color: 'green' },
           api: { text: '接口', color: 'orange' },
         };
-        const typeInfo = typeMap[type] || { text: type, color: 'default' };
-        return <Tag color={typeInfo.color}>{typeInfo.text}</Tag>;
+        const config = typeMap[type] || { text: type, color: 'default' };
+        return <Tag color={config.color}>{config.text}</Tag>;
       },
     },
     {
       title: '状态',
       dataIndex: 'status',
       key: 'status',
-      render: (status: 'active' | 'inactive') => (
-        <Switch
-          checked={status === 'active'}
-          checkedChildren="启用"
-          unCheckedChildren="禁用"
-          disabled
-        />
+      render: (status: number) => (
+        <Tag color={status === 1 ? 'success' : 'error'}>
+          {status === 1 ? '启用' : '禁用'}
+        </Tag>
       ),
     },
     {
       title: '排序',
       dataIndex: 'sort',
       key: 'sort',
+      sorter: (a: Permission, b: Permission) => a.sort - b.sort,
+    },
+    {
+      title: '创建时间',
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+      render: (time: string) => new Date(time).toLocaleString(),
     },
     {
       title: '操作',
-      key: 'action',
-      width: 200,
-      render: (_text: any, record: Permission) => (
-        <Space size="middle">
+      key: 'actions',
+      fixed: 'right',
+      width: 150,
+      render: (_: any, record: Permission) => (
+        <Space>
           <Button
             type="link"
+            size="small"
             icon={<EyeOutlined />}
             onClick={() => handleView(record)}
           >
@@ -246,6 +252,7 @@ const PermissionManagement: React.FC = () => {
           </Button>
           <Button
             type="link"
+            size="small"
             icon={<EditOutlined />}
             onClick={() => handleEdit(record)}
           >
@@ -257,7 +264,7 @@ const PermissionManagement: React.FC = () => {
             okText="确定"
             cancelText="取消"
           >
-            <Button type="link" icon={<DeleteOutlined />} danger>
+            <Button type="link" size="small" icon={<DeleteOutlined />} danger>
               删除
             </Button>
           </Popconfirm>
@@ -266,42 +273,39 @@ const PermissionManagement: React.FC = () => {
     },
   ];
 
-  const permissionTree = buildPermissionTree(permissions);
-
   return (
-    <div className={styles.container}>
-      <Card className={styles.card}>
-        <div className={styles.header}>
-          <h2>权限管理</h2>
+    <div className={styles.permissionManagement}>
+      <Card
+        title="权限管理"
+        extra={
           <Button type="primary" icon={<PlusOutlined />} onClick={handleCreate}>
             新建权限
           </Button>
-        </div>
-
-        <div className={styles.content}>
+        }
+      >
+        <div className={styles.treeContainer}>
           <Tree
-            className={styles.tree}
+            className={styles.permissionTree}
             showLine
-            showIcon
+            switcherIcon={<div />}
             expandedKeys={expandedKeys}
             selectedKeys={selectedKeys}
+            autoExpandParent={autoExpandParent}
             onExpand={onExpand}
             onSelect={onSelect}
-            autoExpandParent={autoExpandParent}
-            treeData={permissionTree}
-          >
-            {renderTreeNodes(permissionTree)}
-          </Tree>
-
-          <Table
-            className={styles.table}
-            columns={columns}
-            dataSource={permissions}
-            rowKey="id"
-            loading={loading}
-            pagination={false}
+            treeData={buildPermissionTree(permissions)}
           />
         </div>
+
+        <Table
+          className={styles.permissionTable}
+          columns={columns}
+          dataSource={permissions}
+          loading={loading}
+          pagination={false}
+          rowKey="id"
+          scroll={{ x: 'max-content' }}
+        />
       </Card>
 
       <Modal
@@ -312,9 +316,9 @@ const PermissionManagement: React.FC = () => {
           form.resetFields();
         }}
         onOk={() => form.submit()}
-        okText={modalMode === 'view' ? '关闭' : '确定'}
+        okText={modalMode === 'create' ? '创建' : modalMode === 'edit' ? '保存' : '关闭'}
         cancelText="取消"
-        okButtonProps={modalMode === 'view' ? { style: { display: 'none' } } : {}}
+        okButtonProps={{ disabled: modalMode === 'view' }}
       >
         <Form
           form={form}
@@ -352,47 +356,28 @@ const PermissionManagement: React.FC = () => {
 
           <Form.Item
             name="parentId"
-            label="上级权限"
+            label="父级权限"
           >
-            <Select
-              placeholder="请选择上级权限"
-              allowClear
-            >
-              {permissions
-                .filter(item => item.type === 'menu')
-                .map(item => (
-                  <Select.Option key={item.id} value={item.id}>
-                    {item.name}
-                  </Select.Option>
-                ))}
+            <Select placeholder="请选择父级权限" allowClear>
+              {permissions.map(permission => (
+                <Select.Option key={permission.id} value={permission.id}>
+                  {permission.name}
+                </Select.Option>
+              ))}
             </Select>
-          </Form.Item>
-
-          <Form.Item
-            name="path"
-            label="路由路径"
-          >
-            <Input placeholder="请输入路由路径" />
-          </Form.Item>
-
-          <Form.Item
-            name="component"
-            label="组件路径"
-          >
-            <Input placeholder="请输入组件路径" />
           </Form.Item>
 
           <Form.Item
             name="icon"
             label="图标"
           >
-            <Input placeholder="请输入图标名称" />
+            <Input placeholder="请输入图标代码" />
           </Form.Item>
 
           <Form.Item
             name="sort"
             label="排序"
-            initialValue={0}
+            rules={[{ required: true, message: '请输入排序值' }]}
           >
             <Input type="number" placeholder="请输入排序值" />
           </Form.Item>
@@ -400,7 +385,6 @@ const PermissionManagement: React.FC = () => {
           <Form.Item
             name="status"
             label="状态"
-            initialValue="active"
             valuePropName="checked"
           >
             <Switch checkedChildren="启用" unCheckedChildren="禁用" />
@@ -410,7 +394,7 @@ const PermissionManagement: React.FC = () => {
             name="description"
             label="描述"
           >
-            <Input.TextArea placeholder="请输入描述" rows={3} />
+            <Input.TextArea placeholder="请输入描述" rows={4} />
           </Form.Item>
         </Form>
       </Modal>

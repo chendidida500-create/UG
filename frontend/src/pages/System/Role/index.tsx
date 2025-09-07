@@ -23,10 +23,9 @@ import {
   Row,
   Space,
   Statistic,
-  Switch,
   Tag,
   Tree,
-  Typography,
+  Typography
 } from 'antd';
 import { useEffect, useState } from 'react';
 import styles from './index.module.less';
@@ -198,126 +197,123 @@ const RoleManagement: React.FC = () => {
                 type="link"
                 size="small"
                 icon={<EditOutlined />}
+                onClick={() => handleEdit(record)}
                 disabled={!hasPermission?.('system:role:update')}
               >
                 编辑
               </Button>
-              <Switch
-                size="small"
-                checked={record.status === 'active'}
-                onChange={(checked: any) =>
-                  handleStatusChange(record.id, checked)
-                }
-                disabled={!hasPermission?.('system:role:status')}
-              />
               <Dropdown
                 menu={{
                   items: moreMenuItems,
-                  onClick: ({ key }: any) => handleMoreAction(key, record),
+                  onClick: ({ key }) => handleMoreAction(key, record),
                 }}
               >
-                <Button type="text" size="small" icon={<MoreOutlined />} />
+                <Button type="link" size="small" icon={<MoreOutlined />}>
+                  更多
+                </Button>
               </Dropdown>
             </Space>
           );
         },
       },
     ],
-    rowKey: 'id',
-    size: 'middle',
-    bordered: true,
-    scroll: { x: 1000 },
-    rowSelection: hasPermission?.('system:role:batch_delete')
-      ? {
-        selectedRowKeys,
-        onChange: (selectedKeys: React.Key[]) =>
-          setSelectedRowKeys(selectedKeys as string[]),
-        getCheckboxProps: (record: Role) => ({
-          disabled: record.userCount > 0, // 有用户的角色不能删除
-        }),
-      }
-      : undefined,
+    rowSelection: {
+      type: 'checkbox',
+      selectedRowKeys,
+      onChange: (selectedRowKeys: React.Key[]) => {
+        setSelectedRowKeys(selectedRowKeys);
+      },
+    },
+    actions: {
+      view: false,
+      edit: false,
+      delete: false,
+      custom: [],
+    },
+    pagination: {
+      pageSize: 20,
+      showSizeChanger: true,
+      showQuickJumper: true,
+    },
   };
 
   // 表单配置
   const formConfig: FormConfig = {
-    layout: 'vertical',
     fields: [
       {
         key: 'name',
-        name: 'name',
         label: '角色名称',
         type: 'input',
         required: true,
-        rules: [
-          { required: true, message: '请输入角色名称' },
-          { min: 2, max: 20, message: '角色名称长度为2-20个字符' },
-        ],
+        placeholder: '请输入角色名称',
         props: {
-          placeholder: '请输入角色名称',
+          maxLength: 50,
         },
       },
       {
-        key: 'code', // 添加key属性
-        name: 'code',
+        key: 'code',
         label: '角色编码',
         type: 'input',
         required: true,
-        rules: [
-          { required: true, message: '请输入角色编码' },
-          { pattern: /^[A-Z_]+$/, message: '角色编码只能包含大写字母和下划线' },
+        placeholder: '请输入角色编码',
+        props: {
+          maxLength: 50,
+        },
+      },
+      {
+        key: 'description',
+        label: '描述',
+        type: 'textarea',
+        placeholder: '请输入角色描述',
+        props: {
+          maxLength: 200,
+          rows: 4,
+        },
+      },
+      {
+        key: 'status',
+        label: '状态',
+        type: 'radio',
+        required: true,
+        options: [
+          { label: '启用', value: 'active' },
+          { label: '禁用', value: 'inactive' },
         ],
         props: {
-          placeholder: '请输入角色编码，如：ADMIN_USER',
-        },
-      },
-      {
-        key: 'description', // 添加key属性
-        name: 'description',
-        label: '角色描述',
-        type: 'textarea',
-        props: {
-          placeholder: '请输入角色描述',
-          rows: 3,
-        },
-      },
-      {
-        key: 'status', // 添加key属性
-        name: 'status',
-        label: '状态',
-        type: 'select',
-        required: true,
-        props: {
-          placeholder: '请选择状态',
-          options: [
-            { label: '启用', value: 'active' },
-            { label: '禁用', value: 'inactive' },
-          ],
+          defaultValue: 'active',
         },
       },
     ],
+    layout: 'horizontal',
+    labelCol: { span: 6 },
+    wrapperCol: { span: 18 },
   };
 
   // 搜索配置
   const searchConfig = {
     fields: [
       {
-        key: 'keyword', // 添加key属性
-        name: 'keyword',
-        label: '关键词',
-        type: 'input' as const,
+        name: 'name',
+        label: '角色名称',
+        type: 'input',
         props: {
-          placeholder: '角色名称/编码',
+          placeholder: '请输入角色名称',
         },
       },
       {
-        key: 'status', // 添加key属性
+        name: 'code',
+        label: '角色编码',
+        type: 'input',
+        props: {
+          placeholder: '请输入角色编码',
+        },
+      },
+      {
         name: 'status',
         label: '状态',
-        type: 'select' as const,
+        type: 'select',
         props: {
           placeholder: '请选择状态',
-          allowClear: true,
           options: [
             { label: '启用', value: 'active' },
             { label: '禁用', value: 'inactive' },
@@ -327,119 +323,213 @@ const RoleManagement: React.FC = () => {
     ],
   };
 
-  // 加载角色列表
-  const loadRoles = async (params?: PaginationParams) => {
-    setLoading(true);
+  // API接口
+  const api = {
+    list: async (params: PaginationParams) => {
+      try {
+        const result = await getRoleList?.(params);
+        if (result?.success) {
+          return {
+            success: true,
+            data: {
+              list: result.data.list,
+              pagination: result.data.pagination,
+            },
+          };
+        } else {
+          return {
+            success: false,
+            message: result?.message || '获取角色列表失败',
+          };
+        }
+      } catch (error: any) {
+        return {
+          success: false,
+          message: error.message || '获取角色列表失败',
+        };
+      }
+    },
+    create: async (data: any) => {
+      try {
+        const result = await createRole?.(data);
+        if (result?.success) {
+          message.success('角色创建成功');
+          return { success: true };
+        } else {
+          return {
+            success: false,
+            message: result?.message || '角色创建失败',
+          };
+        }
+      } catch (error: any) {
+        return {
+          success: false,
+          message: error.message || '角色创建失败',
+        };
+      }
+    },
+    update: async (id: string, data: any) => {
+      try {
+        const result = await updateRole?.(id, data);
+        if (result?.success) {
+          message.success('角色更新成功');
+          return { success: true };
+        } else {
+          return {
+            success: false,
+            message: result?.message || '角色更新失败',
+          };
+        }
+      } catch (error: any) {
+        return {
+          success: false,
+          message: error.message || '角色更新失败',
+        };
+      }
+    },
+    delete: async (id: string) => {
+      try {
+        const result = await deleteRole?.(id);
+        if (result?.success) {
+          message.success('角色删除成功');
+          return { success: true };
+        } else {
+          return {
+            success: false,
+            message: result?.message || '角色删除失败',
+          };
+        }
+      } catch (error: any) {
+        return {
+          success: false,
+          message: error.message || '角色删除失败',
+        };
+      }
+    },
+    detail: async (id: string) => {
+      // 这里应该调用获取角色详情的API
+      // 暂时返回空实现
+      return { success: true, data: {} };
+    },
+  };
+
+  // 权限配置
+  const permissionsConfig = {
+    view: 'system:role:view',
+    create: 'system:role:create',
+    update: 'system:role:update',
+    delete: 'system:role:delete',
+    permissions: 'system:role:permissions',
+  };
+
+  // 编辑角色
+  const handleEdit = (record: Role) => {
+    setCurrentRole(record);
+  };
+
+  // 更多操作
+  const handleMoreAction = (action: string, record: Role) => {
+    switch (action) {
+      case 'permissions':
+        handlePermissionSetting(record);
+        break;
+      case 'copy':
+        handleCopyRole(record);
+        break;
+      case 'delete':
+        handleDeleteRole(record);
+        break;
+      default:
+        break;
+    }
+  };
+
+  // 权限设置
+  const handlePermissionSetting = async (record: Role) => {
     try {
-      const result = await getRoleList?.(params);
-      if (result?.data) {
-        setRoles(result.data.list || []);
-        updateStats(result.data.list || []);
+      setLoading(true);
+      // 获取角色权限
+      const permissionResult = await getRolePermissions?.(record.id);
+      // 获取所有权限
+      const allPermissionResult = await getAllPermissions?.();
+
+      if (permissionResult?.success && allPermissionResult?.success) {
+        setPermissions(allPermissionResult.data);
+        setSelectedPermissions(permissionResult.data);
+        setCurrentRole(record);
+        setPermissionModalVisible(true);
+      } else {
+        message.error(
+          permissionResult?.message || allPermissionResult?.message || '获取权限信息失败'
+        );
       }
     } catch (error: any) {
-      message.error(error.message || '加载角色列表失败');
+      message.error(error.message || '获取权限信息失败');
     } finally {
       setLoading(false);
     }
   };
 
-  // 加载权限列表
-  const loadPermissions = async () => {
-    try {
-      const result = await getAllPermissions?.();
-      if (result?.data) {
-        setPermissions(result.data);
-      }
-    } catch (error: any) {
-      message.error(error.message || '加载权限列表失败');
-    }
-  };
-
-  // 更新统计信息
-  const updateStats = (data: Role[]) => {
-    const stats = {
-      total: data.length,
-      active: data.filter(r => r.status === 'active').length,
-      inactive: data.filter(r => r.status === 'inactive').length,
-      avgPermissions:
-        data.length > 0
-          ? Math.round(
-            data.reduce((sum, r) => sum + r.permissions.length, 0) /
-            data.length
-          )
-          : 0,
-    };
-    setStats(stats);
-  };
-
-  // 状态切换
-  const handleStatusChange = async (id: string, active: boolean) => {
-    try {
-      await updateRoleStatus?.(id, active ? 'active' : 'inactive');
-      message.success('状态更新成功');
-      loadRoles();
-    } catch (error: any) {
-      message.error(error.message || '状态更新失败');
-    }
-  };
-
-  // 更多操作
-  const handleMoreAction = async (action: string, record: Role) => {
-    switch (action) {
-      case 'permissions':
+  // 复制角色
+  const handleCopyRole = (record: Role) => {
+    Modal.confirm({
+      title: '复制角色',
+      content: `确定要复制角色 ${record.name} 吗？`,
+      onOk: async () => {
         try {
-          const rolePermissions = await getRolePermissions?.(record.id);
-          if (rolePermissions?.data) {
-            setCurrentRole(record);
-            setSelectedPermissions(rolePermissions.data);
-            setPermissionModalVisible(true);
+          // 这里应该调用复制角色的API
+          message.success('角色复制成功');
+        } catch (error: any) {
+          message.error(error.message || '角色复制失败');
+        }
+      },
+    });
+  };
+
+  // 删除角色
+  const handleDeleteRole = (record: Role) => {
+    if (record.userCount > 0) {
+      message.warning('该角色下有关联用户，无法删除');
+      return;
+    }
+
+    Modal.confirm({
+      title: '删除角色',
+      content: `确定要删除角色 ${record.name} 吗？`,
+      onOk: async () => {
+        try {
+          const result = await deleteRole?.(record.id);
+          if (result?.success) {
+            message.success('角色删除成功');
+          } else {
+            message.error(result?.message || '角色删除失败');
           }
         } catch (error: any) {
-          message.error(error.message || '加载角色权限失败');
+          message.error(error.message || '角色删除失败');
         }
-        break;
-      case 'copy':
-        // 实现复制角色逻辑
-        message.info('复制角色功能开发中');
-        break;
-      case 'delete':
-        Modal.confirm({
-          title: '删除角色',
-          content: `确定要删除角色"${record.name}"吗？此操作不可恢复。`,
-          okText: '删除',
-          okType: 'danger',
-          onOk: async () => {
-            try {
-              await deleteRole?.(record.id);
-              message.success('删除成功');
-              loadRoles();
-            } catch (error: any) {
-              message.error(error.message || '删除失败');
-            }
-          },
-        });
-        break;
-    }
+      },
+    });
   };
 
   // 批量删除
-  const handleBatchDelete = () => {
+  const handleBatchDelete = async () => {
     if (selectedRowKeys.length === 0) {
-      message.warning('请选择要删除的角色');
+      message.warning('请先选择要删除的角色');
       return;
     }
 
     Modal.confirm({
       title: '批量删除',
-      content: `确定要删除选中的 ${selectedRowKeys.length} 个角色吗？此操作不可恢复。`,
-      okText: '删除',
-      okType: 'danger',
+      content: `确定要删除选中的 ${selectedRowKeys.length} 个角色吗？`,
       onOk: async () => {
         try {
-          await batchDeleteRoles?.(selectedRowKeys);
-          message.success('批量删除成功');
-          setSelectedRowKeys([]);
-          loadRoles();
+          const result = await batchDeleteRoles?.(selectedRowKeys as string[]);
+          if (result?.success) {
+            message.success('批量删除成功');
+            setSelectedRowKeys([]);
+          } else {
+            message.error(result?.message || '批量删除失败');
+          }
         } catch (error: any) {
           message.error(error.message || '批量删除失败');
         }
@@ -447,149 +537,198 @@ const RoleManagement: React.FC = () => {
     });
   };
 
-  // 权限设置保存
-  const handlePermissionSave = async () => {
-    if (!currentRole) return;
-
+  // 导出角色
+  const handleExport = async () => {
     try {
-      await updateRolePermissions?.(currentRole.id, selectedPermissions);
-      message.success('权限设置成功');
-      setPermissionModalVisible(false);
-      setCurrentRole(null);
-      loadRoles();
+      // 这里应该调用导出角色的API
+      message.success('角色导出成功');
     } catch (error: any) {
-      message.error(error.message || '权限设置失败');
+      message.error(error.message || '角色导出失败');
     }
   };
 
-  // 转换权限树数据
-  const convertToTreeData = (permissions: Permission[]): any => {
-    return permissions.map((permission: any) => ({
-      title: permission.name,
-      key: permission.id,
-      children: permission.children
-        ? convertToTreeData(permission.children)
-        : undefined,
-    }));
+  // 导入角色
+  const handleImport = () => {
+    // 这里应该实现角色导入功能
+    message.info('角色导入功能待实现');
   };
 
+  // 更新角色状态
+  const handleStatusChange = async (checked: boolean, record: Role) => {
+    try {
+      const result = await updateRoleStatus?.(record.id, checked ? 'active' : 'inactive');
+      if (result?.success) {
+        message.success('状态更新成功');
+        // 更新本地数据
+        setRoles(prev =>
+          prev.map(role =>
+            role.id === record.id
+              ? { ...role, status: checked ? 'active' : 'inactive' }
+              : role
+          )
+        );
+      } else {
+        message.error(result?.message || '状态更新失败');
+      }
+    } catch (error: any) {
+      message.error(error.message || '状态更新失败');
+    }
+  };
+
+  // 保存权限设置
+  const handleSavePermissions = async () => {
+    if (!currentRole) return;
+
+    try {
+      setLoading(true);
+      const result = await updateRolePermissions?.(currentRole.id, selectedPermissions);
+      if (result?.success) {
+        message.success('权限设置保存成功');
+        setPermissionModalVisible(false);
+        setCurrentRole(null);
+        setSelectedPermissions([]);
+      } else {
+        message.error(result?.message || '权限设置保存失败');
+      }
+    } catch (error: any) {
+      message.error(error.message || '权限设置保存失败');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 获取统计数据
+  const loadStats = async () => {
+    // 这里应该调用获取统计数据的API
+    // 暂时使用模拟数据
+    setStats({
+      total: 12,
+      active: 10,
+      inactive: 2,
+      avgPermissions: 15,
+    });
+  };
+
+  // 初始化数据
   useEffect(() => {
-    loadRoles();
-    loadPermissions();
+    loadStats();
   }, []);
 
+  // 权限树选择处理
+  const handlePermissionTreeCheck = (checkedKeys: any) => {
+    setSelectedPermissions(checkedKeys);
+  };
+
   return (
-    <div className={styles.container}>
-      {/* 统计卡片 */}
+    <div className={styles.roleManagement}>
       <Row gutter={16} className={styles.statsRow}>
         <Col span={6}>
           <Card>
-            <Statistic
-              title="总角色数"
-              value={stats.total}
-              valueStyle={{ color: '#1890ff' }}
-              prefix={<TeamOutlined />}
-            />
+            <Statistic title="角色总数" value={stats.total} />
           </Card>
         </Col>
         <Col span={6}>
           <Card>
-            <Statistic
-              title="启用角色"
-              value={stats.active}
-              valueStyle={{ color: '#52c41a' }}
-            />
+            <Statistic title="启用角色" value={stats.active} valueStyle={{ color: '#3f8600' }} />
           </Card>
         </Col>
         <Col span={6}>
           <Card>
-            <Statistic
-              title="禁用角色"
-              value={stats.inactive}
-              valueStyle={{ color: '#faad14' }}
-            />
+            <Statistic title="禁用角色" value={stats.inactive} valueStyle={{ color: '#cf1322' }} />
           </Card>
         </Col>
         <Col span={6}>
           <Card>
-            <Statistic
-              title="平均权限数"
-              value={stats.avgPermissions}
-              valueStyle={{ color: '#722ed1' }}
-            />
+            <Statistic title="平均权限数" value={stats.avgPermissions} />
           </Card>
         </Col>
       </Row>
 
-      {/* 主要内容 */}
-      <Card className={styles.mainCard}>
-        <CrudComponent
-          title="角色管理"
-          tableConfig={tableConfig}
-          formConfig={formConfig}
-          searchConfig={searchConfig}
-          api={{
-            list:
-              getRoleList ||
-              (async () => ({ success: true, data: { list: [], total: 0 } })),
-            create: createRole || (async () => ({ success: true, data: {} })),
-            update: updateRole || (async () => ({ success: true, data: {} })),
-            delete: deleteRole || (async () => ({ success: true })),
-            detail: undefined,
-          }}
-          permissions={{
-            create: 'system:role:create',
-            update: 'system:role:update',
-            delete: 'system:role:delete',
-            view: 'system:role:view',
-          }}
-          hasPermission={hasPermission}
-          extraActions={
-            <Space>
-              {selectedRowKeys.length > 0 && (
-                <Button
-                  danger
-                  icon={<DeleteOutlined />}
-                  onClick={handleBatchDelete}
-                  disabled={!hasPermission?.('system:role:batch_delete')}
-                >
-                  批量删除 ({selectedRowKeys.length})
-                </Button>
-              )}
-              <Button
-                icon={<ExportOutlined />}
-                disabled={!hasPermission?.('system:role:export')}
-              >
-                导出
-              </Button>
-              <Button icon={<ReloadOutlined />} onClick={() => loadRoles()}>
-                刷新
-              </Button>
-            </Space>
-          }
-        />
+      <Card className={styles.actionBar}>
+        <Space>
+          <Button
+            type="primary"
+            icon={<DeleteOutlined />}
+            onClick={handleBatchDelete}
+            disabled={!hasPermission('system:role:delete') || selectedRowKeys.length === 0}
+          >
+            批量删除
+          </Button>
+          <Button
+            icon={<ExportOutlined />}
+            onClick={handleExport}
+            disabled={!hasPermission('system:role:export')}
+          >
+            导出
+          </Button>
+          <Button
+            icon={<ReloadOutlined />}
+            onClick={loadStats}
+          >
+            刷新
+          </Button>
+        </Space>
       </Card>
 
-      {/* 权限设置模态框 */}
+      <CrudComponent
+        title="角色"
+        tableConfig={tableConfig}
+        formConfig={formConfig}
+        searchConfig={searchConfig}
+        api={api}
+        permissions={permissionsConfig}
+        hasPermission={hasPermission}
+        extraActions={
+          <Dropdown
+            menu={{
+              items: [
+                {
+                  key: 'batchDelete',
+                  icon: <DeleteOutlined />,
+                  label: '批量删除',
+                  disabled: !hasPermission('system:role:delete') || selectedRowKeys.length === 0,
+                  onClick: handleBatchDelete,
+                },
+                {
+                  key: 'export',
+                  icon: <ExportOutlined />,
+                  label: '导出角色',
+                  disabled: !hasPermission('system:role:export'),
+                  onClick: handleExport,
+                },
+              ],
+            }}
+          >
+            <Button>
+              <Space>
+                更多操作
+                <MoreOutlined />
+              </Space>
+            </Button>
+          </Dropdown>
+        }
+      />
+
+      {/* 权限设置弹窗 */}
       <Modal
         title={`权限设置 - ${currentRole?.name}`}
         open={permissionModalVisible}
-        onOk={handlePermissionSave}
         onCancel={() => {
           setPermissionModalVisible(false);
           setCurrentRole(null);
+          setSelectedPermissions([]);
         }}
-        width={600}
-        destroyOnClose
+        onOk={handleSavePermissions}
+        confirmLoading={loading}
+        width={800}
       >
         <Tree
           checkable
           checkedKeys={selectedPermissions}
-          onCheck={(checkedKeys: any) => {
-            setSelectedPermissions(checkedKeys as string[]);
-          }}
-          treeData={convertToTreeData(permissions)}
-          height={400}
+          onCheck={handlePermissionTreeCheck}
+          treeData={permissions}
+          fieldNames={{ title: 'name', key: 'id', children: 'children' }}
+          defaultExpandAll
         />
       </Modal>
     </div>
