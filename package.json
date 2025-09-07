@@ -34,11 +34,13 @@
     "start:backend": "cd backend && pnpm start",
     "start:frontend": "cd frontend && pnpm start"
   },
-  "devDependencies": {
+  "dependencies": {
     "@types/node": "^20.4.5",
-    "concurrently": "^8.2.0",
-    "rimraf": "^5.0.1",
     "typescript": "^5.9.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "rimraf": "^5.0.1"
   },
   "engines": {
     "node": "20.14.0"

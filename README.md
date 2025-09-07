@@ -93,9 +93,28 @@ UG/
 - **权限管理**: 权限树管理、类型分类、状态控制
 - **个人中心**: 个人信息、头像上传、密码修改、登录历史
 
+## 环境要求
+
+- Node.js 18+ (推荐使用 20.14.0，已在 package.json 中指定)
+- pnpm 8.x (推荐使用 8.15.8，已在 package.json 中指定)
+
 ## 包管理器
 
-本项目现已统一使用 **pnpm** 作为包管理器，版本为 `8.15.8`。请确保使用 pnpm 进行依赖安装和管理。
+本项目统一使用 Umi 官方推荐的 pnpm 包管理器，版本为 8.15.8。
+
+请确保在项目根目录及 frontend、backend 子目录中都使用相同的 pnpm 版本以避免兼容性问题。
+
+详细信息请参考 [PNPM 迁移指南](docs/PNPM_MIGRATION.md)。
+
+### 安装依赖
+
+```
+# 在项目根目录安装所有依赖
+pnpm install
+
+# 或者分别安装前后端依赖
+pnpm setup
+```
 
 ### 为什么使用 pnpm？
 
@@ -106,7 +125,7 @@ UG/
 
 ### 安装 pnpm
 
-```bash
+```
 # 使用 npm 安装
 npm install -g pnpm@8.15.8
 
@@ -170,7 +189,7 @@ pnpm dev
 
 1. **运行环境检测工具**：
 
-```bash
+```
 # Windows (CMD)
 tools\check-environment.bat
 
@@ -180,7 +199,7 @@ node tools/check-environment.js
 
 2. **运行带检测的启动脚本**：
 
-```bash
+```
 # Windows (CMD)
 tools\start-with-check.bat
 ```
@@ -205,7 +224,7 @@ tools\start-with-check.bat
 
 如果使用 nvm，可以通过以下命令切换到指定版本：
 
-```bash
+```
 nvm install 20.14.0
 nvm use 20.14.0
 ```
@@ -230,7 +249,7 @@ nvm use 20.14.0
 
 如果需要更新 TypeScript 版本，可以使用项目中的统一更新脚本：
 
-```bash
+```
 # Windows
 scripts\update-typescript-version.bat
 
@@ -252,7 +271,7 @@ git remote add origin <你的仓库地址>
 
 2. **运行自动备份脚本**：
 
-```bash
+```
 # Windows
 scripts\git-auto-backup.bat
 
@@ -283,7 +302,7 @@ node scripts/git-auto-backup.js
 
 **Linux/macOS Cron**：
 
-```bash
+```
 # 编辑 crontab
 crontab -e
 

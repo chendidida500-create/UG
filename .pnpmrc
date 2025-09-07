@@ -1,0 +1,4 @@
+# pnpm configuration file
+# Use the same pnpm version as specified in package.json
+package-manager-strict=true
+engine-strict=true
