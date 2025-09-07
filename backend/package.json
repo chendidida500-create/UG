@@ -22,12 +22,12 @@
     "spellcheck": "cspell \"**/*.{js,ts,jsx,tsx,json,md}\""
   },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
+    "bcryptjs": "^3.0.2",
     "dayjs": "^1.11.9",
     "egg": "^3.17.4",
-    "egg-cors": "^2.2.3",
+    "egg-cors": "^3.0.1",
     "egg-jwt": "^3.1.7",
-    "egg-scripts": "^2.15.0",
+    "egg-scripts": "^3.1.0",
     "egg-sequelize": "^6.0.0",
     "egg-validate": "^2.0.2",
     "jsonwebtoken": "^9.0.2",
@@ -35,14 +35,14 @@
     "mysql2": "^3.6.0",
     "sequelize": "^6.32.1",
     "sequelize-cli": "^6.6.1",
-    "uuid": "^9.0.0"
+    "uuid": "^12.0.0"
   },
   "devDependencies": {
-    "egg-bin": "^5.12.0",
+    "egg-bin": "^6.13.0",
     "egg-ci": "^2.1.0",
     "egg-mock": "^5.10.0",
-    "eslint": "^8.45.0",
-    "eslint-config-egg": "^13.0.0"
+    "eslint": "^9.35.0",
+    "eslint-config-egg": "^14.1.0"
   },
   "engines": {
     "node": "20.14.0"

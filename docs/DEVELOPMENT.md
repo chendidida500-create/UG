@@ -78,6 +78,103 @@ pnpm add --filter backend <package-name>
 pnpm add -D --filter <project> <package-name>
 ```
 
+## 依赖管理
+
+### 清理和重新安装依赖
+
+如果遇到依赖问题，可以使用以下方法清理并重新安装依赖：
+
+#### 自动化脚本方式（推荐）
+
+项目根目录提供了 [reinstall-deps.bat](file:///e:/YSY/UG/reinstall-deps.bat) 脚本，可以自动清理并重新安装所有依赖：
+
+```bash
+# 运行清理和重新安装脚本
+./reinstall-deps.bat
+```
+
+#### 手动方式
+
+如果需要手动清理依赖，可以按照以下步骤操作：
+
+```bash
+# 1. 清理根目录依赖
+rm -rf node_modules pnpm-lock.yaml
+
+# 2. 清理前端依赖
+cd frontend
+rm -rf node_modules pnpm-lock.yaml
+cd ..
+
+# 3. 清理后端依赖
+cd backend
+rm -rf node_modules pnpm-lock.yaml
+cd ..
+
+# 4. 重新安装所有依赖
+pnpm install
+```
+
+### 依赖更新
+
+项目定期更新依赖以获取最新功能和安全修复。最近一次更新已将以下依赖升级到最新版本：
+
+- 根目录依赖：
+  - `@types/node`: 24.3.1
+  - `concurrently`: 9.2.1
+  - `rimraf`: 6.0.1
+
+- 前端依赖：
+  - `@ant-design/icons`: 6.0.1
+  - `react`: 19.1.1
+  - `react-dom`: 19.1.1
+  - `@types/react`: 19.1.12
+  - `@types/react-dom`: 19.1.9
+  - `@typescript-eslint/eslint-plugin`: 8.42.0
+  - `@typescript-eslint/parser`: 8.42.0
+  - `eslint`: 9.35.0
+  - `eslint-config-prettier`: 10.1.8
+  - `eslint-plugin-react-hooks`: 5.2.0
+
+- 后端依赖：
+  - `bcryptjs`: 3.0.2
+  - `egg-bin`: 6.13.0
+  - `egg-cors`: 3.0.1
+  - `egg-scripts`: 3.1.0
+  - `eslint-config-egg`: 14.1.0
+  - `uuid`: 12.0.0
+
+定期检查和更新项目依赖：
+
+```bash
+# 检查过时的依赖
+pnpm outdated
+
+# 更新依赖到最新版本
+pnpm update
+```
+
+### 依赖问题排查
+
+如果遇到依赖相关问题，可以尝试以下解决方案：
+
+1. 清理 pnpm 缓存：
+
+   ```bash
+   pnpm store prune
+   ```
+
+2. 强制重新安装依赖：
+
+   ```bash
+   pnpm install --force
+   ```
+
+3. 检查依赖树：
+   ```bash
+   pnpm list
+   ```
+
 ## 开发流程
 
 ### 启动开发服务器
