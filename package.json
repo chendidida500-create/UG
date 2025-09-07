@@ -3,34 +3,36 @@
   "version": "1.0.0",
   "description": "UG管理系统 - 基于UMI + Egg.js的现代化后台管理系统",
   "private": true,
-  "workspaces": [
-    "frontend",
-    "backend"
-  ],
+  "workspaces": {
+    "packages": [
+      "frontend",
+      "backend"
+    ]
+  },
   "scripts": {
     "postinstall": "npm run setup",
-    "setup": "npm run setup:frontend && npm run setup:backend",
-    "setup:frontend": "cd frontend && npm install",
-    "setup:backend": "cd backend && npm install",
-    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "setup": "yarn setup:frontend && yarn setup:backend",
+    "setup:frontend": "cd frontend && yarn install",
+    "setup:backend": "cd backend && yarn install",
+    "dev": "concurrently \"yarn dev:backend\" \"yarn dev:frontend\"",
     "dev:backend": "cd backend && npx egg-bin dev",
-    "dev:frontend": "cd frontend && npm run dev",
-    "build": "npm run build:frontend",
-    "build:frontend": "cd frontend && npm run build",
-    "test": "concurrently \"npm run test:backend\" \"npm run test:frontend\"",
-    "test:backend": "cd backend && npm test",
-    "test:frontend": "cd frontend && npm test",
-    "lint": "concurrently \"npm run lint:backend\" \"npm run lint:frontend\"",
-    "lint:backend": "cd backend && npm run lint",
-    "lint:frontend": "cd frontend && npm run lint",
-    "clean": "concurrently \"npm run clean:backend\" \"npm run clean:frontend\"",
+    "dev:frontend": "cd frontend && yarn dev",
+    "build": "yarn build:frontend",
+    "build:frontend": "cd frontend && yarn build",
+    "test": "concurrently \"yarn test:backend\" \"yarn test:frontend\"",
+    "test:backend": "cd backend && yarn test",
+    "test:frontend": "cd frontend && yarn test",
+    "lint": "concurrently \"yarn lint:backend\" \"yarn lint:frontend\"",
+    "lint:backend": "cd backend && yarn lint",
+    "lint:frontend": "cd frontend && yarn lint",
+    "clean": "concurrently \"yarn clean:backend\" \"yarn clean:frontend\"",
     "clean:backend": "cd backend && rimraf node_modules",
     "clean:frontend": "cd frontend && rimraf node_modules",
-    "db:migrate": "cd backend && npm run db:migrate",
-    "db:seed": "cd backend && npm run db:seed",
-    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
-    "start:backend": "cd backend && npm start",
-    "start:frontend": "cd frontend && npm start"
+    "db:migrate": "cd backend && yarn db:migrate",
+    "db:seed": "cd backend && yarn db:seed",
+    "start": "concurrently \"yarn start:backend\" \"yarn start:frontend\"",
+    "start:backend": "cd backend && yarn start",
+    "start:frontend": "cd frontend && yarn start"
   },
   "devDependencies": {
     "@types/node": "^20.4.5",
@@ -40,6 +42,12 @@
   },
   "engines": {
     "node": "20.14.0"
+  },
+  "resolutions": {
+    "undici": "^5.28.4"
+  },
+  "overrides": {
+    "undici": "^5.28.4"
   },
   "repository": {
     "type": "git",
@@ -55,5 +63,6 @@
     "rbac"
   ],
   "author": "UG Team",
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "yarn@1.22.22"
 }

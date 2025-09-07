@@ -1,65 +1,72 @@
 {
   "keys": "E:\\YSY\\UG\\backend\\config\\config.default.js",
   "middleware": "E:\\YSY\\UG\\backend\\config\\config.default.js",
+  "cluster": {
+    "listen": {
+      "port": "E:\\YSY\\UG\\backend\\config\\config.default.js",
+      "hostname": "E:\\YSY\\UG\\backend\\config\\config.default.js",
+      "path": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
   "security": {
     "csrf": {
       "enable": "E:\\YSY\\UG\\backend\\config\\config.local.js",
-      "type": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "ignoreJSON": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "useSession": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "cookieName": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "sessionName": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "headerName": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "bodyName": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "queryName": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "rotateWhenInvalid": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "supportedRequests": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "refererWhiteList": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
+      "type": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "ignoreJSON": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "useSession": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "cookieName": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "sessionName": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "headerName": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "bodyName": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "queryName": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "rotateWhenInvalid": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "supportedRequests": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "refererWhiteList": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
       "cookieOptions": {
-        "signed": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js"
+        "signed": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js"
       }
     },
     "domainWhiteList": "E:\\YSY\\UG\\backend\\config\\config.local.js",
-    "protocolWhiteList": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-    "defaultMiddleware": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
+    "protocolWhiteList": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+    "defaultMiddleware": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
     "xframe": {
-      "enable": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "value": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js"
     },
     "hsts": {
-      "enable": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.local.js",
-      "maxAge": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "includeSubdomains": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.local.js",
+      "maxAge": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "includeSubdomains": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js"
     },
     "dta": {
-      "enable": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js"
     },
     "methodnoallow": {
-      "enable": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js"
     },
     "noopen": {
-      "enable": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js"
     },
     "nosniff": {
-      "enable": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js"
     },
     "referrerPolicy": {
-      "enable": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "value": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js"
     },
     "xssProtection": {
-      "enable": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "value": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js"
     },
     "csp": {
-      "enable": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "policy": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "policy": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js"
     },
     "ssrf": {
-      "ipBlackList": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "ipExceptionList": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "hostnameExceptionList": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js",
-      "checkAddress": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js"
+      "ipBlackList": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "ipExceptionList": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "hostnameExceptionList": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js",
+      "checkAddress": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js"
     }
   },
   "cors": {
@@ -70,7 +77,7 @@
   "jwt": {
     "secret": "E:\\YSY\\UG\\backend\\config\\config.default.js",
     "expiresIn": "E:\\YSY\\UG\\backend\\config\\config.default.js",
-    "enable": "E:\\YSY\\UG\\backend\\node_modules\\egg-jwt\\config\\config.default.js"
+    "enable": "E:\\YSY\\UG\\node_modules\\egg-jwt\\config\\config.default.js"
   },
   "sequelize": {
     "dialect": "E:\\YSY\\UG\\backend\\config\\config.local.js",
@@ -103,36 +110,36 @@
   "bodyParser": {
     "jsonLimit": "E:\\YSY\\UG\\backend\\config\\config.default.js",
     "formLimit": "E:\\YSY\\UG\\backend\\config\\config.default.js",
-    "enable": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "encoding": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "textLimit": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "strict": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
+    "enable": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "textLimit": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "strict": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
     "queryString": {
-      "arrayLimit": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "depth": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "parameterLimit": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+      "arrayLimit": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "depth": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "parameterLimit": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
     },
-    "onerror": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+    "onerror": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
   },
   "logger": {
     "level": "E:\\YSY\\UG\\backend\\config\\config.local.js",
     "consoleLevel": "E:\\YSY\\UG\\backend\\config\\config.local.js",
-    "dir": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "encoding": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "env": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "disableConsoleAfterReady": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "outputJSON": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "buffer": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "appLogName": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "coreLogName": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "agentLogName": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "errorLogName": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
+    "dir": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "env": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "disableConsoleAfterReady": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "outputJSON": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "buffer": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "appLogName": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "coreLogName": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "agentLogName": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "errorLogName": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
     "coreLogger": {
-      "consoleLevel": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.local.js"
+      "consoleLevel": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.local.js"
     },
-    "allowDebugAtProd": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "enablePerformanceTimer": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "enableFastContextLogger": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+    "allowDebugAtProd": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "enablePerformanceTimer": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "enableFastContextLogger": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
   },
   "errorHandler": {
     "match": "E:\\YSY\\UG\\backend\\config\\config.default.js"
@@ -154,228 +161,221 @@
     }
   },
   "session": {
-    "maxAge": "E:\\YSY\\UG\\backend\\node_modules\\egg-session\\config\\config.default.js",
-    "key": "E:\\YSY\\UG\\backend\\node_modules\\egg-session\\config\\config.default.js",
-    "httpOnly": "E:\\YSY\\UG\\backend\\node_modules\\egg-session\\config\\config.default.js",
-    "encrypt": "E:\\YSY\\UG\\backend\\node_modules\\egg-session\\config\\config.default.js",
-    "logValue": "E:\\YSY\\UG\\backend\\node_modules\\egg-session\\config\\config.default.js"
+    "maxAge": "E:\\YSY\\UG\\node_modules\\egg-session\\config\\config.default.js",
+    "key": "E:\\YSY\\UG\\node_modules\\egg-session\\config\\config.default.js",
+    "httpOnly": "E:\\YSY\\UG\\node_modules\\egg-session\\config\\config.default.js",
+    "encrypt": "E:\\YSY\\UG\\node_modules\\egg-session\\config\\config.default.js",
+    "logValue": "E:\\YSY\\UG\\node_modules\\egg-session\\config\\config.default.js"
   },
   "helper": {
-    "shtml": "E:\\YSY\\UG\\backend\\node_modules\\egg-security\\config\\config.default.js"
+    "shtml": "E:\\YSY\\UG\\node_modules\\egg-security\\config\\config.default.js"
   },
   "jsonp": {
-    "limit": "E:\\YSY\\UG\\backend\\node_modules\\egg-jsonp\\config\\config.default.js",
-    "callback": "E:\\YSY\\UG\\backend\\node_modules\\egg-jsonp\\config\\config.default.js",
-    "csrf": "E:\\YSY\\UG\\backend\\node_modules\\egg-jsonp\\config\\config.default.js"
+    "limit": "E:\\YSY\\UG\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "callback": "E:\\YSY\\UG\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "csrf": "E:\\YSY\\UG\\node_modules\\egg-jsonp\\config\\config.default.js"
   },
   "onerror": {
-    "errorPageUrl": "E:\\YSY\\UG\\backend\\node_modules\\egg-onerror\\config\\config.default.js",
-    "appErrorFilter": "E:\\YSY\\UG\\backend\\node_modules\\egg-onerror\\config\\config.default.js",
-    "templatePath": "E:\\YSY\\UG\\backend\\node_modules\\egg-onerror\\config\\config.default.js"
+    "errorPageUrl": "E:\\YSY\\UG\\node_modules\\egg-onerror\\config\\config.default.js",
+    "appErrorFilter": "E:\\YSY\\UG\\node_modules\\egg-onerror\\config\\config.default.js",
+    "templatePath": "E:\\YSY\\UG\\node_modules\\egg-onerror\\config\\config.default.js"
   },
   "i18n": {
-    "defaultLocale": "E:\\YSY\\UG\\backend\\node_modules\\egg-i18n\\config\\config.default.js",
-    "dirs": "E:\\YSY\\UG\\backend\\node_modules\\egg-i18n\\config\\config.default.js",
-    "queryField": "E:\\YSY\\UG\\backend\\node_modules\\egg-i18n\\config\\config.default.js",
-    "cookieField": "E:\\YSY\\UG\\backend\\node_modules\\egg-i18n\\config\\config.default.js",
-    "cookieDomain": "E:\\YSY\\UG\\backend\\node_modules\\egg-i18n\\config\\config.default.js",
-    "cookieMaxAge": "E:\\YSY\\UG\\backend\\node_modules\\egg-i18n\\config\\config.default.js"
+    "defaultLocale": "E:\\YSY\\UG\\node_modules\\egg-i18n\\config\\config.default.js",
+    "dirs": "E:\\YSY\\UG\\node_modules\\egg-i18n\\config\\config.default.js",
+    "queryField": "E:\\YSY\\UG\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieField": "E:\\YSY\\UG\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieDomain": "E:\\YSY\\UG\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieMaxAge": "E:\\YSY\\UG\\node_modules\\egg-i18n\\config\\config.default.js"
   },
   "watcher": {
-    "type": "E:\\YSY\\UG\\backend\\node_modules\\egg-watcher\\config\\config.local.js",
+    "type": "E:\\YSY\\UG\\node_modules\\egg-watcher\\config\\config.local.js",
     "eventSources": {
-      "default": "E:\\YSY\\UG\\backend\\node_modules\\egg-watcher\\config\\config.default.js",
-      "development": "E:\\YSY\\UG\\backend\\node_modules\\egg-watcher\\config\\config.default.js"
+      "default": "E:\\YSY\\UG\\node_modules\\egg-watcher\\config\\config.default.js",
+      "development": "E:\\YSY\\UG\\node_modules\\egg-watcher\\config\\config.default.js"
     }
   },
   "customLogger": {
     "scheduleLogger": {
-      "consoleLevel": "E:\\YSY\\UG\\backend\\node_modules\\egg-schedule\\config\\config.default.js",
-      "file": "E:\\YSY\\UG\\backend\\node_modules\\egg-schedule\\config\\config.default.js"
+      "consoleLevel": "E:\\YSY\\UG\\node_modules\\egg-schedule\\config\\config.default.js",
+      "file": "E:\\YSY\\UG\\node_modules\\egg-schedule\\config\\config.default.js"
     }
   },
   "schedule": {
-    "directory": "E:\\YSY\\UG\\backend\\node_modules\\egg-schedule\\config\\config.default.js"
+    "directory": "E:\\YSY\\UG\\node_modules\\egg-schedule\\config\\config.default.js"
   },
   "multipart": {
-    "mode": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart\\config\\config.default.js",
-    "autoFields": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart\\config\\config.default.js",
-    "defaultCharset": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart\\config\\config.default.js",
-    "defaultParamCharset": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart\\config\\config.default.js",
-    "fieldNameSize": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart\\config\\config.default.js",
-    "fieldSize": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart\\config\\config.default.js",
-    "fields": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart\\config\\config.default.js",
-    "fileSize": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart\\config\\config.default.js",
-    "files": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart\\config\\config.default.js",
-    "fileExtensions": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart\\config\\config.default.js",
-    "whitelist": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart\\config\\config.default.js",
-    "allowArrayField": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart\\config\\config.default.js",
-    "tmpdir": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart\\config\\config.default.js",
+    "mode": "E:\\YSY\\UG\\node_modules\\egg-multipart\\config\\config.default.js",
+    "autoFields": "E:\\YSY\\UG\\node_modules\\egg-multipart\\config\\config.default.js",
+    "defaultCharset": "E:\\YSY\\UG\\node_modules\\egg-multipart\\config\\config.default.js",
+    "defaultParamCharset": "E:\\YSY\\UG\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldNameSize": "E:\\YSY\\UG\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldSize": "E:\\YSY\\UG\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fields": "E:\\YSY\\UG\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileSize": "E:\\YSY\\UG\\node_modules\\egg-multipart\\config\\config.default.js",
+    "files": "E:\\YSY\\UG\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileExtensions": "E:\\YSY\\UG\\node_modules\\egg-multipart\\config\\config.default.js",
+    "whitelist": "E:\\YSY\\UG\\node_modules\\egg-multipart\\config\\config.default.js",
+    "allowArrayField": "E:\\YSY\\UG\\node_modules\\egg-multipart\\config\\config.default.js",
+    "tmpdir": "E:\\YSY\\UG\\node_modules\\egg-multipart\\config\\config.default.js",
     "cleanSchedule": {
-      "cron": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart\\config\\config.default.js",
-      "disable": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart\\config\\config.default.js"
+      "cron": "E:\\YSY\\UG\\node_modules\\egg-multipart\\config\\config.default.js",
+      "disable": "E:\\YSY\\UG\\node_modules\\egg-multipart\\config\\config.default.js"
     }
   },
   "development": {
-    "watchDirs": "E:\\YSY\\UG\\backend\\node_modules\\egg-development\\config\\config.default.js",
-    "ignoreDirs": "E:\\YSY\\UG\\backend\\node_modules\\egg-development\\config\\config.default.js",
-    "fastReady": "E:\\YSY\\UG\\backend\\node_modules\\egg-development\\config\\config.default.js",
-    "reloadOnDebug": "E:\\YSY\\UG\\backend\\node_modules\\egg-development\\config\\config.default.js",
-    "overrideDefault": "E:\\YSY\\UG\\backend\\node_modules\\egg-development\\config\\config.default.js",
-    "overrideIgnore": "E:\\YSY\\UG\\backend\\node_modules\\egg-development\\config\\config.default.js"
+    "watchDirs": "E:\\YSY\\UG\\node_modules\\egg-development\\config\\config.default.js",
+    "ignoreDirs": "E:\\YSY\\UG\\node_modules\\egg-development\\config\\config.default.js",
+    "fastReady": "E:\\YSY\\UG\\node_modules\\egg-development\\config\\config.default.js",
+    "reloadOnDebug": "E:\\YSY\\UG\\node_modules\\egg-development\\config\\config.default.js",
+    "overrideDefault": "E:\\YSY\\UG\\node_modules\\egg-development\\config\\config.default.js",
+    "overrideIgnore": "E:\\YSY\\UG\\node_modules\\egg-development\\config\\config.default.js"
   },
   "logrotator": {
-    "filesRotateByHour": "E:\\YSY\\UG\\backend\\node_modules\\egg-logrotator\\config\\config.default.js",
-    "hourDelimiter": "E:\\YSY\\UG\\backend\\node_modules\\egg-logrotator\\config\\config.default.js",
-    "filesRotateBySize": "E:\\YSY\\UG\\backend\\node_modules\\egg-logrotator\\config\\config.default.js",
-    "maxFileSize": "E:\\YSY\\UG\\backend\\node_modules\\egg-logrotator\\config\\config.default.js",
-    "maxFiles": "E:\\YSY\\UG\\backend\\node_modules\\egg-logrotator\\config\\config.default.js",
-    "rotateDuration": "E:\\YSY\\UG\\backend\\node_modules\\egg-logrotator\\config\\config.default.js",
-    "maxDays": "E:\\YSY\\UG\\backend\\node_modules\\egg-logrotator\\config\\config.default.js"
+    "filesRotateByHour": "E:\\YSY\\UG\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "hourDelimiter": "E:\\YSY\\UG\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "filesRotateBySize": "E:\\YSY\\UG\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFileSize": "E:\\YSY\\UG\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFiles": "E:\\YSY\\UG\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "rotateDuration": "E:\\YSY\\UG\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxDays": "E:\\YSY\\UG\\node_modules\\egg-logrotator\\config\\config.default.js"
   },
   "static": {
-    "prefix": "E:\\YSY\\UG\\backend\\node_modules\\egg-static\\config\\config.default.js",
-    "dir": "E:\\YSY\\UG\\backend\\node_modules\\egg-static\\config\\config.default.js",
-    "dynamic": "E:\\YSY\\UG\\backend\\node_modules\\egg-static\\config\\config.default.js",
-    "preload": "E:\\YSY\\UG\\backend\\node_modules\\egg-static\\config\\config.default.js",
-    "buffer": "E:\\YSY\\UG\\backend\\node_modules\\egg-static\\config\\config.default.js",
-    "maxFiles": "E:\\YSY\\UG\\backend\\node_modules\\egg-static\\config\\config.default.js"
+    "prefix": "E:\\YSY\\UG\\node_modules\\egg-static\\config\\config.default.js",
+    "dir": "E:\\YSY\\UG\\node_modules\\egg-static\\config\\config.default.js",
+    "dynamic": "E:\\YSY\\UG\\node_modules\\egg-static\\config\\config.default.js",
+    "preload": "E:\\YSY\\UG\\node_modules\\egg-static\\config\\config.default.js",
+    "buffer": "E:\\YSY\\UG\\node_modules\\egg-static\\config\\config.default.js",
+    "maxFiles": "E:\\YSY\\UG\\node_modules\\egg-static\\config\\config.default.js"
   },
   "view": {
-    "root": "E:\\YSY\\UG\\backend\\node_modules\\egg-view\\config\\config.default.js",
-    "cache": "E:\\YSY\\UG\\backend\\node_modules\\egg-view\\config\\config.local.js",
-    "defaultExtension": "E:\\YSY\\UG\\backend\\node_modules\\egg-view\\config\\config.default.js",
-    "defaultViewEngine": "E:\\YSY\\UG\\backend\\node_modules\\egg-view\\config\\config.default.js",
-    "mapping": "E:\\YSY\\UG\\backend\\node_modules\\egg-view\\config\\config.default.js"
+    "root": "E:\\YSY\\UG\\node_modules\\egg-view\\config\\config.default.js",
+    "cache": "E:\\YSY\\UG\\node_modules\\egg-view\\config\\config.local.js",
+    "defaultExtension": "E:\\YSY\\UG\\node_modules\\egg-view\\config\\config.default.js",
+    "defaultViewEngine": "E:\\YSY\\UG\\node_modules\\egg-view\\config\\config.default.js",
+    "mapping": "E:\\YSY\\UG\\node_modules\\egg-view\\config\\config.default.js"
   },
-  "env": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-  "name": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-  "cookies": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-  "proxy": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-  "maxIpsCount": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-  "maxProxyCount": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-  "protocolHeaders": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-  "ipHeaders": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-  "hostHeaders": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
+  "env": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+  "name": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+  "cookies": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+  "proxy": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+  "maxIpsCount": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+  "maxProxyCount": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+  "protocolHeaders": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+  "ipHeaders": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+  "hostHeaders": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
   "pkg": {
-    "name": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "version": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "description": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "private": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "main": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
+    "name": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "version": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "description": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "private": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "main": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
     "scripts": {
-      "start": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "stop": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "dev": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "debug": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "test": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "test-local": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "cov": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "lint": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "ci": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "autod": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "db:migrate": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "db:migrate:undo": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "db:seed": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "db:seed:undo": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "spellcheck": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+      "start": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "stop": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "dev": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "debug": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "test": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "test-local": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "cov": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "lint": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "ci": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "autod": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "db:migrate": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "db:migrate:undo": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "db:seed": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "db:seed:undo": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "spellcheck": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
     },
     "dependencies": {
-      "egg": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "egg-scripts": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "egg-sequelize": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "egg-validate": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "egg-cors": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "egg-jwt": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "mysql2": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "sequelize": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "sequelize-cli": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "bcryptjs": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "jsonwebtoken": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "uuid": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "dayjs": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "lodash": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+      "egg": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "egg-scripts": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "egg-sequelize": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "egg-validate": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "egg-cors": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "egg-jwt": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "mysql2": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "sequelize": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "sequelize-cli": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "bcryptjs": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "jsonwebtoken": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "uuid": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "dayjs": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "lodash": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
     },
     "devDependencies": {
-      "eslint": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "eslint-config-egg": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "@types/node": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "typescript": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "egg-bin": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "egg-ci": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "egg-mock": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+      "eslint": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "eslint-config-egg": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "@types/node": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "typescript": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "egg-bin": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "egg-ci": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "egg-mock": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
     },
     "engines": {
-      "node": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+      "node": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
     },
     "repository": {
-      "type": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "url": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+      "type": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "url": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
     },
-    "author": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "license": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+    "author": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "license": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
   },
-  "baseDir": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-  "HOME": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-  "rundir": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
+  "baseDir": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+  "HOME": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+  "rundir": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
   "dump": {
-    "ignore": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
+    "ignore": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
     "timing": {
-      "slowBootActionMinDuration": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+      "slowBootActionMinDuration": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
     }
   },
   "confusedConfigurations": {
-    "bodyparser": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "notFound": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "sitefile": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "middlewares": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "httpClient": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+    "bodyparser": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "notFound": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "sitefile": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "middlewares": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "httpClient": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
   },
   "notfound": {
-    "pageUrl": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+    "pageUrl": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
   },
   "siteFile": {
-    "/favicon.ico": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "cacheControl": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+    "/favicon.ico": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "cacheControl": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
   },
   "httpclient": {
-    "enableDNSCache": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "dnsCacheLookupInterval": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "dnsCacheMaxLength": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
+    "enableDNSCache": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheLookupInterval": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheMaxLength": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
     "request": {
-      "timeout": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+      "timeout": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
     },
     "httpAgent": {
-      "keepAlive": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "freeSocketTimeout": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "maxSockets": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "maxFreeSockets": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+      "keepAlive": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketTimeout": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
     },
     "httpsAgent": {
-      "keepAlive": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "freeSocketTimeout": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "maxSockets": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "maxFreeSockets": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+      "keepAlive": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketTimeout": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
     },
-    "useHttpClientNext": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+    "useHttpClientNext": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
   },
   "meta": {
-    "enable": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "logging": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+    "enable": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "logging": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
   },
-  "coreMiddleware": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-  "workerStartTimeout": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-  "serverTimeout": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-  "cluster": {
-    "listen": {
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "port": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-      "hostname": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
-    }
-  },
+  "coreMiddleware": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+  "workerStartTimeout": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+  "serverTimeout": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
   "clusterClient": {
-    "maxWaitTime": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js",
-    "responseTimeout": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+    "maxWaitTime": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js",
+    "responseTimeout": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
   },
-  "onClientError": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\config.default.js"
+  "onClientError": "E:\\YSY\\UG\\node_modules\\egg\\config\\config.default.js"
 }

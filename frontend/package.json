@@ -9,9 +9,9 @@
     "format": "prettier --cache --write .",
     "postinstall": "umi setup",
     "setup": "umi setup",
-    "start": "npm run dev",
+    "start": "yarn dev",
     "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
-    "lint:fix": "npm run lint -- --fix",
+    "lint:fix": "yarn lint -- --fix",
     "preview": "umi preview",
     "test": "umi test",
     "test:coverage": "umi test --coverage",
@@ -22,6 +22,7 @@
     "@ant-design/icons": "^5.2.6",
     "@ant-design/pro-components": "^2.6.43",
     "@umijs/max": "^4.0.87",
+    "@umijs/plugins": "^4.0.87",
     "ahooks": "^3.7.8",
     "antd": "^5.8.6",
     "axios": "^1.5.0",
@@ -55,6 +56,9 @@
   "engines": {
     "node": "20.14.0"
   },
+  "overrides": {
+    "undici": "^5.28.4"
+  },
   "repository": {
     "type": "git",
     "url": ""
@@ -67,5 +71,6 @@
     "admin"
   ],
   "author": "UG Team",
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "yarn@1.22.22"
 }

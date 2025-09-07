@@ -38,8 +38,8 @@ if exist package.json (
 echo.
 
 echo === 启动完成 ===
-echo 前端访问地址: http://localhost:8000
-echo 后端访问地址: http://localhost:7001
+echo 前端访问地址: http://localhost:15000
+echo 后端访问地址: http://localhost:15001
 echo.
 echo 按任意键退出...
 pause > nul

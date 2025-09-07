@@ -28,7 +28,7 @@ module.exports = () => {
     csrf: {
       enable: false,
     },
-    domainWhiteList: ['http://localhost:8000', 'http://127.0.0.1:8000'],
+    domainWhiteList: ['http://localhost:15000', 'http://127.0.0.1:15000'],
   };
 
   return config;

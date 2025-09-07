@@ -181,9 +181,19 @@ nvm install 20.14.0
 nvm use 20.14.0
 ```
 
+## TypeScript 配置更新
+
+为了解决 TypeScript 7.0 中将移除 `moduleResolution=node10` 选项的弃用警告，我们已更新所有项目的 TypeScript 配置：
+
+- **根目录**: [tsconfig.json](file:///e:/YSY/UG/tsconfig.json) 中的 `ignoreDeprecations` 设置为 `"6.0"`
+- **前端项目**: [frontend/tsconfig.json](file:///e:/YSY/UG/frontend/tsconfig.json) 中的 `ignoreDeprecations` 设置为 `"6.0"`
+- **后端项目**: [backend/tsconfig.json](file:///e:/YSY/UG/backend/tsconfig.json) 中的 `ignoreDeprecations` 设置为 `"6.0"`
+
+这些配置确保项目能够兼容未来版本的 TypeScript，同时消除了弃用警告。
+
 ## TypeScript 版本统一
 
-为了确保项目的一致性和兼容性，我们已将所有子项目的 TypeScript 版本统一为 `^5.2.2`：
+为了确保项目的一致性和兼容性，我们已将所有子项目的 TypeScript 版本统一为 `^5.9.2`：
 
 - **前端项目**: [frontend/package.json](file:///e:/YSY/UG/frontend/package.json) 中的 `devDependencies.typescript`
 - **后端项目**: [backend/package.json](file:///e:/YSY/UG/backend/package.json) 中的 `devDependencies.typescript`

@@ -9,11 +9,11 @@
     "stop": "egg-scripts stop --title=ug-backend",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
-    "test": "npm run lint -- --fix && npm run test-local",
+    "test": "yarn lint -- --fix && yarn test-local",
     "test-local": "egg-bin test",
     "cov": "egg-bin cov",
     "lint": "eslint .",
-    "ci": "npm run lint && npm run cov",
+    "ci": "yarn lint && yarn cov",
     "autod": "autod",
     "db:migrate": "npx sequelize-cli db:migrate",
     "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
@@ -22,37 +22,41 @@
     "spellcheck": "cspell \"**/*.{js,ts,jsx,tsx,json,md}\""
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dayjs": "^1.11.9",
     "egg": "^3.17.4",
+    "egg-cors": "^2.2.3",
+    "egg-jwt": "^3.1.7",
     "egg-scripts": "^2.15.0",
     "egg-sequelize": "^6.0.0",
     "egg-validate": "^2.0.2",
-    "egg-cors": "^2.2.3",
-    "egg-jwt": "^3.1.7",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
     "mysql2": "^3.6.0",
     "sequelize": "^6.32.1",
     "sequelize-cli": "^6.6.1",
-    "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.2",
-    "uuid": "^9.0.0",
-    "dayjs": "^1.11.9",
-    "lodash": "^4.17.21"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.45.0",
-    "eslint-config-egg": "^12.1.0",
     "@types/node": "^20.4.5",
-    "typescript": "^5.9.2",
     "egg-bin": "^5.12.0",
     "egg-ci": "^2.1.0",
-    "egg-mock": "^5.10.0"
+    "egg-mock": "^5.10.0",
+    "eslint": "^8.45.0",
+    "eslint-config-egg": "^13.0.0",
+    "typescript": "^5.9.2"
   },
   "engines": {
     "node": "20.14.0"
+  },
+  "overrides": {
+    "undici": "^5.28.4"
   },
   "repository": {
     "type": "git",
     "url": ""
   },
   "author": "UG Team",
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "yarn@1.22.22"
 }

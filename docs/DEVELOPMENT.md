@@ -145,6 +145,26 @@ Extensions: Show Recommended Extensions
 - 统一的响应格式
 - 完整的错误处理
 
+## TypeScript 配置说明
+
+### TypeScript 版本
+项目使用 TypeScript 5.9.2 版本，确保与最新的语言特性和类型检查保持一致。
+
+### 模块解析配置
+为了解决 TypeScript 7.0 中将移除 `moduleResolution=node10` 选项的弃用警告，我们已更新所有项目的 TypeScript 配置：
+
+- **根目录**: [tsconfig.json](file:///e:/YSY/UG/tsconfig.json) 中的 `ignoreDeprecations` 设置为 `"6.0"`
+- **前端项目**: [frontend/tsconfig.json](file:///e:/YSY/UG/frontend/tsconfig.json) 中的 `ignoreDeprecations` 设置为 `"6.0"`
+- **后端项目**: [backend/tsconfig.json](file:///e:/YSY/UG/backend/tsconfig.json) 中的 `ignoreDeprecations` 设置为 `"6.0"`
+
+这些配置确保项目能够兼容未来版本的 TypeScript，同时消除了弃用警告。
+
+### 类型安全最佳实践
+1. 使用 TypeScript 严格模式 (`"strict": true`)
+2. 启用 `esModuleInterop` 和 `allowSyntheticDefaultImports` 以更好地处理模块导入
+3. 使用路径映射 (`paths`) 简化模块导入
+4. 配置 `typeRoots` 和 `types` 以正确解析类型定义
+
 ## 开发流程
 
 1. **环境准备**

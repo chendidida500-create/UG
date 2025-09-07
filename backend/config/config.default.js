@@ -17,17 +17,25 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = ['errorHandler', 'jwtAuth'];
 
+  // 添加服务端口配置
+  config.cluster = {
+    listen: {
+      port: 15001,
+      hostname: 'localhost',
+    },
+  };
+
   // 安全配置
   config.security = {
     csrf: {
       enable: false,
     },
-    domainWhiteList: ['http://localhost:8000', 'http://127.0.0.1:8000'],
+    domainWhiteList: ['http://localhost:15000', 'http://127.0.0.1:15000'],
   };
 
   // CORS跨域配置
   config.cors = {
-    origin: ['http://localhost:8000', 'http://127.0.0.1:8000'],
+    origin: ['http://localhost:15000', 'http://127.0.0.1:15000'],
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
     credentials: true,
   };

@@ -200,7 +200,7 @@ health_check() {
     sleep 60
     
     # 检查后端健康状态
-    if curl -f http://localhost:7001/api/health > /dev/null 2>&1; then
+    if curl -f http://localhost:15001/api/health > /dev/null 2>&1; then
         log "后端服务健康检查通过"
     else
         error_exit "后端服务健康检查失败"

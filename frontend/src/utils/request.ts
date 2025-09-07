@@ -5,7 +5,7 @@ import { extend } from 'umi-request';
 
 // 创建请求实例
 const request = extend({
-  prefix: process.env.API_BASE_URL || 'http://localhost:7001',
+  prefix: process.env.API_BASE_URL || 'http://localhost:15001',
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
@@ -166,7 +166,7 @@ export const uploadRequest = (url: string, file: File, onProgress?: (percent: nu
     }
 
     // 发送请求
-    xhr.open('POST', `${process.env.API_BASE_URL || 'http://localhost:7001'}${url}`);
+    xhr.open('POST', `${process.env.API_BASE_URL || 'http://localhost:15001'}${url}`);
     xhr.send(formData);
   });
 };

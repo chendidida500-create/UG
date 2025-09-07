@@ -6,7 +6,7 @@ async function testAuth() {
     console.log('Testing authentication API...');
 
     // 测试登录
-    const loginResponse = await axios.post('http://localhost:7001/api/auth/login', {
+    const loginResponse = await axios.post('http://localhost:15001/api/auth/login', {
       username: 'admin',
       password: 'admin123'
     });
@@ -17,7 +17,7 @@ async function testAuth() {
       const { token } = loginResponse.data.data;
 
       // 测试带token的请求
-      const protectedResponse = await axios.get('http://localhost:7001/api/users', {
+      const protectedResponse = await axios.get('http://localhost:15001/api/users', {
         headers: {
           Authorization: `Bearer ${token}`
         }

@@ -22,11 +22,11 @@ RUN chown -R eggjs:nodejs /app
 USER eggjs
 
 # 暴露端口
-EXPOSE 7001
+EXPOSE 15001
 
 # 健康检查
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:7001/api/health || exit 1
+  CMD curl -f http://localhost:15001/api/health || exit 1
 
 # 启动应用
 CMD ["npm", "run", "start"]

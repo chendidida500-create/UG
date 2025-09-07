@@ -56,7 +56,7 @@ services:
       JWT_SECRET: your-super-secret-jwt-key-change-in-production
       JWT_REFRESH_SECRET: your-super-secret-refresh-key-change-in-production
     ports:
-      - "7001:7001"
+      - "15001:15001"
     depends_on:
       - mysql
       - redis

@@ -69,7 +69,7 @@
       "serve-static"
     ],
     // 忽略 moduleResolution=node10 的弃用警告
-    "ignoreDeprecations": "5.0"
+    "ignoreDeprecations": "6.0"
   },
   "include": [
     "**/*.ts",

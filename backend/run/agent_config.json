@@ -9,8 +9,8 @@
     },
     "security": {
       "domainWhiteList": [
-        "http://localhost:8000",
-        "http://127.0.0.1:8000"
+        "http://localhost:15000",
+        "http://127.0.0.1:15000"
       ],
       "protocolWhiteList": [],
       "defaultMiddleware": "csrf,hsts,methodnoallow,noopen,nosniff,csp,xssProtection,xframe,dta",
@@ -97,7 +97,7 @@
     "onerror": {
       "errorPageUrl": "",
       "appErrorFilter": null,
-      "templatePath": "E:\\YSY\\UG\\backend\\node_modules\\egg-onerror\\lib\\onerror_page.mustache"
+      "templatePath": "E:\\YSY\\UG\\node_modules\\egg-onerror\\lib\\onerror_page.mustache"
     },
     "i18n": {
       "defaultLocale": "en_US",
@@ -110,8 +110,8 @@
     "watcher": {
       "type": "development",
       "eventSources": {
-        "default": "E:\\YSY\\UG\\backend\\node_modules\\egg-watcher\\lib\\event-sources\\default",
-        "development": "E:\\YSY\\UG\\backend\\node_modules\\egg-watcher\\lib\\event-sources\\development"
+        "default": "E:\\YSY\\UG\\node_modules\\egg-watcher\\lib\\event-sources\\default",
+        "development": "E:\\YSY\\UG\\node_modules\\egg-watcher\\lib\\event-sources\\development"
       }
     },
     "customLogger": {
@@ -204,8 +204,8 @@
     },
     "cors": {
       "origin": [
-        "http://localhost:8000",
-        "http://127.0.0.1:8000"
+        "http://localhost:15000",
+        "http://127.0.0.1:15000"
       ],
       "allowMethods": "GET,HEAD,PUT,POST,DELETE,PATCH",
       "credentials": true
@@ -379,8 +379,8 @@
     "cluster": {
       "listen": {
         "path": "",
-        "port": 7001,
-        "hostname": ""
+        "port": 15001,
+        "hostname": "localhost"
       }
     },
     "clusterClient": {
@@ -438,8 +438,8 @@
         "jsonp"
       ],
       "env": [],
-      "from": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-onerror",
+      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-onerror",
       "version": "2.4.0"
     },
     "session": {
@@ -449,8 +449,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-session",
+      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-session",
       "version": "3.3.0"
     },
     "i18n": {
@@ -460,8 +460,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-i18n",
+      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-i18n",
       "version": "2.1.1"
     },
     "watcher": {
@@ -471,8 +471,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-watcher",
+      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-watcher",
       "version": "3.1.1",
       "dependents": [
         "development"
@@ -487,8 +487,8 @@
         "schedule"
       ],
       "env": [],
-      "from": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-multipart",
+      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-multipart",
       "version": "3.5.0"
     },
     "security": {
@@ -500,8 +500,8 @@
         "session"
       ],
       "env": [],
-      "from": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-security",
+      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-security",
       "version": "3.7.0"
     },
     "development": {
@@ -515,8 +515,8 @@
       "env": [
         "local"
       ],
-      "from": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-development",
+      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-development",
       "version": "3.0.2"
     },
     "logrotator": {
@@ -528,8 +528,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-logrotator",
+      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-logrotator",
       "version": "3.2.0"
     },
     "schedule": {
@@ -539,8 +539,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-schedule",
+      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-schedule",
       "version": "4.0.1",
       "dependents": [
         "logrotator"
@@ -553,8 +553,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-static",
+      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-static",
       "version": "2.3.1"
     },
     "jsonp": {
@@ -566,8 +566,8 @@
         "security"
       ],
       "env": [],
-      "from": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-jsonp",
+      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-jsonp",
       "version": "2.0.0"
     },
     "view": {
@@ -577,8 +577,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\YSY\\UG\\backend\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-view",
+      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-view",
       "version": "2.1.4"
     },
     "sequelize": {
@@ -589,7 +589,7 @@
       "optionalDependencies": [],
       "env": [],
       "from": "E:\\YSY\\UG\\backend\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-sequelize",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-sequelize",
       "version": "6.0.0"
     },
     "validate": {
@@ -600,7 +600,7 @@
       "optionalDependencies": [],
       "env": [],
       "from": "E:\\YSY\\UG\\backend\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-validate",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-validate",
       "version": "2.0.2"
     },
     "cors": {
@@ -611,7 +611,7 @@
       "optionalDependencies": [],
       "env": [],
       "from": "E:\\YSY\\UG\\backend\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-cors",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-cors",
       "version": "2.2.4"
     },
     "jwt": {
@@ -624,7 +624,7 @@
       ],
       "env": [],
       "from": "E:\\YSY\\UG\\backend\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\backend\\node_modules\\egg-jwt",
+      "path": "E:\\YSY\\UG\\node_modules\\egg-jwt",
       "version": "3.1.7"
     }
   },

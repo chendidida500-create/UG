@@ -118,7 +118,7 @@ function checkPortUsage() {
   printMessage('\n=== 检查端口占用情况 ===', colors.cyan);
 
   // 检查Windows下的端口占用
-  const ports = [7001, 8000]; // 后端端口和前端端口
+  const ports = [15001, 15000]; // 后端端口和前端端口
   let allPortsFree = true;
 
   for (const port of ports) {

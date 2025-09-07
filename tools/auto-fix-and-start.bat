@@ -9,23 +9,23 @@ taskkill /f /im node.exe 2>nul
 
 echo.
 echo 正在检查端口占用情况...
-netstat -ano | findstr :7001 >nul
+netstat -ano | findstr :15001 >nul
 if %errorlevel% == 0 (
-    echo 终止占用7001端口的进程...
-    for /f "tokens=5" %%a in ('netstat -ano ^| findstr :7001') do taskkill /f /pid %%a 2>nul
+    echo 终止占用15001端口的进程...
+    for /f "tokens=5" %%a in ('netstat -ano ^| findstr :15001') do taskkill /f /pid %%a 2>nul
 )
 
-netstat -ano | findstr :8000 >nul
+netstat -ano | findstr :15000 >nul
 if %errorlevel% == 0 (
-    echo 终止占用8000端口的进程...
-    for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8000') do taskkill /f /pid %%a 2>nul
+    echo 终止占用15000端口的进程...
+    for /f "tokens=5" %%a in ('netstat -ano ^| findstr :15000') do taskkill /f /pid %%a 2>nul
 )
 
 echo.
 echo 正在检查Node.js和npm环境...
 node --version >nul 2>&1
 if %errorlevel% neq 0 (
-    echo 错误: 未找到Node.js，请先安装Node.js 20.14.0
+    echo 错误: 未找到Node.js，请安装Node.js 20.14.0
     exit /b 1
 )
 
@@ -66,12 +66,12 @@ start "UG Frontend" /min cmd /c "npx umi dev ^> frontend.log 2^>^&1"
 
 echo.
 echo === 启动完成 ===
-echo 后端服务已在端口7001上启动
-echo 前端服务已在端口8000上启动
+echo 后端服务已在端口15001上启动
+echo 前端服务已在端口15000上启动
 echo.
 echo 访问地址:
-echo   前端: http://localhost:8000
-echo   后端: http://localhost:7001
+echo   前端: http://localhost:15000
+echo   后端: http://localhost:15001
 echo.
 echo 日志文件:
 echo   后端日志: E:\YSY\UG\backend\backend.log

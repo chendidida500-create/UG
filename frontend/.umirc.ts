@@ -84,6 +84,8 @@ export default defineConfig({
     },
   ],
   npmClient: 'npm',
+  // 通过环境变量设置端口
+  // devServer配置在UMI 4.x中已更改，使用PORT环境变量
   lessLoader: {
     modifyVars: {
       '@primary-color': '#1890ff',
@@ -105,12 +107,12 @@ export default defineConfig({
     'process.env.API_BASE_URL': JSON.stringify(
       process.env.NODE_ENV === 'production'
         ? 'https://api.example.com'
-        : 'http://localhost:7001'
+        : 'http://localhost:15001'
     ),
   },
   proxy: {
     '/api': {
-      target: 'http://localhost:7001',
+      target: 'http://localhost:15001',
       changeOrigin: true,
       pathRewrite: { '^/api': '/api' },
     },

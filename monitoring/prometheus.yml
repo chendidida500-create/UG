@@ -24,7 +24,7 @@ scrape_configs:
   # UG 后端服务
   - job_name: 'ug-backend'
     static_configs:
-      - targets: ['backend:7001']
+      - targets: ['backend:15001']
     metrics_path: '/metrics'
     scrape_interval: 30s
 
