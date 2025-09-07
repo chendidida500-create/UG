@@ -4,12 +4,24 @@ import { useCallback, useState } from 'react';
 import { history, request } from 'umi';
 import type { LoginParams, RegisterParams, User } from '../types';
 
-export type AuthModelState = ReturnType<typeof useAuthModel>;
+// 定义AuthModelState类型
+export interface AuthModelState {
+  currentUser: User | null;
+  loading: boolean;
+  loginLoading: boolean;
+  login: (params: LoginParams) => Promise<any>;
+  register: (params: RegisterParams) => Promise<any>;
+  logout: () => Promise<void>;
+  checkAuth: () => Promise<void>;
+  updateProfile: (params: any) => Promise<any>;
+  updatePassword: (params: any) => Promise<any>;
+  getRememberedUsername: () => string;
+}
 
-export default function useAuthModel() {
+export default function useAuthModel(): AuthModelState {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [loginLoading, setLoginLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [loginLoading, setLoginLoading] = useState<boolean>(false);
 
   // 登录
   const login = useCallback(async (params: LoginParams) => {
@@ -65,8 +77,8 @@ export default function useAuthModel() {
       });
 
       if (response.success) {
-        message.success('注册成功，请登录');
-        return { success: true };
+        message.success('注册成功');
+        return { success: true, data: response.data };
       } else {
         throw new Error(response.message || '注册失败');
       }
@@ -77,11 +89,11 @@ export default function useAuthModel() {
   }, []);
 
   // 发送验证码
-  const sendVerifyCode = useCallback(async (email: string, type: string) => {
+  const sendCaptcha = useCallback(async (email: string) => {
     try {
-      const response = await request('/api/auth/send-verify-code', {
+      const response = await request('/api/auth/captcha', {
         method: 'POST',
-        data: { email, type },
+        data: { email },
       });
 
       if (response.success) {
@@ -130,15 +142,16 @@ export default function useAuthModel() {
       });
 
       if (response.success) {
-        setCurrentUser(response.data.user);
+        setCurrentUser(response.data);
       } else {
-        // token无效，清除登录状态
+        // Token无效，清除本地存储
         localStorage.removeItem('token');
         localStorage.removeItem('refreshToken');
         setCurrentUser(null);
       }
     } catch (error) {
-      // 请求失败，清除登录状态
+      console.log('checkAuth error:', error);
+      // 网络错误或其他异常，清除本地存储
       localStorage.removeItem('token');
       localStorage.removeItem('refreshToken');
       setCurrentUser(null);
@@ -147,56 +160,55 @@ export default function useAuthModel() {
     }
   }, []);
 
-  // 刷新token
-  const refreshToken = useCallback(async () => {
-    const refreshTokenValue = localStorage.getItem('refreshToken');
-    if (!refreshTokenValue) {
-      throw new Error('No refresh token');
-    }
-
+  // 更新个人信息
+  const updateProfile = useCallback(async (params: any) => {
     try {
-      const response = await request('/api/auth/refresh', {
-        method: 'POST',
-        data: { refreshToken: refreshTokenValue },
+      const response = await request('/api/me', {
+        method: 'PUT',
+        data: params,
       });
 
       if (response.success) {
-        const { token, refreshToken: newRefreshToken } = response.data;
-        localStorage.setItem('token', token);
-        localStorage.setItem('refreshToken', newRefreshToken);
-        return token;
+        // 更新当前用户信息
+        setCurrentUser(prev => ({
+          ...prev,
+          ...response.data,
+        }));
+        message.success('更新成功');
+        return { success: true, data: response.data };
       } else {
-        throw new Error(response.message || 'Refresh token failed');
+        throw new Error(response.message || '更新失败');
       }
-    } catch (error) {
-      // 刷新token失败，退出登录
-      logout();
+    } catch (error: any) {
+      message.error(error.message || '更新失败');
       throw error;
     }
-  }, [logout]);
+  }, []);
 
   // 修改密码
-  const changePassword = useCallback(
-    async (oldPassword: string, newPassword: string) => {
-      try {
-        const response = await request('/api/auth/change-password', {
-          method: 'POST',
-          data: { oldPassword, newPassword },
-        });
+  const updatePassword = useCallback(async (params: any) => {
+    try {
+      const response = await request('/api/me/password', {
+        method: 'PUT',
+        data: params,
+      });
 
-        if (response.success) {
-          message.success('密码修改成功');
-          return { success: true };
-        } else {
-          throw new Error(response.message || '密码修改失败');
-        }
-      } catch (error: any) {
-        message.error(error.message || '密码修改失败');
-        throw error;
+      if (response.success) {
+        message.success('密码修改成功');
+        return { success: true };
+      } else {
+        throw new Error(response.message || '密码修改失败');
       }
-    },
-    []
-  );
+    } catch (error: any) {
+      message.error(error.message || '密码修改失败');
+      throw error;
+    }
+  }, []);
+
+  // 获取记住的用户名
+  const getRememberedUsername = useCallback(() => {
+    return localStorage.getItem('rememberedUsername') || '';
+  }, []);
 
   return {
     currentUser,
@@ -204,10 +216,10 @@ export default function useAuthModel() {
     loginLoading,
     login,
     register,
-    sendVerifyCode,
     logout,
     checkAuth,
-    refreshToken,
-    changePassword,
+    updateProfile,
+    updatePassword,
+    getRememberedUsername,
   };
 }

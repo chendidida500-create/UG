@@ -25,7 +25,7 @@ UG/
 
 ## 环境要求
 
-- Node.js 18+ (推荐使用 20.14.0，已在 package.json 中指定)
+- Node.js 20.19.0 (已在 package.json 中指定)
 - pnpm 8.x (推荐使用 8.15.8，已在 package.json 中指定)
 
 ## 包管理器
@@ -121,15 +121,16 @@ pnpm install
 
 - 根目录依赖：
   - `@types/node`: 24.3.1
+  - `typescript`: 5.1.3
   - `concurrently`: 9.2.1
   - `rimraf`: 6.0.1
 
 - 前端依赖：
   - `@ant-design/icons`: 6.0.1
-  - `react`: 19.1.1
-  - `react-dom`: 19.1.1
-  - `@types/react`: 19.1.12
-  - `@types/react-dom`: 19.1.9
+  - `react`: 18.3.1
+  - `react-dom`: 18.3.1
+  - `@types/react`: 18.3.24
+  - `@types/react-dom`: 18.3.1
   - `@typescript-eslint/eslint-plugin`: 8.42.0
   - `@typescript-eslint/parser`: 8.42.0
   - `eslint`: 9.35.0
@@ -322,6 +323,10 @@ pnpm install
 ### 3. 数据库连接问题
 
 确保数据库服务正在运行，并且配置文件中的数据库连接信息正确。
+
+## 文件编码标准
+
+项目中所有文件必须使用 UTF-8 编码。详细信息请参考 [ENCODING_STANDARD.md](ENCODING_STANDARD.md)。
 
 ## 贡献指南
 

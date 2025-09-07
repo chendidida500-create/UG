@@ -16,7 +16,7 @@ UG/
 
 ## 环境要求
 
-- Node.js 18+ (推荐使用 20.14.0，已在 package.json 中指定)
+- Node.js 20.19.0 (已在 package.json 中指定)
 - pnpm 8.x (推荐使用 8.15.8，已在 package.json 中指定)
 
 ## 包管理器
@@ -122,3 +122,23 @@ pnpm spellcheck
 ## 依赖更新日志
 
 项目依赖的更新历史和解决的警告问题请参考 [docs/DEPENDENCY_UPDATES.md](docs/DEPENDENCY_UPDATES.md)。
+
+## 版本要求
+
+项目版本要求的详细信息请参考 [docs/VERSION_REQUIREMENTS.md](docs/VERSION_REQUIREMENTS.md)。
+
+## 版本锁定
+
+项目版本锁定的详细信息请参考 [docs/VERSION_LOCKING.md](docs/VERSION_LOCKING.md)。
+
+## 依赖版本报告
+
+项目依赖版本的检查报告请参考 [docs/DEPENDENCY_VERSION_REPORT.md](docs/DEPENDENCY_VERSION_REPORT.md)。
+
+## 字符编码标准
+
+项目字符编码标准请参考 [docs/ENCODING_STANDARD.md](docs/ENCODING_STANDARD.md)。
+
+## 版本升级指南
+
+项目版本升级的详细步骤请参考 [docs/VERSION_UPGRADE_GUIDE.md](docs/VERSION_UPGRADE_GUIDE.md)。

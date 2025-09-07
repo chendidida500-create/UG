@@ -62,7 +62,7 @@ interface CrudComponentProps {
   extraActions?: React.ReactNode;
 }
 
-const CrudComponent: React.FC<CrudComponentProps> = ({
+const CrudComponent = ({
   title,
   tableConfig,
   formConfig,
@@ -74,28 +74,26 @@ const CrudComponent: React.FC<CrudComponentProps> = ({
   beforeSubmit,
   afterSubmit,
   extraActions,
-}) => {
-  const [dataSource, setDataSource] = useState([] as Array<any>);
-  const [loading, setLoading] = useState(false as boolean);
-  const [pagination, setPagination] = useState({
-    current: 1,
-    pageSize: 20,
-    total: 0,
-  } as {
+}: CrudComponentProps) => {
+  const [dataSource, setDataSource] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [pagination, setPagination] = useState<{
     current: number;
     pageSize: number;
     total: number;
+  }>({
+    current: 1,
+    pageSize: 20,
+    total: 0,
   });
-  const [searchParams, setSearchParams] = useState({} as PaginationParams);
+  const [searchParams, setSearchParams] = useState<PaginationParams>({});
 
   // 弹窗状态
-  const [modalVisible, setModalVisible] = useState(false as boolean);
-  const [modalMode, setModalMode] = useState(
-    'create' as 'create' | 'edit' | 'view'
-  );
-  const [currentRecord, setCurrentRecord] = useState(null as any);
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [modalMode, setModalMode] = useState<'create' | 'edit' | 'view'>('create');
+  const [currentRecord, setCurrentRecord] = useState<any>(null);
 
-  const formRef = useRef(null as DynamicFormRef | null);
+  const formRef = useRef<DynamicFormRef | null>(null);
 
   // 加载数据
   const loadData = async (params?: PaginationParams) => {
@@ -112,12 +110,12 @@ const CrudComponent: React.FC<CrudComponentProps> = ({
 
       if (response.success) {
         setDataSource(response.data.list || []);
-        setPagination((prev: any) => ({
-          ...prev,
+        setPagination({
+          ...pagination,
           total: response.data.pagination?.total || 0,
           current: response.data.pagination?.current || 1,
           pageSize: response.data.pagination?.pageSize || 20,
-        }));
+        });
       } else {
         message.error(response.message || '获取数据失败');
       }
@@ -136,13 +134,13 @@ const CrudComponent: React.FC<CrudComponentProps> = ({
   // 搜索
   const handleSearch = (params: PaginationParams) => {
     setSearchParams(params);
-    setPagination((prev: any) => ({ ...prev, current: 1 }));
+    setPagination({ ...pagination, current: 1 });
     loadData({ ...params, current: 1 });
   };
 
   // 分页变化
   const handlePageChange = (current: number, pageSize: number) => {
-    setPagination((prev: any) => ({ ...prev, current, pageSize }));
+    setPagination({ ...pagination, current, pageSize });
     loadData({ ...searchParams, current, pageSize });
   };
 
@@ -228,7 +226,7 @@ const CrudComponent: React.FC<CrudComponentProps> = ({
       // 数据预处理
       const processedValues =
         beforeSubmit && modalMode !== 'view'
-          ? beforeSubmit(values, modalMode as 'create' | 'edit')
+          ? beforeSubmit(values, modalMode)
           : values;
 
       let response;
@@ -244,7 +242,7 @@ const CrudComponent: React.FC<CrudComponentProps> = ({
 
         // 后续处理
         if (afterSubmit && modalMode !== 'view') {
-          afterSubmit(values, modalMode as 'create' | 'edit');
+          afterSubmit(values, modalMode);
         }
       } else {
         throw new Error(response?.message || '操作失败');

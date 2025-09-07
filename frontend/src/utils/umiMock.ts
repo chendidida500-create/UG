@@ -78,3 +78,6 @@ export const useParams = <T = any>(): T => ({}) as T;
 export const useSearchParams = () => [new URLSearchParams(), () => { }];
 export const useAccess = () => ({});
 export const Access = ({ children }: { children: React.ReactNode }) => children;
+export const useIntl = () => ({
+  formatMessage: (descriptor: { id: string; defaultMessage?: string }) => descriptor.defaultMessage || descriptor.id,
+});

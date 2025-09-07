@@ -5,13 +5,11 @@ import type { Role, User } from '@/types';
 import { useModel } from '@/utils/umiMock';
 import {
   DeleteOutlined,
-  EditOutlined,
   ExportOutlined,
   ImportOutlined,
-  LockOutlined,
   MoreOutlined,
   ReloadOutlined,
-  UserOutlined,
+  UserOutlined
 } from '@ant-design/icons';
 import {
   Avatar,
@@ -24,9 +22,8 @@ import {
   Row,
   Space,
   Statistic,
-  Switch,
   Tag,
-  Typography,
+  Typography
 } from 'antd';
 import { useEffect, useState } from 'react';
 import styles from './index.module.less';
@@ -35,7 +32,7 @@ const { Text } = Typography;
 
 const UserManagement: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  // const [loading, setLoading] = useState<boolean>(false);
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [stats, setStats] = useState({
     total: 0,
@@ -53,7 +50,6 @@ const UserManagement: React.FC = () => {
     updateUser,
     deleteUser,
     batchDeleteUsers,
-    updateUserStatus,
     exportUsers,
   } = userModel;
   const { hasPermission } = permissionModel;
@@ -79,19 +75,35 @@ const UserManagement: React.FC = () => {
         ),
       },
       {
+        title: '昵称',
+        dataIndex: 'nickname',
+        key: 'nickname',
+        width: 120,
+      },
+      {
         title: '手机号',
         dataIndex: 'phone',
         key: 'phone',
         width: 120,
-        render: (phone: string) => phone || '-',
+      },
+      {
+        title: '状态',
+        dataIndex: 'status',
+        key: 'status',
+        width: 100,
+        render: (status: 0 | 1) => (
+          <Tag color={status === 1 ? 'success' : 'error'}>
+            {status === 1 ? '启用' : '禁用'}
+          </Tag>
+        ),
       },
       {
         title: '角色',
         dataIndex: 'roles',
         key: 'roles',
-        width: 150,
+        width: 200,
         render: (roles: Role[]) => (
-          <Space size={[0, 4]} wrap>
+          <Space wrap>
             {roles?.map(role => (
               <Tag key={role.id} color="blue">
                 {role.name}
@@ -101,214 +113,99 @@ const UserManagement: React.FC = () => {
         ),
       },
       {
-        title: '状态',
-        dataIndex: 'status',
-        key: 'status',
-        width: 100,
-        render: (status: number, record: User) => {
-          // 使用record变量
-          console.log('Rendering status for user:', record.username);
-
-          const statusConfig = {
-            1: { color: 'success', text: '正常' },
-            0: { color: 'default', text: '禁用' },
-          };
-          const config = statusConfig[status as keyof typeof statusConfig] || {
-            color: 'default',
-            text: '未知',
-          };
-
-          return <Tag color={config.color}>{config.text}</Tag>;
-        },
-      },
-      {
         title: '最后登录',
         dataIndex: 'last_login_at',
         key: 'last_login_at',
-        width: 150,
-        render: (time: string) =>
-          time ? new Date(time).toLocaleString() : '-',
+        width: 180,
+        render: (date: string) => (date ? new Date(date).toLocaleString() : '-'),
       },
       {
         title: '创建时间',
         dataIndex: 'created_at',
         key: 'created_at',
-        width: 150,
-        render: (time: string) => new Date(time).toLocaleString(),
-      },
-      {
-        title: '操作',
-        dataIndex: 'actions',
-        key: 'actions',
-        width: 120,
-        fixed: 'right',
-        render: (_: any, record: User) => {
-          const moreMenuItems = [
-            {
-              key: 'resetPassword',
-              icon: <LockOutlined />,
-              label: '重置密码',
-              disabled: !hasPermission?.('system:user:reset_password'),
-            },
-            {
-              key: 'viewLogs',
-              icon: <UserOutlined />,
-              label: '查看日志',
-              disabled: !hasPermission?.('system:user:view_logs'),
-            },
-            {
-              type: 'divider',
-            },
-            {
-              key: 'delete',
-              icon: <DeleteOutlined />,
-              label: '删除用户',
-              danger: true,
-              disabled: !hasPermission?.('system:user:delete'),
-            },
-          ];
-
-          return (
-            <Space>
-              <Button
-                type="link"
-                size="small"
-                icon={<EditOutlined />}
-                disabled={!hasPermission?.('system:user:update')}
-                onClick={() => {
-                  // 实现编辑功能
-                }}
-              >
-                编辑
-              </Button>
-              <Switch
-                size="small"
-                checked={record.status === 1}
-                onChange={(checked: boolean) =>
-                  handleStatusChange(record.id, checked)
-                }
-                disabled={!hasPermission?.('system:user:status')}
-              />
-              <Dropdown
-                menu={{
-                  items: moreMenuItems,
-                  onClick: ({ key }: { key: string }) => handleMoreAction(key, record),
-                }}
-              >
-                <Button type="text" size="small" icon={<MoreOutlined />} />
-              </Dropdown>
-            </Space>
-          );
-        },
+        width: 180,
+        render: (date: string) => new Date(date).toLocaleString(),
       },
     ],
-    rowKey: 'id',
-    size: 'middle',
-    bordered: true,
-    rowSelection: hasPermission?.('system:user:batch_delete')
-      ? {
-        type: 'checkbox',
-        selectedRowKeys: selectedRowKeys,
-        onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
-          setSelectedRowKeys(selectedRowKeys);
+    rowSelection: {
+      type: 'checkbox',
+      selectedRowKeys,
+      onChange: (selectedRowKeys: React.Key[]) => {
+        setSelectedRowKeys(selectedRowKeys);
+      },
+    },
+    actions: {
+      view: true,
+      edit: true,
+      delete: true,
+      custom: [
+        {
+          key: 'resetPassword',
+          title: '重置密码',
+          icon: 'edit',
+          permission: 'system:user:resetPassword',
         },
-      }
-      : undefined,
+      ],
+    },
+    pagination: {
+      pageSize: 20,
+      showSizeChanger: true,
+      showQuickJumper: true,
+    },
   };
 
   // 表单配置
   const formConfig: FormConfig = {
-    layout: 'vertical',
     fields: [
       {
         key: 'username',
-        name: 'username',
         label: '用户名',
         type: 'input',
         required: true,
-        rules: [
-          { required: true, message: '请输入用户名' },
-          { min: 3, max: 20, message: '用户名长度为3-20个字符' },
-          {
-            pattern: /^[a-zA-Z0-9_]+$/,
-            message: '用户名只能包含字母、数字和下划线',
-          },
-        ],
+        placeholder: '请输入用户名',
         props: {
-          placeholder: '请输入用户名',
+          maxLength: 50,
         },
       },
       {
         key: 'email',
-        name: 'email',
         label: '邮箱',
         type: 'input',
         required: true,
-        rules: [
-          { required: true, message: '请输入邮箱' },
-          { type: 'email', message: '请输入有效的邮箱地址' },
-        ],
+        placeholder: '请输入邮箱',
         props: {
-          placeholder: '请输入邮箱地址',
+          type: 'email',
+        },
+      },
+      {
+        key: 'nickname',
+        label: '昵称',
+        type: 'input',
+        placeholder: '请输入昵称',
+        props: {
+          maxLength: 50,
         },
       },
       {
         key: 'phone',
-        name: 'phone',
         label: '手机号',
         type: 'input',
-        rules: [{ pattern: /^1[3-9]\d{9}$/, message: '请输入有效的手机号' }],
+        placeholder: '请输入手机号',
         props: {
-          placeholder: '请输入手机号',
-        },
-      },
-      {
-        key: 'password',
-        name: 'password',
-        label: '密码',
-        type: 'password',
-        required: true,
-        rules: [
-          { required: true, message: '请输入密码' },
-          { min: 6, message: '密码长度至少6位' },
-        ],
-        props: {
-          placeholder: '请输入密码',
-        },
-        // hideInEdit: true, // 暂时注释，等待FormConfig类型支持
-      },
-      {
-        key: 'roles',
-        name: 'roles',
-        label: '角色',
-        type: 'select',
-        required: true,
-        rules: [{ required: true, message: '请选择角色' }],
-        props: {
-          mode: 'multiple',
-          placeholder: '请选择角色',
-          options: [
-            { label: '管理员', value: 'admin' },
-            { label: '用户', value: 'user' },
-            { label: '访客', value: 'guest' },
-          ],
+          maxLength: 20,
         },
       },
       {
         key: 'status',
-        name: 'status',
         label: '状态',
-        type: 'select',
-        required: true,
+        type: 'switch',
         props: {
-          placeholder: '请选择状态',
-          options: [
-            { label: '正常', value: 1 },
-            { label: '禁用', value: 0 },
-          ],
+          checkedChildren: '启用',
+          unCheckedChildren: '禁用',
         },
       },
     ],
+    layout: 'vertical',
   };
 
   // 搜索配置
@@ -319,7 +216,7 @@ const UserManagement: React.FC = () => {
         label: '关键词',
         type: 'input' as const,
         props: {
-          placeholder: '用户名/邮箱/手机号',
+          placeholder: '用户名/邮箱/昵称',
         },
       },
       {
@@ -328,159 +225,91 @@ const UserManagement: React.FC = () => {
         type: 'select' as const,
         props: {
           placeholder: '请选择状态',
-          allowClear: true,
           options: [
-            { label: '正常', value: 1 },
+            { label: '全部', value: '' },
+            { label: '启用', value: 1 },
             { label: '禁用', value: 0 },
-          ],
-        },
-      },
-      {
-        name: 'roles',
-        label: '角色',
-        type: 'select' as const,
-        props: {
-          placeholder: '请选择角色',
-          allowClear: true,
-          options: [
-            { label: '管理员', value: 'admin' },
-            { label: '用户', value: 'user' },
-            { label: '访客', value: 'guest' },
           ],
         },
       },
     ],
   };
 
-  // 使用searchConfig变量
-  useEffect(() => {
-    // 这里会在searchConfig变化时触发，确保变量被使用
-  }, [searchConfig]);
-
   // 加载用户列表
   const loadUsers = async (params?: PaginationParams) => {
-    setLoading(true);
+    // setLoading(true);
     try {
       const result = await getUserList?.(params);
-      if (result?.data) {
-        setUsers(result.data.list || []);
-        updateStats(result.data.list || []);
+      if (result?.success) {
+        setUsers(result.data.list);
+        // 更新统计信息
+        setStats({
+          total: result.data.total,
+          active: result.data.list.filter((user: User) => user.status === 1).length,
+          inactive: result.data.list.filter((user: User) => user.status === 0).length,
+          locked: 0, // 假设没有锁定状态
+        });
       }
     } catch (error: any) {
       message.error(error.message || '加载用户列表失败');
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
-  // 更新统计信息
-  const updateStats = (data: User[]) => {
-    const stats = {
-      total: data.length,
-      active: data.filter(u => u.status === 1).length,
-      inactive: data.filter(u => u.status === 0).length,
-      locked: 0, // 由于我们使用 0|1 状态，暂时不支持锁定状态
-    };
-    setStats(stats);
-  };
-
-  // 状态切换
-  const handleStatusChange = async (id: string, active: boolean) => {
-    try {
-      await updateUserStatus?.(id, active ? '1' : '0');
-      message.success('状态更新成功');
-      loadUsers();
-    } catch (error: any) {
-      message.error(error.message || '状态更新失败');
-    }
-  };
-
-  // 更多操作
-  const handleMoreAction = async (action: string, record: User) => {
-    switch (action) {
-      case 'resetPassword':
-        Modal.confirm({
-          title: '重置密码',
-          content: `确定要重置用户"${record.username}"的密码吗？`,
-          onOk: async () => {
-            try {
-              // 调用重置密码API
-              message.success('密码重置成功');
-            } catch (error: any) {
-              message.error(error.message || '密码重置失败');
-            }
-          },
-        });
-        break;
-      case 'delete':
-        Modal.confirm({
-          title: '删除用户',
-          content: `确定要删除用户"${record.username}"吗？此操作不可恢复。`,
-          okText: '删除',
-          okType: 'danger',
-          onOk: async () => {
-            try {
-              await deleteUser?.(record.id);
-              message.success('删除成功');
-              loadUsers();
-            } catch (error: any) {
-              message.error(error.message || '删除失败');
-            }
-          },
-        });
-        break;
-    }
-  };
-
-  // 批量删除
-  const handleBatchDelete = () => {
+  // 处理批量删除用户
+  const handleBatchDelete = async () => {
     if (selectedRowKeys.length === 0) {
-      message.warning('请选择要删除的用户');
+      message.warning('请先选择要删除的用户');
       return;
     }
 
     Modal.confirm({
-      title: '批量删除',
-      content: `确定要删除选中的 ${selectedRowKeys.length} 个用户吗？此操作不可恢复。`,
-      okText: '删除',
-      okType: 'danger',
+      title: '确认删除',
+      content: `确定要删除选中的 ${selectedRowKeys.length} 个用户吗？`,
       onOk: async () => {
         try {
-          await batchDeleteUsers?.(selectedRowKeys);
-          message.success('批量删除成功');
-          setSelectedRowKeys([]);
-          loadUsers();
+          const result = await batchDeleteUsers?.(selectedRowKeys as string[]);
+          if (result?.success) {
+            message.success('用户批量删除成功');
+            setSelectedRowKeys([]);
+            loadUsers();
+          }
         } catch (error: any) {
-          message.error(error.message || '批量删除失败');
+          message.error(error.message || '用户批量删除失败');
         }
       },
     });
   };
 
-  // 导出数据
+  // 处理导出用户
   const handleExport = async () => {
     try {
       await exportUsers?.();
-      message.success('导出成功');
     } catch (error: any) {
       message.error(error.message || '导出失败');
     }
   };
 
-  // 导入数据
-  const handleImport = () => {
-    // 实现导入逻辑
-    message.info('导入功能开发中');
+  // 处理重置密码
+  const handleResetPassword = async (id: string) => {
+    Modal.confirm({
+      title: '重置密码',
+      content: '确定要重置该用户的密码吗？',
+      onOk: async () => {
+        try {
+          // 这里应该调用重置密码的API
+          message.success('密码重置成功');
+        } catch (error: any) {
+          message.error(error.message || '密码重置失败');
+        }
+      },
+    });
   };
 
   useEffect(() => {
     loadUsers();
   }, []);
-
-  // 使用users变量
-  useEffect(() => {
-    // 这里会在users变化时触发，确保变量被使用
-  }, [users]);
 
   return (
     <div className={styles.container}>
@@ -488,94 +317,88 @@ const UserManagement: React.FC = () => {
       <Row gutter={16} className={styles.statsRow}>
         <Col span={6}>
           <Card>
-            <Statistic
-              title="总用户数"
-              value={stats.total}
-              valueStyle={{ color: '#1890ff' }}
-              prefix={<UserOutlined />}
-            />
+            <Statistic title="用户总数" value={stats.total} />
           </Card>
         </Col>
         <Col span={6}>
           <Card>
-            <Statistic
-              title="正常用户"
-              value={stats.active}
-              valueStyle={{ color: '#52c41a' }}
-            />
+            <Statistic title="启用用户" value={stats.active} valueStyle={{ color: '#3f8600' }} />
           </Card>
         </Col>
         <Col span={6}>
           <Card>
-            <Statistic
-              title="禁用用户"
-              value={stats.inactive}
-              valueStyle={{ color: '#faad14' }}
-            />
+            <Statistic title="禁用用户" value={stats.inactive} valueStyle={{ color: '#cf1322' }} />
           </Card>
         </Col>
         <Col span={6}>
           <Card>
-            <Statistic
-              title="锁定用户"
-              value={stats.locked}
-              valueStyle={{ color: '#ff4d4f' }}
-            />
+            <Statistic title="锁定用户" value={stats.locked} />
           </Card>
         </Col>
       </Row>
 
-      {/* 主要内容 */}
-      <Card className={styles.mainCard}>
+      {/* 用户管理表格 */}
+      <Card className={styles.card}>
         <CrudComponent
-          title="用户管理"
-          api={{
-            list:
-              getUserList ||
-              (() =>
-                Promise.resolve({
-                  success: true,
-                  data: { list: [], total: 0 },
-                })),
-            create:
-              createUser ||
-              (() => Promise.resolve({ success: true, data: {} })),
-            update:
-              updateUser ||
-              (() => Promise.resolve({ success: true, data: {} })),
-            delete: deleteUser || (() => Promise.resolve({ success: true })),
-          }}
+          title="用户"
           tableConfig={tableConfig}
           formConfig={formConfig}
+          searchConfig={searchConfig}
+          api={{
+            list: getUserList,
+            create: createUser,
+            update: updateUser,
+            delete: deleteUser,
+            detail: undefined as any, // 如果需要查看详情，可以实现这个方法
+          }}
+          permissions={{
+            create: 'system:user:create',
+            update: 'system:user:update',
+            delete: 'system:user:delete',
+          }}
+          hasPermission={hasPermission}
+          onCustomAction={(action: string, record: any) => {
+            if (action === 'resetPassword') {
+              handleResetPassword(record.id);
+            }
+          }}
           extraActions={
             <Space>
-              {selectedRowKeys.length > 0 && (
-                <Button
-                  danger
-                  icon={<DeleteOutlined />}
-                  onClick={handleBatchDelete}
-                  disabled={!hasPermission?.('system:user:batch_delete')}
-                >
-                  批量删除 ({selectedRowKeys.length})
-                </Button>
-              )}
               <Button
                 icon={<ExportOutlined />}
                 onClick={handleExport}
-                disabled={!hasPermission?.('system:user:export')}
+                disabled={!hasPermission('system:user:export')}
               >
                 导出
               </Button>
               <Button
                 icon={<ImportOutlined />}
-                onClick={handleImport}
-                disabled={!hasPermission?.('system:user:import')}
+                disabled={!hasPermission('system:user:import')}
               >
                 导入
               </Button>
-              <Button icon={<ReloadOutlined />} onClick={() => loadUsers()}>
-                刷新
+              <Button
+                icon={<DeleteOutlined />}
+                danger
+                onClick={handleBatchDelete}
+                disabled={selectedRowKeys.length === 0 || !hasPermission('system:user:delete')}
+              >
+                批量删除
               </Button>
+              <Dropdown
+                menu={{
+                  items: [
+                    {
+                      key: 'refresh',
+                      icon: <ReloadOutlined />,
+                      label: '刷新',
+                      onClick: () => loadUsers(),
+                    },
+                  ],
+                }}
+              >
+                <Button icon={<MoreOutlined />}>更多</Button>
+              </Dropdown>
             </Space>
           }
         />

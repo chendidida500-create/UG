@@ -34,7 +34,7 @@
 
 ### 软件依赖
 
-- **Node.js**: 16.x 或更高版本
+- **Node.js**: 20.19.0 或更高版本
 - **MySQL**: 8.0 或更高版本
 - **Redis**: 6.x 或更高版本
 - **Docker**: 20.10 或更高版本
@@ -46,7 +46,7 @@
 
 ```bash
 # 安装 Node.js
-curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 # 安装 MySQL
@@ -57,7 +57,7 @@ sudo apt install mysql-server
 sudo apt install redis-server
 
 # 验证安装
-node --version
+node --version  # 应该显示 v20.19.0 或更高版本
 npm --version
 mysql --version
 redis-server --version

@@ -1,13 +1,7 @@
-import request from '@/utils/request';
 import { message } from 'antd';
 import { useCallback, useState } from 'react';
 // 修复UMI 4.x导入方式
-// import request from '@/utils/request';
-// // 使用模拟的request
-// const request = async <T = any>(url: string, options?: any): Promise<T> => {
-//   // 模拟请求实现，实际应用中需要正确的实现
-//   return { success: true, data: {} } as T;
-// };
+import { typedRequest as request } from '@/utils/request';
 
 interface Permission {
   id: string;
@@ -30,10 +24,28 @@ interface UserPermissions {
   [key: string]: boolean;
 }
 
-export default function usePermissionModel() {
+// 定义PermissionModelState类型
+export interface PermissionModelState {
+  permissions: Permission[];
+  userPermissions: UserPermissions;
+  loading: boolean;
+  getPermissionList: (params?: any) => Promise<any>;
+  getAllPermissions: () => Promise<any>;
+  createPermission: (data: Partial<Permission>) => Promise<any>;
+  updatePermission: (id: string, data: Partial<Permission>) => Promise<any>;
+  deletePermission: (id: string) => Promise<any>;
+  batchDeletePermissions: (ids: string[]) => Promise<any>;
+  updatePermissionStatus: (id: string, status: 'active' | 'inactive') => Promise<any>;
+  getUserPermissions: (userId?: string) => Promise<any>;
+  hasPermission: (permissionCode: string | string[]) => boolean;
+  hasAllPermissions: (permissionCodes: string[]) => boolean;
+  filterMenuByPermission: (menus: any[]) => any[];
+}
+
+export default function usePermissionModel(): PermissionModelState {
   const [permissions, setPermissions] = useState<Permission[]>([]);
   const [userPermissions, setUserPermissions] = useState<UserPermissions>({});
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   // 获取权限列表
   const getPermissionList = useCallback(async (params?: any) => {
@@ -273,7 +285,3 @@ export default function usePermissionModel() {
     filterMenuByPermission,
   };
 }
-
-export type PermissionModelState = ReturnType<typeof usePermissionModel>;
-
-export default usePermissionModel;

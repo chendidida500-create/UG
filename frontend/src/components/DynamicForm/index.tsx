@@ -1,4 +1,5 @@
-import { Button, Card, Cascader, Checkbox, Col, DatePicker, Form, Input, InputNumber, Radio, Rate, Row, Select, Slider, Space, Switch, TreeSelect, Upload } from 'antd';
+import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
+import { Button, Card, Cascader, Checkbox, Col, DatePicker, Divider, Form, Input, InputNumber, message, Radio, Rate, Row, Select, Slider, Space, Switch, TimePicker, TreeSelect, Upload } from 'antd';
 import type { FormInstance } from 'antd/es/form';
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import type { FormConfig } from '../../types';
@@ -70,7 +71,7 @@ const DynamicForm = forwardRef<DynamicFormRef, DynamicFormProps>(
     ref
   ) => {
     const [form] = Form.useForm();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState<boolean>(false);
     const [fileList, setFileList] = useState<Record<string, any[]>>({});
 
     const isReadonly = mode === 'view';

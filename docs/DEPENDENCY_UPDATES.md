@@ -32,15 +32,15 @@
 #### 前端依赖
 
 - `@ant-design/icons`: 从 5.6.1 更新到 6.0.1
-- `@types/react`: 从 18.3.24 更新到 19.1.12
-- `@types/react-dom`: 从 18.3.7 更新到 19.1.9
+- `@types/react`: 18.3.24
+- `@types/react-dom`: 18.3.1
 - `@typescript-eslint/eslint-plugin`: 从 6.21.0 更新到 8.42.0
 - `@typescript-eslint/parser`: 从 6.21.0 更新到 8.42.0
 - `eslint`: 从 8.57.1 更新到 9.35.0
 - `eslint-config-prettier`: 从 9.1.2 更新到 10.1.8
 - `eslint-plugin-react-hooks`: 从 4.6.2 更新到 5.2.0
-- `react`: 从 18.3.1 更新到 19.1.1
-- `react-dom`: 从 18.3.1 更新到 19.1.1
+- `react`: 18.3.1
+- `react-dom`: 18.3.1
 
 #### 后端依赖
 
@@ -56,10 +56,10 @@
 
 所有更新的依赖包都经过兼容性检查，确保与以下技术栈兼容：
 
-- Node.js 20.14.0
+- Node.js 20.19.0
 - UMI 4.x
 - Egg.js 3.x
-- React 19.x
+- React 18.3.1
 - TypeScript 5.9.2
 
 ### 后续维护建议

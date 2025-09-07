@@ -5,8 +5,42 @@ import type { Permission, User } from '../types';
 // import { useModel } from 'umi';
 import { useModel } from '../utils/umiMock';
 
+// 定义AccessModelState类型
+export interface AccessModelState {
+  currentUser: User | null;
+  hasPermission: (permissionCode: string) => boolean;
+  hasAnyPermission: (permissionCodes: string[]) => boolean;
+  hasAllPermissions: (permissionCodes: string[]) => boolean;
+  hasRole: (roleCode: string) => boolean;
+  hasAnyRole: (roleCodes: string[]) => boolean;
+  canUser: () => boolean;
+  canAdmin: () => boolean;
+  canSuperAdmin: () => boolean;
+  canManageUsers: () => boolean;
+  canViewUsers: () => boolean;
+  canCreateUser: () => boolean;
+  canUpdateUser: () => boolean;
+  canDeleteUser: () => boolean;
+  canManageRoles: () => boolean;
+  canViewRoles: () => boolean;
+  canCreateRole: () => boolean;
+  canUpdateRole: () => boolean;
+  canDeleteRole: () => boolean;
+  canManagePermissions: () => boolean;
+  canViewPermissions: () => boolean;
+  canCreatePermission: () => boolean;
+  canUpdatePermission: () => boolean;
+  canDeletePermission: () => boolean;
+  canViewProfile: () => boolean;
+  canUpdateProfile: () => boolean;
+  canUpdatePassword: () => boolean;
+  canViewDashboard: () => boolean;
+  getMenuPermissions: () => Permission[];
+  getButtonPermissions: () => string[];
+}
+
 // 权限访问控制，与后端权限中间件逻辑保持一致
-export default function useAccessModel() {
+export default function useAccessModel(): AccessModelState {
   const { currentUser } = useModel('user');
 
   // 检查用户是否有指定权限
@@ -254,7 +288,3 @@ export default function useAccessModel() {
     getButtonPermissions,
   };
 }
-
-export type AccessModelState = ReturnType<typeof useAccessModel>;
-
-export default useAccessModel;

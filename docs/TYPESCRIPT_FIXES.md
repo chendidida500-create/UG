@@ -49,8 +49,8 @@
 ```json
 "devDependencies": {
   "@types/node": "^20.14.0",
-  "@types/react": "^19.1.12",
-  "@types/react-dom": "^19.1.9"
+  "@types/react": "18.3.24",
+  "@types/react-dom": "18.3.1"
 }
 ```
 

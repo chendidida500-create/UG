@@ -13,6 +13,7 @@ import {
   Upload,
 } from 'antd';
 import { useState } from 'react';
+
 import styles from './index.module.less';
 
 const { TextArea } = Input;
@@ -40,7 +41,7 @@ const ProfilePage: React.FC = () => {
   const [form] = Form.useForm();
 
   // 头像上传处理
-  const handleAvatarUpload = async (file: any) => {
+  const handleAvatarUpload = async (_file: any) => {
     setAvatarLoading(true);
     try {
       // 这里应该调用实际的上传API

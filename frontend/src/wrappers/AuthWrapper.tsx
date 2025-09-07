@@ -6,7 +6,7 @@ import styles from './AuthWrapper.module.less';
 import { useModel } from '@/utils/umiMock';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
-const AuthWrapper: React.FC = () => {
+const AuthWrapper = () => {
   const navigate = useNavigate();
   const location = useLocation();
 

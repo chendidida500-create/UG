@@ -74,6 +74,6 @@ node tools/test-db-connection.js
 ## 注意事项
 
 1. 所有脚本应在项目根目录下运行
-2. 确保已安装 Node.js 和 npm
+2. 确保已安装 Node.js 20.19.0 或更高版本
 3. 确保数据库服务已启动并可访问
 4. 部分脚本可能需要先运行 `npm install` 安装依赖

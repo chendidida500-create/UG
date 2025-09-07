@@ -1,21 +1,7 @@
-import request from '@/utils/request';
 import { message } from 'antd';
 import { useCallback, useState } from 'react';
 // 修复UMI 4.x导入方式
-// import request from '@/utils/request';
-// // 使用模拟的request
-// const request = async <T = any>(url: string, options?: any): Promise<T> => {
-//   // 模拟请求实现，实际应用中需要正确的实现
-//   return {
-//     success: true,
-//     data: {
-//       list: [],
-//       total: 0,
-//       available: true
-//     },
-//     message: 'success'
-//   };
-// };
+import { typedRequest as request } from '@/utils/request';
 
 interface DashboardStats {
   users: {
@@ -64,9 +50,26 @@ interface ChartData {
   }>;
 }
 
-export type DashboardModelState = ReturnType<typeof useDashboardModel>;
+// 定义DashboardModelState类型
+export interface DashboardModelState {
+  stats: DashboardStats;
+  activities: ActivityLog[];
+  systemHealth: SystemHealth;
+  chartData: ChartData;
+  loading: boolean;
+  getDashboardStats: (timeRange?: string) => Promise<any>;
+  getRecentActivities: (limit?: number) => Promise<any>;
+  getSystemHealth: () => Promise<any>;
+  getChartData: (type: string, timeRange?: string) => Promise<any>;
+  getUserTrend: (timeRange?: string) => Promise<any>;
+  getActivityDistribution: (timeRange?: string) => Promise<any>;
+  refreshAllData: (timeRange?: string) => Promise<void>;
+  getSystemInfo: () => Promise<any>;
+  getOnlineUsers: () => Promise<any>;
+  exportReport: (type: string, timeRange?: string) => Promise<boolean>;
+}
 
-export default function useDashboardModel() {
+export default function useDashboardModel(): DashboardModelState {
   const [stats, setStats] = useState<DashboardStats>({
     users: { total: 0, active: 0, growth: 0 },
     roles: { total: 0, growth: 0 },
@@ -84,7 +87,7 @@ export default function useDashboardModel() {
     userTrend: [],
     activityDistribution: [],
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   // 获取仪表盘统计数据
   const getDashboardStats = useCallback(async (timeRange?: string) => {

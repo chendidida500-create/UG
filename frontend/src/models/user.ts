@@ -4,10 +4,24 @@ import { useCallback, useState } from 'react';
 import { request } from 'umi';
 import type { PaginationParams, User } from '../types';
 
-export default function useUserModel() {
+// 定义UserModelState类型
+export interface UserModelState {
+  users: User[];
+  loading: boolean;
+  total: number;
+  getUserList: (params?: PaginationParams) => Promise<any>;
+  createUser: (data: Partial<User>) => Promise<any>;
+  updateUser: (id: string, data: Partial<User>) => Promise<any>;
+  deleteUser: (id: string) => Promise<any>;
+  batchDeleteUsers: (ids: string[]) => Promise<any>;
+  updateUserStatus: (id: string, status: 0 | 1) => Promise<any>;
+  exportUsers: () => Promise<any>;
+}
+
+export default function useUserModel(): UserModelState {
   const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [total, setTotal] = useState<number>(0);
 
   // 获取用户列表
   const getUserList = useCallback(async (params?: PaginationParams) => {
@@ -42,13 +56,13 @@ export default function useUserModel() {
       });
 
       if (response.success) {
-        message.success('用户创建成功');
-        return response.data;
+        message.success('创建成功');
+        return response;
       } else {
-        throw new Error(response.message || '用户创建失败');
+        throw new Error(response.message || '创建失败');
       }
     } catch (error: any) {
-      message.error(error.message || '用户创建失败');
+      message.error(error.message || '创建失败');
       throw error;
     }
   }, []);
@@ -62,13 +76,13 @@ export default function useUserModel() {
       });
 
       if (response.success) {
-        message.success('用户更新成功');
-        return response.data;
+        message.success('更新成功');
+        return response;
       } else {
-        throw new Error(response.message || '用户更新失败');
+        throw new Error(response.message || '更新失败');
       }
     } catch (error: any) {
-      message.error(error.message || '用户更新失败');
+      message.error(error.message || '更新失败');
       throw error;
     }
   }, []);
@@ -81,13 +95,13 @@ export default function useUserModel() {
       });
 
       if (response.success) {
-        message.success('用户删除成功');
-        return true;
+        message.success('删除成功');
+        return response;
       } else {
-        throw new Error(response.message || '用户删除失败');
+        throw new Error(response.message || '删除失败');
       }
     } catch (error: any) {
-      message.error(error.message || '用户删除失败');
+      message.error(error.message || '删除失败');
       throw error;
     }
   }, []);
@@ -102,7 +116,7 @@ export default function useUserModel() {
 
       if (response.success) {
         message.success('批量删除成功');
-        return true;
+        return response;
       } else {
         throw new Error(response.message || '批量删除失败');
       }
@@ -113,15 +127,16 @@ export default function useUserModel() {
   }, []);
 
   // 更新用户状态
-  const updateUserStatus = useCallback(async (id: string, status: string) => {
+  const updateUserStatus = useCallback(async (id: string, status: 0 | 1) => {
     try {
       const response = await request(`/api/users/${id}/status`, {
-        method: 'PUT',
+        method: 'PATCH',
         data: { status },
       });
 
       if (response.success) {
-        return true;
+        message.success('状态更新成功');
+        return response;
       } else {
         throw new Error(response.message || '状态更新失败');
       }
@@ -131,73 +146,11 @@ export default function useUserModel() {
     }
   }, []);
 
-  // 重置密码
-  const resetUserPassword = useCallback(
-    async (id: string, newPassword?: string) => {
-      try {
-        const response = await request(`/api/users/${id}/reset-password`, {
-          method: 'POST',
-          data: { newPassword },
-        });
-
-        if (response.success) {
-          message.success('密码重置成功');
-          return response.data;
-        } else {
-          throw new Error(response.message || '密码重置失败');
-        }
-      } catch (error: any) {
-        message.error(error.message || '密码重置失败');
-        throw error;
-      }
-    },
-    []
-  );
-
-  // 更新用户角色
-  const updateUserRoles = useCallback(async (id: string, roleIds: string[]) => {
-    try {
-      const response = await request(`/api/users/${id}/roles`, {
-        method: 'PUT',
-        data: { roleIds },
-      });
-
-      if (response.success) {
-        message.success('角色分配成功');
-        return true;
-      } else {
-        throw new Error(response.message || '角色分配失败');
-      }
-    } catch (error: any) {
-      message.error(error.message || '角色分配失败');
-      throw error;
-    }
-  }, []);
-
-  // 获取用户详情
-  const getUserDetail = useCallback(async (id: string) => {
-    try {
-      const response = await request(`/api/users/${id}`, {
-        method: 'GET',
-      });
-
-      if (response.success) {
-        return response.data;
-      } else {
-        throw new Error(response.message || '获取用户详情失败');
-      }
-    } catch (error: any) {
-      message.error(error.message || '获取用户详情失败');
-      throw error;
-    }
-  }, []);
-
-  // 导出用户数据
-  const exportUsers = useCallback(async (params?: any) => {
+  // 导出用户
+  const exportUsers = useCallback(async () => {
     try {
       const response = await request('/api/users/export', {
         method: 'GET',
-        params,
         responseType: 'blob',
       });
 
@@ -211,87 +164,10 @@ export default function useUserModel() {
       link.remove();
 
       message.success('导出成功');
-      return true;
+      return { success: true };
     } catch (error: any) {
       message.error(error.message || '导出失败');
       throw error;
-    }
-  }, []);
-
-  // 导入用户数据
-  const importUsers = useCallback(async (file: File) => {
-    try {
-      const formData = new FormData();
-      formData.append('file', file);
-
-      const response = await request('/api/users/import', {
-        method: 'POST',
-        data: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      if (response.success) {
-        message.success('导入成功');
-        return response.data;
-      } else {
-        throw new Error(response.message || '导入失败');
-      }
-    } catch (error: any) {
-      message.error(error.message || '导入失败');
-      throw error;
-    }
-  }, []);
-
-  // 获取用户统计信息
-  const getUserStats = useCallback(async () => {
-    try {
-      const response = await request('/api/users/stats', {
-        method: 'GET',
-      });
-
-      if (response.success) {
-        return response.data;
-      } else {
-        throw new Error(response.message || '获取统计信息失败');
-      }
-    } catch (error: any) {
-      message.error(error.message || '获取统计信息失败');
-      throw error;
-    }
-  }, []);
-
-  // 检查用户名是否可用
-  const checkUsername = useCallback(
-    async (username: string, excludeId?: string) => {
-      try {
-        const response = await request('/api/users/check-username', {
-          method: 'POST',
-          data: { username, excludeId },
-        });
-
-        return response.success ? response.data.available : false;
-      } catch (error: any) {
-        console.error('检查用户名失败:', error);
-        return false;
-      }
-    },
-    []
-  );
-
-  // 检查邮箱是否可用
-  const checkEmail = useCallback(async (email: string, excludeId?: string) => {
-    try {
-      const response = await request('/api/users/check-email', {
-        method: 'POST',
-        data: { email, excludeId },
-      });
-
-      return response.success ? response.data.available : false;
-    } catch (error: any) {
-      console.error('检查邮箱失败:', error);
-      return false;
     }
   }, []);
 
@@ -305,14 +181,7 @@ export default function useUserModel() {
     deleteUser,
     batchDeleteUsers,
     updateUserStatus,
-    resetUserPassword,
-    updateUserRoles,
-    getUserDetail,
     exportUsers,
-    importUsers,
-    getUserStats,
-    checkUsername,
-    checkEmail,
   };
 }
 

@@ -14,6 +14,7 @@ import {
   message,
   Modal,
   Popconfirm,
+  Select,
   Space,
   Switch,
   Table,
@@ -46,10 +47,10 @@ const PermissionManagement: React.FC = () => {
     setLoading(true);
     try {
       const result = await getPermissionList?.();
-      if (result?.data) {
+      if (result?.success) {
         setPermissions(result.data);
-        // 默认展开所有节点
-        setExpandedKeys(result.data.map(item => item.id));
+        // 展开所有节点
+        setExpandedKeys(result.data.map((item: Permission) => item.id));
       }
     } catch (error: any) {
       message.error(error.message || '加载权限列表失败');
@@ -58,12 +59,12 @@ const PermissionManagement: React.FC = () => {
     }
   };
 
-  // 构建树形数据
-  const buildTreeData = (data: Permission[]): DataNode[] => {
-    const map: Record<string, DataNode & { children?: DataNode[] }> = {};
+  // 构建权限树
+  const buildPermissionTree = (data: Permission[]): DataNode[] => {
+    const map: Record<string, DataNode> = {};
     const roots: DataNode[] = [];
 
-    // 创建映射
+    // 创建节点映射
     data.forEach(item => {
       map[item.id] = {
         key: item.id,
@@ -75,136 +76,58 @@ const PermissionManagement: React.FC = () => {
 
     // 构建树结构
     data.forEach(item => {
-      if (item.parent_id && map[item.parent_id]) {
-        map[item.parent_id].children?.push(map[item.id]);
+      const node = map[item.id];
+      if (item.parentId && map[item.parentId]) {
+        map[item.parentId].children?.push(node);
       } else {
-        roots.push(map[item.id]);
+        roots.push(node);
       }
     });
 
     return roots;
   };
 
-  // 表格列配置
-  const columns: ColumnsType<Permission> = [
-    {
-      title: '权限名称',
-      dataIndex: 'name',
-      key: 'name',
-      width: 200,
-    },
-    {
-      title: '权限编码',
-      dataIndex: 'code',
-      key: 'code',
-      width: 200,
-    },
-    {
-      title: '权限类型',
-      dataIndex: 'type',
-      key: 'type',
-      width: 100,
-      render: (type: string) => {
-        const typeConfig = {
-          menu: { color: 'blue', text: '菜单' },
-          button: { color: 'green', text: '按钮' },
-          api: { color: 'purple', text: '接口' },
-        };
-        const config = typeConfig[type as keyof typeof typeConfig] || {
-          color: 'default',
-          text: '未知',
-        };
-        return <Tag color={config.color}>{config.text}</Tag>;
-      },
-    },
-    {
-      title: '状态',
-      dataIndex: 'status',
-      key: 'status',
-      width: 100,
-      render: (status: number) => {
-        const statusConfig = {
-          1: { color: 'success', text: '正常' },
-          0: { color: 'default', text: '禁用' },
-        };
-        const config = statusConfig[status as keyof typeof statusConfig] || {
-          color: 'default',
-          text: '未知',
-        };
-        return <Tag color={config.color}>{config.text}</Tag>;
-      },
-    },
-    {
-      title: '创建时间',
-      dataIndex: 'created_at',
-      key: 'created_at',
-      width: 150,
-      render: (time: string) => new Date(time).toLocaleString(),
-    },
-    {
-      title: '操作',
-      key: 'actions',
-      width: 150,
-      fixed: 'right',
-      render: (_: any, record: Permission) => (
-        <Space>
-          <Button
-            type="link"
-            size="small"
-            icon={<EyeOutlined />}
-            onClick={() => handleView(record)}
-          >
-            查看
-          </Button>
-          <Button
-            type="link"
-            size="small"
-            icon={<EditOutlined />}
-            onClick={() => handleEdit(record)}
-          >
-            编辑
-          </Button>
-          <Popconfirm
-            title="删除权限"
-            description="确定要删除这个权限吗？"
-            onConfirm={() => handleDelete(record.id)}
-            okText="确定"
-            cancelText="取消"
-          >
-            <Button type="link" size="small" icon={<DeleteOutlined />} danger>
-              删除
-            </Button>
-          </Popconfirm>
-        </Space>
-      ),
-    },
-  ];
-
-  // 查看权限
-  const handleView = (record: Permission) => {
-    setCurrentRecord(record);
-    setModalMode('view');
-    setModalVisible(true);
-    form.setFieldsValue(record);
+  // 渲染权限树节点
+  const renderTreeNodes = (data: DataNode[]) => {
+    return data.map(item => {
+      if (item.children && item.children.length > 0) {
+        return (
+          <TreeNode title={item.title} key={item.key} dataRef={item}>
+            {renderTreeNodes(item.children)}
+          </TreeNode>
+        );
+      }
+      return <TreeNode title={item.title} key={item.key} dataRef={item} />;
+    });
   };
 
-  // 编辑权限
-  const handleEdit = (record: Permission) => {
-    setCurrentRecord(record);
-    setModalMode('edit');
-    setModalVisible(true);
-    form.setFieldsValue(record);
+  // 处理表单提交
+  const handleFinish = async (values: any) => {
+    try {
+      let result;
+      if (modalMode === 'create') {
+        result = await createPermission?.(values);
+      } else if (modalMode === 'edit' && currentRecord) {
+        result = await updatePermission?.({
+          id: currentRecord.id,
+          ...values,
+        });
+      }
+
+      if (result?.success) {
+        message.success(modalMode === 'create' ? '创建成功' : '更新成功');
+        setModalVisible(false);
+        form.resetFields();
+        loadPermissions();
+      } else {
+        message.error(result?.message || (modalMode === 'create' ? '创建失败' : '更新失败'));
+      }
+    } catch (error: any) {
+      message.error(error.message || (modalMode === 'create' ? '创建失败' : '更新失败'));
+    }
   };
 
-  // 新建权限
-  const handleCreate = () => {
-    setCurrentRecord(null);
-    setModalMode('create');
-    setModalVisible(true);
-    form.resetFields();
-  };
-
-  // 删除权限
+  // 处理删除权限
   const handleDelete = async (id: string) => {
     try {
       const result = await deletePermission?.(id);
@@ -219,35 +142,37 @@ const PermissionManagement: React.FC = () => {
     }
   };
 
-  // 提交表单
-  const handleSubmit = async (values: any) => {
-    try {
-      let result;
-      if (modalMode === 'create') {
-        result = await createPermission?.(values);
-      } else if (modalMode === 'edit' && currentRecord) {
-        result = await updatePermission?.(currentRecord.id, values);
-      }
-
-      if (result?.success) {
-        message.success(`${modalMode === 'create' ? '创建' : '更新'}成功`);
-        setModalVisible(false);
-        loadPermissions();
-      } else {
-        message.error(result?.message || `${modalMode === 'create' ? '创建' : '更新'}失败`);
-      }
-    } catch (error: any) {
-      message.error(error.message || `${modalMode === 'create' ? '创建' : '更新'}失败`);
-    }
+  // 处理查看权限
+  const handleView = (record: Permission) => {
+    setModalMode('view');
+    setCurrentRecord(record);
+    setModalVisible(true);
+    form.setFieldsValue(record);
   };
 
-  // 树节点展开
+  // 处理编辑权限
+  const handleEdit = (record: Permission) => {
+    setModalMode('edit');
+    setCurrentRecord(record);
+    setModalVisible(true);
+    form.setFieldsValue(record);
+  };
+
+  // 处理创建权限
+  const handleCreate = () => {
+    setModalMode('create');
+    setCurrentRecord(null);
+    setModalVisible(true);
+    form.resetFields();
+  };
+
+  // 处理树节点展开
   const onExpand = (expandedKeysValue: React.Key[]) => {
     setExpandedKeys(expandedKeysValue);
     setAutoExpandParent(false);
   };
 
-  // 树节点选择
+  // 处理树节点选择
   const onSelect = (selectedKeysValue: React.Key[]) => {
     setSelectedKeys(selectedKeysValue);
   };
@@ -255,6 +180,93 @@ const PermissionManagement: React.FC = () => {
   useEffect(() => {
     loadPermissions();
   }, []);
+
+  // 表格列配置
+  const columns: ColumnsType<Permission> = [
+    {
+      title: '权限名称',
+      dataIndex: 'name',
+      key: 'name',
+      render: (text: string, record: Permission) => (
+        <Space>
+          {record.icon && <span className="anticon">{record.icon}</span>}
+          <span>{text}</span>
+        </Space>
+      ),
+    },
+    {
+      title: '权限代码',
+      dataIndex: 'code',
+      key: 'code',
+    },
+    {
+      title: '权限类型',
+      dataIndex: 'type',
+      key: 'type',
+      render: (type: string) => {
+        const typeMap: Record<string, { text: string; color: string }> = {
+          menu: { text: '菜单', color: 'blue' },
+          button: { text: '按钮', color: 'green' },
+          api: { text: '接口', color: 'orange' },
+        };
+        const typeInfo = typeMap[type] || { text: type, color: 'default' };
+        return <Tag color={typeInfo.color}>{typeInfo.text}</Tag>;
+      },
+    },
+    {
+      title: '状态',
+      dataIndex: 'status',
+      key: 'status',
+      render: (status: 'active' | 'inactive') => (
+        <Switch
+          checked={status === 'active'}
+          checkedChildren="启用"
+          unCheckedChildren="禁用"
+          disabled
+        />
+      ),
+    },
+    {
+      title: '排序',
+      dataIndex: 'sort',
+      key: 'sort',
+    },
+    {
+      title: '操作',
+      key: 'action',
+      width: 200,
+      render: (_text: any, record: Permission) => (
+        <Space size="middle">
+          <Button
+            type="link"
+            icon={<EyeOutlined />}
+            onClick={() => handleView(record)}
+          >
+            查看
+          </Button>
+          <Button
+            type="link"
+            icon={<EditOutlined />}
+            onClick={() => handleEdit(record)}
+          >
+            编辑
+          </Button>
+          <Popconfirm
+            title="确定要删除这个权限吗？"
+            onConfirm={() => handleDelete(record.id)}
+            okText="确定"
+            cancelText="取消"
+          >
+            <Button type="link" icon={<DeleteOutlined />} danger>
+              删除
+            </Button>
+          </Popconfirm>
+        </Space>
+      ),
+    },
+  ];
+
+  const permissionTree = buildPermissionTree(permissions);
 
   return (
     <div className={styles.container}>
@@ -267,67 +279,68 @@ const PermissionManagement: React.FC = () => {
         </div>
 
         <div className={styles.content}>
-          <div className={styles.treeSection}>
-            <h3>权限树</h3>
-            <Tree
-              className={styles.tree}
-              showLine
-              switcherIcon={<div />}
-              expandedKeys={expandedKeys}
-              selectedKeys={selectedKeys}
-              autoExpandParent={autoExpandParent}
-              onExpand={onExpand}
-              onSelect={onSelect}
-              treeData={buildTreeData(permissions)}
-            />
-          </div>
+          <Tree
+            className={styles.tree}
+            showLine
+            showIcon
+            expandedKeys={expandedKeys}
+            selectedKeys={selectedKeys}
+            onExpand={onExpand}
+            onSelect={onSelect}
+            autoExpandParent={autoExpandParent}
+            treeData={permissionTree}
+          >
+            {renderTreeNodes(permissionTree)}
+          </Tree>
 
-          <div className={styles.tableSection}>
-            <h3>权限列表</h3>
-            <Table
-              columns={columns}
-              dataSource={permissions}
-              loading={loading}
-              rowKey="id"
-              pagination={false}
-              scroll={{ x: 1000 }}
-            />
-          </div>
+          <Table
+            className={styles.table}
+            columns={columns}
+            dataSource={permissions}
+            rowKey="id"
+            loading={loading}
+            pagination={false}
+          />
         </div>
       </Card>
 
       <Modal
-        title={`${modalMode === 'create' ? '新建' : modalMode === 'edit' ? '编辑' : '查看'}权限`}
+        title={modalMode === 'create' ? '新建权限' : modalMode === 'edit' ? '编辑权限' : '查看权限'}
         open={modalVisible}
-        onCancel={() => setModalVisible(false)}
-        footer={null}
-        width={600}
+        onCancel={() => {
+          setModalVisible(false);
+          form.resetFields();
+        }}
+        onOk={() => form.submit()}
+        okText={modalMode === 'view' ? '关闭' : '确定'}
+        cancelText="取消"
+        okButtonProps={modalMode === 'view' ? { style: { display: 'none' } } : {}}
       >
         <Form
           form={form}
           layout="vertical"
-          onFinish={handleSubmit}
+          onFinish={handleFinish}
           disabled={modalMode === 'view'}
         >
           <Form.Item
-            label="权限名称"
             name="name"
+            label="权限名称"
             rules={[{ required: true, message: '请输入权限名称' }]}
           >
             <Input placeholder="请输入权限名称" />
           </Form.Item>
 
           <Form.Item
-            label="权限编码"
             name="code"
-            rules={[{ required: true, message: '请输入权限编码' }]}
+            label="权限代码"
+            rules={[{ required: true, message: '请输入权限代码' }]}
           >
-            <Input placeholder="请输入权限编码" />
+            <Input placeholder="请输入权限代码" />
           </Form.Item>
 
           <Form.Item
-            label="权限类型"
             name="type"
+            label="权限类型"
             rules={[{ required: true, message: '请选择权限类型' }]}
           >
             <Select placeholder="请选择权限类型">
@@ -338,56 +351,67 @@ const PermissionManagement: React.FC = () => {
           </Form.Item>
 
           <Form.Item
-            label="父级权限"
-            name="parent_id"
+            name="parentId"
+            label="上级权限"
           >
-            <TreeSelect
-              placeholder="请选择父级权限"
-              treeData={buildTreeData(permissions)}
-              treeDefaultExpandAll
+            <Select
+              placeholder="请选择上级权限"
               allowClear
-            />
+            >
+              {permissions
+                .filter(item => item.type === 'menu')
+                .map(item => (
+                  <Select.Option key={item.id} value={item.id}>
+                    {item.name}
+                  </Select.Option>
+                ))}
+            </Select>
           </Form.Item>
 
           <Form.Item
-            label="状态"
-            name="status"
-            initialValue={1}
+            name="path"
+            label="路由路径"
           >
-            <Switch
-              checkedChildren="启用"
-              unCheckedChildren="禁用"
-              defaultChecked
-            />
+            <Input placeholder="请输入路由路径" />
           </Form.Item>
 
           <Form.Item
-            label="排序"
+            name="component"
+            label="组件路径"
+          >
+            <Input placeholder="请输入组件路径" />
+          </Form.Item>
+
+          <Form.Item
+            name="icon"
+            label="图标"
+          >
+            <Input placeholder="请输入图标名称" />
+          </Form.Item>
+
+          <Form.Item
             name="sort"
+            label="排序"
             initialValue={0}
           >
-            <InputNumber min={0} />
+            <Input type="number" placeholder="请输入排序值" />
           </Form.Item>
 
           <Form.Item
-            label="描述"
-            name="description"
+            name="status"
+            label="状态"
+            initialValue="active"
+            valuePropName="checked"
           >
-            <TextArea placeholder="请输入描述" rows={3} />
+            <Switch checkedChildren="启用" unCheckedChildren="禁用" />
           </Form.Item>
 
-          {modalMode !== 'view' && (
-            <Form.Item>
-              <Space>
-                <Button type="primary" htmlType="submit">
-                  {modalMode === 'create' ? '创建' : '更新'}
-                </Button>
-                <Button htmlType="button" onClick={() => setModalVisible(false)}>
-                  取消
-                </Button>
-              </Space>
-            </Form.Item>
-          )}
+          <Form.Item
+            name="description"
+            label="描述"
+          >
+            <Input.TextArea placeholder="请输入描述" rows={3} />
+          </Form.Item>
         </Form>
       </Modal>
     </div>

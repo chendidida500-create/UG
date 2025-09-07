@@ -23,7 +23,7 @@ import {
   Select,
   Space,
   Table,
-  Tooltip,
+  Tooltip
 } from 'antd';
 import type { ColumnsType, TableProps } from 'antd/es/table';
 import { useEffect, useRef, useState } from 'react';
@@ -146,7 +146,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
     if (config.columns) {
       const settings: Record<string, boolean> = {};
       config.columns.forEach(col => {
-        settings[col.key] = true;
+        settings[col.key as string] = true;
       });
       setColumnSettings(settings);
     }
@@ -158,7 +158,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
 
     // 基础列
     config.columns?.forEach(col => {
-      if (!columnSettings[col.key]) return;
+      if (!columnSettings[col.key as string]) return;
 
       const column: any = {
         title: col.title,
@@ -315,7 +315,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
   // 重置搜索
   const handleReset = () => {
     setSearchParams({});
-    searchFormRef.current?.resetFields();
+    // searchFormRef.current?.resetFields();
     onSearch?.({
       current: 1,
       pageSize: pagination?.pageSize || 20,
