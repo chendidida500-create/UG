@@ -52,7 +52,7 @@ function testTypeCompatibility() {
     id: '1',
     username: 'test',
     email: 'test@example.com',
-    status: 1,
+    status: 1 as 0 | 1, // 明确指定类型
     created_at: '2023-01-01T00:00:00.000Z',
     updated_at: '2023-01-01T00:00:00.000Z',
     roles: [],
@@ -65,3 +65,4 @@ function testTypeCompatibility() {
 }
 
 export { testAccessModel, testTypeCompatibility, testUser };
+

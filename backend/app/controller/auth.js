@@ -26,12 +26,12 @@ class AuthController extends BaseController {
 
     try {
       // 调用认证服务进行登录
-      const result = await ctx.service.auth.login(username, password, remember);
+      const loginResult = await ctx.service.auth.login(username, password, remember);
 
       // 更新用户最后登录时间
-      await ctx.service.user.updateLastLoginTime(result.user.id);
+      await ctx.service.user.updateLastLoginTime(loginResult.user.id);
 
-      ctx.success(result, '登录成功');
+      ctx.success(loginResult, '登录成功');
     } catch (error) {
       ctx.logger.error('Login failed:', error);
       ctx.error(error.message, 'LOGIN_FAILED', 401);
@@ -97,9 +97,9 @@ class AuthController extends BaseController {
 
     try {
       // 调用认证服务刷新Token
-      const result = await ctx.service.auth.refreshToken(refreshToken);
+      const refreshTokenResult = await ctx.service.auth.refreshToken(refreshToken);
 
-      ctx.success(result, 'Token刷新成功');
+      ctx.success(refreshTokenResult, 'Token刷新成功');
     } catch (error) {
       ctx.logger.error('Token refresh failed:', error);
       ctx.error(error.message, 'TOKEN_REFRESH_FAILED', 401);

@@ -1,44 +1,28 @@
-import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
-import React from 'react';
-import styles from './index.module.less';
-
-// 自定义加载图标
-const antIcon = <LoadingOutlined className={styles.loadingIcon} spin />;
+import './index.less';
 
 interface LoadingProps {
+  spinning?: boolean;
   tip?: string;
   size?: 'small' | 'default' | 'large';
-  spinning?: boolean;
-  children?: React.ReactNode;
-  className?: string;
+  fullscreen?: boolean;
 }
 
-// 通用加载组件，用于路由懒加载和数据加载
 const Loading: React.FC<LoadingProps> = ({
+  spinning = true,
   tip = '加载中...',
   size = 'default',
-  spinning = true,
-  children,
-  className,
+  fullscreen = false,
 }) => {
-  if (children) {
+  if (fullscreen) {
     return (
-      <Spin indicator={antIcon} spinning={spinning} tip={tip} size={size}>
-        {children}
-      </Spin>
+      <div className="loading-fullscreen">
+        <Spin spinning={spinning} tip={tip} size={size} />
+      </div>
     );
   }
 
-  const containerClass = className
-    ? `${styles.loadingContainer} ${className}`
-    : styles.loadingContainer;
-
-  return (
-    <div className={containerClass}>
-      <Spin indicator={antIcon} spinning={spinning} tip={tip} size={size} />
-    </div>
-  );
+  return <Spin spinning={spinning} tip={tip} size={size} />;
 };
 
 export default Loading;

@@ -315,3 +315,7 @@ export default function useUserModel() {
     checkEmail,
   };
 }
+
+export type UserModelState = ReturnType<typeof useUserModel>;
+
+export default useUserModel;

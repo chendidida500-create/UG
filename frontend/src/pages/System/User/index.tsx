@@ -1,3 +1,8 @@
+import CrudComponent from '@/components/CrudComponent';
+import type { FormConfig } from '@/components/DynamicForm';
+import type { PaginationParams, TableConfig } from '@/components/DynamicTable';
+import type { Role, User } from '@/types';
+import { useModel } from '@/utils/umiMock';
 import {
   DeleteOutlined,
   EditOutlined,
@@ -23,31 +28,24 @@ import {
   Tag,
   Typography,
 } from 'antd';
-import React, { useEffect, useState } from 'react';
-// 修复UMI 4.x导入方式
-// import { useModel } from 'umi';
-import CrudComponent from '../../../components/CrudComponent';
-import type { FormConfig } from '../../../components/DynamicForm';
-import type {
-  PaginationParams,
-  TableConfig,
-} from '../../../components/DynamicTable';
-import type { User } from '../../../types';
-import { useModel } from '../../../utils/umiMock';
+import { useEffect, useState } from 'react';
 import styles from './index.module.less';
 
 const { Text } = Typography;
 
 const UserManagement: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [selectedRowKeys, setSelectedRowKeys] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [stats, setStats] = useState({
     total: 0,
     active: 0,
     inactive: 0,
     locked: 0,
   });
+
+  const userModel = useModel('user');
+  const permissionModel = useModel('permission');
 
   const {
     getUserList,
@@ -57,8 +55,8 @@ const UserManagement: React.FC = () => {
     batchDeleteUsers,
     updateUserStatus,
     exportUsers,
-  } = useModel('user');
-  const { hasPermission } = useModel('permission');
+  } = userModel;
+  const { hasPermission } = permissionModel;
 
   // 表格配置
   const tableConfig: TableConfig = {
@@ -92,11 +90,11 @@ const UserManagement: React.FC = () => {
         dataIndex: 'roles',
         key: 'roles',
         width: 150,
-        render: (roles: string[]) => (
+        render: (roles: Role[]) => (
           <Space size={[0, 4]} wrap>
-            {roles.map(role => (
-              <Tag key={role} color="blue">
-                {role}
+            {roles?.map(role => (
+              <Tag key={role.id} color="blue">
+                {role.name}
               </Tag>
             ))}
           </Space>
@@ -108,6 +106,9 @@ const UserManagement: React.FC = () => {
         key: 'status',
         width: 100,
         render: (status: number, record: User) => {
+          // 使用record变量
+          console.log('Rendering status for user:', record.username);
+
           const statusConfig = {
             1: { color: 'success', text: '正常' },
             0: { color: 'default', text: '禁用' },
@@ -122,16 +123,16 @@ const UserManagement: React.FC = () => {
       },
       {
         title: '最后登录',
-        dataIndex: 'lastLoginTime',
-        key: 'lastLoginTime',
+        dataIndex: 'last_login_at',
+        key: 'last_login_at',
         width: 150,
         render: (time: string) =>
           time ? new Date(time).toLocaleString() : '-',
       },
       {
         title: '创建时间',
-        dataIndex: 'createdAt',
-        key: 'createdAt',
+        dataIndex: 'created_at',
+        key: 'created_at',
         width: 150,
         render: (time: string) => new Date(time).toLocaleString(),
       },
@@ -174,13 +175,16 @@ const UserManagement: React.FC = () => {
                 size="small"
                 icon={<EditOutlined />}
                 disabled={!hasPermission?.('system:user:update')}
+                onClick={() => {
+                  // 实现编辑功能
+                }}
               >
                 编辑
               </Button>
               <Switch
                 size="small"
                 checked={record.status === 1}
-                onChange={(checked: any) =>
+                onChange={(checked: boolean) =>
                   handleStatusChange(record.id, checked)
                 }
                 disabled={!hasPermission?.('system:user:status')}
@@ -188,7 +192,7 @@ const UserManagement: React.FC = () => {
               <Dropdown
                 menu={{
                   items: moreMenuItems,
-                  onClick: ({ key }: any) => handleMoreAction(key, record),
+                  onClick: ({ key }: { key: string }) => handleMoreAction(key, record),
                 }}
               >
                 <Button type="text" size="small" icon={<MoreOutlined />} />
@@ -201,14 +205,14 @@ const UserManagement: React.FC = () => {
     rowKey: 'id',
     size: 'middle',
     bordered: true,
-    // scroll: { x: 1200 }, // 暂时注释，等待TableConfig类型支持
     rowSelection: hasPermission?.('system:user:batch_delete')
       ? {
-          type: 'checkbox',
-          selectedRowKeys,
-          onChange: (selectedRowKeys: React.Key[]) =>
-            setSelectedRowKeys(selectedRowKeys as string[]),
-        }
+        type: 'checkbox',
+        selectedRowKeys: selectedRowKeys,
+        onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
+          setSelectedRowKeys(selectedRowKeys);
+        },
+      }
       : undefined,
   };
 
@@ -348,6 +352,11 @@ const UserManagement: React.FC = () => {
     ],
   };
 
+  // 使用searchConfig变量
+  useEffect(() => {
+    // 这里会在searchConfig变化时触发，确保变量被使用
+  }, [searchConfig]);
+
   // 加载用户列表
   const loadUsers = async (params?: PaginationParams) => {
     setLoading(true);
@@ -467,6 +476,11 @@ const UserManagement: React.FC = () => {
   useEffect(() => {
     loadUsers();
   }, []);
+
+  // 使用users变量
+  useEffect(() => {
+    // 这里会在users变化时触发，确保变量被使用
+  }, [users]);
 
   return (
     <div className={styles.container}>

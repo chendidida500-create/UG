@@ -1,15 +1,17 @@
 import { Spin } from 'antd';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import styles from './AuthWrapper.module.less';
 // 修复UMI 4.x导入方式
 // import { Outlet, useLocation, useModel, useNavigate } from 'umi';
+import { useModel } from '@/utils/umiMock';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { useModel } from '../utils/umiMock';
 
 const AuthWrapper: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { currentUser, loading, checkAuth } = useModel('auth');
+
+  const authModel = useModel('auth');
+  const { currentUser, loading, checkAuth } = authModel;
 
   useEffect(() => {
     checkAuth?.();

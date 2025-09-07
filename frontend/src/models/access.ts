@@ -254,3 +254,7 @@ export default function useAccessModel() {
     getButtonPermissions,
   };
 }
+
+export type AccessModelState = ReturnType<typeof useAccessModel>;
+
+export default useAccessModel;

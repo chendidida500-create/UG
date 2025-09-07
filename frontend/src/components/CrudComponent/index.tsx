@@ -1,5 +1,5 @@
 import { Modal, message } from 'antd';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { FormConfig, PaginationParams, TableConfig } from '../../types';
 import DynamicForm, { type DynamicFormRef } from '../DynamicForm';
 import DynamicTable from '../DynamicTable';
@@ -75,23 +75,27 @@ const CrudComponent: React.FC<CrudComponentProps> = ({
   afterSubmit,
   extraActions,
 }) => {
-  const [dataSource, setDataSource] = useState<any[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [dataSource, setDataSource] = useState([] as Array<any>);
+  const [loading, setLoading] = useState(false as boolean);
   const [pagination, setPagination] = useState({
     current: 1,
     pageSize: 20,
     total: 0,
+  } as {
+    current: number;
+    pageSize: number;
+    total: number;
   });
-  const [searchParams, setSearchParams] = useState<PaginationParams>({});
+  const [searchParams, setSearchParams] = useState({} as PaginationParams);
 
   // 弹窗状态
-  const [modalVisible, setModalVisible] = useState(false);
-  const [modalMode, setModalMode] = useState<'create' | 'edit' | 'view'>(
-    'create'
+  const [modalVisible, setModalVisible] = useState(false as boolean);
+  const [modalMode, setModalMode] = useState(
+    'create' as 'create' | 'edit' | 'view'
   );
-  const [currentRecord, setCurrentRecord] = useState<any>(null);
+  const [currentRecord, setCurrentRecord] = useState(null as any);
 
-  const formRef = useRef<DynamicFormRef>(null);
+  const formRef = useRef(null as DynamicFormRef | null);
 
   // 加载数据
   const loadData = async (params?: PaginationParams) => {
@@ -108,7 +112,7 @@ const CrudComponent: React.FC<CrudComponentProps> = ({
 
       if (response.success) {
         setDataSource(response.data.list || []);
-        setPagination(prev => ({
+        setPagination((prev: any) => ({
           ...prev,
           total: response.data.pagination?.total || 0,
           current: response.data.pagination?.current || 1,
@@ -132,13 +136,13 @@ const CrudComponent: React.FC<CrudComponentProps> = ({
   // 搜索
   const handleSearch = (params: PaginationParams) => {
     setSearchParams(params);
-    setPagination(prev => ({ ...prev, current: 1 }));
+    setPagination((prev: any) => ({ ...prev, current: 1 }));
     loadData({ ...params, current: 1 });
   };
 
   // 分页变化
   const handlePageChange = (current: number, pageSize: number) => {
-    setPagination(prev => ({ ...prev, current, pageSize }));
+    setPagination((prev: any) => ({ ...prev, current, pageSize }));
     loadData({ ...searchParams, current, pageSize });
   };
 
@@ -263,23 +267,19 @@ const CrudComponent: React.FC<CrudComponentProps> = ({
         dataSource={dataSource}
         loading={loading}
         pagination={pagination}
-        searchConfig={{
+        searchConfig={searchConfig ? {
           keyword: {
             placeholder: `搜索${title}`,
             allowClear: true,
           },
-          filters: [
-            {
-              key: 'status',
-              label: '状态',
-              type: 'select',
-              options: [
-                { label: '启用', value: 1 },
-                { label: '禁用', value: 0 },
-              ],
-            },
-          ],
-        }}
+          filters: searchConfig.fields.map(field => ({
+            key: field.name,
+            label: field.label,
+            type: field.type as 'select' | 'date' | 'dateRange',
+            options: field.props?.options,
+            placeholder: field.props?.placeholder,
+          }))
+        } : undefined}
         actionConfig={{
           create: {
             show: hasPermission(permissions.create || 'create'),
@@ -289,6 +289,7 @@ const CrudComponent: React.FC<CrudComponentProps> = ({
             show: true,
           },
         }}
+        extraActions={extraActions}
         onSearch={handleSearch}
         onPageChange={handlePageChange}
         onRefresh={handleRefresh}

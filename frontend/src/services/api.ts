@@ -1,5 +1,5 @@
 // 修复UMI 4.x导入方式
-import { request } from 'umi';
+import { typedRequest as request } from '../utils/request';
 // // 使用模拟的request
 // const request = async <T = any>(url: string, options?: any): Promise<T> => {
 //   // 模拟请求实现，实际应用中需要正确的实现

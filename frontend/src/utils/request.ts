@@ -65,10 +65,10 @@ request.interceptors.request.use((url: any, options: any) => {
 
 // 响应拦截器
 request.interceptors.response.use(async (response: any, options: any) => {
-  const data = await response.clone().json();
+  const responseData = await response.clone().json();
 
   // 处理token过期
-  if (data.code === 401 && data.message === 'Token expired') {
+  if (responseData.code === 401 && responseData.message === 'Token expired') {
     try {
       // 尝试刷新token
       const refreshToken = localStorage.getItem('refreshToken');
@@ -111,15 +111,23 @@ request.interceptors.response.use(async (response: any, options: any) => {
   }
 
   // 处理业务错误
-  if (!data.success && data.code !== 200) {
-    const error: any = new Error(data.message || '请求失败');
+  if (!responseData.success && responseData.code !== 200) {
+    const error: any = new Error(responseData.message || '请求失败');
     error.name = 'BusinessError';
-    (error as any).code = data.code;
+    (error as any).code = responseData.code;
     throw error;
   }
 
   return response;
 });
+
+// 添加泛型支持的请求函数
+export const typedRequest = async <T = any>(
+  url: string,
+  options?: any
+): Promise<T> => {
+  return request(url, options);
+};
 
 // 文件上传请求
 export const uploadRequest = (
@@ -198,30 +206,8 @@ export const downloadFile = async (url: string, filename?: string) => {
     document.body.removeChild(link);
 
     window.URL.revokeObjectURL(downloadUrl);
-
-    return true;
-  } catch (error: any) {
-    message.error(error.message || '下载失败');
-    throw error;
-  }
-};
-
-// 批量请求
-export const batchRequest = async (
-  requests: Array<{ url: string; options?: any }>
-) => {
-  try {
-    const promises = requests.map(({ url, options }) => request(url, options));
-    const responses = await Promise.allSettled(promises);
-
-    return responses.map((response, index) => ({
-      ...requests[index],
-      success: response.status === 'fulfilled',
-      data: response.status === 'fulfilled' ? response.value : null,
-      error: response.status === 'rejected' ? response.reason : null,
-    }));
   } catch (error) {
-    console.error('批量请求失败:', error);
+    message.error('文件下载失败');
     throw error;
   }
 };

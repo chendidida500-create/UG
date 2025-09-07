@@ -25,6 +25,8 @@
     "lint": "pnpm lint:backend & pnpm lint:frontend",
     "lint:backend": "cd backend && pnpm lint",
     "lint:frontend": "cd frontend && pnpm lint",
+    "lint:fix": "pnpm lint:backend -- --fix & pnpm lint:frontend -- --fix",
+    "fix-ts": "cd backend && ..\\scripts\\fix-tsconfig.bat",
     "clean": "pnpm clean:backend & pnpm clean:frontend",
     "clean:backend": "cd backend && rimraf node_modules",
     "clean:frontend": "cd frontend && rimraf node_modules",

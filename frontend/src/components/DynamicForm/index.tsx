@@ -1,34 +1,6 @@
-import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
-import {
-  Button,
-  Card,
-  Cascader,
-  Checkbox,
-  Col,
-  DatePicker,
-  Divider,
-  Form,
-  Input,
-  InputNumber,
-  message,
-  Radio,
-  Rate,
-  Row,
-  Select,
-  Slider,
-  Space,
-  Switch,
-  TimePicker,
-  TreeSelect,
-  Upload,
-} from 'antd';
+import { Button, Card, Cascader, Checkbox, Col, DatePicker, Form, Input, InputNumber, Radio, Rate, Row, Select, Slider, Space, Switch, TreeSelect, Upload } from 'antd';
 import type { FormInstance } from 'antd/es/form';
-import React, {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useState,
-} from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import type { FormConfig } from '../../types';
 
 // 导出类型供其他组件使用

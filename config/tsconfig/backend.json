@@ -2,7 +2,9 @@
   "extends": "./base.json",
   "compilerOptions": {
     "target": "es2020",
-    "lib": ["es2020"],
+    "lib": [
+      "es2020"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -10,26 +12,40 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "Node16",
-    "moduleResolution": "Node16",
+    "module": "esnext",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "declaration": false,
     "sourceMap": true,
     "outDir": "./dist",
-    "rootDir": ".",
+    "rootDir": "../..",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
-      "@/app/*": ["./app/*"],
-      "@/config/*": ["./config/*"],
-      "@/database/*": ["./database/*"]
+      "@/*": [
+        "./*"
+      ],
+      "@/app/*": [
+        "./app/*"
+      ],
+      "@/config/*": [
+        "./config/*"
+      ],
+      "@/database/*": [
+        "./database/*"
+      ]
     },
     // 添加类型定义路径配置
-    "typeRoots": ["../node_modules/@types", "./node_modules/@types"]
+    "typeRoots": [
+      "../node_modules/@types",
+      "./node_modules/@types"
+    ]
   },
-  "include": ["**/*.ts", "**/*.js"],
+  "include": [
+    "**/*.ts",
+    "**/*.js"
+  ],
   "exclude": [
     "node_modules",
     "dist",

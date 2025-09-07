@@ -273,3 +273,7 @@ export default function usePermissionModel() {
     filterMenuByPermission,
   };
 }
+
+export type PermissionModelState = ReturnType<typeof usePermissionModel>;
+
+export default usePermissionModel;

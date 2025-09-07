@@ -1,26 +1,25 @@
-import { Button } from 'antd';
-import Result from 'antd/es/result';
-import React from 'react';
-// 修复UMI 4.x导入方式
-import { history } from 'umi';
-// import { history } from '../../utils/umiMock';
-import styles from './index.module.less';
+import { Button, Result } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
-const NotFound: React.FC = () => {
+const NotFoundPage: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleBackHome = () => {
+    navigate('/');
+  };
+
   return (
-    <div className={styles.container}>
-      <Result
-        status="404"
-        title="404"
-        subTitle="抱歉，您访问的页面不存在。"
-        extra={
-          <Button type="primary" onClick={() => history.push('/dashboard')}>
-            返回首页
-          </Button>
-        }
-      />
-    </div>
+    <Result
+      status="404"
+      title="404"
+      subTitle="抱歉，您访问的页面不存在。"
+      extra={
+        <Button type="primary" onClick={handleBackHome}>
+          返回首页
+        </Button>
+      }
+    />
   );
 };
 
-export default NotFound;
+export default NotFoundPage;

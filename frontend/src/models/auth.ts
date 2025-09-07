@@ -4,6 +4,8 @@ import { useCallback, useState } from 'react';
 import { history, request } from 'umi';
 import type { LoginParams, RegisterParams, User } from '../types';
 
+export type AuthModelState = ReturnType<typeof useAuthModel>;
+
 export default function useAuthModel() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);

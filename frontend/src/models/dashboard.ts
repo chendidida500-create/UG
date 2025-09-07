@@ -64,6 +64,8 @@ interface ChartData {
   }>;
 }
 
+export type DashboardModelState = ReturnType<typeof useDashboardModel>;
+
 export default function useDashboardModel() {
   const [stats, setStats] = useState<DashboardStats>({
     users: { total: 0, active: 0, growth: 0 },

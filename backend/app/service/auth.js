@@ -129,10 +129,10 @@ class AuthService extends BaseService {
     }
 
     // 移除敏感信息
-    const result = user.toJSON();
-    delete result.password;
+    const registeredUser = user.toJSON();
+    delete registeredUser.password;
 
-    return result;
+    return registeredUser;
   }
 
   /**

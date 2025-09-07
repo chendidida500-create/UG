@@ -5,7 +5,7 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "es6"
+      "es2020"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -14,8 +14,8 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "node16",
-    "moduleResolution": "node16",
+    "module": "esnext",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -47,30 +47,24 @@
       "./node_modules/@types",
       "./types"
     ],
-    // 添加特定模块的类型解析配置
-    "types": [
-      "node",
-      "react",
-      "react-dom",
-      "accepts",
-      "body-parser",
-      "connect",
-      "content-disposition",
-      "cookies",
-      "depd",
-      "express",
-      "express-serve-static-core",
-      "http-assert",
-      "http-errors",
-      "keygrip",
-      "mime",
-      "qs",
-      "range-parser",
-      "send",
-      "serve-static"
-    ],
+    // 清空 types 数组，让 TypeScript 自动解析类型
+    "types": [],
     // 忽略 moduleResolution=node10 的弃用警告
-    "ignoreDeprecations": "6.0"
+    "ignoreDeprecations": "5.0",
+    // 更严格的类型检查
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+    "useUnknownInCatchVariables": true
   },
   "include": [
     "**/*.ts",

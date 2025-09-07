@@ -28,7 +28,7 @@ import {
   Tree,
   Typography,
 } from 'antd';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './index.module.less';
 
 const { Text } = Typography;
@@ -57,9 +57,9 @@ interface Permission {
 const RoleManagement: React.FC = () => {
   const [roles, setRoles] = useState<Role[]>([]);
   const [permissions, setPermissions] = useState<Permission[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [selectedRowKeys, setSelectedRowKeys] = useState<string[]>([]);
-  const [permissionModalVisible, setPermissionModalVisible] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
+  const [permissionModalVisible, setPermissionModalVisible] = useState<boolean>(false);
   const [currentRole, setCurrentRole] = useState<Role | null>(null);
   const [selectedPermissions, setSelectedPermissions] = useState<string[]>([]);
   const [stats, setStats] = useState({
@@ -68,6 +68,9 @@ const RoleManagement: React.FC = () => {
     inactive: 0,
     avgPermissions: 0,
   });
+
+  const roleModel = useModel('role');
+  const permissionModel = useModel('permission');
 
   const {
     getRoleList,
@@ -79,8 +82,8 @@ const RoleManagement: React.FC = () => {
     getRolePermissions,
     updateRolePermissions,
     getAllPermissions,
-  } = useModel('role');
-  const { hasPermission } = useModel('permission');
+  } = roleModel;
+  const { hasPermission } = permissionModel;
 
   // 表格配置
   const tableConfig: TableConfig = {
@@ -226,13 +229,13 @@ const RoleManagement: React.FC = () => {
     scroll: { x: 1000 },
     rowSelection: hasPermission?.('system:role:batch_delete')
       ? {
-          selectedRowKeys,
-          onChange: (selectedKeys: React.Key[]) =>
-            setSelectedRowKeys(selectedKeys as string[]),
-          getCheckboxProps: (record: Role) => ({
-            disabled: record.userCount > 0, // 有用户的角色不能删除
-          }),
-        }
+        selectedRowKeys,
+        onChange: (selectedKeys: React.Key[]) =>
+          setSelectedRowKeys(selectedKeys as string[]),
+        getCheckboxProps: (record: Role) => ({
+          disabled: record.userCount > 0, // 有用户的角色不能删除
+        }),
+      }
       : undefined,
   };
 
@@ -361,9 +364,9 @@ const RoleManagement: React.FC = () => {
       avgPermissions:
         data.length > 0
           ? Math.round(
-              data.reduce((sum, r) => sum + r.permissions.length, 0) /
-                data.length
-            )
+            data.reduce((sum, r) => sum + r.permissions.length, 0) /
+            data.length
+          )
           : 0,
     };
     setStats(stats);

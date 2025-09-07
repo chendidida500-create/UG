@@ -1,22 +1,33 @@
-import React from 'react';
+import logo from '@/assets/logo.png';
+import { Layout, theme } from 'antd';
 import styles from './index.module.less';
-// 修复UMI 4.x导入方式
-import { Outlet } from 'umi';
-// 使用React Router的Outlet
-// import { Outlet } from 'react-router-dom';
-// // 使用简单的div作为Outlet的替代
-// const Outlet = () => <div>内容区域</div>;
 
-const AuthLayout: React.FC = () => {
+const { Header, Content } = Layout;
+
+interface AuthLayoutProps {
+  children: React.ReactNode;
+}
+
+const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
+
   return (
-    <div className={styles.container}>
-      <div className={styles.content}>
-        <Outlet />
-      </div>
-      <div className={styles.footer}>
-        <p>UG管理系统 &copy; 2025</p>
-      </div>
-    </div>
+    <Layout className={styles.layout}>
+      <Header className={styles.header}>
+        <div className={styles.logo}>
+          <img src={logo} alt="Logo" />
+          <h1>UG管理系统</h1>
+        </div>
+      </Header>
+      <Content
+        className={styles.content}
+        style={{ background: colorBgContainer }}
+      >
+        <div className={styles.container}>{children}</div>
+      </Content>
+    </Layout>
   );
 };
 

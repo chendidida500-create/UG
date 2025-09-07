@@ -3,13 +3,44 @@
   "compilerOptions": {
     // 覆盖 baseUrl 为当前目录
     "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@/components/*": [
+        "src/components/*"
+      ],
+      "@/pages/*": [
+        "src/pages/*"
+      ],
+      "@/services/*": [
+        "src/services/*"
+      ],
+      "@/utils/*": [
+        "src/utils/*"
+      ],
+      "@/models/*": [
+        "src/models/*"
+      ],
+      "@/types": [
+        "src/types/index.ts"
+      ],
+      "@/types/*": [
+        "src/types/*"
+      ],
+      "@/styles/*": [
+        "src/styles/*"
+      ]
+    },
     // 配置类型定义路径，确保能解析根目录和当前项目的类型定义
     "typeRoots": [
       "./node_modules/@types",
       "../node_modules/@types"
     ],
     // 清空 types 数组，让 TypeScript 自动解析类型
-    "types": []
+    "types": [],
+    // 添加jsx-runtime支持
+    "jsx": "react-jsx"
   },
   "include": [
     "src/**/*",

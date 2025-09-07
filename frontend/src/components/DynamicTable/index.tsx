@@ -26,7 +26,7 @@ import {
   Tooltip,
 } from 'antd';
 import type { ColumnsType, TableProps } from 'antd/es/table';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { PaginationParams, TableConfig } from '../../types';
 
 // 导出类型供其他组件使用
@@ -66,7 +66,7 @@ interface DynamicTableProps {
       options?: Array<{ label: string; value: any }>;
       placeholder?: string;
     }>;
-  };
+  } | undefined;
 
   // 操作配置
   actionConfig?: {
@@ -95,6 +95,9 @@ interface DynamicTableProps {
     };
   };
 
+  // 额外操作按钮
+  extraActions?: React.ReactNode;
+
   // 事件回调
   onSearch?: (params: PaginationParams) => void;
   onPageChange?: (current: number, pageSize: number) => void;
@@ -118,6 +121,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
   pagination,
   searchConfig,
   actionConfig,
+  extraActions, // 添加extraActions
   onSearch,
   onPageChange,
   onRefresh,
@@ -333,25 +337,25 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
   // 行选择配置
   const rowSelection = config.rowSelection
     ? {
-        type: config.rowSelection.type as 'checkbox' | 'radio',
-        selectedRowKeys,
-        onChange: (keys: React.Key[], selectedRows: any[]) => {
-          setSelectedRowKeys(keys);
-          config.rowSelection?.onChange?.(keys, selectedRows);
-        },
-        getCheckboxProps: config.rowSelection.getCheckboxProps,
-        onSelect: config.rowSelection.onSelect,
-        onSelectAll: config.rowSelection.onSelectAll,
-        onSelectInvert: config.rowSelection.onSelectInvert,
-        onSelectNone: config.rowSelection.onSelectNone,
-        selections: config.rowSelection.selections,
-        hideSelectAll: config.rowSelection.hideSelectAll,
-        preserveSelectedRowKeys: config.rowSelection.preserveSelectedRowKeys,
-        columnWidth: config.rowSelection.columnWidth,
-        columnTitle: config.rowSelection.columnTitle,
-        fixed: config.rowSelection.fixed,
-        renderCell: config.rowSelection.renderCell,
-      }
+      type: config.rowSelection.type as 'checkbox' | 'radio',
+      selectedRowKeys,
+      onChange: (keys: React.Key[], selectedRows: any[]) => {
+        setSelectedRowKeys(keys);
+        config.rowSelection?.onChange?.(keys, selectedRows);
+      },
+      getCheckboxProps: config.rowSelection.getCheckboxProps,
+      onSelect: config.rowSelection.onSelect,
+      onSelectAll: config.rowSelection.onSelectAll,
+      onSelectInvert: config.rowSelection.onSelectInvert,
+      onSelectNone: config.rowSelection.onSelectNone,
+      selections: config.rowSelection.selections,
+      hideSelectAll: config.rowSelection.hideSelectAll,
+      preserveSelectedRowKeys: config.rowSelection.preserveSelectedRowKeys,
+      columnWidth: config.rowSelection.columnWidth,
+      columnTitle: config.rowSelection.columnTitle,
+      fixed: config.rowSelection.fixed,
+      renderCell: config.rowSelection.renderCell,
+    }
     : undefined;
 
   // 渲染搜索表单
@@ -495,6 +499,11 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
           {actionConfig?.setting?.text || '设置'}
         </Button>
       );
+    }
+
+    // 添加额外操作按钮
+    if (extraActions) {
+      actions.push(extraActions);
     }
 
     if (actions.length === 0) return null;
