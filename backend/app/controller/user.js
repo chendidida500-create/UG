@@ -15,7 +15,10 @@ class UserController extends BaseController {
     const { ctx } = this;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:user:view');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:user:view'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -33,7 +36,11 @@ class UserController extends BaseController {
         endTime,
       });
 
-      ctx.successWithPagination(result.list, result.pagination, '获取用户列表成功');
+      ctx.successWithPagination(
+        result.list,
+        result.pagination,
+        '获取用户列表成功'
+      );
     } catch (error) {
       ctx.logger.error('Get users failed:', error);
       ctx.error(error.message, 'GET_USERS_FAILED', 500);
@@ -49,8 +56,12 @@ class UserController extends BaseController {
     const { id } = ctx.params;
 
     // 验证权限（可以查看自己的信息或有查看权限）
-    const canView = id === this.currentUserId ||
-      await ctx.service.user.hasPermission(this.currentUserId, 'system:user:view');
+    const canView =
+      id === this.currentUserId ||
+      (await ctx.service.user.hasPermission(
+        this.currentUserId,
+        'system:user:view'
+      ));
 
     if (!canView) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
@@ -84,7 +95,10 @@ class UserController extends BaseController {
     const { ctx } = this;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:user:create');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:user:create'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -119,8 +133,12 @@ class UserController extends BaseController {
     const { id } = ctx.params;
 
     // 验证权限（可以修改自己的基本信息或有更新权限）
-    const canUpdate = id === this.currentUserId ||
-      await ctx.service.user.hasPermission(this.currentUserId, 'system:user:update');
+    const canUpdate =
+      id === this.currentUserId ||
+      (await ctx.service.user.hasPermission(
+        this.currentUserId,
+        'system:user:update'
+      ));
 
     if (!canUpdate) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
@@ -162,7 +180,10 @@ class UserController extends BaseController {
     const { id } = ctx.params;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:user:delete');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:user:delete'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -192,7 +213,10 @@ class UserController extends BaseController {
     const { id } = ctx.params;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:user:update');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:user:update'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -228,7 +252,10 @@ class UserController extends BaseController {
     const { id } = ctx.params;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:user:update');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:user:update'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -301,7 +328,10 @@ class UserController extends BaseController {
     this.validate(rules);
 
     try {
-      const user = await ctx.service.user.update(this.currentUserId, ctx.request.body);
+      const user = await ctx.service.user.update(
+        this.currentUserId,
+        ctx.request.body
+      );
       ctx.success(user, '更新个人信息成功');
     } catch (error) {
       ctx.logger.error('Update profile failed:', error);
@@ -333,7 +363,11 @@ class UserController extends BaseController {
     }
 
     try {
-      await ctx.service.user.updateMyPassword(this.currentUserId, oldPassword, newPassword);
+      await ctx.service.user.updateMyPassword(
+        this.currentUserId,
+        oldPassword,
+        newPassword
+      );
       ctx.success(null, '修改密码成功');
     } catch (error) {
       ctx.logger.error('Update my password failed:', error);

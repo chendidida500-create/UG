@@ -132,24 +132,27 @@ export default function useUserModel() {
   }, []);
 
   // 重置密码
-  const resetUserPassword = useCallback(async (id: string, newPassword?: string) => {
-    try {
-      const response = await request(`/api/users/${id}/reset-password`, {
-        method: 'POST',
-        data: { newPassword },
-      });
+  const resetUserPassword = useCallback(
+    async (id: string, newPassword?: string) => {
+      try {
+        const response = await request(`/api/users/${id}/reset-password`, {
+          method: 'POST',
+          data: { newPassword },
+        });
 
-      if (response.success) {
-        message.success('密码重置成功');
-        return response.data;
-      } else {
-        throw new Error(response.message || '密码重置失败');
+        if (response.success) {
+          message.success('密码重置成功');
+          return response.data;
+        } else {
+          throw new Error(response.message || '密码重置失败');
+        }
+      } catch (error: any) {
+        message.error(error.message || '密码重置失败');
+        throw error;
       }
-    } catch (error: any) {
-      message.error(error.message || '密码重置失败');
-      throw error;
-    }
-  }, []);
+    },
+    []
+  );
 
   // 更新用户角色
   const updateUserRoles = useCallback(async (id: string, roleIds: string[]) => {
@@ -260,19 +263,22 @@ export default function useUserModel() {
   }, []);
 
   // 检查用户名是否可用
-  const checkUsername = useCallback(async (username: string, excludeId?: string) => {
-    try {
-      const response = await request('/api/users/check-username', {
-        method: 'POST',
-        data: { username, excludeId },
-      });
+  const checkUsername = useCallback(
+    async (username: string, excludeId?: string) => {
+      try {
+        const response = await request('/api/users/check-username', {
+          method: 'POST',
+          data: { username, excludeId },
+        });
 
-      return response.success ? response.data.available : false;
-    } catch (error: any) {
-      console.error('检查用户名失败:', error);
-      return false;
-    }
-  }, []);
+        return response.success ? response.data.available : false;
+      } catch (error: any) {
+        console.error('检查用户名失败:', error);
+        return false;
+      }
+    },
+    []
+  );
 
   // 检查邮箱是否可用
   const checkEmail = useCallback(async (email: string, excludeId?: string) => {

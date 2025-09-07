@@ -14,16 +14,20 @@ class UserService extends BaseService {
    */
   async findById(id) {
     const user = await this.app.model.User.findByPk(id, {
-      include: [{
-        model: this.app.model.Role,
-        as: 'roles',
-        through: { attributes: [] },
-        include: [{
-          model: this.app.model.Permission,
-          as: 'permissions',
+      include: [
+        {
+          model: this.app.model.Role,
+          as: 'roles',
           through: { attributes: [] },
-        }],
-      }],
+          include: [
+            {
+              model: this.app.model.Permission,
+              as: 'permissions',
+              through: { attributes: [] },
+            },
+          ],
+        },
+      ],
     });
 
     return user;
@@ -63,14 +67,15 @@ class UserService extends BaseService {
     }
 
     // 超级管理员拥有所有权限
-    if (user.roles.some(role => role.code === 'super_admin')) {
+    if (user.roles.some((role) => role.code === 'super_admin')) {
       return true;
     }
 
     // 检查用户角色是否包含指定权限
-    return user.roles.some(role =>
-      role.permissions?.some(permission =>
-        permission.code === permissionCode && permission.status === 1
+    return user.roles.some((role) =>
+      role.permissions?.some(
+        (permission) =>
+          permission.code === permissionCode && permission.status === 1
       )
     );
   }
@@ -87,8 +92,8 @@ class UserService extends BaseService {
       return false;
     }
 
-    return user.roles.some(role =>
-      role.code === roleCode && role.status === 1
+    return user.roles.some(
+      (role) => role.code === roleCode && role.status === 1
     );
   }
 
@@ -105,12 +110,12 @@ class UserService extends BaseService {
 
     const menuPermissions = [];
 
-    user.roles.forEach(role => {
+    user.roles.forEach((role) => {
       if (role.permissions && role.status === 1) {
-        role.permissions.forEach(permission => {
+        role.permissions.forEach((permission) => {
           if (permission.type === 'menu' && permission.status === 1) {
             // 避免重复添加
-            if (!menuPermissions.find(p => p.id === permission.id)) {
+            if (!menuPermissions.find((p) => p.id === permission.id)) {
               menuPermissions.push(permission);
             }
           }
@@ -134,9 +139,9 @@ class UserService extends BaseService {
 
     const buttonPermissions = [];
 
-    user.roles.forEach(role => {
+    user.roles.forEach((role) => {
       if (role.permissions && role.status === 1) {
-        role.permissions.forEach(permission => {
+        role.permissions.forEach((permission) => {
           if (permission.type === 'button' && permission.status === 1) {
             buttonPermissions.push(permission.code);
           }
@@ -153,7 +158,14 @@ class UserService extends BaseService {
    * @returns {Object} 创建的用户信息
    */
   async create(userData) {
-    const { username, email, password, nickname, phone, roleIds = [] } = userData;
+    const {
+      username,
+      email,
+      password,
+      nickname,
+      phone,
+      roleIds = [],
+    } = userData;
 
     // 检查用户名是否已存在
     const existingUsername = await this.app.model.User.findOne({
@@ -179,19 +191,22 @@ class UserService extends BaseService {
 
     try {
       // 创建用户
-      const user = await this.app.model.User.create({
-        id: this.generateUuid(),
-        username,
-        email,
-        password: hashedPassword,
-        nickname: nickname || username,
-        phone,
-        status: 1,
-      }, { transaction });
+      const user = await this.app.model.User.create(
+        {
+          id: this.generateUuid(),
+          username,
+          email,
+          password: hashedPassword,
+          nickname: nickname || username,
+          phone,
+          status: 1,
+        },
+        { transaction }
+      );
 
       // 分配角色
       if (roleIds.length > 0) {
-        const userRoles = roleIds.map(roleId => ({
+        const userRoles = roleIds.map((roleId) => ({
           id: this.generateUuid(),
           user_id: user.id,
           role_id: roleId,
@@ -274,7 +289,7 @@ class UserService extends BaseService {
 
         // 创建新的角色关联
         if (roleIds.length > 0) {
-          const userRoles = roleIds.map(roleId => ({
+          const userRoles = roleIds.map((roleId) => ({
             id: this.generateUuid(),
             user_id: id,
             role_id: roleId,
@@ -327,7 +342,16 @@ class UserService extends BaseService {
    * @returns {Object} 分页结果
    */
   async findAll(params) {
-    const { current, pageSize, offset, limit, keyword, status, startTime, endTime } = params;
+    const {
+      current,
+      pageSize,
+      offset,
+      limit,
+      keyword,
+      status,
+      startTime,
+      endTime,
+    } = params;
 
     // 构建查询条件
     const whereCondition = this.buildWhereCondition(
@@ -337,12 +361,14 @@ class UserService extends BaseService {
 
     const result = await this.app.model.User.findAndCountAll({
       where: whereCondition,
-      include: [{
-        model: this.app.model.Role,
-        as: 'roles',
-        through: { attributes: [] },
-        attributes: ['id', 'name', 'code'],
-      }],
+      include: [
+        {
+          model: this.app.model.Role,
+          as: 'roles',
+          through: { attributes: [] },
+          attributes: ['id', 'name', 'code'],
+        },
+      ],
       attributes: { exclude: ['password'] },
       order: [['created_at', 'DESC']],
       offset,
@@ -371,7 +397,10 @@ class UserService extends BaseService {
     await user.destroy();
 
     // 记录操作日志
-    await this.logOperation('delete', 'user', { userId: id, username: user.username });
+    await this.logOperation('delete', 'user', {
+      userId: id,
+      username: user.username,
+    });
   }
 
   /**
@@ -410,13 +439,19 @@ class UserService extends BaseService {
     }
 
     // 验证旧密码
-    const isOldPasswordValid = await this.comparePassword(oldPassword, user.password);
+    const isOldPasswordValid = await this.comparePassword(
+      oldPassword,
+      user.password
+    );
     if (!isOldPasswordValid) {
       throw new Error('旧密码错误');
     }
 
     // 检查新密码是否与旧密码相同
-    const isSamePassword = await this.comparePassword(newPassword, user.password);
+    const isSamePassword = await this.comparePassword(
+      newPassword,
+      user.password
+    );
     if (isSamePassword) {
       throw new Error('新密码不能与旧密码相同');
     }

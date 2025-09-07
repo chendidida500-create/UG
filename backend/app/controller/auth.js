@@ -55,7 +55,8 @@ class AuthController extends BaseController {
     };
     this.validate(rules);
 
-    const { username, email, password, confirmPassword, nickname } = ctx.request.body;
+    const { username, email, password, confirmPassword, nickname } =
+      ctx.request.body;
 
     // 验证密码确认
     if (password !== confirmPassword) {

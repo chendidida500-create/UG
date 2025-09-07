@@ -13,7 +13,17 @@ class PermissionService extends BaseService {
    * @returns {Object} 分页结果
    */
   async findAll(params) {
-    const { current, pageSize, offset, limit, keyword, status, type, startTime, endTime } = params;
+    const {
+      current,
+      pageSize,
+      offset,
+      limit,
+      keyword,
+      status,
+      type,
+      startTime,
+      endTime,
+    } = params;
 
     // 构建查询条件
     const whereCondition = this.buildWhereCondition(
@@ -28,12 +38,17 @@ class PermissionService extends BaseService {
 
     const result = await this.app.model.Permission.findAndCountAll({
       where: whereCondition,
-      include: [{
-        model: this.app.model.Permission,
-        as: 'parent',
-        attributes: ['id', 'name', 'code'],
-      }],
-      order: [['sort', 'ASC'], ['created_at', 'DESC']],
+      include: [
+        {
+          model: this.app.model.Permission,
+          as: 'parent',
+          attributes: ['id', 'name', 'code'],
+        },
+      ],
+      order: [
+        ['sort', 'ASC'],
+        ['created_at', 'DESC'],
+      ],
       offset,
       limit,
     });
@@ -75,8 +90,20 @@ class PermissionService extends BaseService {
   async getTree() {
     const permissions = await this.app.model.Permission.findAll({
       where: { status: 1 },
-      attributes: ['id', 'name', 'code', 'type', 'parent_id', 'path', 'icon', 'sort'],
-      order: [['sort', 'ASC'], ['created_at', 'ASC']],
+      attributes: [
+        'id',
+        'name',
+        'code',
+        'type',
+        'parent_id',
+        'path',
+        'icon',
+        'sort',
+      ],
+      order: [
+        ['sort', 'ASC'],
+        ['created_at', 'ASC'],
+      ],
     });
 
     return this.buildTree(permissions);
@@ -91,7 +118,7 @@ class PermissionService extends BaseService {
   buildTree(permissions, parentId = null) {
     const tree = [];
 
-    permissions.forEach(permission => {
+    permissions.forEach((permission) => {
       if (permission.parent_id === parentId) {
         const node = {
           ...permission.toJSON(),
@@ -116,7 +143,17 @@ class PermissionService extends BaseService {
    * @returns {Object} 创建的权限信息
    */
   async create(permissionData) {
-    const { name, code, type, parent_id, path, component, icon, sort = 0, description } = permissionData;
+    const {
+      name,
+      code,
+      type,
+      parent_id,
+      path,
+      component,
+      icon,
+      sort = 0,
+      description,
+    } = permissionData;
 
     // 检查权限编码是否已存在
     const existingPermission = await this.app.model.Permission.findOne({
@@ -128,7 +165,8 @@ class PermissionService extends BaseService {
 
     // 验证父权限是否存在
     if (parent_id) {
-      const parentPermission = await this.app.model.Permission.findByPk(parent_id);
+      const parentPermission =
+        await this.app.model.Permission.findByPk(parent_id);
       if (!parentPermission) {
         throw new Error('父权限不存在');
       }
@@ -154,7 +192,7 @@ class PermissionService extends BaseService {
       permissionId: permission.id,
       name,
       code,
-      type
+      type,
     });
 
     return permission.toJSON();
@@ -172,7 +210,18 @@ class PermissionService extends BaseService {
       throw new Error('权限不存在');
     }
 
-    const { name, code, type, parent_id, path, component, icon, sort, status, description } = permissionData;
+    const {
+      name,
+      code,
+      type,
+      parent_id,
+      path,
+      component,
+      icon,
+      sort,
+      status,
+      description,
+    } = permissionData;
 
     // 检查权限编码唯一性（如果有更新）
     if (code && code !== permission.code) {
@@ -190,7 +239,8 @@ class PermissionService extends BaseService {
         throw new Error('不能设置自己为父权限');
       }
 
-      const parentPermission = await this.app.model.Permission.findByPk(parent_id);
+      const parentPermission =
+        await this.app.model.Permission.findByPk(parent_id);
       if (!parentPermission) {
         throw new Error('父权限不存在');
       }
@@ -218,7 +268,10 @@ class PermissionService extends BaseService {
     await permission.update(updateData);
 
     // 记录操作日志
-    await this.logOperation('update', 'permission', { permissionId: id, updateData });
+    await this.logOperation('update', 'permission', {
+      permissionId: id,
+      updateData,
+    });
 
     // 获取更新后的权限信息
     const updatedPermission = await this.findById(id);
@@ -233,7 +286,7 @@ class PermissionService extends BaseService {
    */
   async checkCircularReference(currentId, parentId) {
     const children = await this.getDescendants(currentId);
-    return children.some(child => child.id === parentId);
+    return children.some((child) => child.id === parentId);
   }
 
   /**
@@ -298,7 +351,7 @@ class PermissionService extends BaseService {
       await this.logOperation('delete', 'permission', {
         permissionId: id,
         name: permission.name,
-        code: permission.code
+        code: permission.code,
       });
     } catch (error) {
       await transaction.rollback();
@@ -314,7 +367,10 @@ class PermissionService extends BaseService {
     const permissions = await this.app.model.Permission.findAll({
       where: { status: 1 },
       attributes: ['id', 'name', 'code', 'type', 'parent_id'],
-      order: [['sort', 'ASC'], ['name', 'ASC']],
+      order: [
+        ['sort', 'ASC'],
+        ['name', 'ASC'],
+      ],
     });
 
     return permissions;
@@ -332,7 +388,10 @@ class PermissionService extends BaseService {
         status: 1,
       },
       attributes: ['id', 'name', 'code', 'path', 'icon', 'sort'],
-      order: [['sort', 'ASC'], ['name', 'ASC']],
+      order: [
+        ['sort', 'ASC'],
+        ['name', 'ASC'],
+      ],
     });
 
     return permissions;

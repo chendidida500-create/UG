@@ -1,84 +1,55 @@
 [
   {
     "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
+    "methods": ["HEAD", "GET"],
     "paramNames": [],
     "path": "/api/health",
     "regexp": "/^\\/api\\/health(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "POST"
-    ],
+    "methods": ["POST"],
     "paramNames": [],
     "path": "/api/auth/login",
     "regexp": "/^\\/api\\/auth\\/login(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "POST"
-    ],
+    "methods": ["POST"],
     "paramNames": [],
     "path": "/api/auth/register",
     "regexp": "/^\\/api\\/auth\\/register(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "POST"
-    ],
+    "methods": ["POST"],
     "paramNames": [],
     "path": "/api/auth/refresh",
     "regexp": "/^\\/api\\/auth\\/refresh(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "POST"
-    ],
+    "methods": ["POST"],
     "paramNames": [],
     "path": "/api/auth/logout",
     "regexp": "/^\\/api\\/auth\\/logout(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
+    "methods": ["HEAD", "GET"],
     "paramNames": [],
     "path": "/api/users",
     "regexp": "/^\\/api\\/users(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
+    "methods": ["HEAD", "GET"],
     "paramNames": [
       {
         "name": "id",
@@ -93,27 +64,19 @@
     ],
     "path": "/api/users/:id",
     "regexp": "/^\\/api\\/users\\/((?:[^\\/]+?))(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "POST"
-    ],
+    "methods": ["POST"],
     "paramNames": [],
     "path": "/api/users",
     "regexp": "/^\\/api\\/users(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "PUT"
-    ],
+    "methods": ["PUT"],
     "paramNames": [
       {
         "name": "id",
@@ -128,15 +91,11 @@
     ],
     "path": "/api/users/:id",
     "regexp": "/^\\/api\\/users\\/((?:[^\\/]+?))(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "DELETE"
-    ],
+    "methods": ["DELETE"],
     "paramNames": [
       {
         "name": "id",
@@ -151,15 +110,11 @@
     ],
     "path": "/api/users/:id",
     "regexp": "/^\\/api\\/users\\/((?:[^\\/]+?))(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "PATCH"
-    ],
+    "methods": ["PATCH"],
     "paramNames": [
       {
         "name": "id",
@@ -174,15 +129,11 @@
     ],
     "path": "/api/users/:id/status",
     "regexp": "/^\\/api\\/users\\/((?:[^\\/]+?))\\/status(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "PATCH"
-    ],
+    "methods": ["PATCH"],
     "paramNames": [
       {
         "name": "id",
@@ -197,29 +148,19 @@
     ],
     "path": "/api/users/:id/password",
     "regexp": "/^\\/api\\/users\\/((?:[^\\/]+?))\\/password(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
+    "methods": ["HEAD", "GET"],
     "paramNames": [],
     "path": "/api/roles",
     "regexp": "/^\\/api\\/roles(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
+    "methods": ["HEAD", "GET"],
     "paramNames": [
       {
         "name": "id",
@@ -234,27 +175,19 @@
     ],
     "path": "/api/roles/:id",
     "regexp": "/^\\/api\\/roles\\/((?:[^\\/]+?))(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "POST"
-    ],
+    "methods": ["POST"],
     "paramNames": [],
     "path": "/api/roles",
     "regexp": "/^\\/api\\/roles(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "PUT"
-    ],
+    "methods": ["PUT"],
     "paramNames": [
       {
         "name": "id",
@@ -269,15 +202,11 @@
     ],
     "path": "/api/roles/:id",
     "regexp": "/^\\/api\\/roles\\/((?:[^\\/]+?))(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "DELETE"
-    ],
+    "methods": ["DELETE"],
     "paramNames": [
       {
         "name": "id",
@@ -292,16 +221,11 @@
     ],
     "path": "/api/roles/:id",
     "regexp": "/^\\/api\\/roles\\/((?:[^\\/]+?))(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
+    "methods": ["HEAD", "GET"],
     "paramNames": [
       {
         "name": "id",
@@ -316,15 +240,11 @@
     ],
     "path": "/api/roles/:id/permissions",
     "regexp": "/^\\/api\\/roles\\/((?:[^\\/]+?))\\/permissions(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "PUT"
-    ],
+    "methods": ["PUT"],
     "paramNames": [
       {
         "name": "id",
@@ -339,42 +259,27 @@
     ],
     "path": "/api/roles/:id/permissions",
     "regexp": "/^\\/api\\/roles\\/((?:[^\\/]+?))\\/permissions(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
+    "methods": ["HEAD", "GET"],
     "paramNames": [],
     "path": "/api/permissions",
     "regexp": "/^\\/api\\/permissions(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
+    "methods": ["HEAD", "GET"],
     "paramNames": [],
     "path": "/api/permissions/tree",
     "regexp": "/^\\/api\\/permissions\\/tree(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
+    "methods": ["HEAD", "GET"],
     "paramNames": [
       {
         "name": "id",
@@ -389,27 +294,19 @@
     ],
     "path": "/api/permissions/:id",
     "regexp": "/^\\/api\\/permissions\\/((?:[^\\/]+?))(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "POST"
-    ],
+    "methods": ["POST"],
     "paramNames": [],
     "path": "/api/permissions",
     "regexp": "/^\\/api\\/permissions(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "PUT"
-    ],
+    "methods": ["PUT"],
     "paramNames": [
       {
         "name": "id",
@@ -424,15 +321,11 @@
     ],
     "path": "/api/permissions/:id",
     "regexp": "/^\\/api\\/permissions\\/((?:[^\\/]+?))(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "DELETE"
-    ],
+    "methods": ["DELETE"],
     "paramNames": [
       {
         "name": "id",
@@ -447,45 +340,30 @@
     ],
     "path": "/api/permissions/:id",
     "regexp": "/^\\/api\\/permissions\\/((?:[^\\/]+?))(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
+    "methods": ["HEAD", "GET"],
     "paramNames": [],
     "path": "/api/me",
     "regexp": "/^\\/api\\/me(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "PUT"
-    ],
+    "methods": ["PUT"],
     "paramNames": [],
     "path": "/api/me",
     "regexp": "/^\\/api\\/me(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   },
   {
     "name": null,
-    "methods": [
-      "PUT"
-    ],
+    "methods": ["PUT"],
     "paramNames": [],
     "path": "/api/me/password",
     "regexp": "/^\\/api\\/me\\/password(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
+    "stack": ["wrappedController"]
   }
 ]

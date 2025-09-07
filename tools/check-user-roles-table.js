@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 const appInfo = {
   name: 'ug-backend',
   baseDir: '../backend',
-  env: 'local'
+  env: 'local',
 };
 
 // 加载项目配置文件
@@ -32,10 +32,11 @@ async function checkUserRolesTable() {
     // 检查user_roles表结构
     const [columns] = await sequelize.query('SHOW COLUMNS FROM user_roles');
     console.log('user_roles table structure:');
-    columns.forEach(c => {
-      console.log(`- ${c.Field}: ${c.Type} ${c.Null === 'YES' ? 'NULL' : 'NOT NULL'} ${c.Key} ${c.Default ? 'DEFAULT ' + c.Default : ''}`);
+    columns.forEach((c) => {
+      console.log(
+        `- ${c.Field}: ${c.Type} ${c.Null === 'YES' ? 'NULL' : 'NOT NULL'} ${c.Key} ${c.Default ? 'DEFAULT ' + c.Default : ''}`
+      );
     });
-
   } catch (error) {
     console.error('Error:', error.message);
   } finally {

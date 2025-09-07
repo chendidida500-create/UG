@@ -22,8 +22,9 @@ export default function useAccessModel() {
 
     // 检查用户角色是否包含指定权限
     return currentUser.roles.some((role: any) =>
-      role.permissions?.some((permission: any) =>
-        permission.code === permissionCode && permission.status === 1
+      role.permissions?.some(
+        (permission: any) =>
+          permission.code === permissionCode && permission.status === 1
       )
     );
   };
@@ -44,8 +45,8 @@ export default function useAccessModel() {
       return false;
     }
 
-    return currentUser.roles.some((role: any) =>
-      role.code === roleCode && role.status === 1
+    return currentUser.roles.some(
+      (role: any) => role.code === roleCode && role.status === 1
     );
   };
 
@@ -77,19 +78,30 @@ export default function useAccessModel() {
     },
 
     canViewUsers: (): boolean => {
-      return hasPermission('system:user:view') || accessPermissions.canManageUsers();
+      return (
+        hasPermission('system:user:view') || accessPermissions.canManageUsers()
+      );
     },
 
     canCreateUser: (): boolean => {
-      return hasPermission('system:user:create') || accessPermissions.canManageUsers();
+      return (
+        hasPermission('system:user:create') ||
+        accessPermissions.canManageUsers()
+      );
     },
 
     canUpdateUser: (): boolean => {
-      return hasPermission('system:user:update') || accessPermissions.canManageUsers();
+      return (
+        hasPermission('system:user:update') ||
+        accessPermissions.canManageUsers()
+      );
     },
 
     canDeleteUser: (): boolean => {
-      return hasPermission('system:user:delete') || accessPermissions.canManageUsers();
+      return (
+        hasPermission('system:user:delete') ||
+        accessPermissions.canManageUsers()
+      );
     },
 
     // 角色管理权限
@@ -98,40 +110,65 @@ export default function useAccessModel() {
     },
 
     canViewRoles: (): boolean => {
-      return hasPermission('system:role:view') || accessPermissions.canManageRoles();
+      return (
+        hasPermission('system:role:view') || accessPermissions.canManageRoles()
+      );
     },
 
     canCreateRole: (): boolean => {
-      return hasPermission('system:role:create') || accessPermissions.canManageRoles();
+      return (
+        hasPermission('system:role:create') ||
+        accessPermissions.canManageRoles()
+      );
     },
 
     canUpdateRole: (): boolean => {
-      return hasPermission('system:role:update') || accessPermissions.canManageRoles();
+      return (
+        hasPermission('system:role:update') ||
+        accessPermissions.canManageRoles()
+      );
     },
 
     canDeleteRole: (): boolean => {
-      return hasPermission('system:role:delete') || accessPermissions.canManageRoles();
+      return (
+        hasPermission('system:role:delete') ||
+        accessPermissions.canManageRoles()
+      );
     },
 
     // 权限管理权限
     canManagePermissions: (): boolean => {
-      return hasPermission('system:permission:manage') || hasRole('super_admin');
+      return (
+        hasPermission('system:permission:manage') || hasRole('super_admin')
+      );
     },
 
     canViewPermissions: (): boolean => {
-      return hasPermission('system:permission:view') || accessPermissions.canManagePermissions();
+      return (
+        hasPermission('system:permission:view') ||
+        accessPermissions.canManagePermissions()
+      );
     },
 
     canCreatePermission: (): boolean => {
-      return hasPermission('system:permission:create') || accessPermissions.canManagePermissions();
+      return (
+        hasPermission('system:permission:create') ||
+        accessPermissions.canManagePermissions()
+      );
     },
 
     canUpdatePermission: (): boolean => {
-      return hasPermission('system:permission:update') || accessPermissions.canManagePermissions();
+      return (
+        hasPermission('system:permission:update') ||
+        accessPermissions.canManagePermissions()
+      );
     },
 
     canDeletePermission: (): boolean => {
-      return hasPermission('system:permission:delete') || accessPermissions.canManagePermissions();
+      return (
+        hasPermission('system:permission:delete') ||
+        accessPermissions.canManagePermissions()
+      );
     },
 
     // 个人中心权限

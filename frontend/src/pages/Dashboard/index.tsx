@@ -7,7 +7,7 @@ import {
   SafetyCertificateOutlined,
   TeamOutlined,
   UnlockOutlined,
-  UserOutlined
+  UserOutlined,
 } from '@ant-design/icons';
 import {
   Avatar,
@@ -23,7 +23,7 @@ import {
   Statistic,
   Table,
   Tag,
-  Typography
+  Typography,
 } from 'antd';
 import * as echarts from 'echarts';
 import React, { useEffect, useState } from 'react';
@@ -91,7 +91,8 @@ const Dashboard: React.FC = () => {
 
   const { currentUser } = useModel('auth');
   const dashboardModel = useModel('dashboard');
-  const { getDashboardStats, getRecentActivities, getSystemHealth } = dashboardModel || {};
+  const { getDashboardStats, getRecentActivities, getSystemHealth } =
+    dashboardModel || {};
 
   // 加载仪表盘数据
   const loadDashboardData = async () => {
@@ -131,57 +132,65 @@ const Dashboard: React.FC = () => {
   // 初始化图表
   const initCharts = () => {
     // 用户增长趋势图
-    const userTrendChart = echarts.init(document.getElementById('userTrendChart'));
+    const userTrendChart = echarts.init(
+      document.getElementById('userTrendChart')
+    );
     const userTrendOption = {
       title: {
         text: '用户增长趋势',
-        textStyle: { fontSize: 16 }
+        textStyle: { fontSize: 16 },
       },
       tooltip: { trigger: 'axis' },
       xAxis: {
         type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
       },
       yAxis: { type: 'value' },
-      series: [{
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'line',
-        smooth: true,
-        areaStyle: {
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-            { offset: 0, color: 'rgba(24, 144, 255, 0.3)' },
-            { offset: 1, color: 'rgba(24, 144, 255, 0.1)' }
-          ])
-        }
-      }]
+      series: [
+        {
+          data: [120, 200, 150, 80, 70, 110, 130],
+          type: 'line',
+          smooth: true,
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: 'rgba(24, 144, 255, 0.3)' },
+              { offset: 1, color: 'rgba(24, 144, 255, 0.1)' },
+            ]),
+          },
+        },
+      ],
     };
     userTrendChart.setOption(userTrendOption);
 
     // 活动分布图
-    const activityChart = echarts.init(document.getElementById('activityChart'));
+    const activityChart = echarts.init(
+      document.getElementById('activityChart')
+    );
     const activityOption = {
       title: {
         text: '活动分布',
-        textStyle: { fontSize: 16 }
+        textStyle: { fontSize: 16 },
       },
       tooltip: { trigger: 'item' },
-      series: [{
-        type: 'pie',
-        radius: ['40%', '70%'],
-        data: [
-          { value: 35, name: '用户管理' },
-          { value: 25, name: '角色管理' },
-          { value: 20, name: '权限设置' },
-          { value: 20, name: '系统配置' }
-        ],
-        emphasis: {
-          itemStyle: {
-            shadowBlur: 10,
-            shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.5)'
-          }
-        }
-      }]
+      series: [
+        {
+          type: 'pie',
+          radius: ['40%', '70%'],
+          data: [
+            { value: 35, name: '用户管理' },
+            { value: 25, name: '角色管理' },
+            { value: 20, name: '权限设置' },
+            { value: 20, name: '系统配置' },
+          ],
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)',
+            },
+          },
+        },
+      ],
     };
     activityChart.setOption(activityOption);
 
@@ -326,11 +335,7 @@ const Dashboard: React.FC = () => {
                 title="活跃用户"
                 value={stats.users.active}
                 prefix={<UnlockOutlined />}
-                suffix={
-                  <Text type="secondary">
-                    /{stats.users.total}
-                  </Text>
-                }
+                suffix={<Text type="secondary">/{stats.users.total}</Text>}
                 valueStyle={{ color: '#52c41a' }}
               />
               <Progress

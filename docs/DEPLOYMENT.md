@@ -7,6 +7,7 @@
 🎉 **100% 完成** - UG管理系统已完全开发完成，包含完整的前后端功能，可直接投入生产使用。
 
 ## 目录
+
 1. [系统要求](#系统要求)
 2. [开发环境部署](#开发环境部署)
 3. [生产环境部署](#生产环境部署)
@@ -18,18 +19,21 @@
 ## 系统要求
 
 ### 最低配置
+
 - **CPU**: 2核心
 - **内存**: 4GB RAM
 - **存储**: 20GB 可用空间
 - **操作系统**: Ubuntu 20.04 LTS / CentOS 8 / Docker
 
 ### 推荐配置
+
 - **CPU**: 4核心以上
 - **内存**: 8GB RAM以上
 - **存储**: 50GB SSD
 - **网络**: 100Mbps带宽
 
 ### 软件依赖
+
 - **Node.js**: 16.x 或更高版本
 - **MySQL**: 8.0 或更高版本
 - **Redis**: 6.x 或更高版本
@@ -39,6 +43,7 @@
 ## 开发环境部署
 
 ### 1. 环境准备
+
 ```bash
 # 安装 Node.js
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
@@ -59,6 +64,7 @@ redis-server --version
 ```
 
 ### 2. 项目部署
+
 ```bash
 # 克隆项目
 git clone <repository-url>
@@ -80,6 +86,7 @@ npm run dev
 ```
 
 ### 3. 访问地址
+
 - 前端: http://localhost:8000
 - 后端: http://localhost:7001
 
@@ -88,6 +95,7 @@ npm run dev
 ### 方式一: 手动部署
 
 #### 1. 系统环境配置
+
 ```bash
 # 更新系统
 sudo apt update && sudo apt upgrade -y
@@ -103,6 +111,7 @@ sudo ufw enable
 ```
 
 #### 2. 数据库配置
+
 ```bash
 # MySQL 安全配置
 sudo mysql_secure_installation
@@ -121,6 +130,7 @@ sudo systemctl start redis-server
 ```
 
 #### 3. 应用部署
+
 ```bash
 # 创建应用目录
 sudo mkdir -p /opt/ug-management
@@ -155,6 +165,7 @@ sudo systemctl restart nginx
 ```
 
 ### 方式二: 使用自动化脚本
+
 ```bash
 # 下载并执行部署脚本
 wget https://raw.githubusercontent.com/your-repo/ug-management/main/scripts/deploy-production.sh
@@ -165,6 +176,7 @@ sudo ./deploy-production.sh
 ## Docker部署
 
 ### 1. 快速启动
+
 ```bash
 # 克隆项目
 git clone <repository-url>
@@ -181,6 +193,7 @@ docker-compose logs -f
 ```
 
 ### 2. 生产环境Docker部署
+
 ```bash
 # 使用生产环境配置
 docker-compose -f docker-compose.prod.yml up -d
@@ -191,6 +204,7 @@ docker-compose exec backend npm run db:seed
 ```
 
 ### 3. 常用Docker命令
+
 ```bash
 # 停止服务
 docker-compose down
@@ -213,6 +227,7 @@ docker-compose exec frontend sh
 ## 监控配置
 
 ### 1. Prometheus + Grafana
+
 ```bash
 # 启动监控服务
 docker-compose up -d prometheus grafana
@@ -223,6 +238,7 @@ docker-compose up -d prometheus grafana
 ```
 
 ### 2. 告警配置
+
 ```bash
 # 配置邮件告警
 cp monitoring/alertmanager.yml.example monitoring/alertmanager.yml
@@ -233,6 +249,7 @@ docker-compose restart alertmanager
 ```
 
 ### 3. 日志收集 (ELK Stack)
+
 ```bash
 # 启动日志收集服务
 docker-compose up -d elasticsearch logstash kibana
@@ -246,6 +263,7 @@ docker-compose up -d elasticsearch logstash kibana
 ### 1. 日常维护任务
 
 #### 数据备份
+
 ```bash
 # 数据库备份
 docker exec ug-mysql mysqldump -u root -p ug_management > backup_$(date +%Y%m%d).sql
@@ -255,6 +273,7 @@ tar -czf uploads_backup_$(date +%Y%m%d).tar.gz /opt/ug-management/uploads
 ```
 
 #### 日志管理
+
 ```bash
 # 查看应用日志
 docker-compose logs backend
@@ -268,6 +287,7 @@ sudo logrotate -f /etc/logrotate.d/ug-management
 ```
 
 #### 性能监控
+
 ```bash
 # 系统资源监控
 htop
@@ -285,6 +305,7 @@ curl http://localhost:7001/metrics
 ### 2. 更新部署
 
 #### 应用更新
+
 ```bash
 # 拉取最新代码
 git pull origin main
@@ -303,6 +324,7 @@ docker-compose restart frontend
 ```
 
 #### 系统更新
+
 ```bash
 # 更新系统包
 sudo apt update && sudo apt upgrade -y
@@ -318,6 +340,7 @@ docker system prune -a
 ### 3. 安全维护
 
 #### SSL证书更新
+
 ```bash
 # 使用 Let's Encrypt
 sudo certbot --nginx -d yourdomain.com
@@ -328,6 +351,7 @@ sudo crontab -e
 ```
 
 #### 安全扫描
+
 ```bash
 # 漏洞扫描
 npm audit
@@ -345,6 +369,7 @@ docker scout cves ug-backend:latest
 ### 1. 常见问题
 
 #### 服务无法启动
+
 ```bash
 # 检查端口占用
 netstat -tlnp | grep :7001
@@ -360,6 +385,7 @@ tail -f /var/log/nginx/error.log
 ```
 
 #### 数据库连接问题
+
 ```bash
 # 测试数据库连接
 docker-compose exec backend npm run test:db
@@ -374,6 +400,7 @@ FLUSH PRIVILEGES;
 ```
 
 #### 内存不足
+
 ```bash
 # 检查内存使用
 free -h
@@ -389,6 +416,7 @@ docker-compose restart
 ### 2. 性能优化
 
 #### 数据库优化
+
 ```sql
 -- 查看慢查询
 SHOW VARIABLES LIKE 'slow_query_log';
@@ -403,6 +431,7 @@ CREATE INDEX idx_users_status ON users(status);
 ```
 
 #### 应用优化
+
 ```bash
 # Node.js 内存优化
 export NODE_OPTIONS="--max-old-space-size=4096"
@@ -418,6 +447,7 @@ docker-compose exec redis redis-cli CONFIG SET maxmemory-policy allkeys-lru
 ### 3. 灾难恢复
 
 #### 数据恢复
+
 ```bash
 # 恢复数据库
 docker-compose exec mysql mysql -u root -p ug_management < backup_20240906.sql
@@ -430,6 +460,7 @@ docker-compose restart
 ```
 
 #### 系统恢复
+
 ```bash
 # 完整系统重建
 sudo ./scripts/deploy-production.sh
@@ -444,10 +475,11 @@ curl -f http://localhost/api/health
 ## 联系支持
 
 如果遇到问题，请联系技术支持:
+
 - 邮箱: support@example.com
 - 文档: https://docs.example.com
 - 仓库: https://github.com/your-org/ug-management
 
 ---
 
-*本文档最后更新: 2024-09-06*
+_本文档最后更新: 2024-09-06_

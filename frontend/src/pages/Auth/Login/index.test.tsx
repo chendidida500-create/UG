@@ -29,11 +29,7 @@ jest.mock('antd', () => ({
 
 // UMI测试渲染工具
 const renderWithProviders = (ui: React.ReactElement) => {
-  return render(
-    <BrowserRouter>
-      {ui}
-    </BrowserRouter>
-  );
+  return render(<BrowserRouter>{ui}</BrowserRouter>);
 };
 
 describe('Login Component', () => {
@@ -206,7 +202,9 @@ describe('Login Component', () => {
     fireEvent.change(usernameInput, { target: { value: 'test@example.com' } });
 
     await waitFor(() => {
-      expect(screen.queryByText('请输入有效的邮箱地址')).not.toBeInTheDocument();
+      expect(
+        screen.queryByText('请输入有效的邮箱地址')
+      ).not.toBeInTheDocument();
     });
   });
 });

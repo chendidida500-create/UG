@@ -28,20 +28,24 @@ config/
 ## 配置文件继承关系
 
 ### ESLint 配置继承
+
 - 根目录 `.eslintrc.json` 继承 `config/eslint/base.json`
 - 前端 `frontend/.eslintrc.json` 继承 `config/eslint/frontend.json`
 - 后端 `backend/.eslintrc` 继承 `config/eslint/backend.json`
 
 ### Prettier 配置继承
+
 - 根目录 `.prettierrc.json` 继承 `config/prettier/base.json`
 - 前端 `frontend/.prettierrc.json` 继承 `config/prettier/frontend.json`
 
 ### TypeScript 配置继承
+
 - 根目录 `tsconfig.json` 继承 `config/tsconfig/base.json`
 - 前端 `frontend/tsconfig.json` 继承 `config/tsconfig/frontend.json`
 - 后端 `backend/tsconfig.json` 继承 `config/tsconfig/backend.json`
 
 ### cspell 配置继承
+
 - 根目录 `cspell.json` 继承 `config/cspell/base.json`
 - 前端 `frontend/cspell.json` 继承 `config/cspell/frontend.json`
 - 后端 `backend/cspell.json` 继承 `config/cspell/backend.json`

@@ -27,9 +27,12 @@ describe('test/app/service/user.test.js', () => {
       });
 
       assert(result.success === true);
-      assert(result.data.list.some(user =>
-        user.username.includes('admin') || user.email.includes('admin')
-      ));
+      assert(
+        result.data.list.some(
+          (user) =>
+            user.username.includes('admin') || user.email.includes('admin')
+        )
+      );
     });
 
     it('should filter users by status', async () => {
@@ -38,7 +41,7 @@ describe('test/app/service/user.test.js', () => {
       });
 
       assert(result.success === true);
-      assert(result.data.list.every(user => user.status === 'active'));
+      assert(result.data.list.every((user) => user.status === 'active'));
     });
   });
 
@@ -201,7 +204,10 @@ describe('test/app/service/user.test.js', () => {
     });
 
     it('should update user status successfully', async () => {
-      const result = await ctx.service.user.updateUserStatus(testUserId, 'inactive');
+      const result = await ctx.service.user.updateUserStatus(
+        testUserId,
+        'inactive'
+      );
 
       assert(result.success === true);
     });
@@ -234,14 +240,20 @@ describe('test/app/service/user.test.js', () => {
     });
 
     it('should reset password successfully', async () => {
-      const result = await ctx.service.user.resetUserPassword(testUserId, 'newpassword123');
+      const result = await ctx.service.user.resetUserPassword(
+        testUserId,
+        'newpassword123'
+      );
 
       assert(result.success === true);
     });
 
     it('should fail with non-existent user id', async () => {
       try {
-        await ctx.service.user.resetUserPassword('non-existent-id', 'newpassword123');
+        await ctx.service.user.resetUserPassword(
+          'non-existent-id',
+          'newpassword123'
+        );
         assert.fail('Should throw error for non-existent user');
       } catch (error) {
         assert(error.message.includes('用户不存在'));
@@ -261,7 +273,9 @@ describe('test/app/service/user.test.js', () => {
     });
 
     it('should return true for non-existing username', async () => {
-      const result = await ctx.service.user.checkUsername(`nonexistent_${Date.now()}`);
+      const result = await ctx.service.user.checkUsername(
+        `nonexistent_${Date.now()}`
+      );
 
       assert(result === true);
     });
@@ -275,7 +289,9 @@ describe('test/app/service/user.test.js', () => {
     });
 
     it('should return true for non-existing email', async () => {
-      const result = await ctx.service.user.checkEmail(`nonexistent_${Date.now()}@example.com`);
+      const result = await ctx.service.user.checkEmail(
+        `nonexistent_${Date.now()}@example.com`
+      );
 
       assert(result === true);
     });

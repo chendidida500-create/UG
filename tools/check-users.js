@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 const appInfo = {
   name: 'ug-backend',
   baseDir: '../backend',
-  env: 'local'
+  env: 'local',
 };
 
 // 加载项目配置文件
@@ -30,19 +30,22 @@ async function checkUsers() {
     console.log('Database connection successful!');
 
     // 查询用户数据
-    const [users] = await sequelize.query('SELECT id, username, email, status FROM users');
+    const [users] = await sequelize.query(
+      'SELECT id, username, email, status FROM users'
+    );
     console.log('Users in database:');
-    users.forEach(u => {
+    users.forEach((u) => {
       console.log(`- ${u.username} (${u.email}) - Status: ${u.status}`);
     });
 
     // 查询角色数据
-    const [roles] = await sequelize.query('SELECT id, name, code, status FROM roles');
+    const [roles] = await sequelize.query(
+      'SELECT id, name, code, status FROM roles'
+    );
     console.log('\nRoles in database:');
-    roles.forEach(r => {
+    roles.forEach((r) => {
       console.log(`- ${r.name} (${r.code}) - Status: ${r.status}`);
     });
-
   } catch (error) {
     console.error('Error:', error.message);
   } finally {

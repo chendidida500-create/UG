@@ -31,8 +31,18 @@ jest.mock('antd', () => ({
 describe('DynamicTable Component', () => {
   const mockData = [
     { id: '1', name: 'John Doe', email: 'john@example.com', status: 'active' },
-    { id: '2', name: 'Jane Smith', email: 'jane@example.com', status: 'inactive' },
-    { id: '3', name: 'Bob Johnson', email: 'bob@example.com', status: 'active' },
+    {
+      id: '2',
+      name: 'Jane Smith',
+      email: 'jane@example.com',
+      status: 'inactive',
+    },
+    {
+      id: '3',
+      name: 'Bob Johnson',
+      email: 'bob@example.com',
+      status: 'active',
+    },
   ];
 
   const mockTableConfig: TableConfig = {
@@ -55,7 +65,11 @@ describe('DynamicTable Component', () => {
         key: 'status',
         width: 100,
         render: (status: string) => (
-          <span className={status === 'active' ? 'status-active' : 'status-inactive'}>
+          <span
+            className={
+              status === 'active' ? 'status-active' : 'status-inactive'
+            }
+          >
             {status === 'active' ? '活跃' : '非活跃'}
           </span>
         ),
@@ -106,12 +120,7 @@ describe('DynamicTable Component', () => {
   });
 
   test('renders search form when searchConfig is provided', () => {
-    render(
-      <DynamicTable
-        {...defaultProps}
-        searchConfig={mockSearchConfig}
-      />
-    );
+    render(<DynamicTable {...defaultProps} searchConfig={mockSearchConfig} />);
 
     expect(screen.getByPlaceholderText('请输入姓名或邮箱')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('请选择状态')).toBeInTheDocument();
@@ -180,12 +189,7 @@ describe('DynamicTable Component', () => {
       showQuickJumper: true,
     };
 
-    render(
-      <DynamicTable
-        {...defaultProps}
-        pagination={mockPagination}
-      />
-    );
+    render(<DynamicTable {...defaultProps} pagination={mockPagination} />);
 
     expect(screen.getByText('1')).toBeInTheDocument(); // 当前页码
     expect(screen.getByText('条/页')).toBeInTheDocument(); // 每页显示条数
@@ -310,12 +314,7 @@ describe('DynamicTable Component', () => {
       scroll: { x: 800, y: 400 },
     };
 
-    render(
-      <DynamicTable
-        {...defaultProps}
-        config={responsiveConfig}
-      />
-    );
+    render(<DynamicTable {...defaultProps} config={responsiveConfig} />);
 
     // 验证表格渲染成功，不具体验证样式
     const table = screen.getByRole('table');

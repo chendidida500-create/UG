@@ -8,51 +8,48 @@ import type { UserModelState } from '@/models/user';
 
 // 模拟 useModel hook，用于类型检查
 export const useModel = <
-  T extends
-  | 'access'
-  | 'auth'
-  | 'dashboard'
-  | 'permission'
-  | 'role'
-  | 'user'
+  T extends 'access' | 'auth' | 'dashboard' | 'permission' | 'role' | 'user',
 >(
   namespace: T
 ): T extends 'access'
   ? AccessModelState
   : T extends 'auth'
-  ? AuthModelState
-  : T extends 'dashboard'
-  ? DashboardModelState
-  : T extends 'permission'
-  ? PermissionModelState
-  : T extends 'role'
-  ? RoleModelState
-  : T extends 'user'
-  ? UserModelState
-  : any => {
+    ? AuthModelState
+    : T extends 'dashboard'
+      ? DashboardModelState
+      : T extends 'permission'
+        ? PermissionModelState
+        : T extends 'role'
+          ? RoleModelState
+          : T extends 'user'
+            ? UserModelState
+            : any => {
   // 这只是一个模拟实现，实际运行时会使用 UMI 的 useModel
   return {} as any;
 };
 
 // 模拟 history 对象
 export const history = {
-  push: (path: string) => { },
-  replace: (path: string) => { },
-  go: (n: number) => { },
-  goBack: () => { },
-  goForward: () => { },
-  block: () => () => { },
+  push: (path: string) => {},
+  replace: (path: string) => {},
+  go: (n: number) => {},
+  goBack: () => {},
+  goForward: () => {},
+  block: () => () => {},
   location: {
     pathname: '',
     search: '',
     hash: '',
     state: undefined,
   },
-  listen: () => () => { },
+  listen: () => () => {},
 };
 
 // 模拟其他 UMI 导出
-export const request = async <T = any>(url: string, options?: any): Promise<T> => {
+export const request = async <T = any>(
+  url: string,
+  options?: any
+): Promise<T> => {
   return {} as T;
 };
 
@@ -64,8 +61,8 @@ export const useLocation = () => ({
   state: undefined,
 });
 
-export const useNavigate = () => (to: string) => { };
-export const useParams = <T = any>(): T => ({} as T);
-export const useSearchParams = () => [new URLSearchParams(), () => { }];
+export const useNavigate = () => (to: string) => {};
+export const useParams = <T = any>(): T => ({}) as T;
+export const useSearchParams = () => [new URLSearchParams(), () => {}];
 export const useAccess = () => ({});
 export const Access = ({ children }: { children: React.ReactNode }) => children;

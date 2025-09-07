@@ -6,9 +6,9 @@ module.exports = {
         pkg.resolutions = {};
       }
       pkg.resolutions['*'] = {
-        registry: 'https://registry.npmmirror.com/'
+        registry: 'https://registry.npmmirror.com/',
       };
       return pkg;
-    }
-  }
+    },
+  },
 };

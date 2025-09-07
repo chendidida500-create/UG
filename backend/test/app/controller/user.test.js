@@ -8,18 +8,17 @@ describe('test/app/controller/user.test.js', () => {
 
   before(async () => {
     // 获取管理员token
-    const loginResult = await app.httpRequest()
-      .post('/api/auth/login')
-      .send({
-        username: 'admin',
-        password: '123456',
-      });
+    const loginResult = await app.httpRequest().post('/api/auth/login').send({
+      username: 'admin',
+      password: '123456',
+    });
     adminToken = loginResult.body.data.token;
   });
 
   describe('GET /api/users', () => {
     it('should get user list successfully', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .get('/api/users')
         .set('Authorization', `Bearer ${adminToken}`)
         .expect(200);
@@ -30,7 +29,8 @@ describe('test/app/controller/user.test.js', () => {
     });
 
     it('should get user list with pagination', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .get('/api/users')
         .query({
           current: 1,
@@ -44,7 +44,8 @@ describe('test/app/controller/user.test.js', () => {
     });
 
     it('should search users by keyword', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .get('/api/users')
         .query({
           keyword: 'admin',
@@ -53,15 +54,16 @@ describe('test/app/controller/user.test.js', () => {
         .expect(200);
 
       assert(result.body.success === true);
-      assert(result.body.data.list.some(user =>
-        user.username.includes('admin') || user.email.includes('admin')
-      ));
+      assert(
+        result.body.data.list.some(
+          (user) =>
+            user.username.includes('admin') || user.email.includes('admin')
+        )
+      );
     });
 
     it('should fail without authorization', async () => {
-      await app.httpRequest()
-        .get('/api/users')
-        .expect(401);
+      await app.httpRequest().get('/api/users').expect(401);
     });
   });
 
@@ -70,7 +72,8 @@ describe('test/app/controller/user.test.js', () => {
       const uniqueUsername = `testuser_${Date.now()}`;
       const uniqueEmail = `test_${Date.now()}@example.com`;
 
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .post('/api/users')
         .set('Authorization', `Bearer ${adminToken}`)
         .send({
@@ -90,7 +93,8 @@ describe('test/app/controller/user.test.js', () => {
     });
 
     it('should fail with duplicate username', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .post('/api/users')
         .set('Authorization', `Bearer ${adminToken}`)
         .send({
@@ -106,7 +110,8 @@ describe('test/app/controller/user.test.js', () => {
     });
 
     it('should fail with invalid data', async () => {
-      await app.httpRequest()
+      await app
+        .httpRequest()
         .post('/api/users')
         .set('Authorization', `Bearer ${adminToken}`)
         .send({
@@ -120,7 +125,8 @@ describe('test/app/controller/user.test.js', () => {
 
   describe('GET /api/users/:id', () => {
     it('should get user detail successfully', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .get(`/api/users/${testUserId}`)
         .set('Authorization', `Bearer ${adminToken}`)
         .expect(200);
@@ -132,7 +138,8 @@ describe('test/app/controller/user.test.js', () => {
     });
 
     it('should fail with non-existent user id', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .get('/api/users/non-existent-id')
         .set('Authorization', `Bearer ${adminToken}`)
         .expect(404);
@@ -148,7 +155,8 @@ describe('test/app/controller/user.test.js', () => {
         status: 'active',
       };
 
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .put(`/api/users/${testUserId}`)
         .set('Authorization', `Bearer ${adminToken}`)
         .send(updatedData)
@@ -159,7 +167,8 @@ describe('test/app/controller/user.test.js', () => {
     });
 
     it('should fail with invalid data', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .put(`/api/users/${testUserId}`)
         .set('Authorization', `Bearer ${adminToken}`)
         .send({
@@ -173,7 +182,8 @@ describe('test/app/controller/user.test.js', () => {
 
   describe('PUT /api/users/:id/status', () => {
     it('should update user status successfully', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .put(`/api/users/${testUserId}/status`)
         .set('Authorization', `Bearer ${adminToken}`)
         .send({
@@ -185,7 +195,8 @@ describe('test/app/controller/user.test.js', () => {
     });
 
     it('should fail with invalid status', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .put(`/api/users/${testUserId}/status`)
         .set('Authorization', `Bearer ${adminToken}`)
         .send({
@@ -199,7 +210,8 @@ describe('test/app/controller/user.test.js', () => {
 
   describe('POST /api/users/:id/reset-password', () => {
     it('should reset password successfully', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .post(`/api/users/${testUserId}/reset-password`)
         .set('Authorization', `Bearer ${adminToken}`)
         .send({
@@ -213,7 +225,8 @@ describe('test/app/controller/user.test.js', () => {
 
   describe('PUT /api/users/:id/roles', () => {
     it('should update user roles successfully', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .put(`/api/users/${testUserId}/roles`)
         .set('Authorization', `Bearer ${adminToken}`)
         .send({
@@ -227,7 +240,8 @@ describe('test/app/controller/user.test.js', () => {
 
   describe('DELETE /api/users/:id', () => {
     it('should delete user successfully', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .delete(`/api/users/${testUserId}`)
         .set('Authorization', `Bearer ${adminToken}`)
         .expect(200);
@@ -236,7 +250,8 @@ describe('test/app/controller/user.test.js', () => {
     });
 
     it('should fail to delete non-existent user', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .delete('/api/users/non-existent-id')
         .set('Authorization', `Bearer ${adminToken}`)
         .expect(404);
@@ -251,7 +266,8 @@ describe('test/app/controller/user.test.js', () => {
     before(async () => {
       // 创建测试用户用于批量删除
       for (let i = 0; i < 3; i++) {
-        const result = await app.httpRequest()
+        const result = await app
+          .httpRequest()
           .post('/api/users')
           .set('Authorization', `Bearer ${adminToken}`)
           .send({
@@ -265,7 +281,8 @@ describe('test/app/controller/user.test.js', () => {
     });
 
     it('should batch delete users successfully', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .delete('/api/users/batch')
         .set('Authorization', `Bearer ${adminToken}`)
         .send({

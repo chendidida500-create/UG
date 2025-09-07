@@ -59,13 +59,16 @@ class BaseController extends Controller {
    * 健康检查
    */
   async health() {
-    this.ctx.success({
-      status: 'ok',
-      timestamp: Date.now(),
-      uptime: process.uptime(),
-      environment: this.app.config.env,
-      version: require('../../package.json').version,
-    }, 'Service is healthy');
+    this.ctx.success(
+      {
+        status: 'ok',
+        timestamp: Date.now(),
+        uptime: process.uptime(),
+        environment: this.app.config.env,
+        version: require('../../package.json').version,
+      },
+      'Service is healthy'
+    );
   }
 }
 

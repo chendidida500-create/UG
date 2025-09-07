@@ -14,10 +14,7 @@
       "genid": "<Function v4>"
     },
     "security": {
-      "domainWhiteList": [
-        "http://localhost:15000",
-        "http://127.0.0.1:15000"
-      ],
+      "domainWhiteList": ["http://localhost:15000", "http://127.0.0.1:15000"],
       "protocolWhiteList": [],
       "defaultMiddleware": "csrf,hsts,methodnoallow,noopen,nosniff,csp,xssProtection,xframe,dta",
       "csrf": {
@@ -34,13 +31,7 @@
         "supportedRequests": [
           {
             "path": {},
-            "methods": [
-              "POST",
-              "PATCH",
-              "DELETE",
-              "PUT",
-              "CONNECT"
-            ]
+            "methods": ["POST", "PATCH", "DELETE", "PUT", "CONNECT"]
           }
         ],
         "refererWhiteList": [],
@@ -100,10 +91,7 @@
     },
     "jsonp": {
       "limit": 50,
-      "callback": [
-        "_callback",
-        "callback"
-      ],
+      "callback": ["_callback", "callback"],
       "csrf": false
     },
     "onerror": {
@@ -236,10 +224,7 @@
       "widelyUndefined": true
     },
     "cors": {
-      "origin": [
-        "http://localhost:15000",
-        "http://127.0.0.1:15000"
-      ],
+      "origin": ["http://localhost:15000", "http://127.0.0.1:15000"],
       "allowMethods": "GET,HEAD,PUT,POST,DELETE,PATCH",
       "credentials": true,
       "hasCustomOriginHandler": true
@@ -432,11 +417,7 @@
       "responseTimeout": 60000
     },
     "onClientError": null,
-    "middleware": [
-      "jwt",
-      "errorHandler",
-      "jwtAuth"
-    ],
+    "middleware": ["jwt", "errorHandler", "jwtAuth"],
     "errorHandler": {
       "match": "/api"
     },
@@ -479,9 +460,7 @@
       "package": "egg-onerror",
       "name": "onerror",
       "dependencies": [],
-      "optionalDependencies": [
-        "jsonp"
-      ],
+      "optionalDependencies": ["jsonp"],
       "env": [],
       "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
       "path": "E:\\YSY\\UG\\node_modules\\egg-onerror",
@@ -519,18 +498,14 @@
       "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
       "path": "E:\\YSY\\UG\\node_modules\\egg-watcher",
       "version": "3.1.1",
-      "dependents": [
-        "development"
-      ]
+      "dependents": ["development"]
     },
     "multipart": {
       "enable": true,
       "package": "egg-multipart",
       "name": "multipart",
       "dependencies": [],
-      "optionalDependencies": [
-        "schedule"
-      ],
+      "optionalDependencies": ["schedule"],
       "env": [],
       "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
       "path": "E:\\YSY\\UG\\node_modules\\egg-multipart",
@@ -541,9 +516,7 @@
       "package": "egg-security",
       "name": "security",
       "dependencies": [],
-      "optionalDependencies": [
-        "session"
-      ],
+      "optionalDependencies": ["session"],
       "env": [],
       "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
       "path": "E:\\YSY\\UG\\node_modules\\egg-security",
@@ -553,13 +526,9 @@
       "enable": true,
       "package": "egg-development",
       "name": "development",
-      "dependencies": [
-        "watcher"
-      ],
+      "dependencies": ["watcher"],
       "optionalDependencies": [],
-      "env": [
-        "local"
-      ],
+      "env": ["local"],
       "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
       "path": "E:\\YSY\\UG\\node_modules\\egg-development",
       "version": "3.0.2"
@@ -568,9 +537,7 @@
       "enable": true,
       "package": "egg-logrotator",
       "name": "logrotator",
-      "dependencies": [
-        "schedule"
-      ],
+      "dependencies": ["schedule"],
       "optionalDependencies": [],
       "env": [],
       "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
@@ -587,9 +554,7 @@
       "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
       "path": "E:\\YSY\\UG\\node_modules\\egg-schedule",
       "version": "4.0.1",
-      "dependents": [
-        "logrotator"
-      ]
+      "dependents": ["logrotator"]
     },
     "static": {
       "enable": true,
@@ -607,9 +572,7 @@
       "package": "egg-jsonp",
       "name": "jsonp",
       "dependencies": [],
-      "optionalDependencies": [
-        "security"
-      ],
+      "optionalDependencies": ["security"],
       "env": [],
       "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
       "path": "E:\\YSY\\UG\\node_modules\\egg-jsonp",
@@ -664,9 +627,7 @@
       "package": "egg-jwt",
       "name": "jwt",
       "dependencies": [],
-      "optionalDependencies": [
-        "onerror"
-      ],
+      "optionalDependencies": ["onerror"],
       "env": [],
       "from": "E:\\YSY\\UG\\backend\\config\\plugin.js",
       "path": "E:\\YSY\\UG\\node_modules\\egg-jwt",

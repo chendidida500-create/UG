@@ -1,21 +1,9 @@
 {
-  "extends": [
-    "./base.json",
-    "eslint-config-egg"
-  ],
+  "extends": ["./base.json", "eslint-config-egg"],
   "rules": {
-    "indent": [
-      "error",
-      2
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "semi": [
-      "error",
-      "always"
-    ],
+    "indent": ["error", 2],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
     "no-console": "off",
     "no-unused-vars": [
       "error",
@@ -23,18 +11,9 @@
         "argsIgnorePattern": "^_"
       }
     ],
-    "object-curly-spacing": [
-      "error",
-      "always"
-    ],
-    "array-bracket-spacing": [
-      "error",
-      "never"
-    ],
-    "comma-dangle": [
-      "error",
-      "always-multiline"
-    ]
+    "object-curly-spacing": ["error", "always"],
+    "array-bracket-spacing": ["error", "never"],
+    "comma-dangle": ["error", "always-multiline"]
   },
   "env": {
     "node": true,

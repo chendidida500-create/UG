@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const appInfo = {
   name: 'ug-backend',
   baseDir: '../backend',
-  env: 'local'
+  env: 'local',
 };
 
 // 加载项目配置文件
@@ -31,15 +31,17 @@ async function checkUserPasswords() {
     console.log('Database connection successful!');
 
     // 查询用户密码数据
-    const [users] = await sequelize.query('SELECT username, password FROM users');
+    const [users] = await sequelize.query(
+      'SELECT username, password FROM users'
+    );
     console.log('User passwords (hashed):');
-    users.forEach(u => {
+    users.forEach((u) => {
       console.log(`- ${u.username}: ${u.password}`);
     });
 
     console.log('\nTesting password verification:');
     const testPassword = '123456';
-    const adminUser = users.find(u => u.username === 'admin');
+    const adminUser = users.find((u) => u.username === 'admin');
     if (adminUser) {
       const isMatch = await bcrypt.compare(testPassword, adminUser.password);
       console.log(`Password '123456' matches for admin: ${isMatch}`);
@@ -50,7 +52,6 @@ async function checkUserPasswords() {
       const isMatch = await bcrypt.compare(testPassword2, adminUser.password);
       console.log(`Password 'admin123456' matches for admin: ${isMatch}`);
     }
-
   } catch (error) {
     console.error('Error:', error.message);
   } finally {

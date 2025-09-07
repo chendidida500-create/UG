@@ -181,23 +181,26 @@ export default function useRoleModel() {
   }, []);
 
   // 更新角色权限
-  const updateRolePermissions = useCallback(async (id: string, permissionIds: string[]) => {
-    try {
-      const response = await request(`/api/roles/${id}/permissions`, {
-        method: 'PUT',
-        data: { permissionIds },
-      });
+  const updateRolePermissions = useCallback(
+    async (id: string, permissionIds: string[]) => {
+      try {
+        const response = await request(`/api/roles/${id}/permissions`, {
+          method: 'PUT',
+          data: { permissionIds },
+        });
 
-      if (response.success) {
-        return true;
-      } else {
-        throw new Error(response.message || '权限设置失败');
+        if (response.success) {
+          return true;
+        } else {
+          throw new Error(response.message || '权限设置失败');
+        }
+      } catch (error: any) {
+        message.error(error.message || '权限设置失败');
+        throw error;
       }
-    } catch (error: any) {
-      message.error(error.message || '权限设置失败');
-      throw error;
-    }
-  }, []);
+    },
+    []
+  );
 
   // 获取角色详情
   const getRoleDetail = useCallback(async (id: string) => {
@@ -218,24 +221,27 @@ export default function useRoleModel() {
   }, []);
 
   // 复制角色
-  const copyRole = useCallback(async (id: string, newName: string, newCode: string) => {
-    try {
-      const response = await request(`/api/roles/${id}/copy`, {
-        method: 'POST',
-        data: { name: newName, code: newCode },
-      });
+  const copyRole = useCallback(
+    async (id: string, newName: string, newCode: string) => {
+      try {
+        const response = await request(`/api/roles/${id}/copy`, {
+          method: 'POST',
+          data: { name: newName, code: newCode },
+        });
 
-      if (response.success) {
-        message.success('角色复制成功');
-        return response.data;
-      } else {
-        throw new Error(response.message || '角色复制失败');
+        if (response.success) {
+          message.success('角色复制成功');
+          return response.data;
+        } else {
+          throw new Error(response.message || '角色复制失败');
+        }
+      } catch (error: any) {
+        message.error(error.message || '角色复制失败');
+        throw error;
       }
-    } catch (error: any) {
-      message.error(error.message || '角色复制失败');
-      throw error;
-    }
-  }, []);
+    },
+    []
+  );
 
   // 获取角色统计信息
   const getRoleStats = useCallback(async () => {
@@ -256,38 +262,44 @@ export default function useRoleModel() {
   }, []);
 
   // 检查角色编码是否可用
-  const checkRoleCode = useCallback(async (code: string, excludeId?: string) => {
-    try {
-      const response = await request('/api/roles/check-code', {
-        method: 'POST',
-        data: { code, excludeId },
-      });
+  const checkRoleCode = useCallback(
+    async (code: string, excludeId?: string) => {
+      try {
+        const response = await request('/api/roles/check-code', {
+          method: 'POST',
+          data: { code, excludeId },
+        });
 
-      return response.success ? response.data.available : false;
-    } catch (error: any) {
-      console.error('检查角色编码失败:', error);
-      return false;
-    }
-  }, []);
+        return response.success ? response.data.available : false;
+      } catch (error: any) {
+        console.error('检查角色编码失败:', error);
+        return false;
+      }
+    },
+    []
+  );
 
   // 获取角色用户列表
-  const getRoleUsers = useCallback(async (id: string, params?: PaginationParams) => {
-    try {
-      const response = await request(`/api/roles/${id}/users`, {
-        method: 'GET',
-        params,
-      });
+  const getRoleUsers = useCallback(
+    async (id: string, params?: PaginationParams) => {
+      try {
+        const response = await request(`/api/roles/${id}/users`, {
+          method: 'GET',
+          params,
+        });
 
-      if (response.success) {
-        return response.data;
-      } else {
-        throw new Error(response.message || '获取角色用户失败');
+        if (response.success) {
+          return response.data;
+        } else {
+          throw new Error(response.message || '获取角色用户失败');
+        }
+      } catch (error: any) {
+        message.error(error.message || '获取角色用户失败');
+        throw error;
       }
-    } catch (error: any) {
-      message.error(error.message || '获取角色用户失败');
-      throw error;
-    }
-  }, []);
+    },
+    []
+  );
 
   // 为角色添加用户
   const addUsersToRole = useCallback(async (id: string, userIds: string[]) => {
@@ -310,24 +322,27 @@ export default function useRoleModel() {
   }, []);
 
   // 从角色移除用户
-  const removeUsersFromRole = useCallback(async (id: string, userIds: string[]) => {
-    try {
-      const response = await request(`/api/roles/${id}/users`, {
-        method: 'DELETE',
-        data: { userIds },
-      });
+  const removeUsersFromRole = useCallback(
+    async (id: string, userIds: string[]) => {
+      try {
+        const response = await request(`/api/roles/${id}/users`, {
+          method: 'DELETE',
+          data: { userIds },
+        });
 
-      if (response.success) {
-        message.success('用户移除成功');
-        return true;
-      } else {
-        throw new Error(response.message || '用户移除失败');
+        if (response.success) {
+          message.success('用户移除成功');
+          return true;
+        } else {
+          throw new Error(response.message || '用户移除失败');
+        }
+      } catch (error: any) {
+        message.error(error.message || '用户移除失败');
+        throw error;
       }
-    } catch (error: any) {
-      message.error(error.message || '用户移除失败');
-      throw error;
-    }
-  }, []);
+    },
+    []
+  );
 
   return {
     roles,

@@ -93,7 +93,10 @@ export const userFormConfig: FormConfig = {
       span: 12,
       rules: [
         { min: 3, max: 50, message: '用户名长度为3-50个字符' },
-        { pattern: /^[a-zA-Z0-9_]+$/, message: '用户名只能包含字母、数字和下划线' },
+        {
+          pattern: /^[a-zA-Z0-9_]+$/,
+          message: '用户名只能包含字母、数字和下划线',
+        },
       ],
     },
     {
@@ -102,9 +105,7 @@ export const userFormConfig: FormConfig = {
       type: 'input',
       required: true,
       span: 12,
-      rules: [
-        { type: 'email', message: '请输入有效的邮箱地址' },
-      ],
+      rules: [{ type: 'email', message: '请输入有效的邮箱地址' }],
     },
     {
       key: 'nickname',
@@ -120,9 +121,7 @@ export const userFormConfig: FormConfig = {
       label: '手机号',
       type: 'input',
       span: 12,
-      rules: [
-        { pattern: /^1[3-9]\d{9}$/, message: '请输入有效的手机号码' },
-      ],
+      rules: [{ pattern: /^1[3-9]\d{9}$/, message: '请输入有效的手机号码' }],
     },
     {
       key: 'roleIds',
@@ -209,9 +208,7 @@ export const roleFormConfig: FormConfig = {
       type: 'input',
       required: true,
       span: 12,
-      rules: [
-        { min: 2, max: 50, message: '角色名称长度为2-50个字符' },
-      ],
+      rules: [{ min: 2, max: 50, message: '角色名称长度为2-50个字符' }],
     },
     {
       key: 'code',
@@ -222,7 +219,10 @@ export const roleFormConfig: FormConfig = {
       tooltip: '角色编码用于权限判断，创建后不建议修改',
       rules: [
         { min: 2, max: 50, message: '角色编码长度为2-50个字符' },
-        { pattern: /^[a-zA-Z0-9_]+$/, message: '角色编码只能包含字母、数字和下划线' },
+        {
+          pattern: /^[a-zA-Z0-9_]+$/,
+          message: '角色编码只能包含字母、数字和下划线',
+        },
       ],
     },
     {

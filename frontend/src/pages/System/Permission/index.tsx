@@ -14,7 +14,7 @@ import {
   MoreOutlined,
   PlusOutlined,
   ReloadOutlined,
-  SafetyCertificateOutlined
+  SafetyCertificateOutlined,
 } from '@ant-design/icons';
 import {
   Button,
@@ -30,7 +30,7 @@ import {
   Switch,
   Tag,
   Tree,
-  Typography
+  Typography,
 } from 'antd';
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.less';
@@ -161,11 +161,7 @@ const PermissionManagement: React.FC = () => {
           };
           const config = statusConfig[status as keyof typeof statusConfig];
 
-          return (
-            <Tag color={config.color}>
-              {config.text}
-            </Tag>
-          );
+          return <Tag color={config.color}>{config.text}</Tag>;
         },
       },
       {
@@ -187,7 +183,9 @@ const PermissionManagement: React.FC = () => {
               key: 'addChild',
               icon: <PlusOutlined />,
               label: '添加子权限',
-              disabled: !hasPermission?.('system:permission:create') || record.type !== 'menu',
+              disabled:
+                !hasPermission?.('system:permission:create') ||
+                record.type !== 'menu',
             },
             {
               key: 'copy',
@@ -203,7 +201,8 @@ const PermissionManagement: React.FC = () => {
               icon: <DeleteOutlined />,
               label: '删除权限',
               danger: true,
-              disabled: !hasPermission?.('system:permission:delete') ||
+              disabled:
+                !hasPermission?.('system:permission:delete') ||
                 (record.children && record.children.length > 0),
             },
           ];
@@ -221,13 +220,16 @@ const PermissionManagement: React.FC = () => {
               <Switch
                 size="small"
                 checked={record.status === 'active'}
-                onChange={(checked: boolean) => handleStatusChange(record.id, checked)}
+                onChange={(checked: boolean) =>
+                  handleStatusChange(record.id, checked)
+                }
                 disabled={!hasPermission?.('system:permission:status')}
               />
               <Dropdown
                 menu={{
                   items: moreMenuItems,
-                  onClick: ({ key }: { key: string }) => handleMoreAction(key, record),
+                  onClick: ({ key }: { key: string }) =>
+                    handleMoreAction(key, record),
                 }}
               >
                 <Button type="text" size="small" icon={<MoreOutlined />} />
@@ -246,13 +248,17 @@ const PermissionManagement: React.FC = () => {
       showSizeChanger: true,
       showQuickJumper: true,
     },
-    rowSelection: hasPermission && hasPermission('system:permission:batch_delete') ? {
-      selectedRowKeys,
-      onChange: (selectedKeys: React.Key[]) => setSelectedRowKeys(selectedKeys as string[]),
-      getCheckboxProps: (record: Permission) => ({
-        disabled: record.children && record.children.length > 0, // 有子权限的不能删除
-      }),
-    } : undefined,
+    rowSelection:
+      hasPermission && hasPermission('system:permission:batch_delete')
+        ? {
+            selectedRowKeys,
+            onChange: (selectedKeys: React.Key[]) =>
+              setSelectedRowKeys(selectedKeys as string[]),
+            getCheckboxProps: (record: Permission) => ({
+              disabled: record.children && record.children.length > 0, // 有子权限的不能删除
+            }),
+          }
+        : undefined,
   };
 
   // 表单配置
@@ -292,7 +298,10 @@ const PermissionManagement: React.FC = () => {
         required: true,
         rules: [
           { required: true, message: '请输入权限编码' },
-          { pattern: /^[a-z:_]+$/, message: '权限编码只能包含小写字母、冒号和下划线' },
+          {
+            pattern: /^[a-z:_]+$/,
+            message: '权限编码只能包含小写字母、冒号和下划线',
+          },
         ],
         props: {
           placeholder: '请输入权限编码，如：system:user:view',
@@ -304,9 +313,7 @@ const PermissionManagement: React.FC = () => {
         label: '权限类型',
         type: 'select',
         required: true,
-        rules: [
-          { required: true, message: '请选择权限类型' },
-        ],
+        rules: [{ required: true, message: '请选择权限类型' }],
         props: {
           placeholder: '请选择权限类型',
           options: [
@@ -325,7 +332,8 @@ const PermissionManagement: React.FC = () => {
           placeholder: '请输入路径，如：/system/users',
         },
         dependencies: ['type'],
-        visible: (values: any) => values.type === 'menu' || values.type === 'api',
+        visible: (values: any) =>
+          values.type === 'menu' || values.type === 'api',
       },
       {
         key: 'component', // 添加key属性
@@ -403,12 +411,17 @@ const PermissionManagement: React.FC = () => {
       .map(permission => ({
         title: permission.name,
         value: permission.id,
-        children: permission.children ? buildTreeSelectData(permission.children) : undefined,
+        children: permission.children
+          ? buildTreeSelectData(permission.children)
+          : undefined,
       }));
   }
 
   // 构建树形数据
-  const buildTreeData = (permissions: Permission[], searchValue?: string): any[] => {
+  const buildTreeData = (
+    permissions: Permission[],
+    searchValue?: string
+  ): any[] => {
     const filterBySearch = (items: Permission[]): Permission[] => {
       if (!searchValue) return items;
 
@@ -417,8 +430,8 @@ const PermissionManagement: React.FC = () => {
           item.name.toLowerCase().includes(searchValue.toLowerCase()) ||
           item.code.toLowerCase().includes(searchValue.toLowerCase());
 
-        const hasMatchingChildren = item.children &&
-          filterBySearch(item.children).length > 0;
+        const hasMatchingChildren =
+          item.children && filterBySearch(item.children).length > 0;
 
         return matchesCurrent || hasMatchingChildren;
       });
@@ -436,13 +449,17 @@ const PermissionManagement: React.FC = () => {
             <Switch
               size="small"
               checked={permission.status === 'active'}
-              onChange={(checked: any) => handleStatusChange(permission.id, checked)}
+              onChange={(checked: any) =>
+                handleStatusChange(permission.id, checked)
+              }
             />
           </Space>
         </div>
       ),
       key: permission.id,
-      children: permission.children ? buildTreeData(permission.children, searchValue) : undefined,
+      children: permission.children
+        ? buildTreeData(permission.children, searchValue)
+        : undefined,
     }));
   };
 
@@ -453,7 +470,9 @@ const PermissionManagement: React.FC = () => {
       const result = await getPermissionList?.();
       if (result?.data) {
         // 确保数据是正确的格式
-        const permissionData = Array.isArray(result.data) ? result.data : result.data.list || [];
+        const permissionData = Array.isArray(result.data)
+          ? result.data
+          : result.data.list || [];
         setPermissions(permissionData);
         setTreeData(buildTreeData(permissionData, searchValue));
         updateStats(permissionData);
@@ -648,10 +667,7 @@ const PermissionManagement: React.FC = () => {
             >
               导出
             </Button>
-            <Button
-              icon={<ReloadOutlined />}
-              onClick={() => loadPermissions()}
-            >
+            <Button icon={<ReloadOutlined />} onClick={() => loadPermissions()}>
               刷新
             </Button>
           </Space>

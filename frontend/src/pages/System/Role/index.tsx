@@ -11,7 +11,7 @@ import {
   SafetyCertificateOutlined,
   SettingOutlined,
   TeamOutlined,
-  UserOutlined
+  UserOutlined,
 } from '@ant-design/icons';
 import {
   Button,
@@ -26,7 +26,7 @@ import {
   Switch,
   Tag,
   Tree,
-  Typography
+  Typography,
 } from 'antd';
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.less';
@@ -125,7 +125,8 @@ const RoleManagement: React.FC = () => {
         dataIndex: 'permissions',
         key: 'permissions',
         width: 100,
-        sorter: (a: Role, b: Role) => a.permissions.length - b.permissions.length,
+        sorter: (a: Role, b: Role) =>
+          a.permissions.length - b.permissions.length,
         render: (permissions: string[]) => (
           <Space>
             <SafetyCertificateOutlined />
@@ -145,11 +146,7 @@ const RoleManagement: React.FC = () => {
           };
           const config = statusConfig[status as keyof typeof statusConfig];
 
-          return (
-            <Tag color={config.color}>
-              {config.text}
-            </Tag>
-          );
+          return <Tag color={config.color}>{config.text}</Tag>;
         },
       },
       {
@@ -187,7 +184,8 @@ const RoleManagement: React.FC = () => {
               icon: <DeleteOutlined />,
               label: '删除角色',
               danger: true,
-              disabled: !hasPermission?.('system:role:delete') || record.userCount > 0,
+              disabled:
+                !hasPermission?.('system:role:delete') || record.userCount > 0,
             },
           ];
 
@@ -204,7 +202,9 @@ const RoleManagement: React.FC = () => {
               <Switch
                 size="small"
                 checked={record.status === 'active'}
-                onChange={(checked: any) => handleStatusChange(record.id, checked)}
+                onChange={(checked: any) =>
+                  handleStatusChange(record.id, checked)
+                }
                 disabled={!hasPermission?.('system:role:status')}
               />
               <Dropdown
@@ -224,13 +224,16 @@ const RoleManagement: React.FC = () => {
     size: 'middle',
     bordered: true,
     scroll: { x: 1000 },
-    rowSelection: hasPermission?.('system:role:batch_delete') ? {
-      selectedRowKeys,
-      onChange: (selectedKeys: React.Key[]) => setSelectedRowKeys(selectedKeys as string[]),
-      getCheckboxProps: (record: Role) => ({
-        disabled: record.userCount > 0, // 有用户的角色不能删除
-      }),
-    } : undefined,
+    rowSelection: hasPermission?.('system:role:batch_delete')
+      ? {
+          selectedRowKeys,
+          onChange: (selectedKeys: React.Key[]) =>
+            setSelectedRowKeys(selectedKeys as string[]),
+          getCheckboxProps: (record: Role) => ({
+            disabled: record.userCount > 0, // 有用户的角色不能删除
+          }),
+        }
+      : undefined,
   };
 
   // 表单配置
@@ -355,9 +358,13 @@ const RoleManagement: React.FC = () => {
       total: data.length,
       active: data.filter(r => r.status === 'active').length,
       inactive: data.filter(r => r.status === 'inactive').length,
-      avgPermissions: data.length > 0 ? Math.round(
-        data.reduce((sum, r) => sum + r.permissions.length, 0) / data.length
-      ) : 0,
+      avgPermissions:
+        data.length > 0
+          ? Math.round(
+              data.reduce((sum, r) => sum + r.permissions.length, 0) /
+                data.length
+            )
+          : 0,
     };
     setStats(stats);
   };
@@ -457,7 +464,9 @@ const RoleManagement: React.FC = () => {
     return permissions.map((permission: any) => ({
       title: permission.name,
       key: permission.id,
-      children: permission.children ? convertToTreeData(permission.children) : undefined,
+      children: permission.children
+        ? convertToTreeData(permission.children)
+        : undefined,
     }));
   };
 
@@ -517,7 +526,9 @@ const RoleManagement: React.FC = () => {
           formConfig={formConfig}
           searchConfig={searchConfig}
           api={{
-            list: getRoleList || (async () => ({ success: true, data: { list: [], total: 0 } })),
+            list:
+              getRoleList ||
+              (async () => ({ success: true, data: { list: [], total: 0 } })),
             create: createRole || (async () => ({ success: true, data: {} })),
             update: updateRole || (async () => ({ success: true, data: {} })),
             delete: deleteRole || (async () => ({ success: true })),
@@ -548,10 +559,7 @@ const RoleManagement: React.FC = () => {
               >
                 导出
               </Button>
-              <Button
-                icon={<ReloadOutlined />}
-                onClick={() => loadRoles()}
-              >
+              <Button icon={<ReloadOutlined />} onClick={() => loadRoles()}>
                 刷新
               </Button>
             </Space>

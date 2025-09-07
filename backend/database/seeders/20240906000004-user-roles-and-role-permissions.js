@@ -23,13 +23,19 @@ module.exports = {
 
     // 创建映射
     const userMap = {};
-    users.forEach(u => { userMap[u.username] = u.id; });
+    users.forEach((u) => {
+      userMap[u.username] = u.id;
+    });
 
     const roleMap = {};
-    roles.forEach(r => { roleMap[r.code] = r.id; });
+    roles.forEach((r) => {
+      roleMap[r.code] = r.id;
+    });
 
     const permissionMap = {};
-    permissions.forEach(p => { permissionMap[p.code] = p.id; });
+    permissions.forEach((p) => {
+      permissionMap[p.code] = p.id;
+    });
 
     // 用户角色关联数据
     const userRoles = [
@@ -45,18 +51,21 @@ module.exports = {
       },
     ];
 
-    await queryInterface.bulkInsert('user_roles', userRoles.map(ur => ({
-      ...ur,
-      created_at: new Date(),
-      updated_at: new Date(),
-    })));
+    await queryInterface.bulkInsert(
+      'user_roles',
+      userRoles.map((ur) => ({
+        ...ur,
+        created_at: new Date(),
+        updated_at: new Date(),
+      }))
+    );
 
     // 角色权限关联数据
     const rolePermissions = [];
 
     // 超级管理员拥有所有权限
     const superAdminRoleId = roleMap['super_admin'];
-    permissions.forEach(permission => {
+    permissions.forEach((permission) => {
       rolePermissions.push({
         id: uuidv4(),
         role_id: superAdminRoleId,
@@ -83,7 +92,7 @@ module.exports = {
       'profile',
     ];
 
-    adminPermissionCodes.forEach(code => {
+    adminPermissionCodes.forEach((code) => {
       if (permissionMap[code]) {
         rolePermissions.push({
           id: uuidv4(),
@@ -95,12 +104,9 @@ module.exports = {
 
     // 普通用户权限
     const userRoleId = roleMap['user'];
-    const userPermissionCodes = [
-      'dashboard',
-      'profile',
-    ];
+    const userPermissionCodes = ['dashboard', 'profile'];
 
-    userPermissionCodes.forEach(code => {
+    userPermissionCodes.forEach((code) => {
       if (permissionMap[code]) {
         rolePermissions.push({
           id: uuidv4(),
@@ -110,11 +116,14 @@ module.exports = {
       }
     });
 
-    await queryInterface.bulkInsert('role_permissions', rolePermissions.map(rp => ({
-      ...rp,
-      created_at: new Date(),
-      updated_at: new Date(),
-    })));
+    await queryInterface.bulkInsert(
+      'role_permissions',
+      rolePermissions.map((rp) => ({
+        ...rp,
+        created_at: new Date(),
+        updated_at: new Date(),
+      }))
+    );
   },
 
   down: async (queryInterface, Sequelize) => {

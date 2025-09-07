@@ -8,7 +8,7 @@ import {
   PlusOutlined,
   ReloadOutlined,
   SearchOutlined,
-  SettingOutlined
+  SettingOutlined,
 } from '@ant-design/icons';
 import {
   Button,
@@ -23,7 +23,7 @@ import {
   Select,
   Space,
   Table,
-  Tooltip
+  Tooltip,
 } from 'antd';
 import type { ColumnsType, TableProps } from 'antd/es/table';
 import React, { useEffect, useRef, useState } from 'react';
@@ -132,7 +132,9 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
 }) => {
   const [searchParams, setSearchParams] = useState<Record<string, any>>({});
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
-  const [columnSettings, setColumnSettings] = useState<Record<string, boolean>>({});
+  const [columnSettings, setColumnSettings] = useState<Record<string, boolean>>(
+    {}
+  );
   const searchFormRef = useRef<any>();
 
   // 初始化列设置
@@ -162,7 +164,11 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
         fixed: col.fixed,
         sorter: col.sorter,
         filters: col.filters,
-        render: col.render ? (typeof col.render === 'string' ? getRenderFunction(col.render) : col.render) : undefined,
+        render: col.render
+          ? typeof col.render === 'string'
+            ? getRenderFunction(col.render)
+            : col.render
+          : undefined,
       };
 
       columns.push(column);
@@ -230,8 +236,8 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
 
           // 自定义操作
           if (config.actions?.custom && config.actions.custom.length > 0) {
-            const customActions = config.actions.custom.filter(action =>
-              !action.permission || hasPermission(action.permission)
+            const customActions = config.actions.custom.filter(
+              action => !action.permission || hasPermission(action.permission)
             );
 
             if (customActions.length > 0) {
@@ -275,7 +281,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
           {status === 1 ? '启用' : '禁用'}
         </span>
       ),
-      date: (date: string) => date ? new Date(date).toLocaleString() : '-',
+      date: (date: string) => (date ? new Date(date).toLocaleString() : '-'),
       // 可以根据需要添加更多渲染函数
     };
 
@@ -313,7 +319,11 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
   };
 
   // 处理分页变化
-  const handleTableChange: TableProps<any>['onChange'] = (paginationConfig, filters, sorter) => {
+  const handleTableChange: TableProps<any>['onChange'] = (
+    paginationConfig,
+    filters,
+    sorter
+  ) => {
     const current = paginationConfig?.current || 1;
     const pageSize = paginationConfig?.pageSize || 20;
 
@@ -321,26 +331,28 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
   };
 
   // 行选择配置
-  const rowSelection = config.rowSelection ? {
-    type: config.rowSelection.type as 'checkbox' | 'radio',
-    selectedRowKeys,
-    onChange: (keys: React.Key[], selectedRows: any[]) => {
-      setSelectedRowKeys(keys);
-      config.rowSelection?.onChange?.(keys, selectedRows);
-    },
-    getCheckboxProps: config.rowSelection.getCheckboxProps,
-    onSelect: config.rowSelection.onSelect,
-    onSelectAll: config.rowSelection.onSelectAll,
-    onSelectInvert: config.rowSelection.onSelectInvert,
-    onSelectNone: config.rowSelection.onSelectNone,
-    selections: config.rowSelection.selections,
-    hideSelectAll: config.rowSelection.hideSelectAll,
-    preserveSelectedRowKeys: config.rowSelection.preserveSelectedRowKeys,
-    columnWidth: config.rowSelection.columnWidth,
-    columnTitle: config.rowSelection.columnTitle,
-    fixed: config.rowSelection.fixed,
-    renderCell: config.rowSelection.renderCell,
-  } : undefined;
+  const rowSelection = config.rowSelection
+    ? {
+        type: config.rowSelection.type as 'checkbox' | 'radio',
+        selectedRowKeys,
+        onChange: (keys: React.Key[], selectedRows: any[]) => {
+          setSelectedRowKeys(keys);
+          config.rowSelection?.onChange?.(keys, selectedRows);
+        },
+        getCheckboxProps: config.rowSelection.getCheckboxProps,
+        onSelect: config.rowSelection.onSelect,
+        onSelectAll: config.rowSelection.onSelectAll,
+        onSelectInvert: config.rowSelection.onSelectInvert,
+        onSelectNone: config.rowSelection.onSelectNone,
+        selections: config.rowSelection.selections,
+        hideSelectAll: config.rowSelection.hideSelectAll,
+        preserveSelectedRowKeys: config.rowSelection.preserveSelectedRowKeys,
+        columnWidth: config.rowSelection.columnWidth,
+        columnTitle: config.rowSelection.columnTitle,
+        fixed: config.rowSelection.fixed,
+        renderCell: config.rowSelection.renderCell,
+      }
+    : undefined;
 
   // 渲染搜索表单
   const renderSearchForm = () => {
@@ -350,64 +362,71 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
       <Card className="mb-4">
         <Row gutter={[16, 16]} ref={searchFormRef}>
           {/* 关键词搜索 */}
-          {
-            searchConfig.keyword && (
-              <Col span={6}>
-                <Input
-                  placeholder={searchConfig.keyword.placeholder || '请输入关键词'}
-                  allowClear={searchConfig.keyword.allowClear}
-                  prefix={<SearchOutlined />}
-                  value={searchParams.keyword}
-                  onChange={(e: any) => setSearchParams(prev => ({ ...prev, keyword: e.target.value }))}
-                  onPressEnter={handleSearch}
-                />
-              </Col>
-            )
-          }
+          {searchConfig.keyword && (
+            <Col span={6}>
+              <Input
+                placeholder={searchConfig.keyword.placeholder || '请输入关键词'}
+                allowClear={searchConfig.keyword.allowClear}
+                prefix={<SearchOutlined />}
+                value={searchParams.keyword}
+                onChange={(e: any) =>
+                  setSearchParams(prev => ({
+                    ...prev,
+                    keyword: e.target.value,
+                  }))
+                }
+                onPressEnter={handleSearch}
+              />
+            </Col>
+          )}
 
           {/* 自定义过滤器 */}
-          {
-            searchConfig.filters?.map(filter => (
-              <Col span={6} key={filter.key}>
-                {filter.type === 'select' && (
-                  <Select
-                    placeholder={filter.placeholder || `请选择${filter.label}`}
-                    allowClear
-                    style={{ width: '100%' }}
-                    value={searchParams[filter.key]}
-                    onChange={(value: any) => setSearchParams(prev => ({ ...prev, [filter.key]: value }))}
-                  >
-                    {filter.options?.map(option => (
-                      <Option key={option.value} value={option.value}>
-                        {option.label}
-                      </Option>
-                    ))}
-                  </Select>
-                )}
+          {searchConfig.filters?.map(filter => (
+            <Col span={6} key={filter.key}>
+              {filter.type === 'select' && (
+                <Select
+                  placeholder={filter.placeholder || `请选择${filter.label}`}
+                  allowClear
+                  style={{ width: '100%' }}
+                  value={searchParams[filter.key]}
+                  onChange={(value: any) =>
+                    setSearchParams(prev => ({ ...prev, [filter.key]: value }))
+                  }
+                >
+                  {filter.options?.map(option => (
+                    <Option key={option.value} value={option.value}>
+                      {option.label}
+                    </Option>
+                  ))}
+                </Select>
+              )}
 
-                {filter.type === 'dateRange' && (
-                  <RangePicker
-                    style={{ width: '100%' }}
-                    value={searchParams[filter.key]}
-                    onChange={(dates: any) => setSearchParams(prev => ({
+              {filter.type === 'dateRange' && (
+                <RangePicker
+                  style={{ width: '100%' }}
+                  value={searchParams[filter.key]}
+                  onChange={(dates: any) =>
+                    setSearchParams(prev => ({
                       ...prev,
-                      [filter.key]: dates
-                    }))}
-                  />
-                )}
-              </Col>
-            ))
-          }
+                      [filter.key]: dates,
+                    }))
+                  }
+                />
+              )}
+            </Col>
+          ))}
 
           {/* 搜索按钮 */}
           <Col span={6}>
             <Space>
-              <Button type="primary" icon={<SearchOutlined />} onClick={handleSearch}>
+              <Button
+                type="primary"
+                icon={<SearchOutlined />}
+                onClick={handleSearch}
+              >
                 搜索
               </Button>
-              <Button onClick={handleReset}>
-                重置
-              </Button>
+              <Button onClick={handleReset}>重置</Button>
             </Space>
           </Col>
         </Row>
@@ -420,7 +439,10 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
     const actions: React.ReactNode[] = [];
 
     // 新建按钮
-    if (actionConfig?.create?.show && hasPermission(actionConfig.create.permission || 'create')) {
+    if (
+      actionConfig?.create?.show &&
+      hasPermission(actionConfig.create.permission || 'create')
+    ) {
       actions.push(
         <Button
           key="create"
@@ -434,26 +456,24 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
     }
 
     // 导出按钮
-    if (actionConfig?.export?.show && hasPermission(actionConfig.export.permission || 'export')) {
+    if (
+      actionConfig?.export?.show &&
+      hasPermission(actionConfig.export.permission || 'export')
+    ) {
       actions.push(
-        <Button
-          key="export"
-          icon={<ExportOutlined />}
-          onClick={onExport}
-        >
+        <Button key="export" icon={<ExportOutlined />} onClick={onExport}>
           {actionConfig.export.text || '导出'}
         </Button>
       );
     }
 
     // 导入按钮
-    if (actionConfig?.import?.show && hasPermission(actionConfig.import.permission || 'import')) {
+    if (
+      actionConfig?.import?.show &&
+      hasPermission(actionConfig.import.permission || 'import')
+    ) {
       actions.push(
-        <Button
-          key="import"
-          icon={<ImportOutlined />}
-          onClick={onImport}
-        >
+        <Button key="import" icon={<ImportOutlined />} onClick={onImport}>
           {actionConfig.import.text || '导入'}
         </Button>
       );
@@ -462,11 +482,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
     // 刷新按钮
     if (actionConfig?.refresh?.show !== false) {
       actions.push(
-        <Button
-          key="refresh"
-          icon={<ReloadOutlined />}
-          onClick={onRefresh}
-        >
+        <Button key="refresh" icon={<ReloadOutlined />} onClick={onRefresh}>
           {actionConfig?.refresh?.text || '刷新'}
         </Button>
       );
@@ -475,10 +491,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
     // 设置按钮
     if (actionConfig?.setting?.show) {
       actions.push(
-        <Button
-          key="setting"
-          icon={<SettingOutlined />}
-        >
+        <Button key="setting" icon={<SettingOutlined />}>
           {actionConfig?.setting?.text || '设置'}
         </Button>
       );
@@ -489,13 +502,11 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
     return (
       <div className="mb-4 flex justify-between items-center">
         <Space>{actions}</Space>
-        {
-          selectedRowKeys.length > 0 && (
-            <div className="text-gray-500">
-              已选择 {selectedRowKeys.length} 项
-            </div>
-          )
-        }
+        {selectedRowKeys.length > 0 && (
+          <div className="text-gray-500">
+            已选择 {selectedRowKeys.length} 项
+          </div>
+        )}
       </div>
     );
   };

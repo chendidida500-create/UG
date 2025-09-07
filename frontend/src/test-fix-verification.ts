@@ -9,24 +9,28 @@ const testUser: User = {
   status: 1, // 应该是数字类型，不是字符串
   created_at: new Date().toISOString(),
   updated_at: new Date().toISOString(),
-  roles: [{
-    id: '1',
-    name: '管理员',
-    code: 'admin',
-    status: 1, // 应该是数字类型
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-    permissions: [{
+  roles: [
+    {
       id: '1',
-      name: '用户管理',
-      code: 'system:user:manage',
-      type: 'button',
-      sort: 1,
+      name: '管理员',
+      code: 'admin',
       status: 1, // 应该是数字类型
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
-    }]
-  }]
+      permissions: [
+        {
+          id: '1',
+          name: '用户管理',
+          code: 'system:user:manage',
+          type: 'button',
+          sort: 1,
+          status: 1, // 应该是数字类型
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        },
+      ],
+    },
+  ],
 };
 
 // 测试2：验证access模型中的currentUser.status访问
@@ -51,7 +55,7 @@ function testTypeCompatibility() {
     status: 1,
     created_at: '2023-01-01T00:00:00.000Z',
     updated_at: '2023-01-01T00:00:00.000Z',
-    roles: []
+    roles: [],
   };
 
   // 这应该可以正确赋值
@@ -60,7 +64,4 @@ function testTypeCompatibility() {
   return user;
 }
 
-export {
-  testAccessModel,
-  testTypeCompatibility, testUser
-};
+export { testAccessModel, testTypeCompatibility, testUser };

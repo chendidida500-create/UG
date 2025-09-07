@@ -45,7 +45,7 @@ export const authAPI = {
       ...requestConfig,
     }),
 
-  // 用户注册 - POST /api/auth/register  
+  // 用户注册 - POST /api/auth/register
   register: (params: RegisterParams) =>
     request<{ data: User }>(`${API_BASE_URL}/auth/register`, {
       method: 'POST',

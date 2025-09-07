@@ -222,7 +222,9 @@ export default function useDashboardModel() {
       // 使用模拟数据
       if (type === 'userTrend') {
         const mockData = Array.from({ length: 7 }, (_, i) => ({
-          date: new Date(Date.now() - (6 - i) * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+          date: new Date(Date.now() - (6 - i) * 24 * 60 * 60 * 1000)
+            .toISOString()
+            .split('T')[0],
           count: Math.floor(Math.random() * 100) + 50,
         }));
         setChartData(prev => ({ ...prev, userTrend: mockData }));
@@ -241,32 +243,47 @@ export default function useDashboardModel() {
   }, []);
 
   // 获取用户增长趋势
-  const getUserTrend = useCallback(async (timeRange?: string) => {
-    return getChartData('userTrend', timeRange);
-  }, [getChartData]);
+  const getUserTrend = useCallback(
+    async (timeRange?: string) => {
+      return getChartData('userTrend', timeRange);
+    },
+    [getChartData]
+  );
 
   // 获取活动分布
-  const getActivityDistribution = useCallback(async (timeRange?: string) => {
-    return getChartData('activityDistribution', timeRange);
-  }, [getChartData]);
+  const getActivityDistribution = useCallback(
+    async (timeRange?: string) => {
+      return getChartData('activityDistribution', timeRange);
+    },
+    [getChartData]
+  );
 
   // 刷新所有数据
-  const refreshAllData = useCallback(async (timeRange?: string) => {
-    setLoading(true);
-    try {
-      await Promise.all([
-        getDashboardStats(timeRange),
-        getRecentActivities(),
-        getSystemHealth(),
-        getUserTrend(timeRange),
-        getActivityDistribution(timeRange),
-      ]);
-    } catch (error) {
-      console.error('刷新数据失败:', error);
-    } finally {
-      setLoading(false);
-    }
-  }, [getDashboardStats, getRecentActivities, getSystemHealth, getUserTrend, getActivityDistribution]);
+  const refreshAllData = useCallback(
+    async (timeRange?: string) => {
+      setLoading(true);
+      try {
+        await Promise.all([
+          getDashboardStats(timeRange),
+          getRecentActivities(),
+          getSystemHealth(),
+          getUserTrend(timeRange),
+          getActivityDistribution(timeRange),
+        ]);
+      } catch (error) {
+        console.error('刷新数据失败:', error);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [
+      getDashboardStats,
+      getRecentActivities,
+      getSystemHealth,
+      getUserTrend,
+      getActivityDistribution,
+    ]
+  );
 
   // 获取系统信息
   const getSystemInfo = useCallback(async () => {
@@ -324,7 +341,10 @@ export default function useDashboardModel() {
       const url = window.URL.createObjectURL(new Blob([response]));
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', `${type}_报表_${new Date().toLocaleDateString()}.xlsx`);
+      link.setAttribute(
+        'download',
+        `${type}_报表_${new Date().toLocaleDateString()}.xlsx`
+      );
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

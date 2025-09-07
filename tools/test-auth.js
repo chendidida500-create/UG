@@ -6,10 +6,13 @@ async function testAuth() {
     console.log('Testing authentication API...');
 
     // 测试登录
-    const loginResponse = await axios.post('http://localhost:15001/api/auth/login', {
-      username: 'admin',
-      password: 'admin123'
-    });
+    const loginResponse = await axios.post(
+      'http://localhost:15001/api/auth/login',
+      {
+        username: 'admin',
+        password: 'admin123',
+      }
+    );
 
     console.log('Login response:', loginResponse.data);
 
@@ -17,16 +20,22 @@ async function testAuth() {
       const { token } = loginResponse.data.data;
 
       // 测试带token的请求
-      const protectedResponse = await axios.get('http://localhost:15001/api/users', {
-        headers: {
-          Authorization: `Bearer ${token}`
+      const protectedResponse = await axios.get(
+        'http://localhost:15001/api/users',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      });
+      );
 
       console.log('Protected resource response:', protectedResponse.data);
     }
   } catch (error) {
-    console.error('Authentication test failed:', error.response?.data || error.message);
+    console.error(
+      'Authentication test failed:',
+      error.response?.data || error.message
+    );
   }
 }
 

@@ -18,12 +18,16 @@ try {
   }
 
   // 检查当前分支
-  const branch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf-8' }).trim();
+  const branch = execSync('git rev-parse --abbrev-ref HEAD', {
+    encoding: 'utf-8',
+  }).trim();
   console.log(`当前分支: ${branch}`);
 
   // 检查是否有未提交的更改
   try {
-    execSync('git diff-index --quiet HEAD -- && git diff-files --quiet', { stdio: 'pipe' });
+    execSync('git diff-index --quiet HEAD -- && git diff-files --quiet', {
+      stdio: 'pipe',
+    });
     console.log('没有发现未提交的更改');
   } catch (error) {
     console.log('发现未提交的更改，正在自动提交...');

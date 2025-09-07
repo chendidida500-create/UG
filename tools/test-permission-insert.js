@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 const appInfo = {
   name: 'ug-backend',
   baseDir: '../backend',
-  env: 'local'
+  env: 'local',
 };
 
 // 加载项目配置文件
@@ -40,13 +40,14 @@ async function testPermissionInsert() {
     console.log('Permission insert successful!');
 
     // 查询插入的数据
-    const [results] = await sequelize.query('SELECT * FROM permissions WHERE code LIKE "test:%"');
+    const [results] = await sequelize.query(
+      'SELECT * FROM permissions WHERE code LIKE "test:%"'
+    );
     console.log('Inserted permissions:', results);
 
     // 清理测试数据
     await sequelize.query("DELETE FROM permissions WHERE code LIKE 'test:%'");
     console.log('Test data cleaned up');
-
   } catch (error) {
     console.error('Error:', error.message);
   } finally {

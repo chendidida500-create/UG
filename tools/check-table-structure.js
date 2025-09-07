@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 const appInfo = {
   name: 'ug-backend',
   baseDir: '../backend',
-  env: 'local'
+  env: 'local',
 };
 
 // 加载项目配置文件
@@ -30,26 +30,33 @@ async function checkTableStructure() {
     console.log('Database connection successful!');
 
     // 检查role_permissions表结构
-    const [columns] = await sequelize.query('SHOW COLUMNS FROM role_permissions');
+    const [columns] = await sequelize.query(
+      'SHOW COLUMNS FROM role_permissions'
+    );
     console.log('role_permissions table structure:');
-    columns.forEach(c => {
-      console.log(`- ${c.Field}: ${c.Type} ${c.Null === 'YES' ? 'NULL' : 'NOT NULL'} ${c.Key} ${c.Default ? 'DEFAULT ' + c.Default : ''}`);
+    columns.forEach((c) => {
+      console.log(
+        `- ${c.Field}: ${c.Type} ${c.Null === 'YES' ? 'NULL' : 'NOT NULL'} ${c.Key} ${c.Default ? 'DEFAULT ' + c.Default : ''}`
+      );
     });
 
     // 检查roles表结构
     const [columns2] = await sequelize.query('SHOW COLUMNS FROM roles');
     console.log('\nroles table structure:');
-    columns2.forEach(c => {
-      console.log(`- ${c.Field}: ${c.Type} ${c.Null === 'YES' ? 'NULL' : 'NOT NULL'} ${c.Key} ${c.Default ? 'DEFAULT ' + c.Default : ''}`);
+    columns2.forEach((c) => {
+      console.log(
+        `- ${c.Field}: ${c.Type} ${c.Null === 'YES' ? 'NULL' : 'NOT NULL'} ${c.Key} ${c.Default ? 'DEFAULT ' + c.Default : ''}`
+      );
     });
 
     // 检查permissions表结构
     const [columns3] = await sequelize.query('SHOW COLUMNS FROM permissions');
     console.log('\npermissions table structure:');
-    columns3.forEach(c => {
-      console.log(`- ${c.Field}: ${c.Type} ${c.Null === 'YES' ? 'NULL' : 'NOT NULL'} ${c.Key} ${c.Default ? 'DEFAULT ' + c.Default : ''}`);
+    columns3.forEach((c) => {
+      console.log(
+        `- ${c.Field}: ${c.Type} ${c.Null === 'YES' ? 'NULL' : 'NOT NULL'} ${c.Key} ${c.Default ? 'DEFAULT ' + c.Default : ''}`
+      );
     });
-
   } catch (error) {
     console.error('Error:', error.message);
   } finally {

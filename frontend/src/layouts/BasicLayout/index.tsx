@@ -8,7 +8,7 @@ import {
   SafetyCertificateOutlined,
   SettingOutlined,
   TeamOutlined,
-  UserOutlined
+  UserOutlined,
 } from '@ant-design/icons';
 import {
   Avatar,
@@ -157,7 +157,9 @@ const BasicLayout: React.FC = () => {
       key: item.key,
       icon: item.icon,
       label: item.label,
-      children: item.children ? convertToAntdMenuItems(item.children) : undefined,
+      children: item.children
+        ? convertToAntdMenuItems(item.children)
+        : undefined,
     }));
   };
 
@@ -173,7 +175,10 @@ const BasicLayout: React.FC = () => {
     const keys: string[] = [];
 
     // 查找父级菜单
-    const findParentKeys = (items: MenuItem[], targetPath: string): string[] => {
+    const findParentKeys = (
+      items: MenuItem[],
+      targetPath: string
+    ): string[] => {
       for (const item of items) {
         if (item.children) {
           if (item.children.some(child => child.path === targetPath)) {
@@ -191,7 +196,10 @@ const BasicLayout: React.FC = () => {
   // 菜单点击处理
   const handleMenuClick = ({ key }: { key: string }) => {
     // 查找菜单项
-    const findMenuItem = (items: MenuItem[], targetKey: string): MenuItem | null => {
+    const findMenuItem = (
+      items: MenuItem[],
+      targetKey: string
+    ): MenuItem | null => {
       for (const item of items) {
         if (item.key === targetKey) {
           return item;
@@ -272,7 +280,10 @@ const BasicLayout: React.FC = () => {
       currentPath += `/${segment}`;
 
       // 查找对应的菜单项
-      const findMenuByPath = (items: MenuItem[], path: string): MenuItem | null => {
+      const findMenuByPath = (
+        items: MenuItem[],
+        path: string
+      ): MenuItem | null => {
         for (const item of items) {
           if (item.path === path) {
             return item;

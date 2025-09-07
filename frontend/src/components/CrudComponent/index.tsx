@@ -86,7 +86,9 @@ const CrudComponent: React.FC<CrudComponentProps> = ({
 
   // 弹窗状态
   const [modalVisible, setModalVisible] = useState(false);
-  const [modalMode, setModalMode] = useState<'create' | 'edit' | 'view'>('create');
+  const [modalMode, setModalMode] = useState<'create' | 'edit' | 'view'>(
+    'create'
+  );
   const [currentRecord, setCurrentRecord] = useState<any>(null);
 
   const formRef = useRef<DynamicFormRef>(null);
@@ -220,7 +222,10 @@ const CrudComponent: React.FC<CrudComponentProps> = ({
   const handleSubmit = async (values: any) => {
     try {
       // 数据预处理
-      const processedValues = beforeSubmit && modalMode !== 'view' ? beforeSubmit(values, modalMode as 'create' | 'edit') : values;
+      const processedValues =
+        beforeSubmit && modalMode !== 'view'
+          ? beforeSubmit(values, modalMode as 'create' | 'edit')
+          : values;
 
       let response;
       if (modalMode === 'create') {

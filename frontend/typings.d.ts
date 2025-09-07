@@ -12,7 +12,12 @@ declare module 'umi' {
     go: (delta: number) => void;
     goBack: () => void;
     goForward: () => void;
-    block: (prompt?: boolean | string | ((location: any, action: any) => string | boolean)) => void;
+    block: (
+      prompt?:
+        | boolean
+        | string
+        | ((location: any, action: any) => string | boolean)
+    ) => void;
     location: {
       pathname: string;
       search: string;
@@ -52,7 +57,10 @@ declare module 'umi' {
 
   export const useNavigate: () => (to: string | number, options?: any) => void;
   export const useParams: <T = any>() => T;
-  export const useSearchParams: () => [URLSearchParams, (params: URLSearchParams) => void];
+  export const useSearchParams: () => [
+    URLSearchParams,
+    (params: URLSearchParams) => void,
+  ];
 }
 
 // React 类型扩展
@@ -87,13 +95,26 @@ declare global {
       displayName?: string;
     }
 
-    export interface ReactElement<P = any, T extends string | JSXElementConstructor<any> = string | JSXElementConstructor<any>> {
+    export interface ReactElement<
+      P = any,
+      T extends string | JSXElementConstructor<any> =
+        | string
+        | JSXElementConstructor<any>,
+    > {
       type: T;
       props: P;
       key: Key | null;
     }
 
-    export type ReactNode = ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined;
+    export type ReactNode =
+      | ReactElement
+      | string
+      | number
+      | ReactFragment
+      | ReactPortal
+      | boolean
+      | null
+      | undefined;
 
     export interface ReactFragment {
       [key: string]: any;
@@ -107,7 +128,9 @@ declare global {
       [key: string]: any;
     }
 
-    export type JSXElementConstructor<P> = ((props: P) => ReactElement | null) | (new (props: P) => Component<any, any>);
+    export type JSXElementConstructor<P> =
+      | ((props: P) => ReactElement | null)
+      | (new (props: P) => Component<any, any>);
     export type Key = string | number;
 
     export class Component<P = {}, S = {}> {
@@ -118,11 +141,22 @@ declare global {
     }
 
     // Hook 类型
-    export function useState<S>(initialState: S | (() => S)): [S, (value: S | ((prevState: S) => S)) => void];
-    export function useEffect(effect: () => void | (() => void), deps?: any[]): void;
+    export function useState<S>(
+      initialState: S | (() => S)
+    ): [S, (value: S | ((prevState: S) => S)) => void];
+    export function useEffect(
+      effect: () => void | (() => void),
+      deps?: any[]
+    ): void;
     export function useRef<T>(initialValue: T): { current: T };
-    export function useImperativeHandle<T>(ref: any, createHandle: () => T, deps?: any[]): void;
-    export function forwardRef<T, P = {}>(render: (props: P, ref: React.Ref<T>) => ReactElement | null): React.ForwardRefExoticComponent<P & React.RefAttributes<T>>;
+    export function useImperativeHandle<T>(
+      ref: any,
+      createHandle: () => T,
+      deps?: any[]
+    ): void;
+    export function forwardRef<T, P = {}>(
+      render: (props: P, ref: React.Ref<T>) => ReactElement | null
+    ): React.ForwardRefExoticComponent<P & React.RefAttributes<T>>;
   }
 }
 
@@ -198,4 +232,4 @@ declare global {
   type SafeString = string | null | undefined;
 }
 
-export { };
+export {};

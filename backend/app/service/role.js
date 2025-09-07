@@ -13,7 +13,16 @@ class RoleService extends BaseService {
    * @returns {Object} 分页结果
    */
   async findAll(params) {
-    const { current, pageSize, offset, limit, keyword, status, startTime, endTime } = params;
+    const {
+      current,
+      pageSize,
+      offset,
+      limit,
+      keyword,
+      status,
+      startTime,
+      endTime,
+    } = params;
 
     // 构建查询条件
     const whereCondition = this.buildWhereCondition(
@@ -23,13 +32,18 @@ class RoleService extends BaseService {
 
     const result = await this.app.model.Role.findAndCountAll({
       where: whereCondition,
-      include: [{
-        model: this.app.model.Permission,
-        as: 'permissions',
-        through: { attributes: [] },
-        attributes: ['id', 'name', 'code', 'type'],
-      }],
-      order: [['sort', 'ASC'], ['created_at', 'DESC']],
+      include: [
+        {
+          model: this.app.model.Permission,
+          as: 'permissions',
+          through: { attributes: [] },
+          attributes: ['id', 'name', 'code', 'type'],
+        },
+      ],
+      order: [
+        ['sort', 'ASC'],
+        ['created_at', 'DESC'],
+      ],
       offset,
       limit,
     });
@@ -44,12 +58,23 @@ class RoleService extends BaseService {
    */
   async findById(id) {
     const role = await this.app.model.Role.findByPk(id, {
-      include: [{
-        model: this.app.model.Permission,
-        as: 'permissions',
-        through: { attributes: [] },
-        attributes: ['id', 'name', 'code', 'type', 'parent_id', 'path', 'icon', 'sort'],
-      }],
+      include: [
+        {
+          model: this.app.model.Permission,
+          as: 'permissions',
+          through: { attributes: [] },
+          attributes: [
+            'id',
+            'name',
+            'code',
+            'type',
+            'parent_id',
+            'path',
+            'icon',
+            'sort',
+          ],
+        },
+      ],
     });
 
     return role;
@@ -76,31 +101,40 @@ class RoleService extends BaseService {
 
     try {
       // 创建角色
-      const role = await this.app.model.Role.create({
-        id: this.generateUuid(),
-        name,
-        code,
-        description,
-        status: 1,
-        is_system: 0,
-        sort: 999,
-      }, { transaction });
+      const role = await this.app.model.Role.create(
+        {
+          id: this.generateUuid(),
+          name,
+          code,
+          description,
+          status: 1,
+          is_system: 0,
+          sort: 999,
+        },
+        { transaction }
+      );
 
       // 分配权限
       if (permissionIds.length > 0) {
-        const rolePermissions = permissionIds.map(permissionId => ({
+        const rolePermissions = permissionIds.map((permissionId) => ({
           id: this.generateUuid(),
           role_id: role.id,
           permission_id: permissionId,
         }));
 
-        await this.app.model.RolePermission.bulkCreate(rolePermissions, { transaction });
+        await this.app.model.RolePermission.bulkCreate(rolePermissions, {
+          transaction,
+        });
       }
 
       await transaction.commit();
 
       // 记录操作日志
-      await this.logOperation('create', 'role', { roleId: role.id, name, code });
+      await this.logOperation('create', 'role', {
+        roleId: role.id,
+        name,
+        code,
+      });
 
       return role.toJSON();
     } catch (error) {
@@ -161,13 +195,15 @@ class RoleService extends BaseService {
 
         // 创建新的权限关联
         if (permissionIds.length > 0) {
-          const rolePermissions = permissionIds.map(permissionId => ({
+          const rolePermissions = permissionIds.map((permissionId) => ({
             id: this.generateUuid(),
             role_id: id,
             permission_id: permissionId,
           }));
 
-          await this.app.model.RolePermission.bulkCreate(rolePermissions, { transaction });
+          await this.app.model.RolePermission.bulkCreate(rolePermissions, {
+            transaction,
+          });
         }
       }
 
@@ -225,7 +261,10 @@ class RoleService extends BaseService {
       await transaction.commit();
 
       // 记录操作日志
-      await this.logOperation('delete', 'role', { roleId: id, name: role.name });
+      await this.logOperation('delete', 'role', {
+        roleId: id,
+        name: role.name,
+      });
     } catch (error) {
       await transaction.rollback();
       throw error;
@@ -239,13 +278,15 @@ class RoleService extends BaseService {
    */
   async getPermissions(roleId) {
     const role = await this.app.model.Role.findByPk(roleId, {
-      include: [{
-        model: this.app.model.Permission,
-        as: 'permissions',
-        through: { attributes: [] },
-        where: { status: 1 },
-        order: [['sort', 'ASC']],
-      }],
+      include: [
+        {
+          model: this.app.model.Permission,
+          as: 'permissions',
+          through: { attributes: [] },
+          where: { status: 1 },
+          order: [['sort', 'ASC']],
+        },
+      ],
     });
 
     if (!role) {
@@ -293,13 +334,15 @@ class RoleService extends BaseService {
 
       // 创建新的权限关联
       if (permissionIds.length > 0) {
-        const rolePermissions = permissionIds.map(permissionId => ({
+        const rolePermissions = permissionIds.map((permissionId) => ({
           id: this.generateUuid(),
           role_id: roleId,
           permission_id: permissionId,
         }));
 
-        await this.app.model.RolePermission.bulkCreate(rolePermissions, { transaction });
+        await this.app.model.RolePermission.bulkCreate(rolePermissions, {
+          transaction,
+        });
       }
 
       await transaction.commit();
@@ -307,7 +350,7 @@ class RoleService extends BaseService {
       // 记录操作日志
       await this.logOperation('update_permissions', 'role', {
         roleId,
-        permissionCount: permissionIds.length
+        permissionCount: permissionIds.length,
       });
     } catch (error) {
       await transaction.rollback();
@@ -323,7 +366,10 @@ class RoleService extends BaseService {
     const roles = await this.app.model.Role.findAll({
       where: { status: 1 },
       attributes: ['id', 'name', 'code', 'description'],
-      order: [['sort', 'ASC'], ['name', 'ASC']],
+      order: [
+        ['sort', 'ASC'],
+        ['name', 'ASC'],
+      ],
     });
 
     return roles;

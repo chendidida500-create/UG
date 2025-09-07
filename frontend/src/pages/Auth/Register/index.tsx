@@ -1,4 +1,9 @@
-import { LockOutlined, MailOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
+import {
+  LockOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
 import { Button, Card, Col, Form, Input, message, Row } from 'antd';
 import React, { useState } from 'react';
 import { history, useModel } from 'umi';
@@ -107,7 +112,10 @@ const Register: React.FC = () => {
             rules={[
               { required: true, message: '请输入用户名' },
               { min: 3, max: 20, message: '用户名长度为3-20个字符' },
-              { pattern: /^[a-zA-Z0-9_]+$/, message: '用户名只能包含字母、数字和下划线' }
+              {
+                pattern: /^[a-zA-Z0-9_]+$/,
+                message: '用户名只能包含字母、数字和下划线',
+              },
             ]}
           >
             <Input
@@ -121,7 +129,7 @@ const Register: React.FC = () => {
             name="email"
             rules={[
               { required: true, message: '请输入邮箱' },
-              { type: 'email', message: '请输入有效的邮箱地址' }
+              { type: 'email', message: '请输入有效的邮箱地址' },
             ]}
           >
             <Input
@@ -140,7 +148,7 @@ const Register: React.FC = () => {
             />
           </Form.Item>
         </>
-      )
+      ),
     },
     {
       title: '密码设置',
@@ -171,7 +179,7 @@ const Register: React.FC = () => {
             />
           </Form.Item>
         </>
-      )
+      ),
     },
     {
       title: '邮箱验证',
@@ -182,11 +190,7 @@ const Register: React.FC = () => {
         >
           <Row gutter={8}>
             <Col span={16}>
-              <Input
-                placeholder="邮箱验证码"
-                size="large"
-                autoComplete="off"
-              />
+              <Input placeholder="邮箱验证码" size="large" autoComplete="off" />
             </Col>
             <Col span={8}>
               <Button
@@ -201,12 +205,13 @@ const Register: React.FC = () => {
             </Col>
           </Row>
         </Form.Item>
-      )
-    }
+      ),
+    },
   ];
 
   const next = () => {
-    form.validateFields()
+    form
+      .validateFields()
       .then(() => {
         setCurrentStep(currentStep + 1);
       })
@@ -228,7 +233,7 @@ const Register: React.FC = () => {
         </div>
 
         <Steps current={currentStep} className={styles.steps}>
-          {steps.map((item) => (
+          {steps.map(item => (
             <Step key={item.title} title={item.title} />
           ))}
         </Steps>
@@ -240,9 +245,7 @@ const Register: React.FC = () => {
           size="large"
           className={styles.form}
         >
-          <div className={styles.stepContent}>
-            {steps[currentStep].content}
-          </div>
+          <div className={styles.stepContent}>{steps[currentStep].content}</div>
 
           <div className={styles.actions}>
             {currentStep > 0 && (
@@ -270,10 +273,7 @@ const Register: React.FC = () => {
 
         <div className={styles.footer}>
           <span>已有账户？</span>
-          <Button
-            type="link"
-            onClick={() => history.push('/auth/login')}
-          >
+          <Button type="link" onClick={() => history.push('/auth/login')}>
             立即登录
           </Button>
         </div>

@@ -28,11 +28,14 @@ module.exports = {
       },
     ];
 
-    await queryInterface.bulkInsert('users', users.map(user => ({
-      ...user,
-      created_at: new Date(),
-      updated_at: new Date(),
-    })));
+    await queryInterface.bulkInsert(
+      'users',
+      users.map((user) => ({
+        ...user,
+        created_at: new Date(),
+        updated_at: new Date(),
+      }))
+    );
   },
 
   down: async (queryInterface, Sequelize) => {

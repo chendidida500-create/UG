@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 const appInfo = {
   name: 'ug-backend',
   baseDir: '../backend',
-  env: 'local'
+  env: 'local',
 };
 
 // 加载项目配置文件
@@ -30,7 +30,9 @@ async function testPermissionUpdate() {
     console.log('Database connection successful!');
 
     // 先检查是否有system权限
-    const [systemPermissions] = await sequelize.query("SELECT id, code FROM permissions WHERE code = 'system'");
+    const [systemPermissions] = await sequelize.query(
+      "SELECT id, code FROM permissions WHERE code = 'system'"
+    );
     console.log('System permissions:', systemPermissions);
 
     if (systemPermissions.length > 0) {
@@ -45,12 +47,13 @@ async function testPermissionUpdate() {
       console.log('Permission update successful!');
 
       // 查询更新后的数据
-      const [updatedPermissions] = await sequelize.query("SELECT * FROM permissions WHERE code = 'system:user'");
+      const [updatedPermissions] = await sequelize.query(
+        "SELECT * FROM permissions WHERE code = 'system:user'"
+      );
       console.log('Updated permission:', updatedPermissions[0]);
     } else {
       console.log('No system permission found');
     }
-
   } catch (error) {
     console.error('Error:', error.message);
   } finally {

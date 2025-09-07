@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 const appInfo = {
   name: 'ug-backend',
   baseDir: '../backend',
-  env: 'local'
+  env: 'local',
 };
 
 // 加载项目配置文件
@@ -53,7 +53,6 @@ async function testConnection() {
     console.log('- user_roles (用户角色关联表)');
     console.log('- role_permissions (角色权限关联表)');
     console.log('- SequelizeMeta (迁移记录表)');
-
   } catch (error) {
     console.error('数据库连接失败:', error.message);
     if (error.original) {

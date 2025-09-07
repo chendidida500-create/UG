@@ -3,7 +3,9 @@ import type { ReactNode } from 'react';
 // UMI 框架相关类型扩展
 export interface API {
   // 通用API响应格式，与后端 context.js 扩展保持一致
-  response: <T = any>(data?: T) => {
+  response: <T = any>(
+    data?: T
+  ) => {
     success: boolean;
     code: string;
     message: string;
@@ -12,7 +14,9 @@ export interface API {
   };
 
   // 分页响应格式，与后端 successWithPagination 保持一致
-  paginationResponse: <T = any>(data: T[]) => {
+  paginationResponse: <T = any>(
+    data: T[]
+  ) => {
     success: boolean;
     code: string;
     message: string;
@@ -242,21 +246,37 @@ export interface TableConfig {
       disabled?: boolean;
       name?: string;
     };
-    onSelect?: (record: any, selected: boolean, selectedRows: any[], nativeEvent: Event) => void;
-    onSelectAll?: (selected: boolean, selectedRows: any[], changeRows: any[]) => void;
+    onSelect?: (
+      record: any,
+      selected: boolean,
+      selectedRows: any[],
+      nativeEvent: Event
+    ) => void;
+    onSelectAll?: (
+      selected: boolean,
+      selectedRows: any[],
+      changeRows: any[]
+    ) => void;
     onSelectInvert?: (selectedRowKeys: React.Key[]) => void;
     onSelectNone?: () => void;
-    selections?: Array<{
-      key: string;
-      text: ReactNode;
-      onSelect?: (changeableRowKeys: React.Key[]) => void;
-    }> | boolean;
+    selections?:
+      | Array<{
+          key: string;
+          text: ReactNode;
+          onSelect?: (changeableRowKeys: React.Key[]) => void;
+        }>
+      | boolean;
     hideSelectAll?: boolean;
     preserveSelectedRowKeys?: boolean;
     columnWidth?: string | number;
     columnTitle?: string | ReactNode;
     fixed?: boolean;
-    renderCell?: (checked: boolean, record: any, index: number, originNode: ReactNode) => ReactNode;
+    renderCell?: (
+      checked: boolean,
+      record: any,
+      index: number,
+      originNode: ReactNode
+    ) => ReactNode;
   };
   actions?: {
     view?: boolean;
@@ -281,7 +301,22 @@ export interface FormConfig {
     key: string;
     name?: string; // 为了兼容旧配置，添加name字段
     label: string;
-    type: 'input' | 'password' | 'textarea' | 'number' | 'select' | 'radio' | 'checkbox' | 'date' | 'time' | 'upload' | 'switch' | 'rate' | 'slider' | 'cascader' | 'tree-select';
+    type:
+      | 'input'
+      | 'password'
+      | 'textarea'
+      | 'number'
+      | 'select'
+      | 'radio'
+      | 'checkbox'
+      | 'date'
+      | 'time'
+      | 'upload'
+      | 'switch'
+      | 'rate'
+      | 'slider'
+      | 'cascader'
+      | 'tree-select';
     required?: boolean;
     placeholder?: string;
     options?: Array<{ label: string; value: any }>;
@@ -313,5 +348,4 @@ declare global {
   }
 }
 
-export { };
-
+export {};

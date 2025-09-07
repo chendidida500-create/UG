@@ -80,7 +80,8 @@ request.interceptors.response.use(async (response: any, options: any) => {
         });
 
         if (refreshResponse.success) {
-          const { token: newToken, refreshToken: newRefreshToken } = refreshResponse.data;
+          const { token: newToken, refreshToken: newRefreshToken } =
+            refreshResponse.data;
           localStorage.setItem('token', newToken);
           localStorage.setItem('refreshToken', newRefreshToken);
 
@@ -121,7 +122,11 @@ request.interceptors.response.use(async (response: any, options: any) => {
 });
 
 // 文件上传请求
-export const uploadRequest = (url: string, file: File, onProgress?: (percent: number) => void) => {
+export const uploadRequest = (
+  url: string,
+  file: File,
+  onProgress?: (percent: number) => void
+) => {
   return new Promise((resolve, reject) => {
     const formData = new FormData();
     formData.append('file', file);
@@ -130,7 +135,7 @@ export const uploadRequest = (url: string, file: File, onProgress?: (percent: nu
 
     // 监听上传进度
     if (onProgress) {
-      xhr.upload.onprogress = (event) => {
+      xhr.upload.onprogress = event => {
         if (event.lengthComputable) {
           const percent = Math.round((event.loaded / event.total) * 100);
           onProgress(percent);
@@ -166,7 +171,10 @@ export const uploadRequest = (url: string, file: File, onProgress?: (percent: nu
     }
 
     // 发送请求
-    xhr.open('POST', `${process.env.API_BASE_URL || 'http://localhost:15001'}${url}`);
+    xhr.open(
+      'POST',
+      `${process.env.API_BASE_URL || 'http://localhost:15001'}${url}`
+    );
     xhr.send(formData);
   });
 };
@@ -199,7 +207,9 @@ export const downloadFile = async (url: string, filename?: string) => {
 };
 
 // 批量请求
-export const batchRequest = async (requests: Array<{ url: string; options?: any }>) => {
+export const batchRequest = async (
+  requests: Array<{ url: string; options?: any }>
+) => {
   try {
     const promises = requests.map(({ url, options }) => request(url, options));
     const responses = await Promise.allSettled(promises);

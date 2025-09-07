@@ -13,7 +13,7 @@ const colors = {
   magenta: '\x1b[35m',
   cyan: '\x1b[36m',
   white: '\x1b[37m',
-  reset: '\x1b[0m'
+  reset: '\x1b[0m',
 };
 
 // 打印带颜色的消息
@@ -27,7 +27,11 @@ function executeCommand(command) {
     const result = execSync(command, { encoding: 'utf-8', stdio: 'pipe' });
     return { success: true, output: result.trim() };
   } catch (error) {
-    return { success: false, error: error.message, output: error.stdout?.toString().trim() || '' };
+    return {
+      success: false,
+      error: error.message,
+      output: error.stdout?.toString().trim() || '',
+    };
   }
 }
 
@@ -61,8 +65,18 @@ function checkProjectDependencies() {
   printMessage('\n=== 检查项目依赖 ===', colors.cyan);
 
   const rootPackageJson = path.join(__dirname, '..', 'package.json');
-  const frontendPackageJson = path.join(__dirname, '..', 'frontend', 'package.json');
-  const backendPackageJson = path.join(__dirname, '..', 'backend', 'package.json');
+  const frontendPackageJson = path.join(
+    __dirname,
+    '..',
+    'frontend',
+    'package.json'
+  );
+  const backendPackageJson = path.join(
+    __dirname,
+    '..',
+    'backend',
+    'package.json'
+  );
 
   if (!fs.existsSync(rootPackageJson)) {
     printMessage('✗ 根目录package.json文件不存在', colors.red);
@@ -89,7 +103,13 @@ function checkDatabaseConnection() {
 
   // 这里可以添加实际的数据库连接检查逻辑
   // 由于需要数据库凭证，我们暂时只检查配置文件是否存在
-  const databaseConfig = path.join(__dirname, '..', 'backend', 'config', 'config.default.js');
+  const databaseConfig = path.join(
+    __dirname,
+    '..',
+    'backend',
+    'config',
+    'config.default.js'
+  );
 
   if (fs.existsSync(databaseConfig)) {
     printMessage('✓ 数据库配置文件存在', colors.green);
@@ -152,7 +172,10 @@ function checkEnvironmentVariables() {
   }
 
   if (missingEnvVars.length > 0) {
-    printMessage(`⚠ 缺少环境变量: ${missingEnvVars.join(', ')}`, colors.yellow);
+    printMessage(
+      `⚠ 缺少环境变量: ${missingEnvVars.join(', ')}`,
+      colors.yellow
+    );
     return true; // 不算严重错误
   } else {
     printMessage('✓ 所有必需的环境变量都已设置', colors.green);
@@ -192,7 +215,10 @@ async function main() {
   if (allChecksPassed) {
     printMessage('✓ 所有关键检查通过，可以启动项目', colors.green);
     printMessage('\n启动项目命令:', colors.blue);
-    printMessage('  Windows: 双击 start.bat 或运行 tools\\start-all.bat', colors.blue);
+    printMessage(
+      '  Windows: 双击 start.bat 或运行 tools\\start-all.bat',
+      colors.blue
+    );
     printMessage('  或分别启动:', colors.blue);
     printMessage('    后端: cd backend && npm run dev', colors.blue);
     printMessage('    前端: cd frontend && npm run dev', colors.blue);
@@ -202,7 +228,7 @@ async function main() {
 }
 
 // 执行主函数
-main().catch(error => {
+main().catch((error) => {
   printMessage(`执行过程中发生错误: ${error.message}`, colors.red);
   process.exit(1);
 });

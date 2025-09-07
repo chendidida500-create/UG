@@ -15,7 +15,10 @@ class RoleController extends BaseController {
     const { ctx } = this;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:role:view');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:role:view'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -33,7 +36,11 @@ class RoleController extends BaseController {
         endTime,
       });
 
-      ctx.successWithPagination(result.list, result.pagination, '获取角色列表成功');
+      ctx.successWithPagination(
+        result.list,
+        result.pagination,
+        '获取角色列表成功'
+      );
     } catch (error) {
       ctx.logger.error('Get roles failed:', error);
       ctx.error(error.message, 'GET_ROLES_FAILED', 500);
@@ -49,7 +56,10 @@ class RoleController extends BaseController {
     const { id } = ctx.params;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:role:view');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:role:view'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -78,7 +88,10 @@ class RoleController extends BaseController {
     const { ctx } = this;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:role:create');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:role:create'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -111,7 +124,10 @@ class RoleController extends BaseController {
     const { id } = ctx.params;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:role:update');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:role:update'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -145,7 +161,10 @@ class RoleController extends BaseController {
     const { id } = ctx.params;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:role:delete');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:role:delete'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -169,7 +188,10 @@ class RoleController extends BaseController {
     const { id } = ctx.params;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:role:view');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:role:view'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -193,7 +215,10 @@ class RoleController extends BaseController {
     const { id } = ctx.params;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:role:update');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:role:update'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -206,7 +231,10 @@ class RoleController extends BaseController {
     this.validate(rules);
 
     try {
-      await ctx.service.role.updatePermissions(id, ctx.request.body.permissionIds);
+      await ctx.service.role.updatePermissions(
+        id,
+        ctx.request.body.permissionIds
+      );
       ctx.success(null, '更新角色权限成功');
     } catch (error) {
       ctx.logger.error('Update role permissions failed:', error);

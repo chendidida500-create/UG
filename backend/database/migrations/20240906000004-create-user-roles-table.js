@@ -3,40 +3,44 @@
 // 用户角色关联表迁移文件
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('user_roles', {
-      id: {
-        type: Sequelize.STRING(36),
-        primaryKey: true,
-        allowNull: false,
-        comment: '关联唯一标识UUID',
+    await queryInterface.createTable(
+      'user_roles',
+      {
+        id: {
+          type: Sequelize.STRING(36),
+          primaryKey: true,
+          allowNull: false,
+          comment: '关联唯一标识UUID',
+        },
+        user_id: {
+          type: Sequelize.STRING(36),
+          allowNull: false,
+          comment: '用户ID',
+        },
+        role_id: {
+          type: Sequelize.STRING(36),
+          allowNull: false,
+          comment: '角色ID',
+        },
+        created_at: {
+          type: Sequelize.DATE,
+          allowNull: false,
+          defaultValue: Sequelize.NOW,
+          comment: '创建时间',
+        },
+        updated_at: {
+          type: Sequelize.DATE,
+          allowNull: false,
+          defaultValue: Sequelize.NOW,
+          comment: '更新时间',
+        },
       },
-      user_id: {
-        type: Sequelize.STRING(36),
-        allowNull: false,
-        comment: '用户ID',
-      },
-      role_id: {
-        type: Sequelize.STRING(36),
-        allowNull: false,
-        comment: '角色ID',
-      },
-      created_at: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.NOW,
-        comment: '创建时间',
-      },
-      updated_at: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.NOW,
-        comment: '更新时间',
-      },
-    }, {
-      comment: '用户角色关联表',
-      charset: 'utf8mb4',
-      collate: 'utf8mb4_unicode_ci',
-    });
+      {
+        comment: '用户角色关联表',
+        charset: 'utf8mb4',
+        collate: 'utf8mb4_unicode_ci',
+      }
+    );
 
     // 创建复合唯一索引，确保用户角色关联唯一性
     await queryInterface.addIndex('user_roles', ['user_id', 'role_id'], {

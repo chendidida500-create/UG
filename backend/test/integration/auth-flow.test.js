@@ -186,7 +186,7 @@ describe('Integration Tests - Authentication Flow', () => {
           .set('Authorization', `Bearer ${adminToken}`),
       ]);
 
-      responses.forEach(response => {
+      responses.forEach((response) => {
         expect(response.status).toBe(200);
         expect(response.body.success).toBe(true);
       });
@@ -202,9 +202,7 @@ describe('Integration Tests - Authentication Flow', () => {
         .expect(401);
 
       // 缺失token
-      await request(app.callback())
-        .get('/api/users')
-        .expect(401);
+      await request(app.callback()).get('/api/users').expect(401);
 
       // 无效的请求数据
       await request(app.callback())
@@ -276,13 +274,13 @@ describe('Integration Tests - Authentication Flow', () => {
       const responses = await Promise.all(concurrentRequests);
 
       // 所有请求都应该成功
-      responses.forEach(response => {
+      responses.forEach((response) => {
         expect(response.status).toBe(200);
         expect(response.body.success).toBe(true);
       });
 
       // 清理测试数据
-      const userIds = responses.map(response => response.body.data.id);
+      const userIds = responses.map((response) => response.body.data.id);
       await request(app.callback())
         .delete('/api/users/batch')
         .set('Authorization', `Bearer ${adminToken}`)

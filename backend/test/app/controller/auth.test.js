@@ -5,7 +5,8 @@ const { app, assert } = require('egg-mock/bootstrap');
 describe('test/app/controller/auth.test.js', () => {
   describe('POST /api/auth/login', () => {
     it('should login successfully with correct credentials', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .post('/api/auth/login')
         .send({
           username: 'admin',
@@ -21,7 +22,8 @@ describe('test/app/controller/auth.test.js', () => {
     });
 
     it('should fail with incorrect password', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .post('/api/auth/login')
         .send({
           username: 'admin',
@@ -34,7 +36,8 @@ describe('test/app/controller/auth.test.js', () => {
     });
 
     it('should fail with non-existent user', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .post('/api/auth/login')
         .send({
           username: 'nonexistentuser',
@@ -47,10 +50,7 @@ describe('test/app/controller/auth.test.js', () => {
     });
 
     it('should fail with missing credentials', async () => {
-      await app.httpRequest()
-        .post('/api/auth/login')
-        .send({})
-        .expect(400);
+      await app.httpRequest().post('/api/auth/login').send({}).expect(400);
     });
   });
 
@@ -59,7 +59,8 @@ describe('test/app/controller/auth.test.js', () => {
       const uniqueUsername = `testuser_${Date.now()}`;
       const uniqueEmail = `test_${Date.now()}@example.com`;
 
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .post('/api/auth/register')
         .send({
           username: uniqueUsername,
@@ -73,7 +74,8 @@ describe('test/app/controller/auth.test.js', () => {
     });
 
     it('should fail with duplicate username', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .post('/api/auth/register')
         .send({
           username: 'admin',
@@ -87,7 +89,8 @@ describe('test/app/controller/auth.test.js', () => {
     });
 
     it('should fail with invalid email format', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .post('/api/auth/register')
         .send({
           username: 'testuser',
@@ -104,17 +107,16 @@ describe('test/app/controller/auth.test.js', () => {
     let token;
 
     before(async () => {
-      const loginResult = await app.httpRequest()
-        .post('/api/auth/login')
-        .send({
-          username: 'admin',
-          password: '123456',
-        });
+      const loginResult = await app.httpRequest().post('/api/auth/login').send({
+        username: 'admin',
+        password: '123456',
+      });
       token = loginResult.body.data.token;
     });
 
     it('should get user info with valid token', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .get('/api/auth/me')
         .set('Authorization', `Bearer ${token}`)
         .expect(200);
@@ -125,13 +127,12 @@ describe('test/app/controller/auth.test.js', () => {
     });
 
     it('should fail without token', async () => {
-      await app.httpRequest()
-        .get('/api/auth/me')
-        .expect(401);
+      await app.httpRequest().get('/api/auth/me').expect(401);
     });
 
     it('should fail with invalid token', async () => {
-      await app.httpRequest()
+      await app
+        .httpRequest()
         .get('/api/auth/me')
         .set('Authorization', 'Bearer invalid_token')
         .expect(401);
@@ -142,17 +143,16 @@ describe('test/app/controller/auth.test.js', () => {
     let refreshToken;
 
     before(async () => {
-      const loginResult = await app.httpRequest()
-        .post('/api/auth/login')
-        .send({
-          username: 'admin',
-          password: '123456',
-        });
+      const loginResult = await app.httpRequest().post('/api/auth/login').send({
+        username: 'admin',
+        password: '123456',
+      });
       refreshToken = loginResult.body.data.refreshToken;
     });
 
     it('should refresh token successfully', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .post('/api/auth/refresh')
         .send({
           refreshToken,
@@ -165,7 +165,8 @@ describe('test/app/controller/auth.test.js', () => {
     });
 
     it('should fail with invalid refresh token', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .post('/api/auth/refresh')
         .send({
           refreshToken: 'invalid_refresh_token',
@@ -180,17 +181,16 @@ describe('test/app/controller/auth.test.js', () => {
     let token;
 
     before(async () => {
-      const loginResult = await app.httpRequest()
-        .post('/api/auth/login')
-        .send({
-          username: 'admin',
-          password: '123456',
-        });
+      const loginResult = await app.httpRequest().post('/api/auth/login').send({
+        username: 'admin',
+        password: '123456',
+      });
       token = loginResult.body.data.token;
     });
 
     it('should logout successfully', async () => {
-      const result = await app.httpRequest()
+      const result = await app
+        .httpRequest()
         .post('/api/auth/logout')
         .set('Authorization', `Bearer ${token}`)
         .expect(200);

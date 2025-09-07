@@ -6,7 +6,7 @@ import {
   LockOutlined,
   MoreOutlined,
   ReloadOutlined,
-  UserOutlined
+  UserOutlined,
 } from '@ant-design/icons';
 import {
   Avatar,
@@ -21,14 +21,17 @@ import {
   Statistic,
   Switch,
   Tag,
-  Typography
+  Typography,
 } from 'antd';
 import React, { useEffect, useState } from 'react';
 // 修复UMI 4.x导入方式
 // import { useModel } from 'umi';
 import CrudComponent from '../../../components/CrudComponent';
 import type { FormConfig } from '../../../components/DynamicForm';
-import type { PaginationParams, TableConfig } from '../../../components/DynamicTable';
+import type {
+  PaginationParams,
+  TableConfig,
+} from '../../../components/DynamicTable';
 import type { User } from '../../../types';
 import { useModel } from '../../../utils/umiMock';
 import styles from './index.module.less';
@@ -67,11 +70,7 @@ const UserManagement: React.FC = () => {
         width: 200,
         render: (_: any, record: User) => (
           <Space>
-            <Avatar
-              size={40}
-              src={record.avatar}
-              icon={<UserOutlined />}
-            />
+            <Avatar size={40} src={record.avatar} icon={<UserOutlined />} />
             <div>
               <div className={styles.username}>{record.username}</div>
               <Text type="secondary" className={styles.email}>
@@ -113,13 +112,12 @@ const UserManagement: React.FC = () => {
             1: { color: 'success', text: '正常' },
             0: { color: 'default', text: '禁用' },
           };
-          const config = statusConfig[status as keyof typeof statusConfig] || { color: 'default', text: '未知' };
+          const config = statusConfig[status as keyof typeof statusConfig] || {
+            color: 'default',
+            text: '未知',
+          };
 
-          return (
-            <Tag color={config.color}>
-              {config.text}
-            </Tag>
-          );
+          return <Tag color={config.color}>{config.text}</Tag>;
         },
       },
       {
@@ -127,7 +125,8 @@ const UserManagement: React.FC = () => {
         dataIndex: 'lastLoginTime',
         key: 'lastLoginTime',
         width: 150,
-        render: (time: string) => time ? new Date(time).toLocaleString() : '-',
+        render: (time: string) =>
+          time ? new Date(time).toLocaleString() : '-',
       },
       {
         title: '创建时间',
@@ -181,7 +180,9 @@ const UserManagement: React.FC = () => {
               <Switch
                 size="small"
                 checked={record.status === 1}
-                onChange={(checked: any) => handleStatusChange(record.id, checked)}
+                onChange={(checked: any) =>
+                  handleStatusChange(record.id, checked)
+                }
                 disabled={!hasPermission?.('system:user:status')}
               />
               <Dropdown
@@ -201,11 +202,14 @@ const UserManagement: React.FC = () => {
     size: 'middle',
     bordered: true,
     // scroll: { x: 1200 }, // 暂时注释，等待TableConfig类型支持
-    rowSelection: hasPermission?.('system:user:batch_delete') ? {
-      type: 'checkbox',
-      selectedRowKeys,
-      onChange: (selectedRowKeys: React.Key[]) => setSelectedRowKeys(selectedRowKeys as string[]),
-    } : undefined,
+    rowSelection: hasPermission?.('system:user:batch_delete')
+      ? {
+          type: 'checkbox',
+          selectedRowKeys,
+          onChange: (selectedRowKeys: React.Key[]) =>
+            setSelectedRowKeys(selectedRowKeys as string[]),
+        }
+      : undefined,
   };
 
   // 表单配置
@@ -221,7 +225,10 @@ const UserManagement: React.FC = () => {
         rules: [
           { required: true, message: '请输入用户名' },
           { min: 3, max: 20, message: '用户名长度为3-20个字符' },
-          { pattern: /^[a-zA-Z0-9_]+$/, message: '用户名只能包含字母、数字和下划线' },
+          {
+            pattern: /^[a-zA-Z0-9_]+$/,
+            message: '用户名只能包含字母、数字和下划线',
+          },
         ],
         props: {
           placeholder: '请输入用户名',
@@ -246,9 +253,7 @@ const UserManagement: React.FC = () => {
         name: 'phone',
         label: '手机号',
         type: 'input',
-        rules: [
-          { pattern: /^1[3-9]\d{9}$/, message: '请输入有效的手机号' },
-        ],
+        rules: [{ pattern: /^1[3-9]\d{9}$/, message: '请输入有效的手机号' }],
         props: {
           placeholder: '请输入手机号',
         },
@@ -274,9 +279,7 @@ const UserManagement: React.FC = () => {
         label: '角色',
         type: 'select',
         required: true,
-        rules: [
-          { required: true, message: '请选择角色' },
-        ],
+        rules: [{ required: true, message: '请选择角色' }],
         props: {
           mode: 'multiple',
           placeholder: '请选择角色',
@@ -513,9 +516,19 @@ const UserManagement: React.FC = () => {
         <CrudComponent
           title="用户管理"
           api={{
-            list: getUserList || (() => Promise.resolve({ success: true, data: { list: [], total: 0 } })),
-            create: createUser || (() => Promise.resolve({ success: true, data: {} })),
-            update: updateUser || (() => Promise.resolve({ success: true, data: {} })),
+            list:
+              getUserList ||
+              (() =>
+                Promise.resolve({
+                  success: true,
+                  data: { list: [], total: 0 },
+                })),
+            create:
+              createUser ||
+              (() => Promise.resolve({ success: true, data: {} })),
+            update:
+              updateUser ||
+              (() => Promise.resolve({ success: true, data: {} })),
             delete: deleteUser || (() => Promise.resolve({ success: true })),
           }}
           tableConfig={tableConfig}
@@ -546,10 +559,7 @@ const UserManagement: React.FC = () => {
               >
                 导入
               </Button>
-              <Button
-                icon={<ReloadOutlined />}
-                onClick={() => loadUsers()}
-              >
+              <Button icon={<ReloadOutlined />} onClick={() => loadUsers()}>
                 刷新
               </Button>
             </Space>

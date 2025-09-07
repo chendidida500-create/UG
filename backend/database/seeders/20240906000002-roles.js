@@ -35,11 +35,14 @@ module.exports = {
       },
     ];
 
-    await queryInterface.bulkInsert('roles', roles.map(role => ({
-      ...role,
-      created_at: new Date(),
-      updated_at: new Date(),
-    })));
+    await queryInterface.bulkInsert(
+      'roles',
+      roles.map((role) => ({
+        ...role,
+        created_at: new Date(),
+        updated_at: new Date(),
+      }))
+    );
   },
 
   down: async (queryInterface, Sequelize) => {

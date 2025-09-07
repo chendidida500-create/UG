@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 const appInfo = {
   name: 'ug-backend',
   baseDir: '../backend',
-  env: 'local'
+  env: 'local',
 };
 
 // 加载项目配置文件
@@ -42,10 +42,11 @@ async function checkForeignKeys() {
 
     const [results] = await sequelize.query(query);
     console.log('Foreign key constraints:');
-    results.forEach(r => {
-      console.log(`- ${r.CONSTRAINT_NAME}: ${r.TABLE_NAME}.${r.COLUMN_NAME} -> ${r.REFERENCED_TABLE_NAME}.${r.REFERENCED_COLUMN_NAME}`);
+    results.forEach((r) => {
+      console.log(
+        `- ${r.CONSTRAINT_NAME}: ${r.TABLE_NAME}.${r.COLUMN_NAME} -> ${r.REFERENCED_TABLE_NAME}.${r.REFERENCED_COLUMN_NAME}`
+      );
     });
-
   } catch (error) {
     console.error('Error:', error.message);
   } finally {

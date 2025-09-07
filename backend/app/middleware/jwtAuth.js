@@ -5,16 +5,20 @@
  * 验证用户身份和权限
  */
 
-module.exports = options => {
+module.exports = (options) => {
   return async function jwtAuth(ctx, next) {
     // 检查是否需要跳过认证
-    if (options.ignore && options.ignore.some(path => ctx.path.startsWith(path))) {
+    if (
+      options.ignore &&
+      options.ignore.some((path) => ctx.path.startsWith(path))
+    ) {
       await next();
       return;
     }
 
     // 获取token
-    const token = ctx.get('Authorization')?.replace('Bearer ', '') ||
+    const token =
+      ctx.get('Authorization')?.replace('Bearer ', '') ||
       ctx.query.token ||
       ctx.request.body.token;
 

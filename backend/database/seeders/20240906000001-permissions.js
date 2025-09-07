@@ -242,11 +242,14 @@ module.exports = {
     ];
 
     // 插入权限数据
-    await queryInterface.bulkInsert('permissions', permissions.map(permission => ({
-      ...permission,
-      created_at: new Date(),
-      updated_at: new Date(),
-    })));
+    await queryInterface.bulkInsert(
+      'permissions',
+      permissions.map((permission) => ({
+        ...permission,
+        created_at: new Date(),
+        updated_at: new Date(),
+      }))
+    );
 
     // 更新父子关系 - 先获取插入的数据
     const insertedPermissions = await queryInterface.sequelize.query(
@@ -255,7 +258,7 @@ module.exports = {
     );
 
     const permissionMap = {};
-    insertedPermissions.forEach(p => {
+    insertedPermissions.forEach((p) => {
       permissionMap[p.code] = p.id;
     });
 

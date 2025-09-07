@@ -34,13 +34,13 @@ if (currentNodeVersion === targetNodeVersion) {
 const projectDirs = [
   { name: '根项目', path: path.resolve(__dirname, '..') },
   { name: '前端项目', path: path.resolve(__dirname, '../frontend') },
-  { name: '后端项目', path: path.resolve(__dirname, '../backend') }
+  { name: '后端项目', path: path.resolve(__dirname, '../backend') },
 ];
 
 console.log('\n各项目中的 Node.js 版本配置:');
 console.log('============================');
 
-projectDirs.forEach(project => {
+projectDirs.forEach((project) => {
   const packageJsonPath = path.join(project.path, 'package.json');
 
   if (fs.existsSync(packageJsonPath)) {

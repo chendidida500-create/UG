@@ -113,7 +113,7 @@ class BaseService extends Service {
 
     // 处理搜索关键词
     if (params.keyword && searchFields.length > 0) {
-      where[Op.or] = searchFields.map(field => ({
+      where[Op.or] = searchFields.map((field) => ({
         [field]: {
           [Op.like]: `%${params.keyword}%`,
         },
@@ -152,7 +152,10 @@ class BaseService extends Service {
   async logOperation(action, target, data = {}) {
     // 这里可以实现操作日志记录逻辑
     // 暂时使用console.log，后续可以存储到数据库
-    this.logger.info(`[Operation Log] User: ${this.currentUserId}, Action: ${action}, Target: ${target}`, data);
+    this.logger.info(
+      `[Operation Log] User: ${this.currentUserId}, Action: ${action}, Target: ${target}`,
+      data
+    );
   }
 }
 

@@ -15,7 +15,10 @@ class PermissionController extends BaseController {
     const { ctx } = this;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:permission:view');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:permission:view'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -34,7 +37,11 @@ class PermissionController extends BaseController {
         endTime,
       });
 
-      ctx.successWithPagination(result.list, result.pagination, '获取权限列表成功');
+      ctx.successWithPagination(
+        result.list,
+        result.pagination,
+        '获取权限列表成功'
+      );
     } catch (error) {
       ctx.logger.error('Get permissions failed:', error);
       ctx.error(error.message, 'GET_PERMISSIONS_FAILED', 500);
@@ -49,7 +56,10 @@ class PermissionController extends BaseController {
     const { ctx } = this;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:permission:view');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:permission:view'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -73,7 +83,10 @@ class PermissionController extends BaseController {
     const { id } = ctx.params;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:permission:view');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:permission:view'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -102,7 +115,10 @@ class PermissionController extends BaseController {
     const { ctx } = this;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:permission:create');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:permission:create'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -140,7 +156,10 @@ class PermissionController extends BaseController {
     const { id } = ctx.params;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:permission:update');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:permission:update'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;
@@ -150,7 +169,11 @@ class PermissionController extends BaseController {
     const rules = {
       name: { type: 'string', required: false, min: 2, max: 50 },
       code: { type: 'string', required: false, min: 2, max: 100 },
-      type: { type: 'enum', values: ['menu', 'button', 'api'], required: false },
+      type: {
+        type: 'enum',
+        values: ['menu', 'button', 'api'],
+        required: false,
+      },
       parent_id: { type: 'string', required: false },
       path: { type: 'string', required: false, max: 255 },
       component: { type: 'string', required: false, max: 255 },
@@ -162,7 +185,10 @@ class PermissionController extends BaseController {
     this.validate(rules);
 
     try {
-      const permission = await ctx.service.permission.update(id, ctx.request.body);
+      const permission = await ctx.service.permission.update(
+        id,
+        ctx.request.body
+      );
       ctx.success(permission, '更新权限成功');
     } catch (error) {
       ctx.logger.error('Update permission failed:', error);
@@ -179,7 +205,10 @@ class PermissionController extends BaseController {
     const { id } = ctx.params;
 
     // 验证权限
-    const hasPermission = await ctx.service.user.hasPermission(this.currentUserId, 'system:permission:delete');
+    const hasPermission = await ctx.service.user.hasPermission(
+      this.currentUserId,
+      'system:permission:delete'
+    );
     if (!hasPermission) {
       ctx.error('权限不足', 'FORBIDDEN', 403);
       return;

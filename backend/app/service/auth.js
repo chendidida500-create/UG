@@ -18,21 +18,22 @@ class AuthService extends BaseService {
     // 查找用户（支持用户名或邮箱登录）
     const user = await this.app.model.User.findOne({
       where: {
-        [this.app.model.Sequelize.Op.or]: [
-          { username },
-          { email: username },
-        ],
+        [this.app.model.Sequelize.Op.or]: [{ username }, { email: username }],
       },
-      include: [{
-        model: this.app.model.Role,
-        as: 'roles',
-        through: { attributes: [] },
-        include: [{
-          model: this.app.model.Permission,
-          as: 'permissions',
+      include: [
+        {
+          model: this.app.model.Role,
+          as: 'roles',
           through: { attributes: [] },
-        }],
-      }],
+          include: [
+            {
+              model: this.app.model.Permission,
+              as: 'permissions',
+              through: { attributes: [] },
+            },
+          ],
+        },
+      ],
     });
 
     if (!user) {
@@ -62,7 +63,8 @@ class AuthService extends BaseService {
     const refreshToken = this.generateToken({ userId: user.id }, '30d');
 
     // 计算过期时间
-    const expires = Date.now() + (remember ? 7 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000);
+    const expires =
+      Date.now() + (remember ? 7 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000);
 
     // 移除敏感信息
     const userData = user.toJSON();
@@ -145,16 +147,20 @@ class AuthService extends BaseService {
 
       // 获取用户信息
       const user = await this.app.model.User.findByPk(decoded.userId, {
-        include: [{
-          model: this.app.model.Role,
-          as: 'roles',
-          through: { attributes: [] },
-          include: [{
-            model: this.app.model.Permission,
-            as: 'permissions',
+        include: [
+          {
+            model: this.app.model.Role,
+            as: 'roles',
             through: { attributes: [] },
-          }],
-        }],
+            include: [
+              {
+                model: this.app.model.Permission,
+                as: 'permissions',
+                through: { attributes: [] },
+              },
+            ],
+          },
+        ],
       });
 
       if (!user) {

@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 const appInfo = {
   name: 'ug-backend',
   baseDir: '../backend',
-  env: 'local'
+  env: 'local',
 };
 
 // 加载项目配置文件
@@ -44,8 +44,10 @@ async function checkPermissionStructure() {
     `);
 
     console.log('Permissions structure:');
-    permissions.forEach(p => {
-      console.log(`- ${p.code} (${p.type}) ${p.parent_code ? '-> ' + p.parent_code : '(root)'}`);
+    permissions.forEach((p) => {
+      console.log(
+        `- ${p.code} (${p.type}) ${p.parent_code ? '-> ' + p.parent_code : '(root)'}`
+      );
     });
 
     console.log(`\nTotal permissions: ${permissions.length}`);
@@ -60,13 +62,12 @@ async function checkPermissionStructure() {
 
     if (unlinkedPermissions.length > 0) {
       console.log('\nUnlinked sub-permissions (need parent assignment):');
-      unlinkedPermissions.forEach(p => {
+      unlinkedPermissions.forEach((p) => {
         console.log(`- ${p.code} (${p.type})`);
       });
     } else {
       console.log('\nAll sub-permissions are properly linked!');
     }
-
   } catch (error) {
     console.error('Error:', error.message);
   } finally {

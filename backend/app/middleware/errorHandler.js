@@ -35,7 +35,10 @@ module.exports = () => {
       }
 
       // JWT认证错误
-      if (err.name === 'JsonWebTokenError' || err.name === 'TokenExpiredError') {
+      if (
+        err.name === 'JsonWebTokenError' ||
+        err.name === 'TokenExpiredError'
+      ) {
         ctx.status = 401;
         ctx.body = {
           success: false,

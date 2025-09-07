@@ -174,24 +174,27 @@ export default function useAuthModel() {
   }, [logout]);
 
   // 修改密码
-  const changePassword = useCallback(async (oldPassword: string, newPassword: string) => {
-    try {
-      const response = await request('/api/auth/change-password', {
-        method: 'POST',
-        data: { oldPassword, newPassword },
-      });
+  const changePassword = useCallback(
+    async (oldPassword: string, newPassword: string) => {
+      try {
+        const response = await request('/api/auth/change-password', {
+          method: 'POST',
+          data: { oldPassword, newPassword },
+        });
 
-      if (response.success) {
-        message.success('密码修改成功');
-        return { success: true };
-      } else {
-        throw new Error(response.message || '密码修改失败');
+        if (response.success) {
+          message.success('密码修改成功');
+          return { success: true };
+        } else {
+          throw new Error(response.message || '密码修改失败');
+        }
+      } catch (error: any) {
+        message.error(error.message || '密码修改失败');
+        throw error;
       }
-    } catch (error: any) {
-      message.error(error.message || '密码修改失败');
-      throw error;
-    }
-  }, []);
+    },
+    []
+  );
 
   return {
     currentUser,

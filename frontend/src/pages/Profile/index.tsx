@@ -25,7 +25,7 @@ import {
   Space,
   Tabs,
   Tag,
-  Upload
+  Upload,
 } from 'antd';
 import React, { useEffect, useState } from 'react';
 // 修复UMI 4.x导入方式
@@ -200,25 +200,48 @@ const Profile: React.FC = () => {
 
             <Descriptions column={1} size="small">
               <Descriptions.Item
-                label={<><PhoneOutlined /> 手机号</>}
+                label={
+                  <>
+                    <PhoneOutlined /> 手机号
+                  </>
+                }
               >
                 {(currentUser as any)?.phone || '未设置'}
               </Descriptions.Item>
               <Descriptions.Item
-                label={<><MailOutlined /> 邮箱</>}
+                label={
+                  <>
+                    <MailOutlined /> 邮箱
+                  </>
+                }
               >
                 {currentUser?.email}
               </Descriptions.Item>
               <Descriptions.Item
-                label={<><CalendarOutlined /> 注册时间</>}
+                label={
+                  <>
+                    <CalendarOutlined /> 注册时间
+                  </>
+                }
               >
-                {currentUser?.created_at ? new Date(currentUser.created_at).toLocaleDateString() : '-'}
+                {currentUser?.created_at
+                  ? new Date(currentUser.created_at).toLocaleDateString()
+                  : '-'}
               </Descriptions.Item>
               <Descriptions.Item
-                label={<><HistoryOutlined /> 最后登录</>}
+                label={
+                  <>
+                    <HistoryOutlined /> 最后登录
+                  </>
+                }
               >
-                {currentUser && 'lastLoginTime' in currentUser && (currentUser as any).lastLoginTime ?
-                  new Date((currentUser as any).lastLoginTime).toLocaleString() : '-'}
+                {currentUser &&
+                'lastLoginTime' in currentUser &&
+                (currentUser as any).lastLoginTime
+                  ? new Date(
+                      (currentUser as any).lastLoginTime
+                    ).toLocaleString()
+                  : '-'}
               </Descriptions.Item>
             </Descriptions>
 
@@ -228,7 +251,9 @@ const Profile: React.FC = () => {
               <h4>用户角色</h4>
               <Space size={[0, 8]} wrap>
                 {currentUser?.roles?.map((role: any) => (
-                  <Tag key={role} color="blue">{role}</Tag>
+                  <Tag key={role} color="blue">
+                    {role}
+                  </Tag>
                 ))}
               </Space>
             </div>
@@ -240,7 +265,11 @@ const Profile: React.FC = () => {
           <Card>
             <Tabs defaultActiveKey="profile">
               <TabPane
-                tab={<><UserOutlined /> 基本信息</>}
+                tab={
+                  <>
+                    <UserOutlined /> 基本信息
+                  </>
+                }
                 key="profile"
               >
                 <Form
@@ -256,7 +285,11 @@ const Profile: React.FC = () => {
                         label="用户名"
                         rules={[
                           { required: true, message: '请输入用户名' },
-                          { min: 3, max: 20, message: '用户名长度为3-20个字符' },
+                          {
+                            min: 3,
+                            max: 20,
+                            message: '用户名长度为3-20个字符',
+                          },
                         ]}
                       >
                         <Input placeholder="请输入用户名" />
@@ -332,7 +365,11 @@ const Profile: React.FC = () => {
               </TabPane>
 
               <TabPane
-                tab={<><HistoryOutlined /> 登录历史</>}
+                tab={
+                  <>
+                    <HistoryOutlined /> 登录历史
+                  </>
+                }
                 key="history"
               >
                 <List
@@ -343,7 +380,11 @@ const Profile: React.FC = () => {
                         title={
                           <Space>
                             <span>{item.time}</span>
-                            <Tag color={item.status === 'success' ? 'success' : 'error'}>
+                            <Tag
+                              color={
+                                item.status === 'success' ? 'success' : 'error'
+                              }
+                            >
                               {item.status === 'success' ? '成功' : '失败'}
                             </Tag>
                           </Space>
@@ -362,7 +403,11 @@ const Profile: React.FC = () => {
               </TabPane>
 
               <TabPane
-                tab={<><SettingOutlined /> 安全设置</>}
+                tab={
+                  <>
+                    <SettingOutlined /> 安全设置
+                  </>
+                }
                 key="security"
               >
                 <div className={styles.securitySettings}>

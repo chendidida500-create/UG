@@ -41,7 +41,9 @@ module.exports = {
           current: pagination.current || 1,
           pageSize: pagination.pageSize || 20,
           total: pagination.total || 0,
-          totalPages: Math.ceil((pagination.total || 0) / (pagination.pageSize || 20)),
+          totalPages: Math.ceil(
+            (pagination.total || 0) / (pagination.pageSize || 20)
+          ),
         },
       },
       timestamp: Date.now(),
@@ -86,7 +88,8 @@ module.exports = {
    */
   getPagination(defaultPagination = {}) {
     const { current = 1, pageSize = 20 } = this.query;
-    const { defaultPageSize = 20, maxPageSize = 100 } = this.app.config.userConfig.pagination;
+    const { defaultPageSize = 20, maxPageSize = 100 } =
+      this.app.config.userConfig.pagination;
 
     const finalPageSize = Math.min(
       parseInt(pageSize) || defaultPagination.pageSize || defaultPageSize,
@@ -108,7 +111,7 @@ module.exports = {
    */
   validateRequired(requiredParams = [], data = null) {
     const source = data || this.request.body;
-    const missing = requiredParams.filter(param => {
+    const missing = requiredParams.filter((param) => {
       const value = source[param];
       return value === undefined || value === null || value === '';
     });
