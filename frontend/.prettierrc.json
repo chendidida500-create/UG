@@ -1,4 +1,7 @@
 {
+  "extends": "../config/prettier/frontend.json"
+}
+{
   "semi": true,
   "singleQuote": true,
   "trailingComma": "es5",

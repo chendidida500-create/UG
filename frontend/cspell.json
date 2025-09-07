@@ -58,5 +58,6 @@
     "coverage/**",
     ".umi/**",
     ".umi-production/**"
-  ]
+  ],
+  "extends": "../config/cspell/frontend.json"
 }
