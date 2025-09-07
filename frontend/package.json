@@ -9,9 +9,9 @@
     "format": "prettier --cache --write .",
     "postinstall": "umi setup",
     "setup": "umi setup",
-    "start": "yarn dev",
+    "start": "pnpm dev",
     "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
-    "lint:fix": "yarn lint -- --fix",
+    "lint:fix": "pnpm lint -- --fix",
     "preview": "umi preview",
     "test": "umi test",
     "test:coverage": "umi test --coverage",
@@ -72,5 +72,6 @@
   ],
   "author": "UG Team",
   "license": "MIT",
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "pnpm@8.15.8",
+  "__npminstall_done": false
 }

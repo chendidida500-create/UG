@@ -9,11 +9,11 @@
     "stop": "egg-scripts stop --title=ug-backend",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
-    "test": "yarn lint -- --fix && yarn test-local",
+    "test": "pnpm lint -- --fix && pnpm test-local",
     "test-local": "egg-bin test",
     "cov": "egg-bin cov",
     "lint": "eslint .",
-    "ci": "yarn lint && yarn cov",
+    "ci": "pnpm lint && pnpm cov",
     "autod": "autod",
     "db:migrate": "npx sequelize-cli db:migrate",
     "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
@@ -58,5 +58,5 @@
   },
   "author": "UG Team",
   "license": "MIT",
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "pnpm@8.15.8"
 }

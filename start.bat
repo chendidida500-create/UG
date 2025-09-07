@@ -1,45 +1,23 @@
 @echo off
-chcp 65001 > nul
-
-echo === UG管理系统启动脚本 ===
-echo.
-
-echo 检查Node.js环境...
-node --version
-npm --version
-echo.
-
-echo 启动后端服务...
-cd backend
-if exist package.json (
-    echo 安装后端依赖...
-    call npm install
-    echo 启动Egg.js后端服务...
-    start "Backend Server" cmd /k npm run dev
-    echo 后端服务已启动
-    cd ..
-) else (
-    echo 后端package.json文件不存在
+echo 正在检查 pnpm 是否已安装...
+pnpm --version >nul 2>&1
+if %errorlevel% neq 0 (
+    echo 未检测到 pnpm，正在安装...
+    npm install -g pnpm@8.15.8
+    if %errorlevel% neq 0 (
+        echo pnpm 安装失败，请手动安装 pnpm 后重试。
+        pause
+        exit /b 1
+    )
 )
-echo.
 
-echo 启动前端服务...
-cd frontend
-if exist package.json (
-    echo 安装前端依赖...
-    call npm install
-    echo 启动UMI前端服务...
-    start "Frontend Server" cmd /k npm run dev
-    echo 前端服务已启动
-    cd ..
-) else (
-    echo 前端package.json文件不存在
+echo 正在使用 pnpm 安装依赖...
+pnpm install
+if %errorlevel% neq 0 (
+    echo 依赖安装失败，请检查错误信息。
+    pause
+    exit /b 1
 )
-echo.
 
-echo === 启动完成 ===
-echo 前端访问地址: http://localhost:15000
-echo 后端访问地址: http://localhost:15001
-echo.
-echo 按任意键退出...
-pause > nul
+echo 正在启动项目...
+pnpm dev

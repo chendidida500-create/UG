@@ -93,13 +93,34 @@ UG/
 - **权限管理**: 权限树管理、类型分类、状态控制
 - **个人中心**: 个人信息、头像上传、密码修改、登录历史
 
+## 包管理器
+
+本项目现已统一使用 **pnpm** 作为包管理器，版本为 `8.15.8`。请确保使用 pnpm 进行依赖安装和管理。
+
+### 为什么使用 pnpm？
+
+1. **速度快**: pnpm 比 npm 和 Yarn Classic 更快
+2. **节省磁盘空间**: 通过硬链接和符号链接减少重复包
+3. **严格的依赖管理**: 防止幽灵依赖问题
+4. **UMI 官方推荐**: UMI 团队推荐使用 pnpm
+
+### 安装 pnpm
+
+```bash
+# 使用 npm 安装
+npm install -g pnpm@8.15.8
+
+# 或使用官方安装脚本
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+```
+
 ## 快速开始
 
 ### 环境要求
 
 - Node.js 20.14.0
 - MySQL >= 8.0
-- npm >= 7.0.0
+- pnpm >= 8.15.8
 
 ### 安装和启动
 
@@ -114,7 +135,7 @@ cd UG
 
 ```bash
 cd backend
-npm install
+pnpm install
 # 配置数据库连接
 mysql -u root -p
 CREATE DATABASE ug_project DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -122,15 +143,23 @@ CREATE DATABASE ug_project DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci;
 npx sequelize-cli db:migrate
 npx sequelize-cli db:seed:all
 # 启动开发服务器
-npm run dev
+pnpm dev
 ```
 
 3. **前端设置**
 
 ```bash
 cd frontend
-npm install
-npm start
+pnpm install
+pnpm dev
+```
+
+4. **一键安装和启动**
+
+```bash
+# 在项目根目录运行
+pnpm install
+pnpm dev
 ```
 
 ## 程序启动检测
@@ -158,7 +187,7 @@ tools\start-with-check.bat
 
 检测工具会检查以下项目：
 
-- Node.js 和 npm 版本
+- Node.js 和 pnpm 版本
 - 项目依赖文件 (package.json) 是否存在
 - 数据库配置是否正确
 - 端口占用情况
@@ -172,7 +201,7 @@ tools\start-with-check.bat
 - **后端项目**: `backend/package.json` 中的 `engines.node`
 - **根项目**: `package.json` 中的 `engines.node`
 
-项目根目录下的 [.nvmrc](file:///e:/YSY/UG/.nvmrc) 文件也已设置为 `20.14.0`，方便使用 nvm 管理 Node.js 版本。
+项目根目录下的 [.nvmrc](file:///E:/YSY/UG/.nvmrc) 文件也已设置为 `20.14.0`，方便使用 nvm 管理 Node.js 版本。
 
 如果使用 nvm，可以通过以下命令切换到指定版本：
 
