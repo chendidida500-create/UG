@@ -26,12 +26,12 @@
 
 ### 连接参数
 
-```javascript
+```
 {
   host: process.env.DB_HOST || 'localhost',
   port: parseInt(process.env.DB_PORT) || 3306,
-  database: process.env.DB_DATABASE || 'ug_project',
-  username: process.env.DB_USERNAME || 'root',
+  database: process.env.DB_DATABASE || 'ug',
+  username: process.env.DB_USERNAME || 'ug',
   password: process.env.DB_PASSWORD || 'zcn231101',
   dialect: 'mysql',
   timezone: '+08:00',
@@ -61,11 +61,11 @@
 
 ### 环境变量配置
 
-```bash
+```
 DB_HOST=localhost
 DB_PORT=3306
-DB_DATABASE=ug_project
-DB_USERNAME=root
+DB_DATABASE=ug
+DB_USERNAME=ug
 DB_PASSWORD=zcn231101
 DB_DIALECT=mysql
 TZ=Asia/Shanghai
@@ -158,7 +158,7 @@ DB_UNDERSCORED=true
 
 ## 表关系图
 
-```mermaid
+```
 erDiagram
     users ||--o{ user_roles : has
     roles ||--o{ user_roles : includes
@@ -368,14 +368,14 @@ erDiagram
 
 #### 创建用户
 
-```sql
+```
 INSERT INTO users (id, username, email, password, nickname, status, created_at, updated_at)
 VALUES (?, ?, ?, ?, ?, 1, NOW(), NOW());
 ```
 
 #### 查询用户
 
-```sql
+```
 -- 根据用户名或邮箱查询
 SELECT * FROM users WHERE (username = ? OR email = ?) AND deleted_at IS NULL;
 
@@ -390,7 +390,7 @@ SELECT * FROM users WHERE id = ? AND deleted_at IS NULL;
 
 #### 更新用户
 
-```sql
+```
 -- 更新用户信息
 UPDATE users SET nickname = ?, phone = ?, updated_at = NOW() WHERE id = ?;
 
@@ -403,7 +403,7 @@ UPDATE users SET password = ?, updated_at = NOW() WHERE id = ?;
 
 #### 删除用户（软删除）
 
-```sql
+```
 UPDATE users SET deleted_at = NOW(), updated_at = NOW() WHERE id = ?;
 ```
 
@@ -411,14 +411,14 @@ UPDATE users SET deleted_at = NOW(), updated_at = NOW() WHERE id = ?;
 
 #### 创建角色
 
-```sql
+```
 INSERT INTO roles (id, name, code, description, status, is_system, sort, created_at, updated_at)
 VALUES (?, ?, ?, ?, 1, 0, 0, NOW(), NOW());
 ```
 
 #### 查询角色
 
-```sql
+```
 -- 查询角色列表
 SELECT * FROM roles WHERE deleted_at IS NULL ORDER BY sort ASC;
 
@@ -433,7 +433,7 @@ WHERE ur.user_id = ? AND r.deleted_at IS NULL;
 
 #### 更新角色
 
-```sql
+```
 -- 更新角色信息
 UPDATE roles SET name = ?, description = ?, sort = ?, updated_at = NOW() WHERE id = ?;
 
@@ -443,7 +443,7 @@ UPDATE roles SET status = ?, updated_at = NOW() WHERE id = ?;
 
 #### 删除角色（软删除）
 
-```sql
+```
 UPDATE roles SET deleted_at = NOW(), updated_at = NOW() WHERE id = ?;
 ```
 
@@ -451,14 +451,14 @@ UPDATE roles SET deleted_at = NOW(), updated_at = NOW() WHERE id = ?;
 
 #### 创建权限
 
-```sql
+```
 INSERT INTO permissions (id, name, code, type, parent_id, path, component, icon, sort, status, description, created_at, updated_at)
 VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0, 1, ?, NOW(), NOW());
 ```
 
 #### 查询权限
 
-```sql
+```
 -- 查询所有权限（树形结构）
 SELECT * FROM permissions WHERE deleted_at IS NULL ORDER BY sort ASC;
 
@@ -476,7 +476,7 @@ WHERE ur.user_id = ? AND p.deleted_at IS NULL;
 
 #### 更新权限
 
-```sql
+```
 -- 更新权限信息
 UPDATE permissions SET name = ?, path = ?, component = ?, icon = ?, sort = ?, updated_at = NOW() WHERE id = ?;
 
@@ -486,7 +486,7 @@ UPDATE permissions SET status = ?, updated_at = NOW() WHERE id = ?;
 
 #### 删除权限（软删除）
 
-```sql
+```
 UPDATE permissions SET deleted_at = NOW(), updated_at = NOW() WHERE id = ?;
 ```
 
@@ -494,7 +494,7 @@ UPDATE permissions SET deleted_at = NOW(), updated_at = NOW() WHERE id = ?;
 
 #### 用户角色关联
 
-```sql
+```
 -- 分配角色给用户
 INSERT INTO user_roles (id, user_id, role_id, created_at, updated_at) VALUES (?, ?, ?, NOW(), NOW());
 
@@ -509,7 +509,7 @@ WHERE ur.user_id = ? AND r.deleted_at IS NULL;
 
 #### 角色权限关联
 
-```sql
+```
 -- 分配权限给角色
 INSERT INTO role_permissions (id, role_id, permission_id, created_at, updated_at) VALUES (?, ?, ?, NOW(), NOW());
 
@@ -526,7 +526,7 @@ WHERE rp.role_id = ? AND p.deleted_at IS NULL;
 
 ### 数据库备份
 
-```bash
+```
 # 备份整个数据库
 mysqldump -u root -pzcn231101 ug_project > backup_$(date +%Y%m%d_%H%M%S).sql
 
@@ -536,7 +536,7 @@ mysqldump -u root -pzcn231101 ug_project users roles permissions > backup_tables
 
 ### 数据库恢复
 
-```bash
+```
 # 恢复数据库
 mysql -u root -pzcn231101 ug_project < backup_20240906_120000.sql
 ```
@@ -545,7 +545,7 @@ mysql -u root -pzcn231101 ug_project < backup_20240906_120000.sql
 
 #### 查询优化
 
-```sql
+```
 -- 为常用查询字段添加索引
 CREATE INDEX idx_users_status ON users(status);
 CREATE INDEX idx_roles_code ON roles(code);
@@ -557,7 +557,7 @@ EXPLAIN SELECT * FROM users WHERE username = 'admin';
 
 #### 连接池配置
 
-```javascript
+```
 // 后端连接池配置
 pool: {
   max: 20,        // 最大连接数
@@ -571,7 +571,7 @@ pool: {
 
 #### 慢查询日志
 
-```sql
+```
 -- 启用慢查询日志
 SET GLOBAL slow_query_log = 'ON';
 SET GLOBAL long_query_time = 2;
@@ -583,7 +583,7 @@ SHOW VARIABLES LIKE 'long_query_time';
 
 #### 数据库状态监控
 
-```sql
+```
 -- 查看连接数
 SHOW STATUS LIKE 'Threads_connected';
 
@@ -599,7 +599,7 @@ SHOW TABLE STATUS LIKE 'users';
 
 #### 定期更新
 
-```sql
+```
 -- 更新用户密码
 UPDATE users SET password = ? WHERE id = ?;
 
@@ -611,7 +611,7 @@ AND status = 1;
 
 #### 权限审计
 
-```sql
+```
 -- 查看用户角色分配
 SELECT u.username, r.name as role_name
 FROM users u

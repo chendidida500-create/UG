@@ -19,6 +19,21 @@ UG/
 - Node.js 20.19.0 (已在 package.json 中指定)
 - pnpm 8.x (推荐使用 8.15.8，已在 package.json 中指定)
 
+## 数据库配置
+
+项目现在统一使用以下数据库配置：
+
+- 数据库名：`ug`（所有环境统一）
+- 用户名：`ug`（所有环境统一）
+- 密码：`zcn231101`
+- 主机：`localhost`
+- 端口：`3306`
+- 类型：MySQL
+
+详细信息请参考 [docs/DATABASE.md](docs/DATABASE.md)。
+
+数据库配置更新历史请参考 [docs/DATABASE_CONFIG_UPDATES.md](docs/DATABASE_CONFIG_UPDATES.md)。
+
 ## 包管理器
 
 本项目统一使用 Umi 官方推荐的 pnpm 包管理器，版本为 8.15.8。
@@ -85,6 +100,125 @@ pnpm dev
 # 在新终端中启动前端服务
 cd frontend
 pnpm dev
+```
+
+## 自动化功能
+
+项目实现了全面的自动化功能，提高开发效率：
+
+### 编辑器自动化
+
+- 自动保存：焦点离开时自动保存文件
+- 自动格式化：保存时自动格式化代码
+- 自动修复：保存时自动执行ESLint修复和导入组织
+
+### 开发流程自动化
+
+```bash
+# 同时启动前后端开发服务器
+pnpm dev
+
+# 构建项目
+pnpm build
+
+# 运行测试
+pnpm test
+
+# 代码检查
+pnpm lint
+pnpm lint:fix  # 自动修复问题
+```
+
+### 任务自动化
+
+通过 VS Code 任务系统，可以快速执行：
+
+- 自动格式化和检查 ([scripts/auto-format-and-lint.bat](file:///e:/YSY/UG/scripts/auto-format-and-lint.bat))
+- 自动类型检查 ([scripts/auto-type-check.bat](file:///e:/YSY/UG/scripts/auto-type-check.bat))
+- 自动构建项目 ([scripts/auto-build.bat](file:///e:/YSY/UG/scripts/auto-build.bat))
+- 启动开发服务器 ([scripts/auto-dev-server.bat](file:///e:/YSY/UG/scripts/auto-dev-server.bat))
+
+详细信息请参考 [docs/AUTOMATION.md](docs/AUTOMATION.md)。
+
+## 诊断和调试工具
+
+为了更快速地发现问题和解决问题，项目提供了丰富的诊断和调试工具：
+
+### 快速诊断
+
+```cmd
+# 运行快速诊断，检查环境、依赖、代码质量等
+./scripts/quick-diagnosis.bat
+```
+
+### 性能分析
+
+```cmd
+# 分析前端构建包大小和性能
+./scripts/analyze-bundle.bat
+```
+
+### 依赖检查
+
+```cmd
+# 检查依赖安全性和过时情况
+./scripts/check-dependencies.bat
+```
+
+### 环境验证
+
+```cmd
+# 验证环境变量配置
+./scripts/validate-env.bat
+```
+
+### 路由检查
+
+```cmd
+# 检查UMI路由配置
+./scripts/check-routes.bat
+```
+
+### 数据库测试
+
+```cmd
+# 测试数据库连接
+./scripts/test-db-connection.bat
+```
+
+### API测试
+
+```cmd
+# 测试后端API接口
+./scripts/test-api.bat
+```
+
+### 中间件调试
+
+```cmd
+# 调试Egg.js中间件
+./scripts/debug-middleware.bat
+```
+
+### 日志分析
+
+```cmd
+# 分析应用日志
+./scripts/analyze-logs.bat
+```
+
+### 内存检查
+
+```cmd
+# 检查内存使用情况
+./scripts/check-memory.bat
+```
+
+### 安全扫描
+
+```cmd
+# 扫描安全漏洞
+./scripts/security-scan.bat
 ```
 
 ## 拼写检查

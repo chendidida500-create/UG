@@ -121,7 +121,7 @@ pnpm install
 
 - 根目录依赖：
   - `@types/node`: 24.3.1
-  - `typescript`: 5.1.3
+  - `typescript`: 5.9.2
   - `concurrently`: 9.2.1
   - `rimraf`: 6.0.1
 
@@ -267,6 +267,27 @@ pnpm clean:frontend
 - 前端配置: [frontend/.umirc.ts](file:///e:/YSY/UG/frontend/.umirc.ts)
 - 数据库配置: [backend/database/config.js](file:///e:/YSY/UG/backend/database/config.js)
 
+## 数据库配置统一
+
+为了确保开发、测试和生产环境的一致性，项目已统一数据库配置：
+
+- 所有环境的数据库名统一为：`ug`
+- 所有环境的用户名统一为：`ug`
+- 密码：`zcn231101`
+- 主机：`localhost`
+- 端口：`3306`
+- 类型：MySQL
+
+生产环境支持通过环境变量覆盖配置：
+
+- `DB_USERNAME` - 数据库用户名
+- `DB_PASSWORD` - 数据库密码
+- `DB_DATABASE` - 数据库名
+- `DB_HOST` - 数据库主机
+- `DB_PORT` - 数据库端口
+
+详细信息请参考 [DATABASE.md](DATABASE.md)。
+
 ## 代码规范
 
 项目使用 ESLint 和 Prettier 进行代码规范检查和格式化。
@@ -290,6 +311,66 @@ pnpm format
 # 运行 TypeScript 类型检查
 pnpm tsc
 ```
+
+## 自动化功能
+
+项目实现了全面的自动化功能，提高开发效率：
+
+### 编辑器自动化
+
+项目配置了 VS Code 编辑器自动保存功能：
+
+- 焦点离开编辑器时自动保存文件
+- 保存时自动格式化代码
+- 保存时自动执行 ESLint 修复和导入组织
+
+### 任务自动化
+
+通过 VS Code 任务系统，可以快速执行：
+
+- 自动格式化和检查 ([scripts/auto-format-and-lint.bat](file:///e:/YSY/UG/scripts/auto-format-and-lint.bat))
+- 自动类型检查 ([scripts/auto-type-check.bat](file:///e:/YSY/UG/scripts/auto-type-check.bat))
+- 自动构建项目 ([scripts/auto-build.bat](file:///e:/YSY/UG/scripts/auto-build.bat))
+- 启动开发服务器 ([scripts/auto-dev-server.bat](file:///e:/YSY/UG/scripts/auto-dev-server.bat))
+
+详细信息请参考 [AUTOMATION.md](AUTOMATION.md)。
+
+### 脚本自动化
+
+项目提供了多个自动化脚本：
+
+- [install-deps.bat](file:///e:/YSY/UG/install-deps.bat) - 安装依赖
+- [reinstall-deps.bat](file:///e:/YSY/UG/reinstall-deps.bat) - 重新安装依赖
+- [start.bat](file:///e:/YSY/UG/start.bat) - 启动生产环境
+- [start-dev.bat](file:///e:/YSY/UG/start-dev.bat) - 启动开发环境
+
+## 诊断和调试
+
+为了更快速地发现问题和解决问题，项目提供了丰富的诊断和调试工具：
+
+### 快速诊断工具
+
+使用 [scripts/quick-diagnosis.bat](file:///e:/YSY/UG/scripts/quick-diagnosis.bat) 可以一键运行多项检查：
+
+- 环境变量验证
+- 依赖过时检查
+- TypeScript类型检查
+- 代码规范检查
+- 数据库连接测试
+
+### 性能分析工具
+
+使用 [scripts/analyze-bundle.bat](file:///e:/YSY/UG/scripts/analyze-bundle.bat) 可以分析前端构建包的大小和组成。
+
+### 安全检查工具
+
+使用 [scripts/security-scan.bat](file:///e:/YSY/UG/scripts/security-scan.bat) 可以扫描项目依赖的安全漏洞。
+
+### 中间件调试
+
+使用 [scripts/debug-middleware.bat](file:///e:/YSY/UG/scripts/debug-middleware.bat) 可以调试 Egg.js 中间件的执行过程。
+
+详细信息请参考 [AUTOMATION.md](AUTOMATION.md)。
 
 ## 提交代码
 

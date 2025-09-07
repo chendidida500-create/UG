@@ -1,156 +1,212 @@
-# UG 管理系统 - 代码索引
+# 项目文档索引
 
-这个索引文件旨在帮助开发者快速找到相关的代码文件和组件。
+本文档提供了 UG 管理系统项目所有文档的索引，方便快速查找所需信息。
 
-## 目录结构
+## 项目概述
 
-```
-UG/
-├── frontend/                    # 前端项目
-│   ├── src/
-│   │   ├── components/         # 公共组件
-│   │   ├── layouts/            # 布局组件
-│   │   ├── models/             # 状态管理
-│   │   ├── pages/              # 页面组件
-│   │   ├── services/           # API 服务
-│   │   ├── utils/              # 工具函数
-│   │   ├── wrappers/           # 路由包装器
-│   │   └── styles/             # 样式文件
-│   ├── public/                 # 静态资源
-│   └── config/                 # UMI 配置
-├── backend/                    # 后端项目
-│   ├── app/
-│   │   ├── controller/         # 控制器
-│   │   ├── service/            # 服务层
-│   │   ├── model/              # 数据模型
-│   │   ├── middleware/         # 中间件
-│   │   └── extend/             # 扩展
-│   ├── config/                 # 配置文件
-│   ├── database/               # 数据库
-│   │   ├── migrations/         # 迁移文件
-│   │   └── seeders/            # 种子数据
-│   ├── app.js                  # 应用入口
-│   └── package.json            # 依赖配置
-└── docs/                       # 项目文档
-```
+- [README.md](../README.md) - 项目主文档，包含项目简介、环境要求、快速开始等
+- [DEVELOPMENT.md](DEVELOPMENT.md) - 开发指南，包含目录结构、环境要求、开发流程等
+- [PROJECT_COMPLETION.md](PROJECT_COMPLETION.md) - 项目完成报告
+- [FINAL_COMPLETION_REPORT.md](FINAL_COMPLETION_REPORT.md) - 最终完成报告
 
-## 核心组件索引
+## 环境与版本管理
 
-### 前端核心组件
+- [VERSION_REQUIREMENTS.md](VERSION_REQUIREMENTS.md) - 项目版本要求
+- [VERSION_LOCKING.md](VERSION_LOCKING.md) - 项目版本锁定说明
+- [VERSION_UPGRADE_GUIDE.md](VERSION_UPGRADE_GUIDE.md) - 版本升级指南
+- [DEPENDENCY_VERSION_REPORT.md](DEPENDENCY_VERSION_REPORT.md) - 依赖版本报告
+- [DEPENDENCY_UPDATES.md](DEPENDENCY_UPDATES.md) - 依赖更新日志
 
-#### 动态组件
+## 自动化功能
 
-- [DynamicTable](../frontend/src/components/DynamicTable/index.tsx) - 动态表格组件
-- [DynamicForm](../frontend/src/components/DynamicForm/index.tsx) - 动态表单组件
-- [CrudComponent](../frontend/src/components/CrudComponent/index.tsx) - CRUD 组件
+- [AUTOMATION.md](AUTOMATION.md) - 项目自动化指南
+- [PNPM_MIGRATION.md](PNPM_MIGRATION.md) - PNPM 迁移指南
 
-#### 布局组件
+## 代码质量与规范
 
-- [BasicLayout](../frontend/src/layouts/BasicLayout/index.tsx) - 主布局
-- [AuthLayout](../frontend/src/layouts/AuthLayout/index.tsx) - 认证布局
+- [ENCODING_STANDARD.md](ENCODING_STANDARD.md) - 字符编码标准
+- [spell-checking-guide.md](spell-checking-guide.md) - 拼写检查指南
+- [TYPESCRIPT_FIXES.md](TYPESCRIPT_FIXES.md) - TypeScript 配置问题修复
 
-#### 页面组件
+## 配置与部署
 
-- [Dashboard](../frontend/src/pages/Dashboard/index.tsx) - 仪表盘页面
-- [Login](../frontend/src/pages/Auth/Login/index.tsx) - 登录页面
-- [Register](../frontend/src/pages/Auth/Register/index.tsx) - 注册页面
-- [UserManagement](../frontend/src/pages/System/User/index.tsx) - 用户管理页面
-- [RoleManagement](../frontend/src/pages/System/Role/index.tsx) - 角色管理页面
-- [PermissionManagement](../frontend/src/pages/System/Permission/index.tsx) - 权限管理页面
-- [Profile](../frontend/src/pages/Profile/index.tsx) - 个人中心页面
+- [CONFIGURATION.md](CONFIGURATION.md) - 项目配置说明
+- [DEPLOYMENT.md](DEPLOYMENT.md) - 部署指南
+- [DATABASE.md](DATABASE.md) - 数据库配置与管理
 
-#### 状态管理 (UMI Models)
+## 数据库相关文档
 
-- [auth](../frontend/src/models/auth.ts) - 认证模型
-- [user](../frontend/src/models/user.ts) - 用户模型
-- [role](../frontend/src/models/role.ts) - 角色模型
-- [permission](../frontend/src/models/permission.ts) - 权限模型
-- [dashboard](../frontend/src/models/dashboard.ts) - 仪表盘模型
+- [DATABASE.md](DATABASE.md) - 数据库设计文档
+- [DATABASE_CONFIG_UPDATES.md](DATABASE_CONFIG_UPDATES.md) - 数据库配置更新日志
 
-#### 工具函数
+## 脚本工具
 
-- [request](../frontend/src/utils/request.ts) - 请求封装
-- [umiMock](../frontend/src/utils/umiMock.ts) - UMI 模拟实现
+### 批处理脚本 (位于项目根目录)
 
-### 后端核心组件
+- [install-deps.bat](../install-deps.bat) - 安装依赖
+- [reinstall-deps.bat](../reinstall-deps.bat) - 重新安装依赖
+- [start.bat](../start.bat) - 启动生产环境
+- [start-dev.bat](../start-dev.bat) - 启动开发环境
+- [fix-umi-error.bat](../fix-umi-error.bat) - 修复 UMI 错误
 
-#### 控制器
+### 脚本目录 (scripts/)
 
-- [AuthController](../backend/app/controller/auth.js) - 认证控制器
-- [UserController](../backend/app/controller/user.js) - 用户控制器
-- [RoleController](../backend/app/controller/role.js) - 角色控制器
-- [PermissionController](../backend/app/controller/permission.js) - 权限控制器
+- [analyze-bundle.bat](../scripts/analyze-bundle.bat) - 分析前端构建包
+- [auto-build.bat](../scripts/auto-build.bat) - 自动构建项目
+- [auto-dev-server.bat](../scripts/auto-dev-server.bat) - 自动启动开发服务器
+- [auto-format-and-lint.bat](../scripts/auto-format-and-lint.bat) - 自动格式化和检查代码
+- [auto-type-check.bat](../scripts/auto-type-check.bat) - 自动进行 TypeScript 类型检查
+- [check-dependencies.bat](../scripts/check-dependencies.bat) - 检查依赖安全性和过时情况
+- [check-memory.bat](../scripts/check-memory.bat) - 检查内存使用情况
+- [check-routes.bat](../scripts/check-routes.bat) - 检查UMI路由配置
+- [debug-middleware.bat](../scripts/debug-middleware.bat) - 调试Egg.js中间件
+- [quick-diagnosis.bat](../scripts/quick-diagnosis.bat) - 快速诊断
+- [security-scan.bat](../scripts/security-scan.bat) - 安全扫描
+- [spellcheck-all.bat](../scripts/spellcheck-all.bat) - 整个项目拼写检查
+- [test-api.bat](../scripts/test-api.bat) - 测试后端API接口
+- [test-db-connection.bat](../scripts/test-db-connection.bat) - 测试数据库连接
+- [validate-env.bat](../scripts/validate-env.bat) - 验证环境变量配置
 
-#### 服务层
+### 工具目录 (tools/)
 
-- [AuthService](../backend/app/service/auth.js) - 认证服务
-- [UserService](../backend/app/service/user.js) - 用户服务
-- [RoleService](../backend/app/service/role.js) - 角色服务
-- [PermissionService](../backend/app/service/permission.js) - 权限服务
+- [auto-fix-and-start.bat](../tools/auto-fix-and-start.bat) - 自动修复并启动
+- [auto-upgrade-nodejs.bat](../tools/auto-upgrade-nodejs.bat) - 自动升级 Node.js
+- [check-versions.bat](../tools/check-versions.bat) - 检查版本
+- [check-versions.js](../tools/check-versions.js) - 检查版本（Node.js 脚本）
 
-#### 数据模型
+## 前端相关文档
 
-- [User](../backend/app/model/user.js) - 用户模型
-- [Role](../backend/app/model/role.js) - 角色模型
-- [Permission](../backend/app/model/permission.js) - 权限模型
+前端特定的配置和说明可在以下文件中找到：
 
-#### 中间件
+- [frontend/README.md](../frontend/README.md)（如果存在）
+- [frontend/package.json](../frontend/package.json) - 前端依赖配置
 
-- [jwtAuth](../backend/app/middleware/jwtAuth.js) - JWT 认证中间件
-- [errorHandler](../backend/app/middleware/errorHandler.js) - 错误处理中间件
+## 后端相关文档
+
+后端特定的配置和说明可在以下文件中找到：
+
+- [backend/README.md](../backend/README.md)（如果存在）
+- [backend/package.json](../backend/package.json) - 后端依赖配置
 
 ## 配置文件
 
-### 前端配置
+- [.editorconfig](../.editorconfig) - 编辑器配置
+- [.eslintrc.json](../.eslintrc.json) - ESLint 配置
+- [.prettierrc.json](../.prettierrc.json) - Prettier 配置
+- [.gitignore](../.gitignore) - Git 忽略文件配置
+- [cspell.json](../cspell.json) - 拼写检查配置
 
-- [UMI 配置](../frontend/.umirc.ts) - UMI 框架配置
-- [TypeScript 配置](../frontend/tsconfig.json) - TypeScript 配置（已更新以解决 moduleResolution=node10 弃用警告）
-- [ESLint 配置](../frontend/.eslintrc.json) - 代码规范配置
-- [Prettier 配置](../frontend/.prettierrc.json) - 代码格式化配置
+## VS Code 配置
 
-### 后端配置
+- [.vscode/settings.json](../.vscode/settings.json) - VS Code 设置
+- [.vscode/tasks.json](../.vscode/tasks.json) - VS Code 任务配置
 
-- [默认配置](../backend/config/config.default.js) - 默认配置文件
-- [插件配置](../backend/config/plugin.js) - 插件配置文件
+## TypeScript 配置
 
-## 数据库文件
+- [tsconfig.json](../tsconfig.json) - 根目录 TypeScript 配置
+- [config/tsconfig/](../config/tsconfig/) - TypeScript 配置目录
+- [frontend/tsconfig.json](../frontend/tsconfig.json) - 前端 TypeScript 配置
+- [backend/tsconfig.json](../backend/tsconfig.json) - 后端 TypeScript 配置
 
-### 迁移文件
+## 项目结构说明
 
-- [用户表迁移](../backend/database/migrations/20230906000000-create-user.js)
-- [角色表迁移](../backend/database/migrations/20230906000001-create-role.js)
-- [权限表迁移](../backend/database/migrations/20230906000002-create-permission.js)
-- [用户角色关联表迁移](../backend/database/migrations/20230906000003-create-user-role.js)
-- [角色权限关联表迁移](../backend/database/migrations/20230906000004-create-role-permission.js)
+### 根目录重要文件
 
-### 种子数据
+```
+UG/
+├── .editorconfig         # 编辑器配置
+├── .env.example          # 环境变量示例
+├── .gitignore            # Git 忽略文件
+├── README.md             # 项目主文档
+├── package.json          # 根目录包配置
+├── pnpm-workspace.yaml   # pnpm 工作区配置
+├── tsconfig.json         # 根目录 TypeScript 配置
+├── typings.d.ts          # TypeScript 类型定义
+├── install-deps.bat      # 安装依赖脚本
+├── reinstall-deps.bat    # 重新安装依赖脚本
+├── start.bat             # 启动生产环境脚本
+├── start-dev.bat         # 启动开发环境脚本
+├── fix-umi-error.bat     # 修复 UMI 错误脚本
+├── docker-compose.yml    # Docker 配置
+└── docker-compose.prod.yml # 生产环境 Docker 配置
+```
 
-- [用户种子](../backend/database/seeders/20230906000000-user.js)
-- [角色种子](../backend/database/seeders/20230906000001-role.js)
-- [权限种子](../backend/database/seeders/20230906000002-permission.js)
+### 文档目录
 
-## 测试文件
+```
+docs/
+├── AUTOMATION.md         # 自动化指南
+├── CODE_INDEX.md         # 文档索引（本文档）
+├── CONFIGURATION.md      # 项目配置说明
+├── DATABASE.md           # 数据库配置与管理
+├── DEPENDENCY_UPDATES.md # 依赖更新日志
+├── DEPENDENCY_VERSION_REPORT.md # 依赖版本报告
+├── DEPLOYMENT.md         # 部署指南
+├── DEVELOPMENT.md        # 开发指南
+├── ENCODING_STANDARD.md  # 字符编码标准
+├── FINAL_COMPLETION_REPORT.md # 最终完成报告
+├── PNPM_MIGRATION.md     # PNPM 迁移指南
+├── PROJECT_COMPLETION.md # 项目完成报告
+├── TYPESCRIPT_FIXES.md   # TypeScript 配置问题修复
+├── VERSION_LOCKING.md    # 版本锁定说明
+├── VERSION_REQUIREMENTS.md # 版本要求
+├── VERSION_UPGRADE_GUIDE.md # 版本升级指南
+└── spell-checking-guide.md # 拼写检查指南
+```
 
-### 后端测试
+### 脚本目录
 
-- [认证测试](../backend/test/app/controller/auth.test.js)
-- [用户测试](../backend/test/app/controller/user.test.js)
-- [角色测试](../backend/test/app/controller/role.test.js)
-- [权限测试](../backend/test/app/controller/permission.test.js)
+```
+scripts/
+├── analyze-bundle.bat    # 分析前端构建包
+├── auto-build.bat        # 自动构建项目
+├── auto-dev-server.bat   # 自动启动开发服务器
+├── auto-format-and-lint.bat # 自动格式化和检查代码
+├── auto-type-check.bat   # 自动进行 TypeScript 类型检查
+├── check-dependencies.bat # 检查依赖
+├── check-memory.bat      # 检查内存
+├── check-routes.bat      # 检查路由
+├── debug-middleware.bat  # 调试中间件
+├── quick-diagnosis.bat   # 快速诊断
+├── security-scan.bat     # 安全扫描
+├── spellcheck-all.bat    # 整个项目拼写检查
+├── test-api.bat          # 测试API
+├── test-db-connection.bat # 测试数据库连接
+└── validate-env.bat      # 验证环境变量
+```
 
-## 类型定义
+### 工具目录
 
-- [前端类型定义](../frontend/src/types/index.ts) - 前端 TypeScript 类型定义
-- [后端类型定义](../backend/app/extend/context.js) - 后端响应类型扩展
+```
+tools/
+├── auto-fix-and-start.bat # 自动修复并启动
+├── auto-upgrade-nodejs.bat # 自动升级 Node.js
+├── check-versions.bat    # 检查版本
+└── check-versions.js     # 检查版本（Node.js 脚本）
+```
 
-## 部署文件
+## 使用建议
 
-- [Dockerfile (前端)](../frontend/Dockerfile) - 前端 Docker 配置
-- [Dockerfile (后端)](../backend/Dockerfile) - 后端 Docker 配置
-- [Nginx 配置](../frontend/nginx.conf) - Nginx 服务器配置
-- [开发环境 Docker Compose](../docker-compose.yml) - 开发环境编排
-- [生产环境 Docker Compose](../docker-compose.prod.yml) - 生产环境编排
+1. **新开发者入门**：
+   - 首先阅读 [README.md](../README.md) 了解项目概况
+   - 查看 [DEVELOPMENT.md](DEVELOPMENT.md) 了解开发流程
+   - 参考 [AUTOMATION.md](AUTOMATION.md) 了解自动化功能
 
----
+2. **环境配置**：
+   - 查看 [VERSION_REQUIREMENTS.md](VERSION_REQUIREMENTS.md) 了解版本要求
+   - 使用 [tools/check-versions.bat](../tools/check-versions.bat) 检查环境
 
-_此索引文件最后更新: 2024-09-06_
+3. **日常开发**：
+   - 利用编辑器自动化功能提高效率
+   - 使用 VS Code 任务快速执行常用操作
+   - 参考 [scripts/](../scripts/) 目录中的脚本
+
+4. **问题排查**：
+   - 查看相关文档寻找解决方案
+   - 使用 [tools/](../tools/) 目录中的工具脚本
+   - 参考 [TYPESCRIPT_FIXES.md](TYPESCRIPT_FIXES.md) 解决 TypeScript 问题
+   - 使用诊断脚本快速定位问题
+
+## 更新日志
+
+本文档会随着项目的发展而更新，最近更新时间请查看文件属性。
