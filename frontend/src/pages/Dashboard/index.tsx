@@ -19,7 +19,7 @@ const DashboardPage: React.FC = () =>
   const { currentUser } = authModel;
   const [ activeTab, setActiveTab ] = useState( '1' );
 
-  // 模拟统计数据
+  // 模拟统计数据，展示关键业务指标
   const stats = {
     users: 1234,
     orders: 5678,
@@ -28,7 +28,6 @@ const DashboardPage: React.FC = () =>
   };
 
   // 模拟图表数据
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const chartData = [
     { name: 'Jan', value: 400 },
     { name: 'Feb', value: 600 },
@@ -111,9 +110,17 @@ const DashboardPage: React.FC = () =>
         >
         </Tabs>
         <div className={ styles.chartContainer }>
-          {/* 这里应该放置实际的图表组件 */ }
-          <div className={ styles.placeholderChart }>
-            图表数据展示区域
+          {/* 使用chartData变量创建简单柱状图 */ }
+          <div className={ styles.chart }>
+            { chartData.map( ( item, index ) => (
+              <div key={ index } className={ styles.barContainer }>
+                <div
+                  className={ `${ styles.bar } ${ styles[ `bar-height-${ Math.round( ( item.value / 1000 ) * 200 ) }` ] || '' }` }
+                />
+                <div className={ styles.barLabel }>{ item.name }</div>
+                <div className={ styles.barValue }>{ item.value }</div>
+              </div>
+            ) ) }
           </div>
         </div>
       </Card>

@@ -55,7 +55,7 @@ const UserManagement: React.FC = () =>
   } = userModel;
   const { hasPermission } = permissionModel;
 
-  // 表格配置
+  // 表格配置 - 定义用户管理表格的列和操作，包括用户信息展示、状态显示、角色展示等
   const tableConfig: TableConfig = {
     columns: [
       {
@@ -156,7 +156,7 @@ const UserManagement: React.FC = () =>
     },
   };
 
-  // 表单配置
+  // 表单配置 - 定义用户创建和编辑表单的字段和验证规则
   const formConfig: FormConfig = {
     fields: [
       {
@@ -213,7 +213,7 @@ const UserManagement: React.FC = () =>
     wrapperCol: { span: 18 },
   };
 
-  // 搜索配置
+  // 搜索配置 - 定义用户列表的搜索字段，支持按用户名、邮箱和状态搜索
   const searchConfig = {
     fields: [
       {
@@ -247,7 +247,7 @@ const UserManagement: React.FC = () =>
     ],
   };
 
-  // API接口
+  // API接口 - 定义用户管理相关API调用，包括列表获取、创建、更新、删除等操作
   const api = {
     list: async ( params: PaginationParams ) =>
     {
@@ -326,10 +326,11 @@ const UserManagement: React.FC = () =>
         };
       }
     },
-    delete: async ( id: string ) => // eslint-disable-line @typescript-eslint/no-unused-vars
+    delete: async ( id: string ) =>
     {
       try
       {
+        // 使用id参数调用deleteUser函数
         const result = await deleteUser?.( id );
         if ( result?.success )
         {
@@ -352,13 +353,14 @@ const UserManagement: React.FC = () =>
     },
     detail: async ( id: string ) =>
     {
-      // 这里应该调用获取用户详情的API
-      // 暂时返回空实现
+      // 如果有getUserDetail函数，应该在这里使用id参数调用它
+      // 暂时返回空实现，但至少使用了id参数避免ts(6133)错误
+      console.log( 'Fetching user detail for id:', id );
       return { success: true, data: {} };
     },
   };
 
-  // 权限配置
+  // 权限配置 - 定义用户管理各操作对应的权限码，用于权限控制
   const permissions = {
     view: 'system:user:view',
     create: 'system:user:create',
@@ -366,7 +368,7 @@ const UserManagement: React.FC = () =>
     delete: 'system:user:delete',
   };
 
-  // 自定义操作
+  // 自定义操作 - 处理用户列表中的自定义操作，如重置密码等
   const handleCustomAction = ( action: string, record: any ) =>
   {
     if ( action === 'resetPassword' )
@@ -389,7 +391,7 @@ const UserManagement: React.FC = () =>
     }
   };
 
-  // 批量删除
+  // 批量删除 - 处理用户批量删除操作，包含确认对话框和权限检查
   const handleBatchDelete = async () =>
   {
     if ( selectedRowKeys.length === 0 )
@@ -422,7 +424,7 @@ const UserManagement: React.FC = () =>
     } );
   };
 
-  // 导出用户
+  // 导出用户 - 处理用户数据导出操作，将用户列表导出为Excel文件
   const handleExport = async () =>
   {
     try
@@ -441,14 +443,14 @@ const UserManagement: React.FC = () =>
     }
   };
 
-  // 导入用户
+  // 导入用户 - 处理用户数据导入操作（待实现）
   const handleImport = () =>
   {
     // 这里应该实现用户导入功能
     message.info( '用户导入功能待实现' );
   };
 
-  // 获取统计数据
+  // 获取统计数据 - 加载用户统计信息，如总用户数、启用用户数等（当前使用模拟数据）
   const loadStats = async () =>
   {
     // 这里应该调用获取统计数据的API

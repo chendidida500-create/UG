@@ -12,7 +12,7 @@ interface ApiResponse<T>
   data: T;
 }
 
-// 定义UserModelState接口，避免循环引用
+// 定义UserModelState接口，包含用户列表和用户管理相关操作
 export interface UserModelState
 {
   users: User[];

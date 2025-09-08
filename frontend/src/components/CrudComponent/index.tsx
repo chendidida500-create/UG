@@ -4,7 +4,7 @@ import type { FormConfig, PaginationParams, TableConfig } from '../../types';
 import DynamicForm, { type DynamicFormRef } from '../DynamicForm';
 import DynamicTable from '../DynamicTable';
 
-// 导出类型供其他组件使用
+// 导出类型供其他组件使用，便于类型检查和复用
 export type { FormConfig, PaginationParams, TableConfig } from '../../types';
 
 interface CrudComponentProps

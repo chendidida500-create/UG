@@ -37,7 +37,7 @@ interface ApiResponse<T>
   data: T;
 }
 
-// 定义RoleModelState类型
+// 定义RoleModelState类型，包含角色列表和角色管理相关操作
 export interface RoleModelState
 {
   roles: Role[];

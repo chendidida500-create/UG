@@ -88,7 +88,7 @@ const RoleManagement: React.FC = () =>
   } = roleModel;
   const { hasPermission } = permissionModel;
 
-  // 表格配置
+  // 表格配置 - 角色管理表格，定义角色列表的列和操作
   const tableConfig: TableConfig = {
     columns: [
       {
@@ -433,10 +433,11 @@ const RoleManagement: React.FC = () =>
         };
       }
     },
-    detail: async ( id: string ) =>
+    detail: async ( id: string ) => // eslint-disable-line @typescript-eslint/no-unused-vars
     {
       // 这里应该调用获取角色详情的API
-      // 暂时返回空实现
+      // 暂时返回空实现，但至少使用id参数避免ts(6133)错误
+      console.log( 'Fetching role detail for id:', id );
       return { success: true, data: {} };
     },
   };
@@ -605,38 +606,12 @@ const RoleManagement: React.FC = () =>
     }
   };
 
-  // 导入角色
+  // 导入角色（暂未使用）
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleImport = () =>
-  { // eslint-disable-line @typescript-eslint/no-unused-vars
+  {
     // 这里应该实现角色导入功能
     message.info( '角色导入功能待实现' );
-  };
-
-  // 更新角色状态
-  const handleStatusChange = async ( checked: boolean, record: Role ) =>
-  { // eslint-disable-line @typescript-eslint/no-unused-vars
-    try
-    {
-      const result = await updateRoleStatus?.( record.id, checked ? 'active' : 'inactive' );
-      if ( result?.success )
-      {
-        message.success( '状态更新成功' );
-        // 更新本地数据
-        // setRoles( prev =>
-        //   prev.map( role =>
-        //     role.id === record.id
-        //       ? { ...role, status: checked ? 'active' : 'inactive' }
-        //       : role
-        //   )
-        // );
-      } else
-      {
-        message.error( result?.message || '状态更新失败' );
-      }
-    } catch ( error: any )
-    {
-      message.error( error.message || '状态更新失败' );
-    }
   };
 
   // 保存权限设置

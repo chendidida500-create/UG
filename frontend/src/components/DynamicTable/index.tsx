@@ -31,7 +31,7 @@ import type { ColumnsType, TableProps } from 'antd/es/table';
 import { useEffect, useRef, useState } from 'react';
 import type { PaginationParams, TableConfig } from '../../types';
 
-// 导出类型供其他组件使用
+// 导出类型供其他组件使用，便于类型检查和复用
 export type { PaginationParams, TableConfig } from '../../types';
 
 const { RangePicker } = DatePicker;
@@ -347,16 +347,50 @@ const DynamicTable: React.FC<DynamicTableProps> = ( props: DynamicTableProps ) =
   // 处理分页变化
   const handleTableChange: TableProps<any>[ 'onChange' ] = (
     paginationConfig,
-    // 修复：添加eslint-disable-next-line注释忽略未使用变量警告
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     filters,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     sorter
   ) =>
   {
     const current = paginationConfig?.current || 1;
     const pageSize = paginationConfig?.pageSize || 20;
 
+    // 构建包含过滤和排序参数的搜索条件
+    const searchConditions: Record<string, any> = {
+      current,
+      pageSize,
+      ...searchParams,
+    };
+
+    // 添加过滤条件
+    Object.keys( filters ).forEach( key =>
+    {
+      if ( filters[ key ] !== null && filters[ key ] !== undefined )
+      {
+        searchConditions[ `filter_${ key }` ] = filters[ key ];
+      }
+    } );
+
+    // 添加排序条件
+    if ( sorter && typeof sorter === 'object' && !Array.isArray( sorter ) )
+    {
+      if ( sorter.field )
+      {
+        searchConditions.sortField = sorter.field;
+        searchConditions.sortOrder = sorter.order;
+      }
+    } else if ( Array.isArray( sorter ) )
+    {
+      // 多列排序的情况
+      searchConditions.multiSort = sorter.map( s => ( {
+        field: s.field,
+        order: s.order,
+      } ) );
+    }
+
+    // 调用搜索回调，传递完整的搜索条件
+    onSearch?.( searchConditions );
+
+    // 如果有分页变化回调，则调用
     onPageChange?.( current, pageSize );
   };
 

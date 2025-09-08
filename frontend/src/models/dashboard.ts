@@ -62,7 +62,7 @@ interface ChartData
   }>;
 }
 
-// 定义DashboardModelState类型
+// 定义DashboardModelState类型，包含仪表盘统计数据和相关操作
 export interface DashboardModelState
 {
   stats: DashboardStats;

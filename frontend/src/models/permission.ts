@@ -34,7 +34,7 @@ interface UserPermissions
   [ key: string ]: boolean;
 }
 
-// 定义PermissionModelState类型
+// 定义PermissionModelState类型，包含权限列表和权限管理相关操作
 export interface PermissionModelState
 {
   permissions: Permission[];

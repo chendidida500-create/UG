@@ -12,7 +12,7 @@ interface ApiResponse<T>
   data: T;
 }
 
-// 定义AuthModelState类型
+// 定义AuthModelState类型，包含当前用户信息和认证相关操作
 export interface AuthModelState
 {
   currentUser: User | null;
@@ -41,10 +41,10 @@ export default function useAuthModel (): AuthModelState
     setLoginLoading( true );
     try
     {
-      const response = await request<ApiResponse<{ user: User; token: string; refreshToken: string }>>( '/api/auth/login', {
+      const response = await request( '/api/auth/login', {
         method: 'POST',
         data: params,
-      } );
+      } ) as ApiResponse<{ user: User; token: string; refreshToken: string }>;
 
       if ( response.success )
       {
@@ -93,10 +93,10 @@ export default function useAuthModel (): AuthModelState
   {
     try
     {
-      const response = await request<ApiResponse<User>>( '/api/auth/register', {
+      const response = await request( '/api/auth/register', {
         method: 'POST',
         data: params,
-      } );
+      } ) as ApiResponse<User>;
 
       if ( response.success )
       {
@@ -119,10 +119,10 @@ export default function useAuthModel (): AuthModelState
   {
     try
     {
-      const response = await request<ApiResponse<void>>( '/api/auth/captcha', {
+      const response = await request( '/api/auth/captcha', {
         method: 'POST',
         data: { email },
-      } );
+      } ) as ApiResponse<void>;
 
       if ( response.success )
       {
@@ -143,9 +143,9 @@ export default function useAuthModel (): AuthModelState
   {
     try
     {
-      await request<ApiResponse<void>>( '/api/auth/logout', {
+      await request( '/api/auth/logout', {
         method: 'POST',
-      } );
+      } ) as ApiResponse<void>;
     } catch ( error )
     {
       console.log( 'logout error:', error );
@@ -175,9 +175,9 @@ export default function useAuthModel (): AuthModelState
     setLoading( true );
     try
     {
-      const response = await request<ApiResponse<User>>( '/api/auth/me', {
+      const response = await request( '/api/auth/me', {
         method: 'GET',
-      } );
+      } ) as ApiResponse<User>;
 
       if ( response.success )
       {
@@ -207,10 +207,10 @@ export default function useAuthModel (): AuthModelState
   {
     try
     {
-      const response = await request<ApiResponse<User>>( '/api/me', {
+      const response = await request( '/api/me', {
         method: 'PUT',
         data: params,
-      } );
+      } ) as ApiResponse<User>;
 
       if ( response.success )
       {
@@ -241,10 +241,10 @@ export default function useAuthModel (): AuthModelState
   {
     try
     {
-      const response = await request<ApiResponse<void>>( '/api/me/password', {
+      const response = await request( '/api/me/password', {
         method: 'PUT',
         data: params,
-      } );
+      } ) as ApiResponse<void>;
 
       if ( response.success )
       {

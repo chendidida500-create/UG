@@ -45,7 +45,7 @@ const PermissionManagement: React.FC = () =>
   const permissionModel = useModel( 'permission' );
   const { getPermissionList, createPermission, updatePermission, deletePermission } = permissionModel;
 
-  // 加载权限列表
+  // 加载权限列表，从权限模型获取数据
   const loadPermissions = async () =>
   {
     setLoading( true );
