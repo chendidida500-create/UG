@@ -37,7 +37,7 @@
 
 - **React**: 18.3.1
 - **React DOM**: 18.3.1
-- **@types/react**: 18.3.24
+- **@types/react**: 18.3.1
 - **@types/react-dom**: 18.3.1
 - **TypeScript**: 5.9.2
 - **UMI**: 4.4.12

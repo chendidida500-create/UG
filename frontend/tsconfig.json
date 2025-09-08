@@ -37,8 +37,8 @@
       "../../node_modules/@types"
     ],
     "types": [
-      "jest",
-      "node"
+      "node",
+      "jest"
     ],
     "jsx": "react-jsx",
     "skipLibCheck": true,

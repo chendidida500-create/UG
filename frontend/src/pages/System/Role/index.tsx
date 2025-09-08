@@ -145,7 +145,7 @@ const RoleManagement: React.FC = () =>
         dataIndex: 'status',
         key: 'status',
         width: 100,
-        render: ( status: string ) =>
+        render: ( status: string, record: Role ) =>
         {
           const statusConfig = {
             active: { color: 'success', text: '启用' },
@@ -153,7 +153,20 @@ const RoleManagement: React.FC = () =>
           };
           const config = statusConfig[ status as keyof typeof statusConfig ];
 
-          return <Tag color={ config.color }>{ config.text }</Tag>;
+          return (
+            <Space>
+              <Tag color={ config.color }>{ config.text }</Tag>
+              { hasPermission?.( 'system:role:update' ) && (
+                <Button
+                  type="link"
+                  size="small"
+                  onClick={ () => handleUpdateRoleStatus( record.id, status === 'active' ? 'inactive' : 'active' ) }
+                >
+                  { status === 'active' ? '禁用' : '启用' }
+                </Button>
+              ) }
+            </Space>
+          );
         },
       },
       {
@@ -558,6 +571,25 @@ const RoleManagement: React.FC = () =>
         }
       },
     } );
+  };
+
+  // 更新角色状态
+  const handleUpdateRoleStatus = async ( id: string, status: 'active' | 'inactive' ) =>
+  {
+    try
+    {
+      const result = await updateRoleStatus?.( id, status );
+      if ( result?.success )
+      {
+        message.success( '角色状态更新成功' );
+      } else
+      {
+        message.error( result?.message || '角色状态更新失败' );
+      }
+    } catch ( error: any )
+    {
+      message.error( error.message || '角色状态更新失败' );
+    }
   };
 
   // 批量删除

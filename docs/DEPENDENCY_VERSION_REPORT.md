@@ -69,8 +69,8 @@
 ### React 类型定义
 
 - **@types/react**
-  - **要求版本**: 18.3.24
-  - **当前版本**: 18.3.24
+  - **要求版本**: 18.3.1
+  - **当前版本**: 18.3.1
   - **状态**: ✅ 符合要求
   - **配置文件**: [frontend/package.json](file:///e:/YSY/UG/frontend/package.json)
 

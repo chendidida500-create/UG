@@ -22,6 +22,7 @@
 - [VERSION_UPGRADE_GUIDE.md](VERSION_UPGRADE_GUIDE.md) - 版本升级指南
 - [DEPENDENCY_VERSION_REPORT.md](DEPENDENCY_VERSION_REPORT.md) - 依赖版本报告
 - [DEPENDENCY_UPDATES.md](DEPENDENCY_UPDATES.md) - 依赖更新日志
+- [DEPENDENCY_MANAGEMENT.md](DEPENDENCY_MANAGEMENT.md) - 依赖管理规范
 
 ## 自动化功能
 
@@ -34,6 +35,7 @@
 - [SPELLCHECK.md](SPELLCHECK.md) - 拼写检查指南
 - [spell-checking-guide.md](spell-checking-guide.md) - 拼写检查指南（旧版）
 - [TYPESCRIPT_FIXES.md](TYPESCRIPT_FIXES.md) - TypeScript 配置问题修复
+- [ESLINT_PRETTIER_CONFIG.md](ESLINT_PRETTIER_CONFIG.md) - ESLint 和 Prettier 配置规范
 
 ## 配置与部署
 
@@ -164,9 +166,11 @@ docs/
 ├── DEPLOYMENT.md         # 部署指南
 ├── DEVELOPMENT.md        # 开发指南
 ├── ENCODING_STANDARD.md  # 字符编码标准
+├── ESLINT_PRETTIER_CONFIG.md # ESLint 和 Prettier 配置规范
 ├── FINAL_COMPLETION_REPORT.md # 最终完成报告
 ├── PNPM_MIGRATION.md     # PNPM 迁移指南
 ├── PROJECT_COMPLETION.md # 项目完成报告
+├── REACT_VERSION_REQUIREMENTS.md # React 版本要求规范
 ├── TYPESCRIPT_FIXES.md   # TypeScript 配置问题修复
 ├── VERSION_LOCKING.md    # 版本锁定说明
 ├── VERSION_REQUIREMENTS.md # 版本要求

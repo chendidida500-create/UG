@@ -1,4 +1,10 @@
 // UMI项目ESLint配置 - 适配ESLint 8.x扁平配置格式
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsparser from '@typescript-eslint/parser';
+import prettier from 'eslint-plugin-prettier';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+
 export default [
   // JavaScript/TypeScript基础配置
   {
@@ -23,10 +29,10 @@ export default [
   {
     files: [ '**/*.{ts,tsx}' ],
     languageOptions: {
-      parser: '@typescript-eslint/parser',
+      parser: tsparser,
     },
     plugins: {
-      '@typescript-eslint': '@typescript-eslint/eslint-plugin',
+      '@typescript-eslint': tseslint,
     },
     rules: {
       '@typescript-eslint/no-unused-vars': [
@@ -41,8 +47,8 @@ export default [
   {
     files: [ '**/*.{js,jsx,ts,tsx}' ],
     plugins: {
-      react: 'eslint-plugin-react',
-      'react-hooks': 'eslint-plugin-react-hooks',
+      react: react,
+      'react-hooks': reactHooks,
     },
     settings: {
       react: {
@@ -59,7 +65,7 @@ export default [
   {
     files: [ '**/*.{js,jsx,ts,tsx}' ],
     plugins: {
-      prettier: 'eslint-plugin-prettier',
+      prettier: prettier,
     },
     rules: {
       'prettier/prettier': 'error',

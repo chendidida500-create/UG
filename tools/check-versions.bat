@@ -80,8 +80,8 @@ if errorlevel 1 (
 
 echo.
 echo @types/react 版本:
-echo 要求版本: 18.3.24
-pnpm list @types/react --depth 0 2>nul | findstr "@types/react@18.3.24"
+echo 要求版本: 18.3.1
+pnpm list @types/react --depth 0 2>nul | findstr "@types/react@18.3.1"
 if errorlevel 1 (
     echo @types/react 版本不匹配
 ) else (

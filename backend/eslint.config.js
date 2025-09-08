@@ -1,9 +1,11 @@
-// ESLint 配置文件 - 用于 ESLint v9+ (扁平配置格式)
+// ESLint 配置文件 - 适配ESLint 8.x扁平配置格式
+const tseslint = require( '@typescript-eslint/eslint-plugin' );
+const tsparser = require( '@typescript-eslint/parser' );
 
 module.exports = [
   {
     // 文件匹配规则
-    files: ['**/*.{js,ts}'],
+    files: [ '**/*.{js,ts}' ],
 
     // 忽略的文件和目录
     ignores: [
@@ -17,7 +19,7 @@ module.exports = [
     languageOptions: {
       ecmaVersion: 2020,
       sourceType: 'module',
-      parser: '@typescript-eslint/parser',
+      parser: tsparser,
       parserOptions: {
         project: './tsconfig.json',
         tsconfigRootDir: __dirname
@@ -30,7 +32,7 @@ module.exports = [
 
     // 插件
     plugins: {
-      '@typescript-eslint': require('@typescript-eslint/eslint-plugin')
+      '@typescript-eslint': tseslint
     },
 
     // 规则

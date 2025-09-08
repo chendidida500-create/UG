@@ -34,7 +34,25 @@ declare module 'react' {
     defaultProps?: Partial<P>;
     displayName?: string;
   }
+
+  // 确保 ReactNode 类型被正确导出
   export type ReactNode = ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined;
+  export type ReactElement<P = any, T extends string | JSXElementConstructor<any> = string | JSXElementConstructor<any>> = {
+    type: T;
+    props: P;
+    key: Key | null;
+  };
+  export type ReactFragment = {} | ReactNodeArray;
+  export interface ReactNodeArray extends Array<ReactNode> { }
+  export interface ReactPortal extends ReactElement
+  {
+    key: string | null;
+    children: ReactNode;
+  }
+  export type Key = string | number;
+  export type JSXElementConstructor<P> =
+    | ( ( props: P ) => ReactElement | null )
+    | ( new ( props: P ) => Component<any, any> );
 
   // 修复：将 React 定义为一个命名空间而不是函数
   export namespace React
@@ -48,6 +66,9 @@ declare module 'react' {
     export const Fragment: any;
     export const StrictMode: any;
     export const Suspense: any;
+
+    // 确保 ReactNode 在命名空间中也可访问
+    export type ReactNode = ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined;
     // ... 其他属性
   }
 
@@ -161,6 +182,7 @@ declare namespace React
 
   type Key = string | number;
 
+  // 确保在 React 命名空间中也有 ReactNode 的定义
   export type ReactNode = ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined;
 }
 
@@ -204,6 +226,9 @@ declare module 'react' {
 
   // 确保useCallback支持泛型
   function useCallback<T extends ( ...args: any[] ) => any> ( callback: T, deps: React.DependencyList ): T;
+
+  // 确保 ReactNode 类型在模块中可访问
+  export type { ReactNode } from 'react';
 }
 
 // 为UMI request函数提供更明确的类型定义
@@ -225,4 +250,3 @@ declare module 'umi' {
 }
 
 export { };
-

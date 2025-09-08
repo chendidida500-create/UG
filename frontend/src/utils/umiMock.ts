@@ -6,6 +6,9 @@ import type { PermissionModelState } from '../models/permission';
 import type { RoleModelState } from '../models/role';
 import type { UserModelState } from '../models/user';
 
+// 从 react 中直接导入 ReactNode 类型
+import type { ReactNode } from 'react';
+
 // 模拟 useModel hook，用于类型检查
 export const useModel: <T extends 'access' | 'auth' | 'dashboard' | 'permission' | 'role' | 'user'>(
   namespace: T
@@ -21,7 +24,7 @@ export const useModel: <T extends 'access' | 'auth' | 'dashboard' | 'permission'
   ? RoleModelState
   : T extends 'user'
   ? UserModelState
-  : any = <T extends 'access' | 'auth' | 'dashboard' | 'permission' | 'role' | 'user'>(
+  : any = <T extends 'access' | 'auth' | 'dashboard' | 'permission' | 'role' | 'user'> (
     _namespace: T
   ): T extends 'access'
     ? AccessModelState
@@ -35,16 +38,17 @@ export const useModel: <T extends 'access' | 'auth' | 'dashboard' | 'permission'
     ? RoleModelState
     : T extends 'user'
     ? UserModelState
-    : any => {
+    : any =>
+  {
     // 这只是一个模拟实现，实际运行时会使用 UMI 的 useModel
     return {} as any;
   };
 
 // 模拟 history 对象
 export const history = {
-  push: (_path: string) => { },
-  replace: (_path: string) => { },
-  go: (_n: number) => { },
+  push: ( _path: string ) => { },
+  replace: ( _path: string ) => { },
+  go: ( _n: number ) => { },
   goBack: () => { },
   goForward: () => { },
   block: () => () => { },
@@ -58,26 +62,28 @@ export const history = {
 };
 
 // 模拟其他 UMI 导出
-export const request = async <T = any>(
+export const request = async <T = any> (
   _url: string,
   _options?: any
-): Promise<T> => {
+): Promise<T> =>
+{
   return {} as T;
 };
 
 export const Outlet = () => null;
-export const useLocation = () => ({
+export const useLocation = () => ( {
   pathname: '',
   search: '',
   hash: '',
   state: undefined,
-});
+} );
 
-export const useNavigate = () => (_to: string) => { };
-export const useParams = <T = any>(): T => ({}) as T;
-export const useSearchParams = () => [new URLSearchParams(), () => { }];
-export const useAccess = () => ({});
-export const Access = ({ children }: { children: React.ReactNode }) => children;
-export const useIntl = () => ({
-  formatMessage: (descriptor: { id: string; defaultMessage?: string }) => descriptor.defaultMessage || descriptor.id,
-});
+export const useNavigate = () => ( _to: string ) => { };
+export const useParams = <T = any> (): T => ( {} ) as T;
+export const useSearchParams = () => [ new URLSearchParams(), () => { } ];
+export const useAccess = () => ( {} );
+// 使用直接导入的 ReactNode 类型
+export const Access = ( { children }: { children: ReactNode } ) => children;
+export const useIntl = () => ( {
+  formatMessage: ( descriptor: { id: string; defaultMessage?: string } ) => descriptor.defaultMessage || descriptor.id,
+} );

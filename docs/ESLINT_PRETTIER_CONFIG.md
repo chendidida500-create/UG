@@ -15,7 +15,7 @@
 ## 配置文件位置
 
 ### ESLint 配置
-- **文件**: [frontend/eslint.config.js](file:///e:/YSY/UG/frontend/eslint.config.js)
+- **文件**: [frontend/eslint.config.js](file:///e:/YSY/UG/frontend/eslint.config.js) 和 [backend/eslint.config.js](file:///e:/YSY/UG/backend/eslint.config.js)
 - **格式**: ESLint 8.x 扁平配置格式
 
 ### Prettier 配置
@@ -23,78 +23,151 @@
 
 ## ESLint 配置详情
 
-### 基础配置
+### ESLint 配置详情
+
+#### 前端配置
+前端项目使用ES模块语法和import语句导入插件：
+
 ```javascript
-{
-  files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
-  languageOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    parserOptions: {
-      ecmaFeatures: {
-        jsx: true,
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsparser from '@typescript-eslint/parser';
+import prettier from 'eslint-plugin-prettier';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+
+export default [
+  // JavaScript/TypeScript基础配置
+  {
+    files: [ '**/*.{js,mjs,cjs,ts,jsx,tsx}' ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: 'module',
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
       },
     },
-  },
-  rules: {
-    'no-console': 'warn',
-    'prefer-const': 'error',
-    'no-var': 'error',
-  },
-}
-```
-
-### TypeScript 配置
-```javascript
-{
-  files: ['**/*.{ts,tsx}'],
-  languageOptions: {
-    parser: '@typescript-eslint/parser',
-  },
-  plugins: {
-    '@typescript-eslint': '@typescript-eslint/eslint-plugin',
-  },
-  rules: {
-    '@typescript-eslint/no-unused-vars': [
-      'error',
-      { argsIgnorePattern: '^_' },
-    ],
-    '@typescript-eslint/no-explicit-any': 'error',
-  },
-}
-```
-
-### React 配置
-```javascript
-{
-  files: ['**/*.{js,jsx,ts,tsx}'],
-  plugins: {
-    react: 'eslint-plugin-react',
-    'react-hooks': 'eslint-plugin-react-hooks',
-  },
-  settings: {
-    react: {
-      version: 'detect',
+    rules: {
+      'no-console': 'warn',
+      'prefer-const': 'error',
+      'no-var': 'error',
     },
   },
-  rules: {
-    'react/react-in-jsx-scope': 'off',
-    'react/prop-types': 'off',
+
+  // TypeScript特定配置
+  {
+    files: [ '**/*.{ts,tsx}' ],
+    languageOptions: {
+      parser: tsparser,
+    },
+    plugins: {
+      '@typescript-eslint': tseslint,
+    },
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' },
+      ],
+      '@typescript-eslint/no-explicit-any': 'error',
+    },
   },
-}
+
+  // React特定配置
+  {
+    files: [ '**/*.{js,jsx,ts,tsx}' ],
+    plugins: {
+      react: react,
+      'react-hooks': reactHooks,
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+    rules: {
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+    },
+  },
+
+  // Prettier配置（确保与ESLint规则不冲突）
+  {
+    files: [ '**/*.{js,jsx,ts,tsx}' ],
+    plugins: {
+      prettier: prettier,
+    },
+    rules: {
+      'prettier/prettier': 'error',
+    },
+  },
+
+  // 忽略目录
+  {
+    ignores: [ 'dist', 'build', '.umi', 'node_modules', '.umi-production' ],
+  },
+];
 ```
 
-### Prettier 集成配置
+#### 后端配置
+后端项目使用CommonJS语法和require语句导入插件：
+
 ```javascript
-{
-  files: ['**/*.{js,jsx,ts,tsx}'],
-  plugins: {
-    prettier: 'eslint-plugin-prettier',
-  },
-  rules: {
-    'prettier/prettier': 'error',
-  },
-}
+const tseslint = require( '@typescript-eslint/eslint-plugin' );
+const tsparser = require( '@typescript-eslint/parser' );
+
+module.exports = [
+  {
+    // 文件匹配规则
+    files: [ '**/*.{js,ts}' ],
+
+    // 忽略的文件和目录
+    ignores: [
+      'node_modules/',
+      'logs/',
+      'run/',
+      'dist/'
+    ],
+
+    // 语言选项
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: 'module',
+      parser: tsparser,
+      parserOptions: {
+        project: './tsconfig.json',
+        tsconfigRootDir: __dirname
+      },
+      globals: {
+        node: 'readonly',
+        es6: 'readonly'
+      }
+    },
+
+    // 插件
+    plugins: {
+      '@typescript-eslint': tseslint
+    },
+
+    // 规则
+    rules: {
+      // TypeScript 规则
+      '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/prefer-optional-chain': 'error',
+      '@typescript-eslint/prefer-nullish-coalescing': 'error',
+      '@typescript-eslint/strict-boolean-expressions': 'error',
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/prefer-readonly': 'warn',
+      '@typescript-eslint/consistent-type-assertions': 'error',
+
+      // 基础规则
+      'no-console': 'off',
+      'prefer-const': 'error',
+      'no-var': 'error'
+    }
+  }
+];
 ```
 
 ## Prettier 配置详情
@@ -147,7 +220,10 @@
 ```json
 "devDependencies": {
   "eslint": "^8.0.0",
-  "eslint-config-egg": "^14.1.0"
+  "@typescript-eslint/eslint-plugin": "^5.0.0",
+  "@typescript-eslint/parser": "^5.0.0",
+  "eslint-config-egg": "^14.1.0",
+  "@typescript-eslint/eslint-plugin": "^5.0.0"
 }
 ```
 
@@ -213,7 +289,17 @@ pnpm format
     "javascriptreact",
     "typescript",
     "typescriptreact"
-  ]
+  ],
+  "eslint.alwaysShowStatus": true,
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "eslint.run": "onType",
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "prettier.printWidth": 80,
+  "prettier.tabWidth": 2
 }
 ```
 
@@ -248,18 +334,33 @@ pnpm format
 - 确认相关插件已正确安装
 - 验证规则名称是否正确
 
+### 4. 模块系统错误
+**问题**: 出现`require is not defined`或`import is not defined`错误
+**解决方案**:
+- 确保前端配置文件使用import语句，后端配置文件使用require语句
+- 检查文件扩展名是否正确（前端：.js，后端：.js）
+- 确认package.json中的type字段设置正确（前端：module，后端：commonjs）
+
 ## 维护指南
 
 ### 更新配置
 1. 修改配置文件后，重启 VS Code 或重新加载窗口
 2. 清理 ESLint 缓存: `pnpm eslint --cache --cache-location .eslintcache --ext .js,.jsx,.ts,.tsx ./src`
 3. 验证配置有效性: `pnpm eslint --print-config src/index.ts`
+4. 注意前端和后端使用不同的模块系统（ES模块 vs CommonJS），确保在相应的配置文件中使用正确的语法
 
 ### 添加新规则
 1. 确定适用范围（全局/特定文件类型）
-2. 在 [eslint.config.js](file:///e:/YSY/UG/frontend/eslint.config.js) 中添加相应配置
+2. 在相应的 [eslint.config.js](file:///e:/YSY/UG/frontend/eslint.config.js) 或 [backend/eslint.config.js](file:///e:/YSY/UG/backend/eslint.config.js) 中添加相应配置
 3. 测试规则效果
 4. 更新本文档
+
+### 配置文件规范
+1. 前端项目使用ESLint 8.x扁平配置格式，文件名为`eslint.config.js`
+2. 前端配置使用ES模块语法（import/export）
+3. 后端配置使用CommonJS语法（require/module.exports）
+4. Prettier配置文件命名为`.prettierrc.json`，位于前端项目根目录
+5. Prettier配置文件不支持继承或extends选项，应单独配置
 
 ## 相关文档
 

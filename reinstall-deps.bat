@@ -57,7 +57,7 @@ echo - rimraf: 6.0.1
 echo - @ant-design/icons: 6.0.1
 echo - react: 18.3.1
 echo - react-dom: 18.3.1
-echo - @types/react: 18.3.24
+echo - @types/react: 18.3.1
 echo - @types/react-dom: 18.3.1
 echo - @typescript-eslint/eslint-plugin: 8.42.0
 echo - @typescript-eslint/parser: 8.42.0
