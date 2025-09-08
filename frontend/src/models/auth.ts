@@ -17,6 +17,8 @@ export interface AuthModelState
   updateProfile: ( params: any ) => Promise<any>;
   updatePassword: ( params: any ) => Promise<any>;
   getRememberedUsername: () => string;
+  // 添加sendCaptcha函数到接口定义中
+  sendCaptcha: ( email: string ) => Promise<any>;
 }
 
 export default function useAuthModel (): AuthModelState
@@ -268,5 +270,7 @@ export default function useAuthModel (): AuthModelState
     updateProfile,
     updatePassword,
     getRememberedUsername,
+    // 在返回对象中添加sendCaptcha函数
+    sendCaptcha,
   };
 }

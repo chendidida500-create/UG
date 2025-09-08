@@ -2,38 +2,42 @@ import { Spin } from 'antd';
 import { useEffect } from 'react';
 import styles from './AuthWrapper.module.less';
 // 修复UMI 4.x导入方式
-// import { Outlet, useLocation, useModel, useNavigate } from 'umi';
-import { useModel } from '@/utils/umiMock';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useModel, useNavigate } from 'umi';
 
-const AuthWrapper = () => {
+const AuthWrapper = () =>
+{
   const navigate = useNavigate();
   const location = useLocation();
 
-  const authModel = useModel('auth');
+  const authModel = useModel( 'auth' );
   const { currentUser, loading, checkAuth } = authModel;
 
-  useEffect(() => {
+  useEffect( () =>
+  {
     checkAuth?.();
-  }, []);
+  }, [] );
 
-  useEffect(() => {
-    if (!loading && !currentUser) {
+  useEffect( () =>
+  {
+    if ( !loading && !currentUser )
+    {
       // 保存当前路径，登录后跳转回来
       const redirectPath = location.pathname + location.search;
-      navigate(`/auth/login?redirect=${encodeURIComponent(redirectPath)}`);
+      navigate( `/auth/login?redirect=${ encodeURIComponent( redirectPath ) }` );
     }
-  }, [currentUser, loading, navigate, location]);
+  }, [ currentUser, loading, navigate, location ] );
 
-  if (loading) {
+  if ( loading )
+  {
     return (
-      <div className={styles.loadingContainer}>
+      <div className={ styles.loadingContainer }>
         <Spin size="large" />
       </div>
     );
   }
 
-  if (!currentUser) {
+  if ( !currentUser )
+  {
     return null;
   }
 

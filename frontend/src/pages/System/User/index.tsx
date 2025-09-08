@@ -3,7 +3,8 @@ import type { FormConfig } from '@/components/DynamicForm';
 import type { PaginationParams, TableConfig } from '@/components/DynamicTable';
 import type { Role, User } from '@/types';
 import { useModel } from '@/utils/umiMock';
-import {
+import
+{
   DeleteOutlined,
   ExportOutlined,
   ImportOutlined,
@@ -11,7 +12,8 @@ import {
   ReloadOutlined,
   UserOutlined
 } from '@ant-design/icons';
-import {
+import
+{
   Avatar,
   Button,
   Card,
@@ -30,19 +32,18 @@ import styles from './index.module.less';
 
 const { Text } = Typography;
 
-const UserManagement: React.FC = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  // const [loading, setLoading] = useState<boolean>(false);
-  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
-  const [stats, setStats] = useState({
+const UserManagement: React.FC = () =>
+{
+  const [ selectedRowKeys, setSelectedRowKeys ] = useState<React.Key[]>( [] );
+  const [ stats, setStats ] = useState( {
     total: 0,
     active: 0,
     inactive: 0,
     locked: 0,
-  });
+  } );
 
-  const userModel = useModel('user');
-  const permissionModel = useModel('permission');
+  const userModel = useModel( 'user' );
+  const permissionModel = useModel( 'permission' );
 
   const {
     getUserList,
@@ -62,13 +63,13 @@ const UserManagement: React.FC = () => {
         dataIndex: 'userInfo',
         key: 'userInfo',
         width: 200,
-        render: (_: any, record: User) => (
+        render: ( _: any, record: User ) => (
           <Space>
-            <Avatar size={40} src={record.avatar} icon={<UserOutlined />} />
+            <Avatar size={ 40 } src={ record.avatar } icon={ <UserOutlined /> } />
             <div>
-              <div className={styles.username}>{record.username}</div>
-              <Text type="secondary" className={styles.email}>
-                {record.email}
+              <div className={ styles.username }>{ record.username }</div>
+              <Text type="secondary" className={ styles.email }>
+                { record.email }
               </Text>
             </div>
           </Space>
@@ -91,9 +92,9 @@ const UserManagement: React.FC = () => {
         dataIndex: 'status',
         key: 'status',
         width: 100,
-        render: (status: 0 | 1) => (
-          <Tag color={status === 1 ? 'success' : 'error'}>
-            {status === 1 ? '启用' : '禁用'}
+        render: ( status: 0 | 1 ) => (
+          <Tag color={ status === 1 ? 'success' : 'error' }>
+            { status === 1 ? '启用' : '禁用' }
           </Tag>
         ),
       },
@@ -102,13 +103,13 @@ const UserManagement: React.FC = () => {
         dataIndex: 'roles',
         key: 'roles',
         width: 200,
-        render: (roles: Role[]) => (
+        render: ( roles: Role[] ) => (
           <Space wrap>
-            {roles?.map(role => (
-              <Tag key={role.id} color="blue">
-                {role.name}
+            { roles?.map( role => (
+              <Tag key={ role.id } color="blue">
+                { role.name }
               </Tag>
-            ))}
+            ) ) }
           </Space>
         ),
       },
@@ -117,21 +118,22 @@ const UserManagement: React.FC = () => {
         dataIndex: 'last_login_at',
         key: 'last_login_at',
         width: 180,
-        render: (date: string) => (date ? new Date(date).toLocaleString() : '-'),
+        render: ( date: string ) => ( date ? new Date( date ).toLocaleString() : '-' ),
       },
       {
         title: '创建时间',
         dataIndex: 'created_at',
         key: 'created_at',
         width: 180,
-        render: (date: string) => new Date(date).toLocaleString(),
+        render: ( date: string ) => new Date( date ).toLocaleString(),
       },
     ],
     rowSelection: {
       type: 'checkbox',
       selectedRowKeys,
-      onChange: (selectedRowKeys: React.Key[]) => {
-        setSelectedRowKeys(selectedRowKeys);
+      onChange: ( selectedRowKeys: React.Key[] ) =>
+      {
+        setSelectedRowKeys( selectedRowKeys );
       },
     },
     actions: {
@@ -217,7 +219,7 @@ const UserManagement: React.FC = () => {
       {
         name: 'username',
         label: '用户名',
-        type: 'input',
+        type: 'input' as const, // 明确指定类型
         props: {
           placeholder: '请输入用户名',
         },
@@ -225,7 +227,7 @@ const UserManagement: React.FC = () => {
       {
         name: 'email',
         label: '邮箱',
-        type: 'input',
+        type: 'input' as const, // 明确指定类型
         props: {
           placeholder: '请输入邮箱',
         },
@@ -233,7 +235,7 @@ const UserManagement: React.FC = () => {
       {
         name: 'status',
         label: '状态',
-        type: 'select',
+        type: 'select' as const, // 明确指定类型
         props: {
           placeholder: '请选择状态',
           options: [
@@ -247,10 +249,13 @@ const UserManagement: React.FC = () => {
 
   // API接口
   const api = {
-    list: async (params: PaginationParams) => {
-      try {
-        const result = await getUserList?.(params);
-        if (result?.success) {
+    list: async ( params: PaginationParams ) =>
+    {
+      try
+      {
+        const result = await getUserList?.( params );
+        if ( result?.success )
+        {
           return {
             success: true,
             data: {
@@ -258,77 +263,95 @@ const UserManagement: React.FC = () => {
               pagination: result.data.pagination,
             },
           };
-        } else {
+        } else
+        {
           return {
             success: false,
             message: result?.message || '获取用户列表失败',
           };
         }
-      } catch (error: any) {
+      } catch ( error: any )
+      {
         return {
           success: false,
           message: error.message || '获取用户列表失败',
         };
       }
     },
-    create: async (data: any) => {
-      try {
-        const result = await createUser?.(data);
-        if (result?.success) {
-          message.success('用户创建成功');
+    create: async ( data: any ) =>
+    {
+      try
+      {
+        const result = await createUser?.( data );
+        if ( result?.success )
+        {
+          message.success( '用户创建成功' );
           return { success: true };
-        } else {
+        } else
+        {
           return {
             success: false,
             message: result?.message || '用户创建失败',
           };
         }
-      } catch (error: any) {
+      } catch ( error: any )
+      {
         return {
           success: false,
           message: error.message || '用户创建失败',
         };
       }
     },
-    update: async (id: string, data: any) => {
-      try {
-        const result = await updateUser?.(id, data);
-        if (result?.success) {
-          message.success('用户更新成功');
+    update: async ( id: string, data: any ) =>
+    {
+      try
+      {
+        const result = await updateUser?.( id, data );
+        if ( result?.success )
+        {
+          message.success( '用户更新成功' );
           return { success: true };
-        } else {
+        } else
+        {
           return {
             success: false,
             message: result?.message || '用户更新失败',
           };
         }
-      } catch (error: any) {
+      } catch ( error: any )
+      {
         return {
           success: false,
           message: error.message || '用户更新失败',
         };
       }
     },
-    delete: async (id: string) => {
-      try {
-        const result = await deleteUser?.(id);
-        if (result?.success) {
-          message.success('用户删除成功');
+    delete: async ( id: string ) =>
+    {
+      try
+      {
+        const result = await deleteUser?.( id );
+        if ( result?.success )
+        {
+          message.success( '用户删除成功' );
           return { success: true };
-        } else {
+        } else
+        {
           return {
             success: false,
             message: result?.message || '用户删除失败',
           };
         }
-      } catch (error: any) {
+      } catch ( error: any )
+      {
         return {
           success: false,
           message: error.message || '用户删除失败',
         };
       }
     },
-    detail: async (id: string) => {
+    detail: async ( id: string ) =>
+    {
       // 这里应该调用获取用户详情的API
       // 暂时返回空实现
       return { success: true, data: {} };
@@ -344,136 +367,156 @@ const UserManagement: React.FC = () => {
   };
 
   // 自定义操作
-  const handleCustomAction = (action: string, record: any) => {
-    if (action === 'resetPassword') {
-      Modal.confirm({
+  const handleCustomAction = ( action: string, record: any ) =>
+  {
+    if ( action === 'resetPassword' )
+    {
+      Modal.confirm( {
         title: '重置密码',
-        content: `确定要重置用户 ${record.username} 的密码吗？`,
-        onOk: async () => {
-          try {
+        content: `确定要重置用户 ${ record.username } 的密码吗？`,
+        onOk: async () =>
+        {
+          try
+          {
             // 这里应该调用重置密码的API
-            message.success('密码重置成功');
-          } catch (error: any) {
-            message.error(error.message || '密码重置失败');
+            message.success( '密码重置成功' );
+          } catch ( error: any )
+          {
+            message.error( error.message || '密码重置失败' );
           }
         },
-      });
+      } );
     }
   };
 
   // 批量删除
-  const handleBatchDelete = async () => {
-    if (selectedRowKeys.length === 0) {
-      message.warning('请先选择要删除的用户');
+  const handleBatchDelete = async () =>
+  {
+    if ( selectedRowKeys.length === 0 )
+    {
+      message.warning( '请先选择要删除的用户' );
       return;
     }
 
-    Modal.confirm({
+    Modal.confirm( {
       title: '批量删除',
-      content: `确定要删除选中的 ${selectedRowKeys.length} 个用户吗？`,
-      onOk: async () => {
-        try {
-          const result = await batchDeleteUsers?.(selectedRowKeys as string[]);
-          if (result?.success) {
-            message.success('批量删除成功');
-            setSelectedRowKeys([]);
-          } else {
-            message.error(result?.message || '批量删除失败');
+      content: `确定要删除选中的 ${ selectedRowKeys.length } 个用户吗？`,
+      onOk: async () =>
+      {
+        try
+        {
+          const result = await batchDeleteUsers?.( selectedRowKeys as string[] );
+          if ( result?.success )
+          {
+            message.success( '批量删除成功' );
+            setSelectedRowKeys( [] );
+          } else
+          {
+            message.error( result?.message || '批量删除失败' );
           }
-        } catch (error: any) {
-          message.error(error.message || '批量删除失败');
+        } catch ( error: any )
+        {
+          message.error( error.message || '批量删除失败' );
         }
       },
-    });
+    } );
   };
 
   // 导出用户
-  const handleExport = async () => {
-    try {
+  const handleExport = async () =>
+  {
+    try
+    {
       const result = await exportUsers?.();
-      if (result?.success) {
-        message.success('用户导出成功');
-      } else {
-        message.error(result?.message || '用户导出失败');
+      if ( result?.success )
+      {
+        message.success( '用户导出成功' );
+      } else
+      {
+        message.error( result?.message || '用户导出失败' );
       }
-    } catch (error: any) {
-      message.error(error.message || '用户导出失败');
+    } catch ( error: any )
+    {
+      message.error( error.message || '用户导出失败' );
     }
   };
 
   // 导入用户
-  const handleImport = () => {
+  const handleImport = () =>
+  {
     // 这里应该实现用户导入功能
-    message.info('用户导入功能待实现');
+    message.info( '用户导入功能待实现' );
   };
 
   // 获取统计数据
-  const loadStats = async () => {
+  const loadStats = async () =>
+  {
     // 这里应该调用获取统计数据的API
     // 暂时使用模拟数据
-    setStats({
+    setStats( {
       total: 1234,
       active: 1100,
       inactive: 100,
       locked: 34,
-    });
+    } );
   };
 
   // 初始化数据
-  useEffect(() => {
+  useEffect( () =>
+  {
     loadStats();
-  }, []);
+  }, [] );
 
   return (
-    <div className={styles.userManagement}>
-      <Row gutter={16} className={styles.statsRow}>
-        <Col span={6}>
+    <div className={ styles.userManagement }>
+      <Row gutter={ 16 } className={ styles.statsRow }>
+        <Col span={ 6 }>
           <Card>
-            <Statistic title="用户总数" value={stats.total} />
+            <Statistic title="用户总数" value={ stats.total } />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col span={ 6 }>
           <Card>
-            <Statistic title="启用用户" value={stats.active} valueStyle={{ color: '#3f8600' }} />
+            <Statistic title="启用用户" value={ stats.active } valueStyle={ { color: '#3f8600' } } />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col span={ 6 }>
           <Card>
-            <Statistic title="禁用用户" value={stats.inactive} valueStyle={{ color: '#cf1322' }} />
+            <Statistic title="禁用用户" value={ stats.inactive } valueStyle={ { color: '#cf1322' } } />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col span={ 6 }>
           <Card>
-            <Statistic title="锁定用户" value={stats.locked} valueStyle={{ color: '#fa8c16' }} />
+            <Statistic title="锁定用户" value={ stats.locked } valueStyle={ { color: '#fa8c16' } } />
           </Card>
         </Col>
       </Row>
 
-      <Card className={styles.actionBar}>
+      <Card className={ styles.actionBar }>
         <Space>
           <Button
             type="primary"
-            icon={<DeleteOutlined />}
-            onClick={handleBatchDelete}
-            disabled={!hasPermission('system:user:delete') || selectedRowKeys.length === 0}
+            icon={ <DeleteOutlined /> }
+            onClick={ handleBatchDelete }
+            disabled={ !hasPermission( 'system:user:delete' ) || selectedRowKeys.length === 0 }
           >
             批量删除
           </Button>
           <Button
-            icon={<ExportOutlined />}
-            onClick={handleExport}
-            disabled={!hasPermission('system:user:export')}
+            icon={ <ExportOutlined /> }
+            onClick={ handleExport }
+            disabled={ !hasPermission( 'system:user:export' ) }
           >
             导出
           </Button>
           <Button
-            icon={<ImportOutlined />}
-            onClick={handleImport}
-            disabled={!hasPermission('system:user:import')}
+            icon={ <ImportOutlined /> }
+            onClick={ handleImport }
+            disabled={ !hasPermission( 'system:user:import' ) }
           >
             导入
           </Button>
-          <Button icon={<ReloadOutlined />} onClick={loadStats}>
+          <Button icon={ <ReloadOutlined /> } onClick={ loadStats }>
             刷新
           </Button>
         </Space>
@@ -481,40 +524,40 @@ const UserManagement: React.FC = () => {
 
       <CrudComponent
         title="用户"
-        tableConfig={tableConfig}
-        formConfig={formConfig}
-        searchConfig={searchConfig}
-        api={api}
-        permissions={permissions}
-        hasPermission={hasPermission}
-        onCustomAction={handleCustomAction}
+        tableConfig={ tableConfig }
+        formConfig={ formConfig }
+        searchConfig={ searchConfig }
+        api={ api }
+        permissions={ permissions }
+        hasPermission={ hasPermission }
+        onCustomAction={ handleCustomAction }
         extraActions={
           <Dropdown
-            menu={{
+            menu={ {
               items: [
                 {
                   key: 'batchDelete',
                   icon: <DeleteOutlined />,
                   label: '批量删除',
-                  disabled: !hasPermission('system:user:delete') || selectedRowKeys.length === 0,
+                  disabled: !hasPermission( 'system:user:delete' ) || selectedRowKeys.length === 0,
                   onClick: handleBatchDelete,
                 },
                 {
                   key: 'export',
                   icon: <ExportOutlined />,
                   label: '导出用户',
-                  disabled: !hasPermission('system:user:export'),
+                  disabled: !hasPermission( 'system:user:export' ),
                   onClick: handleExport,
                 },
                 {
                   key: 'import',
                   icon: <ImportOutlined />,
                   label: '导入用户',
-                  disabled: !hasPermission('system:user:import'),
+                  disabled: !hasPermission( 'system:user:import' ),
                   onClick: handleImport,
                 },
               ],
-            }}
+            } }
           >
             <Button>
               <Space>
