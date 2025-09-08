@@ -221,6 +221,23 @@ pnpm lint:fix  # 自动修复问题
 ./scripts/security-scan.bat
 ```
 
+### Umi 构建工具修复
+
+```cmd
+# 修复由于依赖问题导致的 Umi 构建工具无法正常运行的问题
+./scripts/fix-umi-build.bat
+```
+
+### 构建工具配置检查和修复
+
+```cmd
+# 检查构建工具配置问题
+./scripts/check-umi-config.bat
+
+# 修复构建工具配置问题
+./scripts/fix-umi-config.bat
+```
+
 ## 拼写检查
 
 本项目使用 cspell 进行代码拼写检查，确保代码中的注释、字符串和标识符没有拼写错误。

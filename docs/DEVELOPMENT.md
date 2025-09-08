@@ -80,17 +80,30 @@ pnpm add -D --filter <project> <package-name>
 
 ## 依赖管理
 
-### 清理和重新安装依赖
+#### 清理和重新安装依赖
 
 如果遇到依赖问题，可以使用以下方法清理并重新安装依赖：
 
-#### 自动化脚本方式（推荐）
+##### 自动化脚本方式（推荐）
 
 项目根目录提供了 [reinstall-deps.bat](file:///e:/YSY/UG/reinstall-deps.bat) 脚本，可以自动清理并重新安装所有依赖：
 
 ```bash
 # 运行清理和重新安装脚本
 ./reinstall-deps.bat
+```
+
+项目还提供了专门的清理脚本和 Umi 构建工具修复脚本：
+
+```bash
+# 清理所有依赖文件
+./scripts/clean-deps.bat
+
+# 修复 Umi 构建工具问题
+./scripts/fix-umi-build.bat
+
+# 诊断依赖问题
+./scripts/diagnose-dependencies.bat
 ```
 
 #### 手动方式
@@ -404,6 +417,35 @@ pnpm install
 ### 3. 数据库连接问题
 
 确保数据库服务正在运行，并且配置文件中的数据库连接信息正确。
+
+### 4. Umi 构建工具问题
+
+如果遇到 Umi 构建工具无法正常运行的问题，通常是由于依赖安装过程中的一些问题导致的。可以使用以下方法解决：
+
+```cmd
+# 运行修复脚本
+./scripts/fix-umi-build.bat
+```
+
+或者手动执行以下步骤：
+
+1. 删除所有 `node_modules` 文件夹和 `pnpm-lock.yaml` 文件
+2. 运行 `pnpm install` 安装根目录依赖
+3. 进入 `frontend` 目录，运行 `pnpm install`
+4. 进入 `backend` 目录，运行 `pnpm install`
+5. 在 `frontend` 目录下运行 `pnpm run setup`
+
+### 5. 构建工具配置问题
+
+如果遇到构建工具配置问题，可以使用以下脚本进行检查和修复：
+
+```cmd
+# 检查构建工具配置
+./scripts/check-umi-config.bat
+
+# 修复构建工具配置
+./scripts/fix-umi-config.bat
+```
 
 ## 文件编码标准
 

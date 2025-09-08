@@ -179,6 +179,41 @@ pnpm setup
 
 - [reinstall-deps.bat](file:///e:/YSY/UG/reinstall-deps.bat)
 
+### 依赖清理
+
+```bash
+# 清理所有依赖文件
+./scripts/clean-deps.bat
+```
+
+### 依赖问题诊断
+
+```bash
+# 诊断依赖问题
+./scripts/diagnose-dependencies.bat
+```
+
+### Umi 构建工具修复
+
+```bash
+# 修复由于依赖问题导致的 Umi 构建工具无法正常运行的问题
+./scripts/fix-umi-build.bat
+```
+
+### 构建工具配置检查
+
+```cmd
+# 检查 Umi 构建工具配置问题
+./scripts/check-umi-config.bat
+```
+
+### 构建工具配置修复
+
+```cmd
+# 修复 Umi 构建工具配置问题
+./scripts/fix-umi-config.bat
+```
+
 ### 清理操作
 
 ```bash
@@ -328,6 +363,13 @@ pnpm spellcheck
 ```cmd
 # 运行快速诊断
 ./scripts/quick-diagnosis.bat
+```
+
+### Umi 构建工具修复
+
+```cmd
+# 修复由于依赖问题导致的 Umi 构建工具无法正常运行的问题
+./scripts/fix-umi-build.bat
 ```
 
 ## 自动化脚本目录
