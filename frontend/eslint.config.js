@@ -1,77 +1,78 @@
-// ESLint 配置文件 - 用于 ESLint v9+ (扁平配置格式)
+import configPrettier from 'eslint-config-prettier';
+import pluginPrettier from 'eslint-plugin-prettier';
+import pluginReact from 'eslint-plugin-react';
+import pluginReactHooks from 'eslint-plugin-react-hooks';
 
-module.exports = [
+export default [
   {
-    // 文件匹配规则
-    files: ['**/*.{js,jsx,ts,tsx}'],
-
-    // 忽略的文件和目录
-    ignores: [
-      'dist/',
-      'build/',
-      '.umi/',
-      'node_modules/'
-    ],
-
-    // 语言选项
+    files: [ '**/*.{js,mjs,cjs,ts,jsx,tsx}' ],
     languageOptions: {
       ecmaVersion: 2020,
-      sourceType: 'module',
-      parser: '@typescript-eslint/parser',
-      parserOptions: {
-        project: './tsconfig.json',
-        tsconfigRootDir: __dirname,
-        ecmaFeatures: {
-          jsx: true
-        }
-      },
       globals: {
-        browser: 'readonly',
-        es2021: 'readonly',
-        node: 'readonly'
-      }
+        browser: true,
+      },
     },
-
-    // 插件
-    plugins: {
-      '@typescript-eslint': {},
-      'react': {},
-      'react-hooks': {},
-      'prettier': {}
-    },
-
-    // 规则
     rules: {
-      // TypeScript 规则
-      '@typescript-eslint/no-unused-vars': 'error',
-      '@typescript-eslint/no-explicit-any': 'error',
-      '@typescript-eslint/prefer-optional-chain': 'error',
-      '@typescript-eslint/prefer-nullish-coalescing': 'error',
-      '@typescript-eslint/strict-boolean-expressions': 'error',
-      '@typescript-eslint/no-floating-promises': 'error',
-      '@typescript-eslint/prefer-readonly': 'warn',
-      '@typescript-eslint/consistent-type-assertions': 'error',
-
-      // React 规则
-      'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
-      'react/react-in-jsx-scope': 'off',
-      'react/prop-types': 'off',
-
-      // 基础规则
       'no-console': 'warn',
       'prefer-const': 'error',
       'no-var': 'error',
-
-      // 格式化规则
-      'prettier/prettier': 'error'
+      'object-curly-spacing': [ 'error', 'always' ],
+      'array-bracket-spacing': [ 'error', 'never' ],
+      'comma-dangle': [ 'error', 'always-multiline' ],
     },
+  },
 
-    // 设置
+  {
+    files: [ '**/*.{ts,tsx}' ],
+    languageOptions: {
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        project: './tsconfig.json',
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    plugins: {
+      '@typescript-eslint': '@typescript-eslint/eslint-plugin',
+    },
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' },
+      ],
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/prefer-readonly': 'warn',
+      '@typescript-eslint/consistent-type-assertions': 'error',
+    },
+  },
+
+  {
+    files: [ '**/*.{js,jsx,ts,tsx}' ],
+    plugins: {
+      react: pluginReact,
+      'react-hooks': pluginReactHooks,
+      prettier: pluginPrettier,
+    },
     settings: {
       react: {
-        version: 'detect'
-      }
-    }
-  }
+        version: 'detect',
+      },
+    },
+    rules: {
+      ...pluginReact.configs.recommended.rules,
+      ...pluginReactHooks.configs.recommended.rules,
+      ...configPrettier.rules,
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+      'prettier/prettier': 'error',
+    },
+  },
+
+  {
+    ignores: [ 'dist', 'build', '.umi', 'node_modules', '.umi-production' ],
+  },
 ];

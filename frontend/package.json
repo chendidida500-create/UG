@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "UG管理系统前端应用",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "max build",
     "dev": "max dev",
@@ -49,7 +50,8 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^5.2.0",
     "jest-environment-jsdom": "^30.1.2",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "typescript-eslint": "^8.42.0"
   },
   "engines": {
     "node": "^20.19.0"
