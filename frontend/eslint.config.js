@@ -1,20 +1,8 @@
-// UMI项目ESLint配置 - 使用UMI官方推荐配置
-
-// 尝试不同的导入方式
-let umiLintConfig = [];
-try
-{
-  umiLintConfig = require( '@umijs/lint/dist/config/eslint' ).default;
-} catch ( error )
-{
-  console.warn( '无法加载UMI ESLint配置:', error.message );
-}
-
-// UMI项目ESLint配置 - 简化版配置用于测试
+// UMI项目ESLint配置 - 适配ESLint 8.x扁平配置格式
 export default [
-  // 基础配置
+  // JavaScript/TypeScript基础配置
   {
-    files: [ '**/*.{js,jsx,ts,tsx}' ],
+    files: [ '**/*.{js,mjs,cjs,ts,jsx,tsx}' ],
     languageOptions: {
       ecmaVersion: 2020,
       sourceType: 'module',
@@ -28,6 +16,53 @@ export default [
       'no-console': 'warn',
       'prefer-const': 'error',
       'no-var': 'error',
+    },
+  },
+
+  // TypeScript特定配置
+  {
+    files: [ '**/*.{ts,tsx}' ],
+    languageOptions: {
+      parser: '@typescript-eslint/parser',
+    },
+    plugins: {
+      '@typescript-eslint': '@typescript-eslint/eslint-plugin',
+    },
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' },
+      ],
+      '@typescript-eslint/no-explicit-any': 'error',
+    },
+  },
+
+  // React特定配置
+  {
+    files: [ '**/*.{js,jsx,ts,tsx}' ],
+    plugins: {
+      react: 'eslint-plugin-react',
+      'react-hooks': 'eslint-plugin-react-hooks',
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+    rules: {
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+    },
+  },
+
+  // Prettier配置（确保与ESLint规则不冲突）
+  {
+    files: [ '**/*.{js,jsx,ts,tsx}' ],
+    plugins: {
+      prettier: 'eslint-plugin-prettier',
+    },
+    rules: {
+      'prettier/prettier': 'error',
     },
   },
 

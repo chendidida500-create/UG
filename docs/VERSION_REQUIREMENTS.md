@@ -55,8 +55,8 @@
 
 - **TypeScript**: 5.9.2 (根目录)
 - **@types/node**: ^24.3.1
-- **ESLint**: ^9.35.0
-- **Prettier**: ^3.0.3
+- **ESLint**: ^8.0.0 (前端和后端均使用此版本要求)
+- **Prettier**: ^3.0.0 (前端使用此版本要求)
 
 ## 构建工具
 
@@ -125,3 +125,45 @@ tools\check-versions.bat
 2. 不建议使用更高版本，除非经过充分测试
 3. 在团队协作中，请确保所有成员使用相同的版本
 4. 生产环境部署时，请严格按照版本要求配置
+
+## ESLint 和 Prettier 版本详细说明
+
+### ESLint 版本要求
+
+- **版本**: ^8.0.0
+- **说明**: 项目统一使用 ESLint 8.x 版本，以确保与 UMI 框架的兼容性
+- **配置位置**:
+  - 前端: [frontend/package.json](file:///e:/YSY/UG/frontend/package.json) devDependencies 和 overrides 字段
+  - 后端: [backend/package.json](file:///e:/YSY/UG/backend/package.json) devDependencies 字段
+
+### Prettier 版本要求
+
+- **版本**: ^3.0.0
+- **说明**: 项目使用 Prettier 3.x 版本进行代码格式化
+- **配置位置**: [frontend/package.json](file:///e:/YSY/UG/frontend/package.json) devDependencies 字段
+
+### 版本锁定机制
+
+项目通过以下方式确保 ESLint 和 Prettier 版本的一致性：
+
+1. **resolutions 字段** (根目录 [package.json](file:///e:/YSY/UG/package.json)):
+   ```json
+   "resolutions": {
+     "eslint": "^8.0.0"
+   }
+   ```
+
+2. **overrides 字段** (根目录和前端 [package.json](file:///e:/YSY/UG/package.json)):
+   ```json
+   "overrides": {
+     "eslint": "^8.0.0"
+   }
+   ```
+
+3. **devDependencies 字段** (前端和后端 [package.json](file:///e:/YSY/UG/package.json)):
+   ```json
+   "devDependencies": {
+     "eslint": "^8.0.0",
+     "prettier": "^3.0.0"
+   }
+   ```
