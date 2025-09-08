@@ -85,6 +85,12 @@ declare global {
       ul: any;
       li: any;
       ol: any;
+      table: any;
+      thead: any;
+      tbody: any;
+      tr: any;
+      th: any;
+      td: any;
       [elemName: string]: any;
     }
   }
@@ -98,8 +104,8 @@ declare global {
     export interface ReactElement<
       P = any,
       T extends string | JSXElementConstructor<any> =
-        | string
-        | JSXElementConstructor<any>,
+      | string
+      | JSXElementConstructor<any>,
     > {
       type: T;
       props: P;
@@ -219,6 +225,30 @@ declare module 'umi-request' {
   export default function request(url: string, options?: any): Promise<any>;
 }
 
+// Jest 全局变量类型声明
+declare global {
+  // Jest 全局变量
+  const jest: typeof import('@jest/globals').jest;
+  const describe: typeof import('@jest/globals').describe;
+  const test: typeof import('@jest/globals').test;
+  const it: typeof import('@jest/globals').it;
+  const expect: typeof import('@jest/globals').expect;
+  const beforeEach: typeof import('@jest/globals').beforeEach;
+  const afterEach: typeof import('@jest/globals').afterEach;
+  const beforeAll: typeof import('@jest/globals').beforeAll;
+  const afterAll: typeof import('@jest/globals').afterAll;
+}
+
+// 测试库类型声明
+declare module '@testing-library/jest-dom' {
+  export const toBeInTheDocument: typeof import('@testing-library/jest-dom').toBeInTheDocument;
+  export const toHaveTextContent: typeof import('@testing-library/jest-dom').toHaveTextContent;
+  export const toHaveAttribute: typeof import('@testing-library/jest-dom').toHaveAttribute;
+  export const toHaveClass: typeof import('@testing-library/jest-dom').toHaveClass;
+  export const toHaveStyle: typeof import('@testing-library/jest-dom').toHaveStyle;
+  export const toHaveValue: typeof import('@testing-library/jest-dom').toHaveValue;
+}
+
 // 全局类型定义
 declare global {
   interface Window {
@@ -232,4 +262,4 @@ declare global {
   type SafeString = string | null | undefined;
 }
 
-export {};
+export { };

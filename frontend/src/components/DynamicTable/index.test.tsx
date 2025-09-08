@@ -1,9 +1,10 @@
+/// <reference types="jest" />
+/// <reference types="@testing-library/jest-dom" />
+
 import type { TableConfig } from '@/components/DynamicTable';
 import DynamicTable from '@/components/DynamicTable';
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-
-/// <reference types="@testing-library/jest-dom" />
 
 // Mock Antd
 jest.mock('antd', () => ({
