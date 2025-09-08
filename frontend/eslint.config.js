@@ -1,3 +1,5 @@
+import pluginTypescript from '@typescript-eslint/eslint-plugin';
+import parserTypescript from '@typescript-eslint/parser';
 import configPrettier from 'eslint-config-prettier';
 import pluginPrettier from 'eslint-plugin-prettier';
 import pluginReact from 'eslint-plugin-react';
@@ -25,7 +27,7 @@ export default [
   {
     files: [ '**/*.{ts,tsx}' ],
     languageOptions: {
-      parser: '@typescript-eslint/parser',
+      parser: parserTypescript,
       parserOptions: {
         project: './tsconfig.json',
         ecmaFeatures: {
@@ -34,7 +36,7 @@ export default [
       },
     },
     plugins: {
-      '@typescript-eslint': '@typescript-eslint/eslint-plugin',
+      '@typescript-eslint': pluginTypescript,
     },
     rules: {
       '@typescript-eslint/no-unused-vars': [
@@ -63,8 +65,6 @@ export default [
       },
     },
     rules: {
-      ...pluginReact.configs.recommended.rules,
-      ...pluginReactHooks.configs.recommended.rules,
       ...configPrettier.rules,
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
