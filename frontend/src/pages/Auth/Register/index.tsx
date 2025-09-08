@@ -2,8 +2,8 @@ import { useModel } from '@/utils/umiMock';
 import {
   LockOutlined,
   MailOutlined,
+  SafetyCertificateOutlined,
   UserOutlined,
-  VerifiedOutlined,
 } from '@ant-design/icons';
 import { Button, Form, Input, message, Tabs } from 'antd';
 import { useState } from 'react';
@@ -151,7 +151,7 @@ const RegisterPage: React.FC = () => {
             >
               <div className={styles.captchaInput}>
                 <Input
-                  prefix={<VerifiedOutlined />}
+                  prefix={<SafetyCertificateOutlined />}
                   placeholder="验证码"
                   size="large"
                 />
