@@ -372,6 +372,36 @@ pnpm spellcheck
 ./scripts/fix-umi-build.bat
 ```
 
+### UMI构建工具问题诊断和修复
+
+为了帮助开发者快速诊断和修复UMI构建工具相关问题，项目提供了专门的诊断和修复工具：
+
+#### 诊断工具
+
+```cmd
+# 检查UMI构建工具配置
+./scripts/check-umi-config.bat
+
+# 验证所有修复是否正确应用
+./scripts/verify-all-fixes.bat
+```
+
+#### 修复工具
+
+```cmd
+# 修复UMI构建工具配置问题
+./scripts/fix-umi-config.bat
+
+# 修复UMI构建工具依赖问题
+./scripts/fix-umi-build.bat
+```
+
+这些工具可以帮助解决以下常见问题：
+1. UMI命令无法运行
+2. 依赖冲突问题
+3. 构建工具配置错误
+4. 版本不兼容问题
+
 ## 自动化脚本目录
 
 项目中所有的自动化脚本都位于以下目录：
@@ -398,6 +428,10 @@ pnpm spellcheck
    - [test-api.bat](file:///e:/YSY/UG/scripts/test-api.bat) - 测试API
    - [test-db-connection.bat](file:///e:/YSY/UG/scripts/test-db-connection.bat) - 测试数据库连接
    - [validate-env.bat](file:///e:/YSY/UG/scripts/validate-env.bat) - 验证环境变量
+   - [check-umi-config.bat](file:///e:/YSY/UG/scripts/check-umi-config.bat) - 检查UMI配置
+   - [fix-umi-config.bat](file:///e:/YSY/UG/scripts/fix-umi-config.bat) - 修复UMI配置
+   - [fix-umi-build.bat](file:///e:/YSY/UG/scripts/fix-umi-build.bat) - 修复UMI构建问题
+   - [verify-all-fixes.bat](file:///e:/YSY/UG/scripts/verify-all-fixes.bat) - 验证所有修复
 
 3. **tools 目录**：
    - [auto-fix-and-start.bat](file:///e:/YSY/UG/tools/auto-fix-and-start.bat) - 自动修复并启动

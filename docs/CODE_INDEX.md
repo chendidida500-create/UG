@@ -51,6 +51,10 @@
 - [DATABASE.md](DATABASE.md) - 数据库设计文档
 - [DATABASE_CONFIG_UPDATES.md](DATABASE_CONFIG_UPDATES.md) - 数据库配置更新日志
 
+## UMI构建工具问题解决
+
+- [UMI_TROUBLESHOOTING.md](UMI_TROUBLESHOOTING.md) - UMI构建工具问题排查与解决指南
+
 ## 脚本工具
 
 ### 批处理脚本 (位于项目根目录)
@@ -78,6 +82,10 @@
 - [test-api.bat](../scripts/test-api.bat) - 测试后端API接口
 - [test-db-connection.bat](../scripts/test-db-connection.bat) - 测试数据库连接
 - [validate-env.bat](../scripts/validate-env.bat) - 验证环境变量配置
+- [check-umi-config.bat](../scripts/check-umi-config.bat) - 检查UMI配置
+- [fix-umi-config.bat](../scripts/fix-umi-config.bat) - 修复UMI配置
+- [fix-umi-build.bat](../scripts/fix-umi-build.bat) - 修复UMI构建问题
+- [verify-all-fixes.bat](../scripts/verify-all-fixes.bat) - 验证所有修复
 
 ### 工具目录 (tools/)
 
@@ -163,6 +171,7 @@ docs/
 ├── VERSION_LOCKING.md    # 版本锁定说明
 ├── VERSION_REQUIREMENTS.md # 版本要求
 ├── VERSION_UPGRADE_GUIDE.md # 版本升级指南
+├── UMI_TROUBLESHOOTING.md # UMI构建工具问题排查与解决指南
 └── spell-checking-guide.md # 拼写检查指南
 ```
 
@@ -184,7 +193,11 @@ scripts/
 ├── spellcheck-all.bat    # 整个项目拼写检查
 ├── test-api.bat          # 测试API
 ├── test-db-connection.bat # 测试数据库连接
-└── validate-env.bat      # 验证环境变量
+├── validate-env.bat      # 验证环境变量配置
+├── check-umi-config.bat  # 检查UMI配置
+├── fix-umi-config.bat    # 修复UMI配置
+├── fix-umi-build.bat     # 修复UMI构建问题
+└── verify-all-fixes.bat  # 验证所有修复
 ```
 
 ### 工具目录
@@ -217,6 +230,7 @@ tools/
    - 查看相关文档寻找解决方案
    - 使用 [tools/](../tools/) 目录中的工具脚本
    - 参考 [TYPESCRIPT_FIXES.md](TYPESCRIPT_FIXES.md) 解决 TypeScript 问题
+   - 参考 [UMI_TROUBLESHOOTING.md](UMI_TROUBLESHOOTING.md) 解决 UMI 构建工具问题
    - 使用诊断脚本快速定位问题
 
 ## 更新日志

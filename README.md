@@ -287,3 +287,106 @@ pnpm spellcheck
 ## 版本升级指南
 
 项目版本升级的详细步骤请参考 [docs/VERSION_UPGRADE_GUIDE.md](docs/VERSION_UPGRADE_GUIDE.md)。
+
+## UMI构建工具问题解决
+
+项目在使用UMI构建工具时可能会遇到一些问题，我们提供了以下解决方案：
+
+### 常见问题及解决方案
+
+1. **UMI命令无法运行**：
+   - 确保依赖已正确安装：`pnpm install`
+   - 检查前端package.json中是否包含正确的依赖项
+   - 运行配置检查脚本：`./scripts/check-umi-config.bat`
+   - 运行配置修复脚本：`./scripts/fix-umi-config.bat`
+
+2. **依赖冲突问题**：
+   - 确保package.json中不同时包含`@umijs/max`和`umi`依赖
+   - 移除重复的`@umijs/plugins`依赖
+   - 使用`resolutions`和`overrides`字段统一依赖版本
+
+3. **构建工具配置问题**：
+   - 检查`.umirc.ts`文件中的配置是否正确
+   - 确保`npmClient`设置为`pnpm`
+   - 配置MFSU以提升编译速度
+
+### 诊断和修复脚本
+
+项目提供了专门的脚本来诊断和修复UMI构建工具问题：
+
+- [scripts/check-umi-config.js](scripts/check-umi-config.js) - 检查UMI配置
+- [scripts/fix-umi-config.js](scripts/fix-umi-config.js) - 修复UMI配置
+- [scripts/verify-all-fixes.bat](scripts/verify-all-fixes.bat) - 验证所有修复
+
+### 手动修复步骤
+
+如果自动化脚本无法解决问题，可以尝试以下手动步骤：
+
+1. 清理所有依赖：
+   ```bash
+   # 清理根目录依赖
+   rm -rf node_modules pnpm-lock.yaml
+   
+   # 清理前端依赖
+   cd frontend
+   rm -rf node_modules pnpm-lock.yaml
+   cd ..
+   
+   # 清理后端依赖
+   cd backend
+   rm -rf node_modules pnpm-lock.yaml
+   cd ..
+   ```
+
+2. 重新安装依赖：
+   ```bash
+   pnpm install --force
+   ```
+
+3. 验证UMI是否正常工作：
+   ```bash
+   cd frontend
+   npx @umijs/max -v
+   ```
+
+4. 如果仍然有问题，检查前端package.json文件：
+   - 确保包含`react`和`react-dom`依赖
+   - 确保不包含重复的UMI相关依赖
+   - 确保`@umijs/max`版本正确
+
+## 默认账号
+
+### 管理员账号
+
+- **用户名**: admin
+- **密码**: 123456
+- **权限**: 超级管理员，拥有所有权限
+
+### 普通用户账号
+
+- **用户名**: user
+- **密码**: 123456
+- **权限**: 普通用户，基础权限
+
+## 启动说明
+
+### 环境要求
+
+- Node.js 20.19.0
+- MySQL 8.0+
+- pnpm 8.15.8
+
+### 快速启动
+
+1. **Windows 系统**: 双击 `start.bat`
+2. **Linux/Mac 系统**: 执行 `./start.sh`
+
+### 手动启动
+
+1. 启动后端：`cd backend && pnpm install && pnpm dev`
+2. 启动前端：`cd frontend && pnpm install && pnpm dev`
+
+### 访问地址
+
+- **前端**: http://localhost:8000
+- **后端**: http://localhost:7001

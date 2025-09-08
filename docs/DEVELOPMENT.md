@@ -385,6 +385,72 @@ pnpm tsc
 
 详细信息请参考 [AUTOMATION.md](AUTOMATION.md)。
 
+## UMI构建工具问题解决
+
+项目在使用UMI构建工具时可能会遇到一些问题，我们提供了以下解决方案：
+
+### 常见问题及解决方案
+
+1. **UMI命令无法运行**：
+   - 确保依赖已正确安装：`pnpm install`
+   - 检查前端package.json中是否包含正确的依赖项
+   - 运行配置检查脚本：`./scripts/check-umi-config.bat`
+   - 运行配置修复脚本：`./scripts/fix-umi-config.bat`
+
+2. **依赖冲突问题**：
+   - 确保package.json中不同时包含`@umijs/max`和`umi`依赖
+   - 移除重复的`@umijs/plugins`依赖
+   - 使用`resolutions`和`overrides`字段统一依赖版本
+
+3. **构建工具配置问题**：
+   - 检查`.umirc.ts`文件中的配置是否正确
+   - 确保`npmClient`设置为`pnpm`
+   - 配置MFSU以提升编译速度
+
+### 诊断和修复脚本
+
+项目提供了专门的脚本来诊断和修复UMI构建工具问题：
+
+- [scripts/check-umi-config.js](file:///e:/YSY/UG/scripts/check-umi-config.js) - 检查UMI配置
+- [scripts/fix-umi-config.js](file:///e:/YSY/UG/scripts/fix-umi-config.js) - 修复UMI配置
+- [scripts/verify-all-fixes.bat](file:///e:/YSY/UG/scripts/verify-all-fixes.bat) - 验证所有修复
+
+### 手动修复步骤
+
+如果自动化脚本无法解决问题，可以尝试以下手动步骤：
+
+1. 清理所有依赖：
+   ```bash
+   # 清理根目录依赖
+   rm -rf node_modules pnpm-lock.yaml
+   
+   # 清理前端依赖
+   cd frontend
+   rm -rf node_modules pnpm-lock.yaml
+   cd ..
+   
+   # 清理后端依赖
+   cd backend
+   rm -rf node_modules pnpm-lock.yaml
+   cd ..
+   ```
+
+2. 重新安装依赖：
+   ```bash
+   pnpm install --force
+   ```
+
+3. 验证UMI是否正常工作：
+   ```bash
+   cd frontend
+   npx @umijs/max -v
+   ```
+
+4. 如果仍然有问题，检查前端package.json文件：
+   - 确保包含`react`和`react-dom`依赖
+   - 确保不包含重复的UMI相关依赖
+   - 确保`@umijs/max`版本正确
+
 ## 提交代码
 
 在提交代码之前，请确保：
