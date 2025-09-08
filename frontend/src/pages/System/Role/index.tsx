@@ -409,7 +409,7 @@ const RoleManagement: React.FC = () =>
         };
       }
     },
-    delete: async ( id: string ) => // eslint-disable-line @typescript-eslint/no-unused-vars
+    delete: async ( id: string ) =>
     {
       try
       {
@@ -433,7 +433,7 @@ const RoleManagement: React.FC = () =>
         };
       }
     },
-    detail: async ( id: string ) => // eslint-disable-line @typescript-eslint/no-unused-vars
+    detail: async ( id: string ) =>
     {
       // 这里应该调用获取角色详情的API
       // 暂时返回空实现，但至少使用id参数避免ts(6133)错误
@@ -606,13 +606,13 @@ const RoleManagement: React.FC = () =>
     }
   };
 
+  // 删除未使用的 handleImport 函数
   // 导入角色（暂未使用）
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleImport = () =>
-  {
-    // 这里应该实现角色导入功能
-    message.info( '角色导入功能待实现' );
-  };
+  // const handleImport = () => {
+  //   // 这里应该实现角色导入功能
+  //   message.info( '角色导入功能待实现' );
+  // };
 
   // 保存权限设置
   const handleSavePermissions = async () =>
