@@ -11,9 +11,9 @@
     "postinstall": "max setup",
     "setup": "max setup",
     "start": "pnpm dev",
-    "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
-    "lint:fix": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src --fix",
-    "lint:strict": "eslint --ext .js,.jsx,.ts,.tsx --format=pretty ./src --max-warnings 0",
+    "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx ./src",
+    "lint:fix": "eslint --cache --ext .js,.jsx,.ts,.tsx ./src --fix",
+    "lint:strict": "eslint --ext .js,.jsx,.ts,.tsx ./src --max-warnings 0",
     "preview": "max preview",
     "test": "max test",
     "test:coverage": "max test --coverage",
@@ -41,17 +41,16 @@
     "@types/node": "^20.14.0",
     "@types/react": "18.3.24",
     "@types/react-dom": "18.3.1",
-    "@typescript-eslint/eslint-plugin": "^8.42.0",
-    "@typescript-eslint/parser": "^8.42.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
     "cspell": "^9.2.1",
-    "eslint": "^9.35.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^8.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "jest-environment-jsdom": "^30.1.2",
-    "prettier": "^3.0.3",
-    "typescript-eslint": "^8.42.0"
+    "prettier": "^3.0.0"
   },
   "engines": {
     "node": "^20.19.0"
@@ -59,7 +58,7 @@
   "overrides": {
     "undici": "^5.28.4",
     "antd": "^5.8.6",
-    "eslint": "^9.35.0"
+    "eslint": "^8.0.0"
   },
   "repository": {
     "type": "git",

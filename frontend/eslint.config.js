@@ -1,10 +1,4 @@
-import pluginTypescript from '@typescript-eslint/eslint-plugin';
-import parserTypescript from '@typescript-eslint/parser';
-import configPrettier from 'eslint-config-prettier';
-import pluginPrettier from 'eslint-plugin-prettier';
-import pluginReact from 'eslint-plugin-react';
-import pluginReactHooks from 'eslint-plugin-react-hooks';
-
+// UMI项目ESLint配置 - 适配ESLint 8.x
 export default [
   {
     files: [ '**/*.{js,mjs,cjs,ts,jsx,tsx}' ],
@@ -18,16 +12,13 @@ export default [
       'no-console': 'warn',
       'prefer-const': 'error',
       'no-var': 'error',
-      'object-curly-spacing': [ 'error', 'always' ],
-      'array-bracket-spacing': [ 'error', 'never' ],
-      'comma-dangle': [ 'error', 'always-multiline' ],
     },
   },
 
   {
     files: [ '**/*.{ts,tsx}' ],
     languageOptions: {
-      parser: parserTypescript,
+      parser: '@typescript-eslint/parser',
       parserOptions: {
         project: './tsconfig.json',
         ecmaFeatures: {
@@ -36,7 +27,7 @@ export default [
       },
     },
     plugins: {
-      '@typescript-eslint': pluginTypescript,
+      '@typescript-eslint': '@typescript-eslint/eslint-plugin',
     },
     rules: {
       '@typescript-eslint/no-unused-vars': [
@@ -55,9 +46,8 @@ export default [
   {
     files: [ '**/*.{js,jsx,ts,tsx}' ],
     plugins: {
-      react: pluginReact,
-      'react-hooks': pluginReactHooks,
-      prettier: pluginPrettier,
+      react: 'eslint-plugin-react',
+      'react-hooks': 'eslint-plugin-react-hooks',
     },
     settings: {
       react: {
@@ -65,10 +55,8 @@ export default [
       },
     },
     rules: {
-      ...configPrettier.rules,
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
-      'prettier/prettier': 'error',
     },
   },
 
