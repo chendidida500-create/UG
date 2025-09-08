@@ -1,47 +1,35 @@
 {
   "recommendations": [
     // TypeScript开发
-    "ms-vscode.vscode-typescript-next",
-    "ms-typescript.vscode-typescript-next",
-
+    "ms-vscode.vscode-typescript-language-features",
     // React开发
-    "ms-vscode.vscode-react-typescript-snippets",
     "burkeholland.simple-react-snippets",
-    "ms-vscode.vscode-json",
-
     // 代码质量
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
     "streetsidesoftware.code-spell-checker",
-
     // Git工具
     "mhutchie.git-graph",
     "eamodio.gitlens",
     "github.vscode-pull-request-github",
-
     // 界面增强
     "vscode-icons-team.vscode-icons",
     "pkief.material-icon-theme",
-    "github.github-vscode-theme",
-
     // 开发效率
     "visualstudioexptteam.vscodeintellicode",
     "formulahendry.auto-rename-tag",
     "christian-kohler.path-intellisense",
     "bradlc.vscode-tailwindcss",
-
     // NocoBase相关
     "mtxr.sqltools",
     "mtxr.sqltools-driver-mysql",
     "humao.rest-client",
-
     // 文档和注释
     "aaron-bond.better-comments",
     "yzhang.markdown-all-in-one",
     "shd101wyy.markdown-preview-enhanced",
-
     // UMI开发
-    "ms-vscode.vscode-node-debug2",
-    "ms-vscode.vscode-js-debug"
+    "ms-vscode.js-debug",
+    "ms-vscode.js-debug-companion"
   ]
 }

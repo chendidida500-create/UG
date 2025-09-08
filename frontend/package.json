@@ -55,7 +55,9 @@
     "node": "^20.19.0"
   },
   "overrides": {
-    "undici": "^5.28.4"
+    "undici": "^5.28.4",
+    "antd": "^5.8.6",
+    "eslint": "^9.35.0"
   },
   "repository": {
     "type": "git",

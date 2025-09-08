@@ -33,14 +33,16 @@
     },
     "typeRoots": [
       "./node_modules/@types",
-      "../node_modules/@types"
+      "../node_modules/@types",
+      "../../node_modules/@types"
     ],
     "types": [
       "jest",
       "node"
     ],
     "jsx": "react-jsx",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true
   },
   "include": [
     "src/**/*",

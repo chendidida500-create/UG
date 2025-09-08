@@ -34,7 +34,52 @@ declare module 'react' {
     displayName?: string;
   }
   export type ReactNode = ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined;
-  export default function React(): any;
+
+  // 修复：将 React 定义为一个命名空间而不是函数
+  export namespace React {
+    // 添加缺失的属性
+    export const version: string;
+    export const createElement: any;
+    export const cloneElement: any;
+    export const createFactory: any;
+    export const isValidElement: any;
+    export const Fragment: any;
+    export const StrictMode: any;
+    export const Suspense: any;
+    // ... 其他属性
+  }
+
+  // 添加默认导出，使其成为一个包含所有属性的对象
+  const React: {
+    useState: any;
+    useEffect: any;
+    useRef: any;
+    useContext: any;
+    useReducer: any;
+    useCallback: any;
+    useMemo: any;
+    useLayoutEffect: any;
+    useImperativeHandle: any;
+    useDebugValue: any;
+    useDeferredValue: any;
+    useTransition: any;
+    useId: any;
+    createElement: any;
+    cloneElement: any;
+    createFactory: any;
+    isValidElement: any;
+    Fragment: any;
+    StrictMode: any;
+    Suspense: any;
+    memo: any;
+    forwardRef: any;
+    createContext: any;
+    Component: any;
+    PureComponent: any;
+    version: string;
+  };
+
+  export default React;
 }
 
 declare module 'react-router-dom' {
