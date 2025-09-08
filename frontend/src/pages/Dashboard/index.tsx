@@ -1,20 +1,23 @@
 import { useModel } from '@/utils/umiMock';
-import {
-  AreaChartOutlined,
-  BarChartOutlined,
-  PieChartOutlined,
-  UserOutlined,
+import
+{
+  DashboardOutlined,
+  FileOutlined,
+  SettingOutlined,
+  UserOutlined
 } from '@ant-design/icons';
-import { Card, Col, Row, Statistic, Tabs, theme } from 'antd';
+import { Card, Col, Row, Statistic, Tabs } from 'antd';
+import { theme } from 'antd/es';
 import { useState } from 'react';
 import styles from './index.module.less';
 
-const DashboardPage: React.FC = () => {
+const DashboardPage: React.FC = () =>
+{
   const { token } = theme.useToken();
 
-  const authModel = useModel('auth');
+  const authModel = useModel( 'auth' );
   const { currentUser } = authModel;
-  const [activeTab, setActiveTab] = useState('1');
+  const [ activeTab, setActiveTab ] = useState( '1' );
 
   // 模拟统计数据
   const stats = {
@@ -25,6 +28,7 @@ const DashboardPage: React.FC = () => {
   };
 
   // 模拟图表数据
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const chartData = [
     { name: 'Jan', value: 400 },
     { name: 'Feb', value: 600 },
@@ -35,62 +39,62 @@ const DashboardPage: React.FC = () => {
   ];
 
   return (
-    <div className={styles.dashboard}>
-      <div className={styles.welcome}>
-        <h2>欢迎回来，{currentUser?.username}！</h2>
+    <div className={ styles.dashboard }>
+      <div className={ styles.welcome }>
+        <h2>欢迎回来，{ currentUser?.username }！</h2>
         <p>这里是您的仪表盘，可以查看系统的关键指标。</p>
       </div>
 
-      <Row gutter={16} className={styles.statsRow}>
-        <Col span={6}>
+      <Row gutter={ 16 } className={ styles.statsRow }>
+        <Col span={ 6 }>
           <Card>
             <Statistic
               title="用户总数"
-              value={stats.users}
-              prefix={<UserOutlined />}
-              valueStyle={{ color: token.colorPrimary }}
+              value={ stats.users }
+              prefix={ <UserOutlined /> }
+              valueStyle={ { color: token.colorPrimary } }
             />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col span={ 6 }>
           <Card>
             <Statistic
               title="订单总数"
-              value={stats.orders}
-              prefix={<BarChartOutlined />}
-              valueStyle={{ color: token.colorSuccess }}
+              value={ stats.orders }
+              prefix={ <FileOutlined /> }
+              valueStyle={ { color: token.colorSuccess } }
             />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col span={ 6 }>
           <Card>
             <Statistic
               title="总收入"
-              value={stats.revenue}
-              prefix={<AreaChartOutlined />}
-              valueStyle={{ color: token.colorError }}
+              value={ stats.revenue }
+              prefix={ <DashboardOutlined /> }
+              valueStyle={ { color: token.colorError } }
               suffix="元"
             />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col span={ 6 }>
           <Card>
             <Statistic
               title="增长率"
-              value={stats.growth}
-              prefix={<PieChartOutlined />}
-              valueStyle={{ color: token.colorWarning }}
+              value={ stats.growth }
+              prefix={ <SettingOutlined /> }
+              valueStyle={ { color: token.colorWarning } }
               suffix="%"
             />
           </Card>
         </Col>
       </Row>
 
-      <Card className={styles.chartCard}>
+      <Card className={ styles.chartCard }>
         <Tabs
-          activeKey={activeTab}
-          onChange={setActiveTab}
-          items={[
+          activeKey={ activeTab }
+          onChange={ setActiveTab }
+          items={ [
             {
               key: '1',
               label: '用户增长趋势',
@@ -103,12 +107,12 @@ const DashboardPage: React.FC = () => {
               key: '3',
               label: '收入分析',
             },
-          ]}
+          ] }
         >
         </Tabs>
-        <div className={styles.chartContainer}>
-          {/* 这里应该放置实际的图表组件 */}
-          <div className={styles.placeholderChart}>
+        <div className={ styles.chartContainer }>
+          {/* 这里应该放置实际的图表组件 */ }
+          <div className={ styles.placeholderChart }>
             图表数据展示区域
           </div>
         </div>

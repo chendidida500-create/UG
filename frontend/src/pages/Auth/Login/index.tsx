@@ -2,7 +2,8 @@ import { useModel } from '@/utils/umiMock';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, message, Tabs } from 'antd';
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+// 修复UMI 4.x导入方式 - 从umi导入路由相关hook而不是react-router-dom
+import { useLocation, useNavigate } from 'umi';
 import styles from './index.module.less';
 
 interface LoginFormData {

@@ -4,6 +4,14 @@ import { useCallback, useState } from 'react';
 import { history, request } from 'umi';
 import type { LoginParams, RegisterParams, User } from '../types';
 
+// 定义通用API响应格式
+interface ApiResponse<T>
+{
+  success: boolean;
+  message: string;
+  data: T;
+}
+
 // 定义AuthModelState类型
 export interface AuthModelState
 {
@@ -23,7 +31,7 @@ export interface AuthModelState
 
 export default function useAuthModel (): AuthModelState
 {
-  const [ currentUser, setCurrentUser ] = useState( null );
+  const [ currentUser, setCurrentUser ] = useState<User | null>( null );
   const [ loading, setLoading ] = useState( false );
   const [ loginLoading, setLoginLoading ] = useState( false );
 
@@ -33,7 +41,7 @@ export default function useAuthModel (): AuthModelState
     setLoginLoading( true );
     try
     {
-      const response: any = await request( '/api/auth/login', {
+      const response = await request<ApiResponse<{ user: User; token: string; refreshToken: string }>>( '/api/auth/login', {
         method: 'POST',
         data: params,
       } );
@@ -85,7 +93,7 @@ export default function useAuthModel (): AuthModelState
   {
     try
     {
-      const response: any = await request( '/api/auth/register', {
+      const response = await request<ApiResponse<User>>( '/api/auth/register', {
         method: 'POST',
         data: params,
       } );
@@ -111,7 +119,7 @@ export default function useAuthModel (): AuthModelState
   {
     try
     {
-      const response: any = await request( '/api/auth/captcha', {
+      const response = await request<ApiResponse<void>>( '/api/auth/captcha', {
         method: 'POST',
         data: { email },
       } );
@@ -135,7 +143,7 @@ export default function useAuthModel (): AuthModelState
   {
     try
     {
-      await request( '/api/auth/logout', {
+      await request<ApiResponse<void>>( '/api/auth/logout', {
         method: 'POST',
       } );
     } catch ( error )
@@ -167,7 +175,7 @@ export default function useAuthModel (): AuthModelState
     setLoading( true );
     try
     {
-      const response: any = await request( '/api/auth/me', {
+      const response = await request<ApiResponse<User>>( '/api/auth/me', {
         method: 'GET',
       } );
 
@@ -199,7 +207,7 @@ export default function useAuthModel (): AuthModelState
   {
     try
     {
-      const response: any = await request( '/api/me', {
+      const response = await request<ApiResponse<User>>( '/api/me', {
         method: 'PUT',
         data: params,
       } );
@@ -207,7 +215,7 @@ export default function useAuthModel (): AuthModelState
       if ( response.success )
       {
         // 更新当前用户信息
-        setCurrentUser( ( prev: any ) =>
+        setCurrentUser( ( prev ) =>
         {
           if ( !prev ) return null;
           return {
@@ -233,7 +241,7 @@ export default function useAuthModel (): AuthModelState
   {
     try
     {
-      const response: any = await request( '/api/me/password', {
+      const response = await request<ApiResponse<void>>( '/api/me/password', {
         method: 'PUT',
         data: params,
       } );

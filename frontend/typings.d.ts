@@ -7,16 +7,16 @@ declare module 'umi' {
 
   // UMI History API
   export const history: {
-    push: (path: string) => void;
-    replace: (path: string) => void;
-    go: (delta: number) => void;
+    push: ( path: string ) => void;
+    replace: ( path: string ) => void;
+    go: ( delta: number ) => void;
     goBack: () => void;
     goForward: () => void;
     block: (
       prompt?:
         | boolean
         | string
-        | ((location: any, action: any) => string | boolean)
+        | ( ( location: any, action: any ) => string | boolean )
     ) => void;
     location: {
       pathname: string;
@@ -24,14 +24,14 @@ declare module 'umi' {
       hash: string;
       state?: any;
     };
-    listen: (listener: (location: any, action: any) => void) => () => void;
+    listen: ( listener: ( location: any, action: any ) => void ) => () => void;
   };
 
   // UMI Model Hook
-  export const useModel: <T extends string>(namespace: T) => any;
+  export const useModel: <T extends string>( namespace: T ) => any;
 
   // UMI Request
-  export const request: <T = any>(url: string, options?: any) => Promise<T>;
+  export const request: <T = any>( url: string, options?: any ) => Promise<T>;
 
   // UMI Access
   export const useAccess: () => any;
@@ -43,7 +43,7 @@ declare module 'umi' {
 
   // UMI Plugin API
   export const getLocale: () => string;
-  export const setLocale: (locale: string, realReload?: boolean) => void;
+  export const setLocale: ( locale: string, realReload?: boolean ) => void;
   export const useIntl: () => any;
   export const FormattedMessage: React.ComponentType<any>;
 
@@ -55,18 +55,21 @@ declare module 'umi' {
     state?: any;
   };
 
-  export const useNavigate: () => (to: string | number, options?: any) => void;
+  export const useNavigate: () => ( to: string | number, options?: any ) => void;
   export const useParams: <T = any>() => T;
   export const useSearchParams: () => [
     URLSearchParams,
-    (params: URLSearchParams) => void,
+    ( params: URLSearchParams ) => void,
   ];
 }
 
 // React 类型扩展
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
+declare global
+{
+  namespace JSX
+  {
+    interface IntrinsicElements
+    {
       div: any;
       p: any;
       span: any;
@@ -91,28 +94,27 @@ declare global {
       tr: any;
       th: any;
       td: any;
-      [elemName: string]: any;
+      [ elemName: string ]: any;
     }
   }
 
-  namespace React {
-    export interface FC<P = {}> {
-      (props: P): ReactElement | null;
-      displayName?: string;
-    }
-
-    export interface ReactElement<
+  namespace React
+  {
+    // 添加ReactElement类型声明
+    interface ReactElement<
       P = any,
       T extends string | JSXElementConstructor<any> =
       | string
       | JSXElementConstructor<any>,
-    > {
+    >
+    {
       type: T;
       props: P;
       key: Key | null;
     }
 
-    export type ReactNode =
+    // 添加ReactNode类型声明
+    type ReactNode =
       | ReactElement
       | string
       | number
@@ -122,63 +124,73 @@ declare global {
       | null
       | undefined;
 
-    export interface ReactFragment {
-      [key: string]: any;
+    export interface FC<P = {}>
+    {
+      ( props: P ): ReactElement | null;
+      displayName?: string;
     }
 
-    export interface ReactPortal {
-      [key: string]: any;
+    export interface ReactFragment
+    {
+      [ key: string ]: any;
     }
 
-    export interface CSSProperties {
-      [key: string]: any;
+    export interface ReactPortal
+    {
+      [ key: string ]: any;
+    }
+
+    export interface CSSProperties
+    {
+      [ key: string ]: any;
     }
 
     export type JSXElementConstructor<P> =
-      | ((props: P) => ReactElement | null)
-      | (new (props: P) => Component<any, any>);
+      | ( ( props: P ) => ReactElement | null )
+      | ( new ( props: P ) => Component<any, any> );
     export type Key = string | number;
 
-    export class Component<P = {}, S = {}> {
+    export class Component<P = {}, S = {}>
+    {
       props: Readonly<P>;
       state: Readonly<S>;
-      constructor(props: P);
-      render(): ReactNode;
+      constructor ( props: P );
+      render (): ReactNode;
     }
 
     // Hook 类型
-    export function useState<S>(
-      initialState: S | (() => S)
-    ): [S, (value: S | ((prevState: S) => S)) => void];
-    export function useEffect(
-      effect: () => void | (() => void),
+    export function useState<S> (
+      initialState: S | ( () => S )
+    ): [ S, ( value: S | ( ( prevState: S ) => S ) ) => void ];
+    export function useEffect (
+      effect: () => void | ( () => void ),
       deps?: any[]
     ): void;
-    export function useRef<T>(initialValue: T): { current: T };
-    export function useImperativeHandle<T>(
+    export function useRef<T> ( initialValue: T ): { current: T };
+    export function useImperativeHandle<T> (
       ref: any,
       createHandle: () => T,
       deps?: any[]
     ): void;
-    export function forwardRef<T, P = {}>(
-      render: (props: P, ref: React.Ref<T>) => ReactElement | null
+    export function forwardRef<T, P = {}> (
+      render: ( props: P, ref: React.Ref<T> ) => ReactElement | null
     ): React.ForwardRefExoticComponent<P & React.RefAttributes<T>>;
   }
 }
 
 // CSS Modules 类型声明
 declare module '*.module.css' {
-  const classes: { readonly [key: string]: string };
+  const classes: { readonly [ key: string ]: string };
   export default classes;
 }
 
 declare module '*.module.less' {
-  const classes: { readonly [key: string]: string };
+  const classes: { readonly [ key: string ]: string };
   export default classes;
 }
 
 declare module '*.module.scss' {
-  const classes: { readonly [key: string]: string };
+  const classes: { readonly [ key: string ]: string };
   export default classes;
 }
 
@@ -221,37 +233,40 @@ declare module '*.json' {
 
 // umi-request 类型声明
 declare module 'umi-request' {
-  export function extend(options: any): any;
-  export default function request(url: string, options?: any): Promise<any>;
+  export function extend ( options: any ): any;
+  export default function request ( url: string, options?: any ): Promise<any>;
 }
 
 // Jest 全局变量类型声明
-declare global {
+declare global
+{
   // Jest 全局变量
-  const jest: typeof import('@jest/globals').jest;
-  const describe: typeof import('@jest/globals').describe;
-  const test: typeof import('@jest/globals').test;
-  const it: typeof import('@jest/globals').it;
-  const expect: typeof import('@jest/globals').expect;
-  const beforeEach: typeof import('@jest/globals').beforeEach;
-  const afterEach: typeof import('@jest/globals').afterEach;
-  const beforeAll: typeof import('@jest/globals').beforeAll;
-  const afterAll: typeof import('@jest/globals').afterAll;
+  const jest: typeof import( '@jest/globals' ).jest;
+  const describe: typeof import( '@jest/globals' ).describe;
+  const test: typeof import( '@jest/globals' ).test;
+  const it: typeof import( '@jest/globals' ).it;
+  const expect: typeof import( '@jest/globals' ).expect;
+  const beforeEach: typeof import( '@jest/globals' ).beforeEach;
+  const afterEach: typeof import( '@jest/globals' ).afterEach;
+  const beforeAll: typeof import( '@jest/globals' ).beforeAll;
+  const afterAll: typeof import( '@jest/globals' ).afterAll;
 }
 
 // 测试库类型声明
 declare module '@testing-library/jest-dom' {
-  export const toBeInTheDocument: typeof import('@testing-library/jest-dom').toBeInTheDocument;
-  export const toHaveTextContent: typeof import('@testing-library/jest-dom').toHaveTextContent;
-  export const toHaveAttribute: typeof import('@testing-library/jest-dom').toHaveAttribute;
-  export const toHaveClass: typeof import('@testing-library/jest-dom').toHaveClass;
-  export const toHaveStyle: typeof import('@testing-library/jest-dom').toHaveStyle;
-  export const toHaveValue: typeof import('@testing-library/jest-dom').toHaveValue;
+  export const toBeInTheDocument: typeof import( '@testing-library/jest-dom' ).toBeInTheDocument;
+  export const toHaveTextContent: typeof import( '@testing-library/jest-dom' ).toHaveTextContent;
+  export const toHaveAttribute: typeof import( '@testing-library/jest-dom' ).toHaveAttribute;
+  export const toHaveClass: typeof import( '@testing-library/jest-dom' ).toHaveClass;
+  export const toHaveStyle: typeof import( '@testing-library/jest-dom' ).toHaveStyle;
+  export const toHaveValue: typeof import( '@testing-library/jest-dom' ).toHaveValue;
 }
 
 // 全局类型定义
-declare global {
-  interface Window {
+declare global
+{
+  interface Window
+  {
     // 可以在这里添加全局的window属性类型
   }
 
@@ -263,3 +278,4 @@ declare global {
 }
 
 export { };
+

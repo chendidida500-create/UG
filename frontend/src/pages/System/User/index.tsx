@@ -326,7 +326,7 @@ const UserManagement: React.FC = () =>
         };
       }
     },
-    delete: async ( id: string ) =>
+    delete: async ( id: string ) => // eslint-disable-line @typescript-eslint/no-unused-vars
     {
       try
       {

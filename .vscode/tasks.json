@@ -137,6 +137,21 @@
       "options": {
         "cwd": "${workspaceFolder}"
       }
+    },
+    {
+      "label": "修复编辑器状态一致性",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/fix-editor-consistency-simple.bat",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
     }
   ]
 }
