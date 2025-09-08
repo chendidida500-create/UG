@@ -30,8 +30,6 @@
 - **配置文件**: [frontend/package.json](file:///e:/YSY/UG/frontend/package.json)
 - **相关依赖**:
   - [@umijs/max](file:///e:/YSY/UG/frontend/node_modules/@umijs/max): 4.4.12
-  - [@umijs/plugins](file:///e:/YSY/UG/frontend/node_modules/@umijs/plugins): 4.4.12
-  - [umi](file:///e:/YSY/UG/frontend/node_modules/umi): 4.4.12
 
 #### React
 

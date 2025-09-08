@@ -1,13 +1,6 @@
 import { defineConfig } from 'umi';
 
 export default defineConfig({
-  plugins: [
-    require.resolve('@umijs/plugins/dist/antd'),
-    require.resolve('@umijs/plugins/dist/model'),
-    require.resolve('@umijs/plugins/dist/access'),
-    require.resolve('@umijs/plugins/dist/initial-state'),
-    require.resolve('@umijs/plugins/dist/request'),
-  ],
   routes: [
     // 认证相关路由
     {
@@ -83,7 +76,13 @@ export default defineConfig({
       component: '@/pages/404',
     },
   ],
-  npmClient: 'npm',
+  npmClient: 'pnpm',
+  // MFSU配置 - 提升编译速度
+  mfsu: {
+    strategy: 'normal',
+    mfName: 'mf',
+    cacheDirectoryPath: './node_modules/.cache/mfsu',
+  },
   // 通过环境变量设置端口
   // devServer配置在UMI 4.x中已更改，使用PORT环境变量
   lessLoader: {

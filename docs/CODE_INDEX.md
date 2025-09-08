@@ -31,7 +31,8 @@
 ## 代码质量与规范
 
 - [ENCODING_STANDARD.md](ENCODING_STANDARD.md) - 字符编码标准
-- [spell-checking-guide.md](spell-checking-guide.md) - 拼写检查指南
+- [SPELLCHECK.md](SPELLCHECK.md) - 拼写检查指南
+- [spell-checking-guide.md](spell-checking-guide.md) - 拼写检查指南（旧版）
 - [TYPESCRIPT_FIXES.md](TYPESCRIPT_FIXES.md) - TypeScript 配置问题修复
 
 ## 配置与部署

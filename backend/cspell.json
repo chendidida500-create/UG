@@ -42,7 +42,9 @@
     "VARCHAR",
     "zcn",
     "pzcn",
-    "keygrip"
+    "keygrip",
+    "errorlevel",
+    "findstr"
   ],
   "ignorePaths": [
     "node_modules/**",

@@ -28,12 +28,12 @@
     "axios": "^1.5.0",
     "dayjs": "^1.11.9",
     "lodash": "^4.17.21",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.8.0",
-    "@testing-library/react": "^14.0.0",
+    "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^30.0.0",
     "@types/lodash": "^4.14.197",
@@ -62,6 +62,7 @@
     "url": ""
   },
   "keywords": [
+    "umi",
     "react",
     "typescript",
     "antd",
@@ -69,5 +70,6 @@
   ],
   "author": "UG Team",
   "license": "MIT",
-  "packageManager": "pnpm@8.15.8"
+  "packageManager": "pnpm@8.15.8",
+  "__npminstall_done": false
 }

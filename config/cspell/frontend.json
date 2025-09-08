@@ -48,7 +48,9 @@
     "pzcn",
     "keygrip",
     "Sider",
-    "sider"
+    "sider",
+    "errorlevel",
+    "findstr"
   ],
   "ignorePaths": [
     "node_modules/**",

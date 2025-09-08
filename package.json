@@ -36,7 +36,8 @@
     "db:seed": "cd backend && pnpm db:seed",
     "start": "pnpm start:backend & pnpm start:frontend",
     "start:backend": "cd backend && pnpm start",
-    "start:frontend": "cd frontend && pnpm start"
+    "start:frontend": "cd frontend && pnpm start",
+    "spellcheck": "npx cspell \"frontend/src/**/*.{js,ts,jsx,tsx,json,md}\" \"backend/app/**/*.{js,ts,json,md}\" \"backend/config/**/*.{js,ts,json,md}\" --exclude \"node_modules\" --exclude \"dist\" --exclude \"logs\" --exclude \"run\" --exclude \"coverage\" --exclude \".umi\" --exclude \".umi-production\""
   },
   "dependencies": {
     "@types/node": "^24.3.1",
@@ -50,10 +51,14 @@
     "node": "^20.19.0"
   },
   "resolutions": {
-    "undici": "^5.28.4"
+    "undici": "^5.28.4",
+    "antd": "^5.8.6",
+    "eslint": "^9.35.0"
   },
   "overrides": {
-    "undici": "^5.28.4"
+    "undici": "^5.28.4",
+    "antd": "^5.8.6",
+    "eslint": "^9.35.0"
   },
   "repository": {
     "type": "git",

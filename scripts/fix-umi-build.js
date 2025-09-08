@@ -7,10 +7,92 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
+console.log('修复UMI构建工具配置...');
+
+// 修复前端package.json中的scripts
+const frontendDir = path.join(__dirname, '..', 'frontend');
+const packageJsonPath = path.join(frontendDir, 'package.json');
+
+if (fs.existsSync(packageJsonPath)) {
+  console.log('✓ 找到 frontend/package.json');
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+
+  // 确保scripts使用max而不是umi
+  if (packageJson.scripts) {
+    let updated = false;
+
+    // 检查并更新scripts
+    Object.keys(packageJson.scripts).forEach(key => {
+      if (typeof packageJson.scripts[key] === 'string') {
+        const original = packageJson.scripts[key];
+        // 将umi替换为max
+        packageJson.scripts[key] = original.replace(/\bumi\b/g, 'max');
+        if (original !== packageJson.scripts[key]) {
+          console.log(`  更新脚本 ${key}: ${original} -> ${packageJson.scripts[key]}`);
+          updated = true;
+        }
+      }
+    });
+
+    if (updated) {
+      fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2) + '\n');
+      console.log('✓ 更新 frontend/package.json 中的脚本命令');
+    } else {
+      console.log('✓ frontend/package.json 中的脚本命令已正确');
+    }
+  }
+} else {
+  console.log('✗ 未找到 frontend/package.json');
+}
+
+// 检查并修复.umirc.ts配置
+const umircPath = path.join(frontendDir, '.umirc.ts');
+if (fs.existsSync(umircPath)) {
+  console.log('✓ 找到 .umirc.ts 配置文件');
+  let umircContent = fs.readFileSync(umircPath, 'utf8');
+
+  // 确保npmClient设置为pnpm
+  if (!umircContent.includes("npmClient: 'pnpm'")) {
+    // 如果存在其他npmClient配置，替换它
+    if (umircContent.includes('npmClient:')) {
+      umircContent = umircContent.replace(/npmClient:\s*['"][^'"]*['"]/g, "npmClient: 'pnpm'");
+      console.log('✓ 更新 .umirc.ts 中的 npmClient 配置');
+    } else {
+      // 如果没有npmClient配置，添加它
+      // 在export default defineConfig({之后添加
+      umircContent = umircContent.replace(
+        /(export\s+default\s+defineConfig\(\{)/,
+        "$1\n  npmClient: 'pnpm',"
+      );
+      console.log('✓ 添加 .umirc.ts 中的 npmClient 配置');
+    }
+    fs.writeFileSync(umircPath, umircContent);
+  } else {
+    console.log('✓ .umirc.ts 中的 npmClient 配置已正确');
+  }
+} else {
+  console.log('✗ 未找到 .umirc.ts 配置文件');
+}
+
+console.log('\nUMI构建工具配置修复完成。');
+
 console.log('开始修复 Umi 构建工具问题...\n');
 
-// 检查是否在 Windows 环境下
-const isWindows = process.platform === 'win32';
+// 递归删除目录的函数
+function removeDir(dirPath) {
+  if (fs.existsSync(dirPath)) {
+    const files = fs.readdirSync(dirPath);
+    files.forEach(file => {
+      const filePath = path.join(dirPath, file);
+      if (fs.lstatSync(filePath).isDirectory()) {
+        removeDir(filePath);
+      } else {
+        fs.unlinkSync(filePath);
+      }
+    });
+    fs.rmdirSync(dirPath);
+  }
+}
 
 try {
   // 1. 清理现有的 node_modules 和 lock 文件
@@ -19,7 +101,7 @@ try {
   // 清理根目录
   if (fs.existsSync(path.join(__dirname, '../node_modules'))) {
     console.log('  - 清理根目录 node_modules...');
-    execSync('rimraf node_modules', { cwd: path.join(__dirname, '..'), stdio: 'inherit' });
+    removeDir(path.join(__dirname, '../node_modules'));
   }
 
   if (fs.existsSync(path.join(__dirname, '../pnpm-lock.yaml'))) {
@@ -30,7 +112,7 @@ try {
   // 清理前端目录
   if (fs.existsSync(path.join(__dirname, '../frontend/node_modules'))) {
     console.log('  - 清理前端 node_modules...');
-    execSync('rimraf node_modules', { cwd: path.join(__dirname, '../frontend'), stdio: 'inherit' });
+    removeDir(path.join(__dirname, '../frontend/node_modules'));
   }
 
   if (fs.existsSync(path.join(__dirname, '../frontend/pnpm-lock.yaml'))) {
@@ -41,7 +123,7 @@ try {
   // 清理后端目录
   if (fs.existsSync(path.join(__dirname, '../backend/node_modules'))) {
     console.log('  - 清理后端 node_modules...');
-    execSync('rimraf node_modules', { cwd: path.join(__dirname, '../backend'), stdio: 'inherit' });
+    removeDir(path.join(__dirname, '../backend/node_modules'));
   }
 
   if (fs.existsSync(path.join(__dirname, '../backend/pnpm-lock.yaml'))) {

@@ -117,7 +117,7 @@ pnpm --filter backend dev
 
 2. **前端特定依赖**（在 frontend 目录管理）：
    - React 相关：`react`, `react-dom`
-   - Umi 相关：`umi`, `@umijs/max`, `@umijs/plugins`
+   - Umi 相关：`@umijs/max`
    - Ant Design 相关：`antd`, `@ant-design/icons`, `@ant-design/pro-components`
    - 工具库：`axios`, `ahooks`, `dayjs`, `lodash`
 

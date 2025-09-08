@@ -45,7 +45,7 @@
 ### 1. 环境准备
 
 ```bash
-# 安装 Node.js
+# 安装 Node.js (使用 NodeSource 仓库确保版本正确)
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
@@ -66,17 +66,23 @@ redis-server --version
 ### 2. 项目部署
 
 ```bash
-# 克隆项目
+# 克隆项目 (请将 <repository-url> 替换为实际的仓库地址)
 git clone <repository-url>
 cd ug-management
 
 # 后端部署
 cd backend
 npm install
+
+# 复制配置文件并根据环境修改
 cp config/config.default.js config/config.local.js
-# 修改数据库配置
-npm run db:migrate
-npm run db:seed
+# 修改 config/config.local.js 中的数据库配置
+
+# 执行数据库迁移和种子数据 (使用 sequelize-cli)
+npx sequelize-cli db:migrate
+npx sequelize-cli db:seed:all
+
+# 启动后端开发服务器
 npm run dev
 
 # 前端部署
@@ -116,11 +122,11 @@ sudo ufw enable
 # MySQL 安全配置
 sudo mysql_secure_installation
 
-# 创建数据库和用户
+# 创建数据库和用户 (请将 'your_secure_password_here' 替换为强密码)
 sudo mysql -u root -p
 CREATE DATABASE ug_management CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER 'ug_user'@'localhost' IDENTIFIED BY 'strong_password';
-GRANT ALL PRIVILEGES ON ug_management.* TO 'ug_user'@'localhost';
+CREATE USER 'ug_user'@'%' IDENTIFIED BY 'your_secure_password_here';
+GRANT ALL PRIVILEGES ON ug_management.* TO 'ug_user'@'%';
 FLUSH PRIVILEGES;
 EXIT;
 
@@ -137,14 +143,23 @@ sudo mkdir -p /opt/ug-management
 sudo chown -R $USER:$USER /opt/ug-management
 cd /opt/ug-management
 
+# 克隆项目到新目录 (避免覆盖现有文件)
+cd /opt
+git clone <repository-url> ug-management
+sudo chown -R $USER:$USER ug-management
+cd ug-management
+
 # 部署后端
-git clone <repository-url> .
 cd backend
 npm ci --production
+
+# 复制并配置生产环境参数
 cp config/config.default.js config/config.prod.js
-# 配置生产环境参数
-npm run db:migrate
-npm run db:seed
+# 修改 config/config.prod.js 中的数据库配置，使用环境变量管理敏感信息
+
+# 执行数据库迁移和种子数据
+npx sequelize-cli db:migrate
+npx sequelize-cli db:seed:all
 
 # 使用 PM2 管理进程
 npm install -g pm2
@@ -157,7 +172,7 @@ cd ../frontend
 npm ci
 npm run build
 
-# 配置 Nginx
+# 配置 Nginx (nginx.conf 文件位于项目根目录)
 sudo cp nginx.conf /etc/nginx/sites-available/ug-management
 sudo ln -s /etc/nginx/sites-available/ug-management /etc/nginx/sites-enabled/
 sudo nginx -t
@@ -167,9 +182,14 @@ sudo systemctl restart nginx
 ### 方式二: 使用自动化脚本
 
 ```bash
-# 下载并执行部署脚本
+# 下载并执行部署脚本 (请将 URL 替换为实际的脚本地址)
 wget https://raw.githubusercontent.com/your-repo/ug-management/main/scripts/deploy-production.sh
 chmod +x deploy-production.sh
+
+# 在执行前检查脚本内容，确保符合您的环境要求
+cat deploy-production.sh
+
+# 执行部署脚本
 sudo ./deploy-production.sh
 ```
 
@@ -178,7 +198,7 @@ sudo ./deploy-production.sh
 ### 1. 快速启动
 
 ```bash
-# 克隆项目
+# 克隆项目 (请将 <repository-url> 替换为实际的仓库地址)
 git clone <repository-url>
 cd ug-management
 
@@ -198,9 +218,9 @@ docker-compose logs -f
 # 使用生产环境配置
 docker-compose -f docker-compose.prod.yml up -d
 
-# 初始化数据库
-docker-compose exec backend npm run db:migrate
-docker-compose exec backend npm run db:seed
+# 初始化数据库 (确保后端容器已安装依赖)
+docker-compose exec backend npx sequelize-cli db:migrate
+docker-compose exec backend npx sequelize-cli db:seed:all
 ```
 
 ### 3. 常用Docker命令
@@ -242,7 +262,7 @@ docker-compose up -d prometheus grafana
 ```bash
 # 配置邮件告警
 cp monitoring/alertmanager.yml.example monitoring/alertmanager.yml
-# 修改邮件配置
+# 修改邮件配置，避免在配置文件中硬编码密码，建议使用环境变量
 
 # 重启告警服务
 docker-compose restart alertmanager
@@ -265,11 +285,17 @@ docker-compose up -d elasticsearch logstash kibana
 #### 数据备份
 
 ```bash
-# 数据库备份
-docker exec ug-mysql mysqldump -u root -p ug_management > backup_$(date +%Y%m%d).sql
+# 数据库备份 (避免在命令行中暴露密码，建议使用 .my.cnf 配置文件)
+# 首先创建 ~/.my.cnf 文件:
+# [client]
+# user=root
+# password=your_secure_password_here
 
-# 文件备份
-tar -czf uploads_backup_$(date +%Y%m%d).tar.gz /opt/ug-management/uploads
+docker exec ug-mysql mysqldump ug_management > backup_$(date +%Y%m%d).sql
+
+# 文件备份 (使用相对路径避免绝对路径问题)
+cd /opt/ug-management
+tar -czf ~/uploads_backup_$(date +%Y%m%d).tar.gz uploads/
 ```
 
 #### 日志管理
@@ -313,13 +339,17 @@ git pull origin main
 # 更新后端
 cd backend
 npm ci
-npm run db:migrate
+npx sequelize-cli db:migrate
+
+# 重启后端服务
 docker-compose restart backend
 
 # 更新前端
 cd frontend
 npm ci
 npm run build
+
+# 重启前端服务
 docker-compose restart frontend
 ```
 
@@ -353,9 +383,13 @@ sudo crontab -e
 #### 安全扫描
 
 ```bash
-# 漏洞扫描
+# 漏洞扫描 (建议先在开发/测试环境运行和测试)
+# 1. 在开发环境运行 `npm audit`
+# 2. 全面测试
+# 3. 将更新后的 package-lock.json 部署到生产环境
+# 4. 在生产环境运行 `npm ci` (而不是 `npm audit fix`)
+
 npm audit
-npm audit fix
 
 # 依赖更新
 npm update
@@ -393,9 +427,10 @@ docker-compose exec backend npm run test:db
 # 检查数据库状态
 docker-compose exec mysql mysql -u root -p -e "SHOW VARIABLES LIKE 'max_connections';"
 
-# 重置数据库密码
+# 重置数据库密码 (在 Docker 环境中，用户主机名通常是 %)
 docker-compose exec mysql mysql -u root -p
-ALTER USER 'ug_user'@'localhost' IDENTIFIED BY 'new_password';
+CREATE USER 'ug_user'@'%' IDENTIFIED BY 'your_new_secure_password_here';
+GRANT ALL PRIVILEGES ON ug_management.* TO 'ug_user'@'%';
 FLUSH PRIVILEGES;
 ```
 
@@ -449,11 +484,11 @@ docker-compose exec redis redis-cli CONFIG SET maxmemory-policy allkeys-lru
 #### 数据恢复
 
 ```bash
-# 恢复数据库
-docker-compose exec mysql mysql -u root -p ug_management < backup_20240906.sql
+# 恢复数据库 (从 .my.cnf 文件读取密码)
+docker-compose exec mysql mysql ug_management < backup_20240906.sql
 
 # 恢复文件
-tar -xzf uploads_backup_20240906.tar.gz -C /opt/ug-management/
+tar -xzf ~/uploads_backup_20240906.tar.gz -C /opt/ug-management/
 
 # 重启服务
 docker-compose restart
@@ -471,6 +506,12 @@ sudo ./scripts/deploy-production.sh
 # 验证服务
 curl -f http://localhost/api/health
 ```
+
+## 重要提醒
+
+⚠️ **注意**: 请将文档中所有的 `<repository-url>`、`yourdomain.com`、`example.com` 等占位符替换为你实际的配置信息。
+⚠️ **安全**: 避免在命令行或配置文件中硬编码密码，推荐使用环境变量或配置文件管理敏感信息。
+⚠️ **测试**: 在生产环境中执行任何操作前，请先在开发/测试环境中验证。
 
 ## 联系支持
 

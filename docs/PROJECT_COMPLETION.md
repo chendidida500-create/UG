@@ -23,7 +23,7 @@
 
 ### 后端技术栈
 
-- **框架**: Egg.js 3.x + Node.js 16+
+- **框架**: Egg.js 3.x + Node.js 20.19.0
 - **数据库**: MySQL 8.0 + Sequelize ORM
 - **认证**: JWT Token + RefreshToken
 - **文件上传**: Multer
@@ -35,7 +35,7 @@
 
 - **版本控制**: Git
 - **代码编辑器**: VSCode (已配置推荐插件和设置)
-- **包管理器**: npm
+- **包管理器**: pnpm 8.15.8
 - **数据库管理**: 支持迁移和种子数据
 
 ## 已完成功能模块
@@ -174,11 +174,11 @@ UG/
 
 ## TypeScript 配置优化
 
-为了解决 TypeScript 7.0 中将移除 `moduleResolution=node10` 选项的弃用警告，我们已更新所有项目的 TypeScript 配置：
+为了解决 TypeScript 5.9.2 中将移除 `moduleResolution=node10` 选项的弃用警告，我们已更新所有项目的 TypeScript 配置：
 
-- **根目录**: [tsconfig.json](file:///e:/YSY/UG/tsconfig.json) 中的 `ignoreDeprecations` 设置为 `"6.0"`
-- **前端项目**: [frontend/tsconfig.json](file:///e:/YSY/UG/frontend/tsconfig.json) 中的 `ignoreDeprecations` 设置为 `"6.0"`
-- **后端项目**: [backend/tsconfig.json](file:///e:/YSY/UG/backend/tsconfig.json) 中的 `ignoreDeprecations` 设置为 `"6.0"`
+- **根目录**: [tsconfig.json](file:///e:/YSY/UG/tsconfig.json) 中的 `ignoreDeprecations` 设置为 `"7.0"`
+- **前端项目**: [frontend/tsconfig.json](file:///e:/YSY/UG/frontend/tsconfig.json) 中的 `ignoreDeprecations` 设置为 `"7.0"`
+- **后端项目**: [backend/tsconfig.json](file:///e:/YSY/UG/backend/tsconfig.json) 中的 `ignoreDeprecations` 设置为 `"7.0"`
 
 这些配置确保项目能够兼容未来版本的 TypeScript，同时消除了弃用警告。
 
@@ -200,9 +200,9 @@ UG/
 
 ### 环境要求
 
-- Node.js 16+
+- Node.js 20.19.0
 - MySQL 8.0+
-- npm 或 yarn
+- pnpm 8.15.8
 
 ### 快速启动
 
@@ -211,8 +211,8 @@ UG/
 
 ### 手动启动
 
-1. 启动后端：`cd backend && npm install && npm run dev`
-2. 启动前端：`cd frontend && npm install && npm run dev`
+1. 启动后端：`cd backend && pnpm install && pnpm dev`
+2. 启动前端：`cd frontend && pnpm install && pnpm dev`
 
 ### 访问地址
 
@@ -242,13 +242,13 @@ docker-compose -f docker-compose.prod.yml up -d
 ```bash
 # 后端部署
 cd backend
-npm install --production
-npm start
+pnpm install --production
+pnpm start
 
 # 前端部署
 cd frontend
-npm install
-npm run build
+pnpm install
+pnpm run build
 # 将构建产物部署到Nginx等Web服务器
 ```
 

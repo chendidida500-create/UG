@@ -133,10 +133,10 @@ pnpm lint:fix  # 自动修复问题
 
 通过 VS Code 任务系统，可以快速执行：
 
-- 自动格式化和检查 ([scripts/auto-format-and-lint.bat](file:///e:/YSY/UG/scripts/auto-format-and-lint.bat))
-- 自动类型检查 ([scripts/auto-type-check.bat](file:///e:/YSY/UG/scripts/auto-type-check.bat))
-- 自动构建项目 ([scripts/auto-build.bat](file:///e:/YSY/UG/scripts/auto-build.bat))
-- 启动开发服务器 ([scripts/auto-dev-server.bat](file:///e:/YSY/UG/scripts/auto-dev-server.bat))
+- 自动格式化和检查 ([scripts/auto-format-and-lint.bat](scripts/auto-format-and-lint.bat))
+- 自动类型检查 ([scripts/auto-type-check.bat](scripts/auto-type-check.bat))
+- 自动构建项目 ([scripts/auto-build.bat](scripts/auto-build.bat))
+- 启动开发服务器 ([scripts/auto-dev-server.bat](scripts/auto-dev-server.bat))
 
 详细信息请参考 [docs/AUTOMATION.md](docs/AUTOMATION.md)。
 
@@ -245,16 +245,11 @@ pnpm lint:fix  # 自动修复问题
 ### 运行拼写检查
 
 ```bash
-# 前端项目拼写检查
-cd frontend
+# 运行拼写检查
 pnpm spellcheck
 
-# 后端项目拼写检查
-cd backend
-pnpm spellcheck
-
-# 整个项目拼写检查
-./scripts/spellcheck-all.bat
+# 或者使用批处理脚本
+./scripts/spellcheck.bat
 ```
 
 ### 拼写检查配置
@@ -262,9 +257,8 @@ pnpm spellcheck
 - 全局配置: [cspell.json](cspell.json)
 - 前端配置: [frontend/cspell.json](frontend/cspell.json)
 - 后端配置: [backend/cspell.json](backend/cspell.json)
-- 配置继承: [config/cspell/](config/cspell/)
 
-详细信息请参考 [docs/spell-checking-guide.md](docs/spell-checking-guide.md)。
+详细信息请参考 [docs/SPELLCHECK.md](docs/SPELLCHECK.md)。
 
 ## TypeScript 配置问题修复
 

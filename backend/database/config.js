@@ -26,17 +26,6 @@ module.exports = {
     },
     logging: console.log,
   },
-    define: {
-      freezeTableName: true,
-      underscored: true,
-      timestamps: true,
-      createdAt: 'created_at',
-      updatedAt: 'updated_at',
-      deletedAt: 'deleted_at',
-      paranoid: true,
-    },
-    logging: console.log,
-  },
 
   test: {
     username: 'ug',
@@ -62,17 +51,6 @@ module.exports = {
     },
     logging: false,
   },
-    define: {
-      freezeTableName: true,
-      underscored: true,
-      timestamps: true,
-      createdAt: 'created_at',
-      updatedAt: 'updated_at',
-      deletedAt: 'deleted_at',
-      paranoid: true,
-    },
-    logging: false,
-  },
 
   production: {
     username: process.env.DB_USERNAME || 'ug',
@@ -87,23 +65,6 @@ module.exports = {
       supportBigNumbers: true,
       bigNumberStrings: true,
     },
-    define: {
-      freezeTableName: true,
-      underscored: true,
-      timestamps: true,
-      createdAt: 'created_at',
-      updatedAt: 'updated_at',
-      deletedAt: 'deleted_at',
-      paranoid: true,
-    },
-    logging: false,
-    pool: {
-      max: 20,
-      min: 5,
-      acquire: 30000,
-      idle: 10000,
-    },
-  },
     define: {
       freezeTableName: true,
       underscored: true,

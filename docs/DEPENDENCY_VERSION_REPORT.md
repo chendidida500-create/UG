@@ -66,12 +66,6 @@
   - **状态**: ✅ 符合要求
   - **配置文件**: [frontend/package.json](file:///e:/YSY/UG/frontend/package.json)
 
-- **@umijs/plugins**
-  - **要求版本**: 4.4.12
-  - **当前版本**: 4.4.12
-  - **状态**: ✅ 符合要求
-  - **配置文件**: [frontend/package.json](file:///e:/YSY/UG/frontend/package.json)
-
 ### React 类型定义
 
 - **@types/react**

@@ -80,7 +80,11 @@
     "VARCHAR",
     "zcn",
     "pzcn",
-    "keygrip"
+    "keygrip",
+    "errorlevel",
+    "findstr",
+    "setlocal",
+    "umi"
   ],
   "ignorePaths": [
     "node_modules/**",
@@ -91,6 +95,7 @@
     ".umi/**",
     ".umi-production/**",
     "frontend/.umi/**",
-    "frontend/.umi-production/**"
+    "frontend/.umi-production/**",
+    "config/cspell/*.json"
   ]
 }

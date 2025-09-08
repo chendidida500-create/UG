@@ -55,10 +55,10 @@ echo - @types/node: 24.3.1
 echo - concurrently: 9.2.1
 echo - rimraf: 6.0.1
 echo - @ant-design/icons: 6.0.1
-echo - react: 19.1.1
-echo - react-dom: 19.1.1
-echo - @types/react: 19.1.12
-echo - @types/react-dom: 19.1.9
+echo - react: 18.3.1
+echo - react-dom: 18.3.1
+echo - @types/react: 18.3.24
+echo - @types/react-dom: 18.3.1
 echo - @typescript-eslint/eslint-plugin: 8.42.0
 echo - @typescript-eslint/parser: 8.42.0
 echo - eslint: 9.35.0

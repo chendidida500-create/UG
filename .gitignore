@@ -30,6 +30,7 @@ coverage/
 # 依赖锁文件（根据团队偏好）
 # package-lock.json
 # yarn.lock
+pnpm-lock.yaml
 
 # 环境变量文件
 .env
@@ -77,3 +78,21 @@ uploads/
 # 临时文件
 tmp/
 temp/
+
+# 编辑器自动保存文件
+*.save
+
+# TypeScript 编译输出
+*.tsbuildinfo
+
+# ESLint 缓存
+.eslintcache
+
+# MFSU 缓存
+.mfsu/
+
+# pnpm store
+.pnpm-store/
+
+# Windows 快捷方式
+*.lnk
