@@ -26,8 +26,9 @@ declare module 'react' {
   export const Component: any;
   export const PureComponent: any;
   export type FC<P = {}> = FunctionComponent<P>;
-  export interface FunctionComponent<P = {}> {
-    (props: P, context?: any): ReactElement<any, any> | null;
+  export interface FunctionComponent<P = {}>
+  {
+    ( props: P, context?: any ): ReactElement<any, any> | null;
     propTypes?: any;
     contextTypes?: any;
     defaultProps?: Partial<P>;
@@ -36,7 +37,8 @@ declare module 'react' {
   export type ReactNode = ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined;
 
   // 修复：将 React 定义为一个命名空间而不是函数
-  export namespace React {
+  export namespace React
+  {
     // 添加缺失的属性
     export const version: string;
     export const createElement: any;
@@ -106,23 +108,27 @@ declare module 'react-router-dom' {
   export const useSearchParamsStable: any;
 }
 
-declare namespace React {
-  interface ReactElement<P = any, T extends string | React.ComponentType<any> = string | React.ComponentType<any>> {
+declare namespace React
+{
+  interface ReactElement<P = any, T extends string | React.ComponentType<any> = string | React.ComponentType<any>>
+  {
     type: T;
     props: P;
     key: string | null;
   }
 
-  interface ComponentType<P = {}> {
-    (props: P): ReactElement<any, any> | null;
+  interface ComponentType<P = {}>
+  {
+    ( props: P ): ReactElement<any, any> | null;
     propTypes?: any;
     contextTypes?: any;
     defaultProps?: Partial<P>;
     displayName?: string;
   }
 
-  interface ComponentClass<P = {}, S = any> extends ComponentType<P> {
-    new(props: P, context?: any): Component<P, S>;
+  interface ComponentClass<P = {}, S = any> extends ComponentType<P>
+  {
+    new( props: P, context?: any ): Component<P, S>;
     propTypes?: any;
     contextTypes?: any;
     childContextTypes?: any;
@@ -130,23 +136,25 @@ declare namespace React {
     displayName?: string;
   }
 
-  interface Component<P = {}, S = any> {
-    setState<K extends keyof S>(
-      state: ((prevState: Readonly<S>, props: Readonly<P>) => (Pick<S, K> | S | null)) | (Pick<S, K> | S | null),
+  interface Component<P = {}, S = any>
+  {
+    setState<K extends keyof S> (
+      state: ( ( prevState: Readonly<S>, props: Readonly<P> ) => ( Pick<S, K> | S | null ) ) | ( Pick<S, K> | S | null ),
       callback?: () => void
     ): void;
-    forceUpdate(callback?: () => void): void;
-    render(): ReactNode;
+    forceUpdate ( callback?: () => void ): void;
+    render (): ReactNode;
     readonly props: Readonly<P> & Readonly<{ children?: ReactNode }>;
     state: Readonly<S>;
     refs: {
-      [key: string]: any;
+      [ key: string ]: any;
     };
   }
 
   type ReactFragment = {} | ReactNodeArray;
   interface ReactNodeArray extends Array<ReactNode> { }
-  interface ReactPortal extends ReactElement {
+  interface ReactPortal extends ReactElement
+  {
     key: string | null;
     children: ReactNode;
   }
@@ -156,22 +164,28 @@ declare namespace React {
   export type ReactNode = ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined;
 }
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [elemName: string]: any;
+declare global
+{
+  namespace JSX
+  {
+    interface IntrinsicElements
+    {
+      [ elemName: string ]: any;
     }
     interface Element extends React.ReactElement<any, any> { }
-    interface ElementClass extends React.Component<any> {
-      render(): React.ReactNode;
+    interface ElementClass extends React.Component<any>
+    {
+      render (): React.ReactNode;
     }
     interface ElementAttributesProperty { props: {}; }
     interface ElementChildrenAttribute { children: {}; }
-    interface IntrinsicAttributes {
+    interface IntrinsicAttributes
+    {
       key?: string | number | any;
     }
     interface IntrinsicClassAttributes<T> extends React.Attributes { }
-    interface IntrinsicElements {
+    interface IntrinsicElements
+    {
       div: React.HTMLAttributes<HTMLDivElement>;
       span: React.HTMLAttributes<HTMLSpanElement>;
       input: React.InputHTMLAttributes<HTMLInputElement>;
@@ -180,3 +194,35 @@ declare global {
     }
   }
 }
+
+// 修复React和UMI类型定义问题
+import * as React from 'react';
+
+// 重新声明useState以确保泛型支持
+declare module 'react' {
+  function useState<S> ( initialState: S | ( () => S ) ): [ S, React.Dispatch<React.SetStateAction<S>> ];
+
+  // 确保useCallback支持泛型
+  function useCallback<T extends ( ...args: any[] ) => any> ( callback: T, deps: React.DependencyList ): T;
+}
+
+// 为UMI request函数提供更明确的类型定义
+declare module 'umi' {
+  interface RequestOptions
+  {
+    method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS';
+    data?: any;
+    params?: Record<string, any>;
+    headers?: Record<string, string>;
+    [ key: string ]: any;
+  }
+
+  function request<T = any> ( url: string, options?: RequestOptions ): Promise<T>;
+
+  // 其他UMI导出保持不变
+  export const history: any;
+  export function useModel<T> ( namespace: string ): T;
+}
+
+export { };
+
