@@ -1,5 +1,5 @@
-import logo from '@/assets/logo.png';
 import { Layout, theme } from 'antd';
+import logo from '../../public/assets/logo.png';
 import styles from './index.module.less';
 
 const { Header, Content } = Layout;

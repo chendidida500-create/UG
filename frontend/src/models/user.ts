@@ -5,18 +5,7 @@ import { request } from 'umi';
 import type { PaginationParams, User } from '../types';
 
 // 定义UserModelState类型
-export interface UserModelState {
-  users: User[];
-  loading: boolean;
-  total: number;
-  getUserList: (params?: PaginationParams) => Promise<any>;
-  createUser: (data: Partial<User>) => Promise<any>;
-  updateUser: (id: string, data: Partial<User>) => Promise<any>;
-  deleteUser: (id: string) => Promise<any>;
-  batchDeleteUsers: (ids: string[]) => Promise<any>;
-  updateUserStatus: (id: string, status: 0 | 1) => Promise<any>;
-  exportUsers: () => Promise<any>;
-}
+export type UserModelState = ReturnType<typeof useUserModel>;
 
 export default function useUserModel(): UserModelState {
   const [users, setUsers] = useState<User[]>([]);
@@ -184,7 +173,5 @@ export default function useUserModel(): UserModelState {
     exportUsers,
   };
 }
-
-export type UserModelState = ReturnType<typeof useUserModel>;
 
 export default useUserModel;

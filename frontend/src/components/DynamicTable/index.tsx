@@ -114,26 +114,28 @@ interface DynamicTableProps {
   hasPermission?: (permission: string) => boolean;
 }
 
-const DynamicTable: React.FC<DynamicTableProps> = ({
-  config,
-  dataSource = [],
-  loading = false,
-  pagination,
-  searchConfig,
-  actionConfig,
-  extraActions, // 添加extraActions
-  onSearch,
-  onPageChange,
-  onRefresh,
-  onCreate,
-  onView,
-  onEdit,
-  onDelete,
-  onExport,
-  onImport,
-  onCustomAction,
-  hasPermission = () => true,
-}) => {
+const DynamicTable: React.FC<DynamicTableProps> = (props: DynamicTableProps) => {
+  const {
+    config,
+    dataSource = [],
+    loading = false,
+    pagination,
+    searchConfig,
+    actionConfig,
+    extraActions, // 添加extraActions
+    onSearch,
+    onPageChange,
+    onRefresh,
+    onCreate,
+    onView,
+    onEdit,
+    onDelete,
+    onExport,
+    onImport,
+    onCustomAction,
+    hasPermission = () => true,
+  } = props;
+
   const [searchParams, setSearchParams] = useState<Record<string, any>>({});
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [columnSettings, setColumnSettings] = useState<Record<string, boolean>>(

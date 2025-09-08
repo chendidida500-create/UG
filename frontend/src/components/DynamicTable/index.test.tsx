@@ -5,18 +5,6 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 /// <reference types="@testing-library/jest-dom" />
 
-// 类型声明，绕过TypeScript类型检查
-declare global {
-  namespace jest {
-    interface Matchers<R> {
-      toBeInTheDocument(): R;
-      toHaveValue(value?: string | number | string[]): R;
-      toBeVisible(): R;
-      toHaveStyle(style: string | Record<string, any>): R;
-    }
-  }
-}
-
 // Mock Antd
 jest.mock('antd', () => ({
   ...jest.requireActual('antd'),

@@ -62,19 +62,21 @@ interface CrudComponentProps {
   extraActions?: React.ReactNode;
 }
 
-const CrudComponent = ({
-  title,
-  tableConfig,
-  formConfig,
-  searchConfig,
-  api,
-  permissions = {},
-  hasPermission = () => true,
-  onCustomAction,
-  beforeSubmit,
-  afterSubmit,
-  extraActions,
-}: CrudComponentProps) => {
+const CrudComponent = (props: CrudComponentProps) => {
+  const {
+    title,
+    tableConfig,
+    formConfig,
+    searchConfig,
+    api,
+    permissions = {},
+    hasPermission = () => true,
+    onCustomAction,
+    beforeSubmit,
+    afterSubmit,
+    extraActions,
+  } = props;
+
   const [dataSource, setDataSource] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [pagination, setPagination] = useState<{

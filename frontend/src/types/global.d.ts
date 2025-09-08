@@ -4,7 +4,14 @@
 
 // Testing Library React 类型声明
 declare module '@testing-library/react' {
-  export function render(component: React.ReactElement): any;
+  export function render<T>(component: React.ReactElement<T>): {
+    container: HTMLElement;
+    baseElement: HTMLElement;
+    debug: (element?: HTMLElement) => void;
+    unmount: () => void;
+    rerender: (ui: React.ReactElement<T>) => void;
+    asFragment: () => DocumentFragment;
+  };
   export const screen: {
     getByText: (text: string) => any;
     getByPlaceholderText: (text: string) => any;
@@ -136,7 +143,7 @@ declare module 'antd/es/form' {
 }
 
 declare module 'antd/es/table' {
-  export interface ColumnsType<T> extends Array<any> {}
+  export interface ColumnsType<T> extends Array<any> { }
   export interface TableProps<T> {
     onChange?: (pagination: any, filters: any, sorter: any) => void;
     [key: string]: any;

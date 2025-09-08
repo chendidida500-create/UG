@@ -1,10 +1,10 @@
 import { useModel } from '@/utils/umiMock';
 import {
-  DesktopOutlined,
   FileOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   PieChartOutlined,
+  SettingOutlined,
   TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons';
@@ -35,7 +35,7 @@ function getItem(
 
 const items: MenuItem[] = [
   getItem('仪表盘', '/', <PieChartOutlined />),
-  getItem('系统管理', '/system', <DesktopOutlined />, [
+  getItem('系统管理', '/system', <SettingOutlined />, [
     getItem('用户管理', '/system/user', <UserOutlined />),
     getItem('角色管理', '/system/role', <TeamOutlined />),
     getItem('权限管理', '/system/permission', <FileOutlined />),

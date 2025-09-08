@@ -35,8 +35,12 @@
       "./node_modules/@types",
       "../node_modules/@types"
     ],
-    "types": [],
-    "jsx": "react-jsx"
+    "types": [
+      "jest",
+      "node"
+    ],
+    "jsx": "react-jsx",
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*",
