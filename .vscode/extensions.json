@@ -1,8 +1,9 @@
 {
   "recommendations": [
     // TypeScript开发
-    "ms-vscode.vscode-typescript-language-features",
+    "vscode.typescript-language-features",
     // React开发
+    "dsznajder.es7-react-js-snippets",
     "burkeholland.simple-react-snippets",
     // 代码质量
     "esbenp.prettier-vscode",
@@ -11,15 +12,16 @@
     // Git工具
     "mhutchie.git-graph",
     "eamodio.gitlens",
-    "github.vscode-pull-request-github",
+    "GitHub.vscode-pull-request-github",
     // 界面增强
     "vscode-icons-team.vscode-icons",
     "pkief.material-icon-theme",
     // 开发效率
-    "visualstudioexptteam.vscodeintellicode",
+    "VisualStudioExptTeam.vscodeintellicode",
     "formulahendry.auto-rename-tag",
     "christian-kohler.path-intellisense",
     "bradlc.vscode-tailwindcss",
+    "christian-kohler.npm-intellisense",
     // NocoBase相关
     "mtxr.sqltools",
     "mtxr.sqltools-driver-mysql",
