@@ -1,5 +1,3 @@
-@import '~antd/es/style/themes/default.less';
-
 .container {
   min-height: 100vh;
   display: flex;
@@ -28,12 +26,12 @@
   h1 {
     font-size: 28px;
     font-weight: 600;
-    color: @primary-color;
+    color: #1890ff; // 替换 @primary-color
     margin-bottom: 8px;
   }
 
   p {
-    color: @text-color-secondary;
+    color: rgba(0, 0, 0, 0.45); // 替换 @text-color-secondary
     font-size: 16px;
     margin-bottom: 0;
   }
@@ -61,18 +59,18 @@
     :global(.ant-input-password) {
       height: 44px;
       border-radius: 8px;
-      border: 1px solid @border-color-base;
+      border: 1px solid #d9d9d9; // 替换 @border-color-base
       transition: all 0.3s ease;
 
       &:hover,
       &:focus {
-        border-color: @primary-color;
-        box-shadow: 0 0 0 2px fade(@primary-color, 20%);
+        border-color: #1890ff; // 替换 @primary-color
+        box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2); // 替换 fade(@primary-color, 20%)
       }
     }
 
     :global(.ant-input-prefix) {
-      color: @text-color-secondary;
+      color: rgba(0, 0, 0, 0.45); // 替换 @text-color-secondary
       margin-right: 12px;
     }
   }
@@ -92,28 +90,28 @@
 }
 
 .prevButton {
-  background: @component-background;
-  border: 1px solid @border-color-base;
-  color: @text-color;
+  background: #ffffff;
+  border: 1px solid #d9d9d9; // 替换 @border-color-base
+  color: rgba(0, 0, 0, 0.65); // 替换 @text-color
 
   &:hover,
   &:focus {
-    border-color: @primary-color;
-    color: @primary-color;
+    border-color: #1890ff; // 替换 @primary-color
+    color: #1890ff; // 替换 @primary-color
   }
 }
 
 .submitButton {
-  background: @primary-color;
+  background: #1890ff; // 替换 @primary-color
   border: none;
 
   &:hover,
   &:focus {
-    background: @primary-color-hover;
+    background: #40a9ff; // 替换 @primary-color-hover
   }
 
   &:loading {
-    background: @primary-color-active;
+    background: #096dd9; // 替换 @primary-color-active
   }
 }
 
@@ -121,16 +119,16 @@
   text-align: center;
   margin-top: 24px;
   padding-top: 24px;
-  border-top: 1px solid @border-color-split;
-  color: @text-color-secondary;
+  border-top: 1px solid #f0f0f0; // 替换 @border-color-split
+  color: rgba(0, 0, 0, 0.45); // 替换 @text-color-secondary
 
   :global(.ant-btn-link) {
-    color: @primary-color;
+    color: #1890ff; // 替换 @primary-color
     padding: 0 4px;
 
     &:hover,
     &:focus {
-      color: @primary-color-hover;
+      color: #40a9ff; // 替换 @primary-color-hover
     }
   }
 }

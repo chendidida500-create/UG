@@ -12,7 +12,10 @@ export default [
     languageOptions: {
       ecmaVersion: 2020,
       sourceType: 'module',
+      parser: tsparser,
       parserOptions: {
+        project: './tsconfig.json',
+        tsconfigRootDir: process.cwd(),
         ecmaFeatures: {
           jsx: true,
         },

@@ -12,6 +12,14 @@
 - **版本**: ^3.0.0
 - **原因**: 现代代码格式化工具，提供更好的性能和功能
 
+### TypeScript
+- **版本**: 5.1.6
+- **原因**: 与 @typescript-eslint 包兼容，避免版本冲突
+
+### @typescript-eslint/eslint-plugin 和 @typescript-eslint/parser
+- **版本**: ^6.0.0
+- **原因**: 与 TypeScript 5.1.6 兼容，提供最新的 TypeScript 支持
+
 ## 配置文件位置
 
 ### ESLint 配置
@@ -42,7 +50,10 @@ export default [
     languageOptions: {
       ecmaVersion: 2020,
       sourceType: 'module',
+      parser: tsparser,
       parserOptions: {
+        project: './tsconfig.json',
+        tsconfigRootDir: process.cwd(),
         ecmaFeatures: {
           jsx: true,
         },
@@ -198,6 +209,21 @@ module.exports = [
 - **bracketSpacing**: 对象字面量中的括号前后有空格
 - **bracketSameLine**: 多行HTML元素的`>`符号放在最后一行的末尾
 - **arrowParens**: 箭头函数单个参数时不使用括号
+
+## 常见问题解决
+
+### 问题: `Replace ·'**/*.{js,mjs,cjs,ts,jsx,tsx}'· with '**/*.{js,mjs,cjs,ts,jsx,tsx}' eslint(prettier/prettier)`
+
+**原因**: 这个错误通常不是由配置文件中的实际错误引起的，而是由于以下原因之一：
+1. 依赖未正确安装
+2. ESLint 或 Prettier 缓存问题
+3. TypeScript 版本与 @typescript-eslint 包不兼容
+
+**解决方案**:
+1. 确保所有依赖已正确安装: `pnpm install`
+2. 重启 VS Code 以刷新缓存
+3. 检查 TypeScript 版本是否与 @typescript-eslint 包兼容
+4. 确保 ESLint 配置文件正确设置 `parserOptions.project` 和 `parserOptions.tsconfigRootDir`
 - **endOfLine**: 使用LF作为换行符
 
 ## 依赖配置

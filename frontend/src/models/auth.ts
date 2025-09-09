@@ -1,8 +1,12 @@
 import { message } from 'antd';
+import axios from 'axios';
 import { useCallback, useState } from 'react';
-// 修复UMI 4.x导入方式
-import { history, request } from 'umi';
+// 使用 browser history 代替 umi history
+import { createBrowserHistory } from 'history';
 import type { LoginParams, RegisterParams, User } from '../types';
+
+// 创建 browser history 实例
+const history = createBrowserHistory();
 
 // 定义通用API响应格式
 interface ApiResponse<T>
@@ -41,14 +45,12 @@ export default function useAuthModel (): AuthModelState
     setLoginLoading( true );
     try
     {
-      const response = await request( '/api/auth/login', {
-        method: 'POST',
-        data: params,
-      } ) as ApiResponse<{ user: User; token: string; refreshToken: string }>;
+      const response = await axios.post( '/api/auth/login', params );
+      const apiResponse = response.data as ApiResponse<{ user: User; token: string; refreshToken: string }>;
 
-      if ( response.success )
+      if ( apiResponse.success )
       {
-        const { user, token, refreshToken } = response.data;
+        const { user, token, refreshToken } = apiResponse.data;
 
         // 保存token
         localStorage.setItem( 'token', token );
@@ -76,7 +78,7 @@ export default function useAuthModel (): AuthModelState
         return { success: true, data: user };
       } else
       {
-        throw new Error( response.message || '登录失败' );
+        throw new Error( apiResponse.message || '登录失败' );
       }
     } catch ( error: any )
     {
@@ -93,18 +95,16 @@ export default function useAuthModel (): AuthModelState
   {
     try
     {
-      const response = await request( '/api/auth/register', {
-        method: 'POST',
-        data: params,
-      } ) as ApiResponse<User>;
+      const response = await axios.post( '/api/auth/register', params );
+      const apiResponse = response.data as ApiResponse<User>;
 
-      if ( response.success )
+      if ( apiResponse.success )
       {
         message.success( '注册成功' );
-        return { success: true, data: response.data };
+        return { success: true, data: apiResponse.data };
       } else
       {
-        throw new Error( response.message || '注册失败' );
+        throw new Error( apiResponse.message || '注册失败' );
       }
     } catch ( error: any )
     {
@@ -119,17 +119,15 @@ export default function useAuthModel (): AuthModelState
   {
     try
     {
-      const response = await request( '/api/auth/captcha', {
-        method: 'POST',
-        data: { email },
-      } ) as ApiResponse<void>;
+      const response = await axios.post( '/api/auth/captcha', { email } );
+      const apiResponse = response.data as ApiResponse<void>;
 
-      if ( response.success )
+      if ( apiResponse.success )
       {
         return { success: true };
       } else
       {
-        throw new Error( response.message || '发送验证码失败' );
+        throw new Error( apiResponse.message || '发送验证码失败' );
       }
     } catch ( error: any )
     {
@@ -143,9 +141,7 @@ export default function useAuthModel (): AuthModelState
   {
     try
     {
-      await request( '/api/auth/logout', {
-        method: 'POST',
-      } ) as ApiResponse<void>;
+      await axios.post( '/api/auth/logout' );
     } catch ( error )
     {
       console.log( 'logout error:', error );
@@ -175,13 +171,12 @@ export default function useAuthModel (): AuthModelState
     setLoading( true );
     try
     {
-      const response = await request( '/api/auth/me', {
-        method: 'GET',
-      } ) as ApiResponse<User>;
+      const response = await axios.get( '/api/auth/me' );
+      const apiResponse = response.data as ApiResponse<User>;
 
-      if ( response.success )
+      if ( apiResponse.success )
       {
-        setCurrentUser( response.data );
+        setCurrentUser( apiResponse.data );
       } else
       {
         // Token无效，清除本地存储
@@ -207,12 +202,10 @@ export default function useAuthModel (): AuthModelState
   {
     try
     {
-      const response = await request( '/api/me', {
-        method: 'PUT',
-        data: params,
-      } ) as ApiResponse<User>;
+      const response = await axios.put( '/api/me', params );
+      const apiResponse = response.data as ApiResponse<User>;
 
-      if ( response.success )
+      if ( apiResponse.success )
       {
         // 更新当前用户信息
         setCurrentUser( ( prev ) =>
@@ -220,14 +213,14 @@ export default function useAuthModel (): AuthModelState
           if ( !prev ) return null;
           return {
             ...prev,
-            ...response.data,
+            ...apiResponse.data,
           };
         } );
         message.success( '更新成功' );
-        return { success: true, data: response.data };
+        return { success: true, data: apiResponse.data };
       } else
       {
-        throw new Error( response.message || '更新失败' );
+        throw new Error( apiResponse.message || '更新失败' );
       }
     } catch ( error: any )
     {
@@ -241,18 +234,16 @@ export default function useAuthModel (): AuthModelState
   {
     try
     {
-      const response = await request( '/api/me/password', {
-        method: 'PUT',
-        data: params,
-      } ) as ApiResponse<void>;
+      const response = await axios.put( '/api/me/password', params );
+      const apiResponse = response.data as ApiResponse<void>;
 
-      if ( response.success )
+      if ( apiResponse.success )
       {
         message.success( '密码修改成功' );
         return { success: true };
       } else
       {
-        throw new Error( response.message || '密码修改失败' );
+        throw new Error( apiResponse.message || '密码修改失败' );
       }
     } catch ( error: any )
     {

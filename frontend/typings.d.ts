@@ -28,7 +28,7 @@ declare module 'umi' {
   };
 
   // UMI Model Hook
-  export const useModel: <T extends string>( namespace: T ) => any;
+  export const useModel: <T extends string>( namespace: T, updater?: ( prev: any ) => any ) => any;
 
   // UMI Request
   export const request: <T = any>( url: string, options?: any ) => Promise<T>;

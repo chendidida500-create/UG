@@ -8,7 +8,10 @@
       "logValue": true
     },
     "security": {
-      "domainWhiteList": ["http://localhost:15000", "http://127.0.0.1:15000"],
+      "domainWhiteList": [
+        "http://localhost:15000",
+        "http://127.0.0.1:15000"
+      ],
       "protocolWhiteList": [],
       "defaultMiddleware": "csrf,hsts,methodnoallow,noopen,nosniff,csp,xssProtection,xframe,dta",
       "csrf": {
@@ -25,7 +28,13 @@
         "supportedRequests": [
           {
             "path": {},
-            "methods": ["POST", "PATCH", "DELETE", "PUT", "CONNECT"]
+            "methods": [
+              "POST",
+              "PATCH",
+              "DELETE",
+              "PUT",
+              "CONNECT"
+            ]
           }
         ],
         "refererWhiteList": [],
@@ -79,13 +88,16 @@
     },
     "jsonp": {
       "limit": 50,
-      "callback": ["_callback", "callback"],
+      "callback": [
+        "_callback",
+        "callback"
+      ],
       "csrf": false
     },
     "onerror": {
       "errorPageUrl": "",
       "appErrorFilter": null,
-      "templatePath": "E:\\YSY\\UG\\node_modules\\egg-onerror\\lib\\onerror_page.mustache"
+      "templatePath": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-onerror@2.4.0\\node_modules\\egg-onerror\\lib\\onerror_page.mustache"
     },
     "i18n": {
       "defaultLocale": "en_US",
@@ -98,8 +110,8 @@
     "watcher": {
       "type": "development",
       "eventSources": {
-        "default": "E:\\YSY\\UG\\node_modules\\egg-watcher\\lib\\event-sources\\default",
-        "development": "E:\\YSY\\UG\\node_modules\\egg-watcher\\lib\\event-sources\\development"
+        "default": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-watcher@3.1.1\\node_modules\\egg-watcher\\lib\\event-sources\\default",
+        "development": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-watcher@3.1.1\\node_modules\\egg-watcher\\lib\\event-sources\\development"
       }
     },
     "customLogger": {
@@ -191,7 +203,10 @@
       "widelyUndefined": true
     },
     "cors": {
-      "origin": ["http://localhost:15000", "http://127.0.0.1:15000"],
+      "origin": [
+        "http://localhost:15000",
+        "http://127.0.0.1:15000"
+      ],
       "allowMethods": "GET,HEAD,PUT,POST,DELETE,PATCH",
       "credentials": true
     },
@@ -216,57 +231,65 @@
       "description": "UG管理系统后端API服务",
       "private": true,
       "main": "app.js",
+      "type": "commonjs",
       "scripts": {
         "start": "egg-scripts start --daemon --title=ug-backend",
         "stop": "egg-scripts stop --title=ug-backend",
         "dev": "egg-bin dev",
         "debug": "egg-bin debug",
-        "test": "npm run lint -- --fix && npm run test-local",
+        "test": "pnpm lint -- --fix && pnpm test-local",
         "test-local": "egg-bin test",
         "cov": "egg-bin cov",
         "lint": "eslint .",
-        "ci": "npm run lint && npm run cov",
+        "lint:fix": "eslint . --fix",
+        "lint:strict": "eslint . --max-warnings 0",
+        "ci": "pnpm lint && pnpm cov",
         "autod": "autod",
         "db:migrate": "npx sequelize-cli db:migrate",
         "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
         "db:seed": "npx sequelize-cli db:seed:all",
         "db:seed:undo": "npx sequelize-cli db:seed:undo:all",
-        "spellcheck": "cspell \"**/*.{js,ts,jsx,tsx,json,md}\""
+        "spellcheck": "node ../node_modules/.pnpm/cspell@9.2.1/node_modules/cspell/bin.mjs lint app/**/*"
       },
       "dependencies": {
-        "egg": "^3.17.4",
-        "egg-scripts": "^2.15.0",
+        "bcryptjs": "^3.0.2",
+        "dayjs": "^1.11.9",
+        "egg": "3.31.0",
+        "egg-cors": "^3.0.1",
+        "egg-jwt": "^3.1.7",
+        "egg-scripts": "^3.1.0",
         "egg-sequelize": "^6.0.0",
         "egg-validate": "^2.0.2",
-        "egg-cors": "^2.2.3",
-        "egg-jwt": "^3.1.7",
+        "jsonwebtoken": "^9.0.2",
+        "lodash": "^4.17.21",
         "mysql2": "^3.6.0",
         "sequelize": "^6.32.1",
         "sequelize-cli": "^6.6.1",
-        "bcryptjs": "^2.4.3",
-        "jsonwebtoken": "^9.0.2",
-        "uuid": "^9.0.0",
-        "dayjs": "^1.11.9",
-        "lodash": "^4.17.21"
+        "uuid": "^12.0.0"
       },
       "devDependencies": {
-        "eslint": "^8.45.0",
-        "eslint-config-egg": "^12.1.0",
-        "@types/node": "^20.4.5",
-        "typescript": "^5.9.2",
-        "egg-bin": "^5.12.0",
+        "@typescript-eslint/eslint-plugin": "^6.0.0",
+        "@typescript-eslint/parser": "^6.0.0",
+        "cspell": "^9.2.1",
+        "egg-bin": "^6.13.0",
         "egg-ci": "^2.1.0",
-        "egg-mock": "^5.10.0"
+        "egg-mock": "^5.10.0",
+        "eslint": "^8.0.0",
+        "eslint-config-egg": "^14.1.0"
       },
       "engines": {
-        "node": "20.14.0"
+        "node": "^20.19.0"
+      },
+      "overrides": {
+        "undici": "^5.28.4"
       },
       "repository": {
         "type": "git",
         "url": ""
       },
       "author": "UG Team",
-      "license": "MIT"
+      "license": "MIT",
+      "packageManager": "pnpm@8.15.8"
     },
     "baseDir": "E:\\YSY\\UG\\backend",
     "HOME": "C:\\Users\\A",
@@ -373,7 +396,10 @@
       "responseTimeout": 60000
     },
     "onClientError": null,
-    "middleware": ["errorHandler", "jwtAuth"],
+    "middleware": [
+      "errorHandler",
+      "jwtAuth"
+    ],
     "errorHandler": {
       "match": "/api"
     },
@@ -416,10 +442,12 @@
       "package": "egg-onerror",
       "name": "onerror",
       "dependencies": [],
-      "optionalDependencies": ["jsonp"],
+      "optionalDependencies": [
+        "jsonp"
+      ],
       "env": [],
-      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-onerror",
+      "from": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg@3.31.0\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-onerror@2.4.0\\node_modules\\egg-onerror",
       "version": "2.4.0"
     },
     "session": {
@@ -429,8 +457,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-session",
+      "from": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg@3.31.0\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-session@3.3.0\\node_modules\\egg-session",
       "version": "3.3.0"
     },
     "i18n": {
@@ -440,8 +468,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-i18n",
+      "from": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg@3.31.0\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-i18n@2.1.1\\node_modules\\egg-i18n",
       "version": "2.1.1"
     },
     "watcher": {
@@ -451,20 +479,24 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-watcher",
+      "from": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg@3.31.0\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-watcher@3.1.1\\node_modules\\egg-watcher",
       "version": "3.1.1",
-      "dependents": ["development"]
+      "dependents": [
+        "development"
+      ]
     },
     "multipart": {
       "enable": true,
       "package": "egg-multipart",
       "name": "multipart",
       "dependencies": [],
-      "optionalDependencies": ["schedule"],
+      "optionalDependencies": [
+        "schedule"
+      ],
       "env": [],
-      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-multipart",
+      "from": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg@3.31.0\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-multipart@3.5.0\\node_modules\\egg-multipart",
       "version": "3.5.0"
     },
     "security": {
@@ -472,32 +504,40 @@
       "package": "egg-security",
       "name": "security",
       "dependencies": [],
-      "optionalDependencies": ["session"],
+      "optionalDependencies": [
+        "session"
+      ],
       "env": [],
-      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-security",
+      "from": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg@3.31.0\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-security@3.7.0\\node_modules\\egg-security",
       "version": "3.7.0"
     },
     "development": {
       "enable": true,
       "package": "egg-development",
       "name": "development",
-      "dependencies": ["watcher"],
+      "dependencies": [
+        "watcher"
+      ],
       "optionalDependencies": [],
-      "env": ["local"],
-      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-development",
+      "env": [
+        "local"
+      ],
+      "from": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg@3.31.0\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-development@3.0.2\\node_modules\\egg-development",
       "version": "3.0.2"
     },
     "logrotator": {
       "enable": true,
       "package": "egg-logrotator",
       "name": "logrotator",
-      "dependencies": ["schedule"],
+      "dependencies": [
+        "schedule"
+      ],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-logrotator",
+      "from": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg@3.31.0\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-logrotator@3.2.0\\node_modules\\egg-logrotator",
       "version": "3.2.0"
     },
     "schedule": {
@@ -507,10 +547,12 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-schedule",
+      "from": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg@3.31.0\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-schedule@4.0.1\\node_modules\\egg-schedule",
       "version": "4.0.1",
-      "dependents": ["logrotator"]
+      "dependents": [
+        "logrotator"
+      ]
     },
     "static": {
       "enable": true,
@@ -519,8 +561,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-static",
+      "from": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg@3.31.0\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-static@2.3.1\\node_modules\\egg-static",
       "version": "2.3.1"
     },
     "jsonp": {
@@ -528,10 +570,12 @@
       "package": "egg-jsonp",
       "name": "jsonp",
       "dependencies": [],
-      "optionalDependencies": ["security"],
+      "optionalDependencies": [
+        "security"
+      ],
       "env": [],
-      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-jsonp",
+      "from": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg@3.31.0\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-jsonp@2.0.0\\node_modules\\egg-jsonp",
       "version": "2.0.0"
     },
     "view": {
@@ -541,8 +585,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\YSY\\UG\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-view",
+      "from": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg@3.31.0\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-view@2.1.4\\node_modules\\egg-view",
       "version": "2.1.4"
     },
     "sequelize": {
@@ -553,7 +597,7 @@
       "optionalDependencies": [],
       "env": [],
       "from": "E:\\YSY\\UG\\backend\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-sequelize",
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-sequelize@6.0.0_mysql2@3.14.5\\node_modules\\egg-sequelize",
       "version": "6.0.0"
     },
     "validate": {
@@ -564,7 +608,7 @@
       "optionalDependencies": [],
       "env": [],
       "from": "E:\\YSY\\UG\\backend\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-validate",
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-validate@2.0.2\\node_modules\\egg-validate",
       "version": "2.0.2"
     },
     "cors": {
@@ -575,18 +619,20 @@
       "optionalDependencies": [],
       "env": [],
       "from": "E:\\YSY\\UG\\backend\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-cors",
-      "version": "2.2.4"
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-cors@3.0.1\\node_modules\\egg-cors",
+      "version": "3.0.1"
     },
     "jwt": {
       "enable": true,
       "package": "egg-jwt",
       "name": "jwt",
       "dependencies": [],
-      "optionalDependencies": ["onerror"],
+      "optionalDependencies": [
+        "onerror"
+      ],
       "env": [],
       "from": "E:\\YSY\\UG\\backend\\config\\plugin.js",
-      "path": "E:\\YSY\\UG\\node_modules\\egg-jwt",
+      "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\egg-jwt@3.1.7\\node_modules\\egg-jwt",
       "version": "3.1.7"
     }
   },
@@ -602,57 +648,65 @@
       "description": "UG管理系统后端API服务",
       "private": true,
       "main": "app.js",
+      "type": "commonjs",
       "scripts": {
         "start": "egg-scripts start --daemon --title=ug-backend",
         "stop": "egg-scripts stop --title=ug-backend",
         "dev": "egg-bin dev",
         "debug": "egg-bin debug",
-        "test": "npm run lint -- --fix && npm run test-local",
+        "test": "pnpm lint -- --fix && pnpm test-local",
         "test-local": "egg-bin test",
         "cov": "egg-bin cov",
         "lint": "eslint .",
-        "ci": "npm run lint && npm run cov",
+        "lint:fix": "eslint . --fix",
+        "lint:strict": "eslint . --max-warnings 0",
+        "ci": "pnpm lint && pnpm cov",
         "autod": "autod",
         "db:migrate": "npx sequelize-cli db:migrate",
         "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
         "db:seed": "npx sequelize-cli db:seed:all",
         "db:seed:undo": "npx sequelize-cli db:seed:undo:all",
-        "spellcheck": "cspell \"**/*.{js,ts,jsx,tsx,json,md}\""
+        "spellcheck": "node ../node_modules/.pnpm/cspell@9.2.1/node_modules/cspell/bin.mjs lint app/**/*"
       },
       "dependencies": {
-        "egg": "^3.17.4",
-        "egg-scripts": "^2.15.0",
+        "bcryptjs": "^3.0.2",
+        "dayjs": "^1.11.9",
+        "egg": "3.31.0",
+        "egg-cors": "^3.0.1",
+        "egg-jwt": "^3.1.7",
+        "egg-scripts": "^3.1.0",
         "egg-sequelize": "^6.0.0",
         "egg-validate": "^2.0.2",
-        "egg-cors": "^2.2.3",
-        "egg-jwt": "^3.1.7",
+        "jsonwebtoken": "^9.0.2",
+        "lodash": "^4.17.21",
         "mysql2": "^3.6.0",
         "sequelize": "^6.32.1",
         "sequelize-cli": "^6.6.1",
-        "bcryptjs": "^2.4.3",
-        "jsonwebtoken": "^9.0.2",
-        "uuid": "^9.0.0",
-        "dayjs": "^1.11.9",
-        "lodash": "^4.17.21"
+        "uuid": "^12.0.0"
       },
       "devDependencies": {
-        "eslint": "^8.45.0",
-        "eslint-config-egg": "^12.1.0",
-        "@types/node": "^20.4.5",
-        "typescript": "^5.9.2",
-        "egg-bin": "^5.12.0",
+        "@typescript-eslint/eslint-plugin": "^6.0.0",
+        "@typescript-eslint/parser": "^6.0.0",
+        "cspell": "^9.2.1",
+        "egg-bin": "^6.13.0",
         "egg-ci": "^2.1.0",
-        "egg-mock": "^5.10.0"
+        "egg-mock": "^5.10.0",
+        "eslint": "^8.0.0",
+        "eslint-config-egg": "^14.1.0"
       },
       "engines": {
-        "node": "20.14.0"
+        "node": "^20.19.0"
+      },
+      "overrides": {
+        "undici": "^5.28.4"
       },
       "repository": {
         "type": "git",
         "url": ""
       },
       "author": "UG Team",
-      "license": "MIT"
+      "license": "MIT",
+      "packageManager": "pnpm@8.15.8"
     },
     "root": "E:\\YSY\\UG\\backend"
   }

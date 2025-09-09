@@ -188,6 +188,56 @@ services:
     networks:
       - ug-network
 
+  # 数据库可视化工具 - ChartDB
+  chartdb:
+    image: chartdb/chartdb
+    container_name: ug-chartdb
+    restart: unless-stopped
+    ports:
+      - '3002:3000'
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=ug_management
+      - DB_USER=ug_user
+      - DB_PASSWORD=ug_password
+      - DB_TYPE=mysql
+    networks:
+      - ug-network
+    depends_on:
+      - mysql
+
+  # 数据分析工具 - WrenAI
+  wrenai:
+    image: canner/wrenai
+    container_name: ug-wrenai
+    restart: unless-stopped
+    ports:
+      - '3003:3000'
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=ug_management
+      - DB_USER=ug_user
+      - DB_PASSWORD=ug_password
+      - DB_TYPE=mysql
+      - OPENAI_API_KEY=your_openai_api_key
+      - LLM_PROVIDER=openai
+    networks:
+      - ug-network
+    depends_on:
+      - mysql
+
+  # 无限画布作图工具 - Drawnix
+  drawnix:
+    image: drawnix/drawnix
+    container_name: ug-drawnix
+    restart: unless-stopped
+    ports:
+      - '3004:3000'
+    networks:
+      - ug-network
+
 # 数据卷
 volumes:
   mysql_data:

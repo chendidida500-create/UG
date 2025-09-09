@@ -1,6 +1,6 @@
 import { defineConfig } from 'umi';
 
-export default defineConfig({
+export default defineConfig( {
   routes: [
     // 认证相关路由
     {
@@ -25,7 +25,7 @@ export default defineConfig({
     {
       path: '/',
       component: '@/layouts/BasicLayout',
-      wrappers: ['@/wrappers/AuthWrapper'],
+      wrappers: [ '@/wrappers/AuthWrapper' ],
       routes: [
         {
           path: '/dashboard',
@@ -77,11 +77,12 @@ export default defineConfig({
     },
   ],
   npmClient: 'pnpm',
-  // MFSU配置 - 提升编译速度
-  mfsu: {
-    strategy: 'normal',
-    mfName: 'mf',
-    cacheDirectoryPath: './node_modules/.cache/mfsu',
+  // 禁用MFSU以避免编译问题
+  mfsu: false,
+  // Ant Design 配置
+  antd: {
+    // 禁用自动导入Ant Design样式，避免less导入问题
+    import: false,
   },
   // 通过环境变量设置端口
   // devServer配置在UMI 4.x中已更改，使用PORT环境变量
@@ -102,6 +103,8 @@ export default defineConfig({
       '@box-shadow-base':
         '0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05)',
     },
+    // 启用less中的javascript选项以支持Ant Design变量
+    javascriptEnabled: true,
   },
   define: {
     'process.env.API_BASE_URL': JSON.stringify(
@@ -128,7 +131,7 @@ export default defineConfig({
     jsStrategy: 'granularChunks',
   },
   title: 'UG管理系统',
-  favicons: ['/favicon.ico'],
+  favicons: [ '/favicon.ico' ],
   metas: [
     {
       name: 'description',
@@ -139,4 +142,4 @@ export default defineConfig({
       content: 'UG,管理系统,UMI,Ant Design,React,TypeScript',
     },
   ],
-});
+} );

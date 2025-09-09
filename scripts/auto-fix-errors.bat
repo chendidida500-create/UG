@@ -1,4 +1,5 @@
 @echo off
+chcp 65001 >nul
 echo 正在自动修复编辑器中的错误提示...
 
 cd /d "%~dp0.."
