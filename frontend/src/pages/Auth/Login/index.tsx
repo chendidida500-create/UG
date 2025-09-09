@@ -6,79 +6,71 @@ import { useState } from 'react';
 import { useLocation, useNavigate } from 'umi';
 import styles from './index.module.less';
 
-interface LoginFormData
-{
+interface LoginFormData {
   username: string;
   password: string;
   remember: boolean;
 }
 
-const LoginPage: React.FC = () =>
-{
-  const [ loading, setLoading ] = useState( false );
+const LoginPage: React.FC = () => {
+  const [loading, setLoading] = useState(false);
 
-  const authModel = useModel( 'auth' );
+  const authModel = useModel('auth');
   const { login } = authModel;
   const navigate = useNavigate();
   const location = useLocation();
 
   // 获取重定向路径
   const redirectPath =
-    new URLSearchParams( location.search ).get( 'redirect' ) || '/';
+    new URLSearchParams(location.search).get('redirect') || '/';
 
-  const handleLogin = async ( values: LoginFormData ) =>
-  {
-    setLoading( true );
-    try
-    {
-      const result = await login?.( values );
-      if ( result?.success )
-      {
-        message.success( '登录成功' );
+  const handleLogin = async (values: LoginFormData) => {
+    setLoading(true);
+    try {
+      const result = await login?.(values);
+      if (result?.success) {
+        message.success('登录成功');
         // 跳转到重定向路径或首页
-        navigate( redirectPath );
-      } else
-      {
-        message.error( result?.message || '登录失败' );
+        navigate(redirectPath);
+      } else {
+        message.error(result?.message || '登录失败');
       }
-    } catch ( error: any )
-    {
-      message.error( error.message || '登录失败' );
-    } finally
-    {
-      setLoading( false );
+    } catch (error: any) {
+      message.error(error.message || '登录失败');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className={ styles.container }>
-      <div className={ styles.loginForm }>
-        <div className={ styles.logo }>
+    <div className={styles.container}>
+      <div className={styles.loginForm}>
+        <div className={styles.logo}>
           <img src="/logo.png" alt="Logo" />
           <h1>UG管理系统</h1>
         </div>
 
         <Tabs
-          items={ [
+          items={[
             {
               key: 'account',
               label: '账户密码登录',
             },
-          ] }
+          ]}
         >
           <Form
             name="login"
-            onFinish={ handleLogin }
-            initialValues={ {
+            onFinish={handleLogin}
+            initialValues={{
               remember: true,
-            } }
+            }}
           >
             <Form.Item
               name="username"
-              rules={ [ { required: true, message: '请输入用户名!' } ] }
+              rules={[{ required: true, message: '请输入用户名!' }]}
             >
               <Input
-                prefix={ <UserOutlined /> }
+                prefix={<UserOutlined />}
                 placeholder="用户名"
                 size="large"
               />
@@ -86,10 +78,10 @@ const LoginPage: React.FC = () =>
 
             <Form.Item
               name="password"
-              rules={ [ { required: true, message: '请输入密码!' } ] }
+              rules={[{ required: true, message: '请输入密码!' }]}
             >
               <Input
-                prefix={ <LockOutlined /> }
+                prefix={<LockOutlined />}
                 type="password"
                 placeholder="密码"
                 size="large"
@@ -101,7 +93,7 @@ const LoginPage: React.FC = () =>
                 <Checkbox>记住我</Checkbox>
               </Form.Item>
 
-              <a className={ styles.forgotPassword } href="">
+              <a className={styles.forgotPassword} href="">
                 忘记密码
               </a>
             </Form.Item>
@@ -110,7 +102,7 @@ const LoginPage: React.FC = () =>
               <Button
                 type="primary"
                 htmlType="submit"
-                loading={ loading }
+                loading={loading}
                 size="large"
                 block
               >

@@ -15,35 +15,35 @@ class Logger {
     this.level = level;
   }
 
-  private formatMessage(level: string, message: string, ...args: any[]) {
+  private formatMessage(level: string, message: string, ..._args: unknown[]) {
     const timestamp = new Date().toISOString();
     return `[${timestamp}] [${level}] [${this.prefix}] ${message}`;
   }
 
-  debug(message: string, ...args: any[]) {
+  debug(message: string, ..._args: unknown[]) {
     if (this.level >= LogLevel.DEBUG) {
       // 在生产环境中不记录debug信息
       if (process.env.NODE_ENV !== 'production') {
-        console.debug(this.formatMessage('DEBUG', message, ...args), ...args);
+        console.debug(this.formatMessage('DEBUG', message), ..._args);
       }
     }
   }
 
-  info(message: string, ...args: any[]) {
+  info(message: string, ..._args: unknown[]) {
     if (this.level >= LogLevel.INFO) {
-      console.info(this.formatMessage('INFO', message, ...args), ...args);
+      console.info(this.formatMessage('INFO', message), ..._args);
     }
   }
 
-  warn(message: string, ...args: any[]) {
+  warn(message: string, ..._args: unknown[]) {
     if (this.level >= LogLevel.WARN) {
-      console.warn(this.formatMessage('WARN', message, ...args), ...args);
+      console.warn(this.formatMessage('WARN', message), ..._args);
     }
   }
 
-  error(message: string, ...args: any[]) {
+  error(message: string, ..._args: unknown[]) {
     if (this.level >= LogLevel.ERROR) {
-      console.error(this.formatMessage('ERROR', message, ...args), ...args);
+      console.error(this.formatMessage('ERROR', message), ..._args);
     }
   }
 }

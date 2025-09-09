@@ -34,8 +34,7 @@ const testUser: User = {
 };
 
 // 测试2：验证access模型中的currentUser.status访问
-function testAccessModel ()
-{
+function testAccessModel() {
   // 这个函数模拟useAccessModel的使用
   // 确保currentUser.status可以正确访问
   const mockCurrentUser = testUser;
@@ -47,8 +46,7 @@ function testAccessModel ()
 }
 
 // 测试3：验证类型兼容性
-function testTypeCompatibility ()
-{
+function testTypeCompatibility() {
   // 测试User类型与后端API响应的兼容性
   const apiResponse = {
     id: '1',
