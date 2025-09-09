@@ -1,9 +1,9 @@
-import { userAPI } from './services/api.ts';
-import type { User } from './types/index.ts';
-import { logger } from './utils/logger.ts';
+import { userAPI } from './services/api';
+import type { User } from './types/index';
+import { logger } from './utils/logger';
 
 // 全局初始状态，与后端用户认证系统保持一致
-export async function getInitialState(): Promise<{
+export async function getInitialState (): Promise<{
   currentUser?: User;
   loading?: boolean;
   settings?: {
@@ -17,12 +17,14 @@ export async function getInitialState(): Promise<{
     fixSiderbar: boolean;
     colorWeak: boolean;
   };
-}> {
+}>
+{
   // 检查是否有存储的token
-  const token = localStorage.getItem('ug_token');
+  const token = localStorage.getItem( 'ug_token' );
 
   // 如果没有token，返回默认状态
-  if (!token) {
+  if ( !token )
+  {
     return {
       settings: {
         title: 'UG管理系统',
@@ -37,7 +39,8 @@ export async function getInitialState(): Promise<{
     };
   }
 
-  try {
+  try
+  {
     // 尝试获取当前用户信息，与后端userAPI.getProfile保持一致
     const response = await userAPI.getProfile();
     const currentUser = response.data;
@@ -55,12 +58,13 @@ export async function getInitialState(): Promise<{
         colorWeak: false,
       },
     };
-  } catch (error) {
-    logger.error('Failed to get initial user info:', error);
+  } catch ( error )
+  {
+    logger.error( 'Failed to get initial user info:', error );
 
     // 获取用户信息失败，清除无效token
-    localStorage.removeItem('ug_token');
-    localStorage.removeItem('ug_refresh_token');
+    localStorage.removeItem( 'ug_token' );
+    localStorage.removeItem( 'ug_refresh_token' );
 
     return {
       settings: {
