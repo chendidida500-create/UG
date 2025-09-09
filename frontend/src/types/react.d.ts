@@ -1,43 +1,84 @@
 // Type definitions for React
 declare module 'react' {
-  export const useState: any;
-  export const useEffect: any;
-  export const useRef: any;
-  export const useContext: any;
-  export const useReducer: any;
-  export const useCallback: any;
-  export const useMemo: any;
-  export const useLayoutEffect: any;
-  export const useImperativeHandle: any;
-  export const useDebugValue: any;
-  export const useDeferredValue: any;
-  export const useTransition: any;
-  export const useId: any;
-  export const createElement: any;
-  export const cloneElement: any;
-  export const createFactory: any;
-  export const isValidElement: any;
-  export const Fragment: any;
-  export const StrictMode: any;
-  export const Suspense: any;
-  export const memo: any;
-  export const forwardRef: any;
-  export const createContext: any;
-  export const Component: any;
-  export const PureComponent: any;
+  export const useState: <S>(
+    initialState: S | ( () => S )
+  ) => [ S, Dispatch<SetStateAction<S>> ];
+  export const useEffect: (
+    effect: EffectCallback,
+    deps?: DependencyList
+  ) => void;
+  export const useRef: <T>( initialValue: T ) => MutableRefObject<T>;
+  export const useContext: <T>( context: Context<T> ) => T;
+  export const useReducer: <S, A>(
+    reducer: Reducer<S, A>,
+    initialState: S,
+    initializer?: ( arg: S ) => S
+  ) => [ S, Dispatch<A> ];
+  export const useCallback: <T extends Function>(
+    callback: T,
+    deps: DependencyList
+  ) => T;
+  export const useMemo: <T>(
+    factory: () => T,
+    deps: DependencyList | undefined
+  ) => T;
+  export const useLayoutEffect: (
+    effect: EffectCallback,
+    deps?: DependencyList
+  ) => void;
+  export const useImperativeHandle: <T>(
+    ref: Ref<T> | undefined,
+    init: () => T,
+    deps?: DependencyList
+  ) => void;
+  export const useDebugValue: <T>(
+    value: T,
+    formatter?: ( value: T ) => any
+  ) => void;
+  export const useDeferredValue: <T>( value: T ) => T;
+  export const useTransition: () => [ boolean, ( callback: () => void ) => void ];
+  export const useId: () => string;
+  export const createElement: typeof _createElement;
+  export const cloneElement: typeof _cloneElement;
+  export const createFactory: typeof _createFactory;
+  export const isValidElement: ( object: any ) => object is ReactElement;
+  export const Fragment: ExoticComponent<{ children?: ReactNode }>;
+  export const StrictMode: ExoticComponent<{ children?: ReactNode }>;
+  export const Suspense: ExoticComponent<{
+    children?: ReactNode;
+    fallback?: ReactNode;
+  }>;
+  export const memo: typeof _memo;
+  export const forwardRef: typeof _forwardRef;
+  export const createContext: <T>( defaultValue: T ) => Context<T>;
+  export const Component: typeof _Component;
+  export const PureComponent: typeof _PureComponent;
   export type FC<P = {}> = FunctionComponent<P>;
   export interface FunctionComponent<P = {}>
   {
     ( props: P, context?: any ): ReactElement<any, any> | null;
-    propTypes?: any;
-    contextTypes?: any;
+    propTypes?: WeakValidationMap<P>;
+    contextTypes?: ValidationMap<any>;
     defaultProps?: Partial<P>;
     displayName?: string;
   }
 
   // 确保 ReactNode 类型被正确导出
-  export type ReactNode = ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined;
-  export type ReactElement<P = any, T extends string | JSXElementConstructor<any> = string | JSXElementConstructor<any>> = {
+  export type ReactNode =
+    | ReactElement
+    | string
+    | number
+    | ReactFragment
+    | ReactPortal
+    | boolean
+    | null
+    | undefined;
+  export type ReactElement<
+    P = unknown,
+    T extends string | JSXElementConstructor<any> =
+    | string
+    | JSXElementConstructor<any>,
+  > = {
     type: T;
     props: P;
     key: Key | null;
@@ -59,46 +100,67 @@ declare module 'react' {
   {
     // 添加缺失的属性
     export const version: string;
-    export const createElement: any;
-    export const cloneElement: any;
-    export const createFactory: any;
-    export const isValidElement: any;
-    export const Fragment: any;
-    export const StrictMode: any;
-    export const Suspense: any;
+    export const createElement: typeof _createElement;
+    export const cloneElement: typeof _cloneElement;
+    export const createFactory: typeof _createFactory;
+    export const isValidElement: ( object: any ) => object is ReactElement;
+    export const Fragment: ExoticComponent<{ children?: ReactNode }>;
+    export const StrictMode: ExoticComponent<{ children?: ReactNode }>;
+    export const Suspense: ExoticComponent<{
+      children?: ReactNode;
+      fallback?: ReactNode;
+    }>;
 
     // 确保 ReactNode 在命名空间中也可访问
-    export type ReactNode = ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined;
+    export type ReactNode =
+      | ReactElement
+      | string
+      | number
+      | ReactFragment
+      | ReactPortal
+      | boolean
+      | null
+      | undefined;
     // ... 其他属性
   }
 
   // 添加默认导出，使其成为一个包含所有属性的对象
   const React: {
-    useState: any;
-    useEffect: any;
-    useRef: any;
-    useContext: any;
-    useReducer: any;
-    useCallback: any;
-    useMemo: any;
-    useLayoutEffect: any;
-    useImperativeHandle: any;
-    useDebugValue: any;
-    useDeferredValue: any;
-    useTransition: any;
-    useId: any;
-    createElement: any;
-    cloneElement: any;
-    createFactory: any;
-    isValidElement: any;
-    Fragment: any;
-    StrictMode: any;
-    Suspense: any;
-    memo: any;
-    forwardRef: any;
-    createContext: any;
-    Component: any;
-    PureComponent: any;
+    useState: <S>(
+      initialState: S | ( () => S )
+    ) => [ S, Dispatch<SetStateAction<S>> ];
+    useEffect: ( effect: EffectCallback, deps?: DependencyList ) => void;
+    useRef: <T>( initialValue: T ) => MutableRefObject<T>;
+    useContext: <T>( context: Context<T> ) => T;
+    useReducer: <S, A>(
+      reducer: Reducer<S, A>,
+      initialState: S,
+      initializer?: ( arg: S ) => S
+    ) => [ S, Dispatch<A> ];
+    useCallback: <T extends Function>( callback: T, deps: DependencyList ) => T;
+    useMemo: <T>( factory: () => T, deps: DependencyList | undefined ) => T;
+    useLayoutEffect: ( effect: EffectCallback, deps?: DependencyList ) => void;
+    useImperativeHandle: <T>(
+      ref: Ref<T> | undefined,
+      init: () => T,
+      deps?: DependencyList
+    ) => void;
+    useDebugValue: <T>( value: T, formatter?: ( value: T ) => any ) => void;
+    useDeferredValue: <T>( value: T ) => T;
+    useTransition: () => [ boolean, ( callback: () => void ) => void ];
+    useId: () => string;
+    createElement: typeof _createElement;
+    cloneElement: typeof _cloneElement;
+    createFactory: typeof _createFactory;
+    isValidElement: ( object: any ) => object is ReactElement;
+    Fragment: ExoticComponent<{ children?: ReactNode }>;
+    StrictMode: ExoticComponent<{ children?: ReactNode }>;
+    Suspense: ExoticComponent<{ children?: ReactNode; fallback?: ReactNode }>;
+    memo: typeof _memo;
+    forwardRef: typeof _forwardRef;
+    createContext: <T>( defaultValue: T ) => Context<T>;
+    Component: typeof _Component;
+    PureComponent: typeof _PureComponent;
     version: string;
   };
 
@@ -106,32 +168,54 @@ declare module 'react' {
 }
 
 declare module 'react-router-dom' {
-  export const BrowserRouter: any;
-  export const HashRouter: any;
-  export const Link: any;
-  export const NavLink: any;
-  export const Navigate: any;
-  export const Outlet: any;
-  export const Route: any;
-  export const Routes: any;
-  export const useLocation: any;
-  export const useNavigate: any;
-  export const useParams: any;
-  export const useSearchParams: any;
-  export const useMatch: any;
-  export const useResolvedPath: any;
-  export const useHref: any;
-  export const useLinkClickHandler: any;
-  export const useNavigateStable: any;
-  export const useOutlet: any;
-  export const useOutletContext: any;
-  export const useRoutes: any;
-  export const useSearchParamsStable: any;
+  export const BrowserRouter: ComponentType<
+    RouteComponentProps<{}, StaticContext, unknown>
+  >;
+  export const HashRouter: ComponentType<
+    RouteComponentProps<{}, StaticContext, unknown>
+  >;
+  export const Link: ComponentType<LinkProps>;
+  export const NavLink: ComponentType<NavLinkProps>;
+  export const Navigate: ComponentType<NavigateProps>;
+  export const Outlet: ComponentType<{}>;
+  export const Route: ComponentType<RouteProps>;
+  export const Routes: ComponentType<RoutesProps>;
+  export const useLocation: () => Location;
+  export const useNavigate: () => NavigateFunction;
+  export const useParams: <K extends string = string>() => Readonly<Params<K>>;
+  export const useSearchParams: () => [ URLSearchParams, SetURLSearchParams ];
+  export const useMatch: ( pattern: PathPattern | string ) => PathMatch | null;
+  export const useResolvedPath: ( to: To ) => Path;
+  export const useHref: ( to: To ) => string;
+  export const useLinkClickHandler: <S>(
+    to: To,
+    options?: {
+      replace?: boolean;
+      state?: S;
+      target?: React.HTMLAttributeAnchorTarget;
+    }
+  ) => ( event: React.MouseEvent<HTMLAnchorElement, MouseEvent> ) => void;
+  export const useNavigateStable: () => NavigateFunction;
+  export const useOutlet: () => ReactElement | null;
+  export const useOutletContext: <T = unknown>() => T;
+  export const useRoutes: (
+    routes: RouteObject[],
+    location?: Partial<Location> | string
+  ) => ReactElement | null;
+  export const useSearchParamsStable: () => [
+    URLSearchParams,
+    SetURLSearchParams,
+  ];
 }
 
 declare namespace React
 {
-  interface ReactElement<P = any, T extends string | React.ComponentType<any> = string | React.ComponentType<any>>
+  interface ReactElement<
+    P = unknown,
+    T extends string | React.ComponentType<any> =
+    | string
+    | React.ComponentType<any>,
+  >
   {
     type: T;
     props: P;
@@ -141,8 +225,8 @@ declare namespace React
   interface ComponentType<P = {}>
   {
     ( props: P ): ReactElement<any, any> | null;
-    propTypes?: any;
-    contextTypes?: any;
+    propTypes?: WeakValidationMap<P>;
+    contextTypes?: ValidationMap<any>;
     defaultProps?: Partial<P>;
     displayName?: string;
   }
@@ -150,9 +234,9 @@ declare namespace React
   interface ComponentClass<P = {}, S = any> extends ComponentType<P>
   {
     new( props: P, context?: any ): Component<P, S>;
-    propTypes?: any;
-    contextTypes?: any;
-    childContextTypes?: any;
+    propTypes?: WeakValidationMap<P>;
+    contextTypes?: ValidationMap<any>;
+    childContextTypes?: ValidationMap<any>;
     defaultProps?: Partial<P>;
     displayName?: string;
   }
@@ -160,7 +244,12 @@ declare namespace React
   interface Component<P = {}, S = any>
   {
     setState<K extends keyof S> (
-      state: ( ( prevState: Readonly<S>, props: Readonly<P> ) => ( Pick<S, K> | S | null ) ) | ( Pick<S, K> | S | null ),
+      state:
+        | ( (
+          prevState: Readonly<S>,
+          props: Readonly<P>
+        ) => Pick<S, K> | S | null )
+        | ( Pick<S, K> | S | null ),
       callback?: () => void
     ): void;
     forceUpdate ( callback?: () => void ): void;
@@ -183,7 +272,15 @@ declare namespace React
   type Key = string | number;
 
   // 确保在 React 命名空间中也有 ReactNode 的定义
-  export type ReactNode = ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined;
+  export type ReactNode =
+    | ReactElement
+    | string
+    | number
+    | ReactFragment
+    | ReactPortal
+    | boolean
+    | null
+    | undefined;
 }
 
 declare global
@@ -199,11 +296,17 @@ declare global
     {
       render (): React.ReactNode;
     }
-    interface ElementAttributesProperty { props: {}; }
-    interface ElementChildrenAttribute { children: {}; }
+    interface ElementAttributesProperty
+    {
+      props: {};
+    }
+    interface ElementChildrenAttribute
+    {
+      children: {};
+    }
     interface IntrinsicAttributes
     {
-      key?: string | number | any;
+      key?: string | number | undefined;
     }
     interface IntrinsicClassAttributes<T> extends React.Attributes { }
     interface IntrinsicElements
@@ -222,10 +325,15 @@ import * as React from 'react';
 
 // 重新声明useState以确保泛型支持
 declare module 'react' {
-  function useState<S> ( initialState: S | ( () => S ) ): [ S, React.Dispatch<React.SetStateAction<S>> ];
+  function useState<S> (
+    initialState: S | ( () => S )
+  ): [ S, React.Dispatch<React.SetStateAction<S>> ];
 
   // 确保useCallback支持泛型
-  function useCallback<T extends ( ...args: any[] ) => any> ( callback: T, deps: React.DependencyList ): T;
+  function useCallback<T extends ( ...args: any[] ) => any> (
+    callback: T,
+    deps: React.DependencyList
+  ): T;
 
   // 确保 ReactNode 类型在模块中可访问
   export type { ReactNode } from 'react';
@@ -236,17 +344,27 @@ declare module 'umi' {
   interface RequestOptions
   {
     method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS';
-    data?: any;
-    params?: Record<string, any>;
+    data?: unknown;
+    params?: Record<string, unknown>;
     headers?: Record<string, string>;
-    [ key: string ]: any;
+    [ key: string ]: unknown;
   }
 
-  function request<T = any> ( url: string, options?: RequestOptions ): Promise<T>;
+  function request<T = unknown> (
+    url: string,
+    options?: RequestOptions
+  ): Promise<T>;
 
   // 其他UMI导出保持不变
-  export const history: any;
-  export function useModel<T> ( namespace: string ): T;
+  export const history: {
+    push: ( path: string ) => void;
+    replace: ( path: string ) => void;
+    go: ( n: number ) => void;
+    back: () => void;
+    forward: () => void;
+  };
+  export function useModel<T = unknown> ( namespace: string ): T;
 }
 
 export { };
+

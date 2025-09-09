@@ -1,26 +1,58 @@
 // Type definitions for umi
 declare module 'umi' {
-  export const defineConfig: any;
-  export const history: any;
-  export const request: any;
-  export const useLocation: any;
-  export const useNavigate: any;
-  export const useParams: any;
-  export const useSearchParams: any;
-  export const useModel: any;
-  export const useAccess: any;
-  export const useIntl: any;
-  export const useAppData: any;
-  export const useRouteData: any;
-  export const useRoutes: any;
-  export const useSelectedRoutes: any;
-  export const Outlet: any;
-  export const Link: any;
-  export const NavLink: any;
-  export const useOutlet: any;
-  export const matchRoutes: any;
-  export const renderClient: any;
-  export const ApplyPluginsType: any;
+  export const defineConfig: <T>( config: T ) => T;
+  export const history: {
+    push: ( path: string ) => void;
+    replace: ( path: string ) => void;
+    go: ( n: number ) => void;
+    back: () => void;
+    forward: () => void;
+  };
+  export const request: <T = unknown>(
+    url: string,
+    options?: RequestOptions
+  ) => Promise<T>;
+  export const useLocation: () => {
+    pathname: string;
+    search: string;
+    hash: string;
+    state?: any;
+  };
+  export const useNavigate: () => (
+    to: string | number,
+    options?: { replace?: boolean; state?: any }
+  ) => void;
+  export const useParams: <T = Record<string, string>>() => T;
+  export const useSearchParams: () => [
+    URLSearchParams,
+    ( params: URLSearchParams ) => void,
+  ];
+  export const useModel: <T = unknown>( namespace: string ) => T;
+  export const useAccess: () => any;
+  export const useIntl: () => {
+    formatMessage: (
+      descriptor: { id: string; defaultMessage?: string },
+      values?: Record<string, any>
+    ) => string;
+  };
+  export const useAppData: () => any;
+  export const useRouteData: () => any;
+  export const useRoutes: () => any;
+  export const useSelectedRoutes: () => any;
+  export const Outlet: React.ComponentType;
+  export const Link: React.ComponentType<
+    { to: string } & React.AnchorHTMLAttributes<HTMLAnchorElement>
+  >;
+  export const NavLink: React.ComponentType<
+    { to: string } & React.AnchorHTMLAttributes<HTMLAnchorElement>
+  >;
+  export const useOutlet: () => React.ReactElement | null;
+  export const matchRoutes: (
+    routes: any[],
+    location: { pathname: string }
+  ) => any;
+  export const renderClient: ( props: any ) => void;
+  export const ApplyPluginsType: { modify: string; event: string };
   export const PluginEvent: any;
   export const __USE_MODEL__: any;
   export const __ACCESS__: any;
@@ -52,6 +84,9 @@ declare module '@umijs/plugins/dist/request' {
 }
 
 declare module 'umi-request' {
-  export const extend: any;
-  export const request: any;
+  export const extend: ( options: any ) => typeof request;
+  export const request: <T = unknown>(
+    url: string,
+    options?: RequestOptions
+  ) => Promise<T>;
 }
