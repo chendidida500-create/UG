@@ -1,0 +1,9 @@
+@echo off
+echo 正在进行类型检查...
+cd frontend
+echo 前端类型检查...
+pnpm tsc --noEmit
+cd ../backend
+echo 后端类型检查...
+pnpm tsc --noEmit
+echo 类型检查完成！

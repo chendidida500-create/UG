@@ -1,0 +1,9 @@
+@echo off
+echo 正在构建项目...
+cd frontend
+echo 构建前端项目...
+pnpm build
+cd ../backend
+echo 构建后端项目...
+pnpm tsc
+echo 项目构建完成！

@@ -1,0 +1,10 @@
+{
+  "name": "ug-project",
+  "version": "1.0.0",
+  "description": "UG管理系统",
+  "engines": {
+    "node": "20.19.0",
+    "pnpm": "8.15.8"
+  },
+  "packageManager": "pnpm@8.15.8"
+}
