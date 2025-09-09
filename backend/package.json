@@ -20,7 +20,8 @@
     "ci": "npm run lint && npm run cov",
     "migrate:up": "egg-sequelize migration:up",
     "migrate:down": "egg-sequelize migration:down",
-    "db:seed": "egg-sequelize db:seed:all"
+    "db:seed": "egg-sequelize db:seed:all",
+    "spellcheck": "cspell \"app/**/*.{ts,js,json,md}\""
   },
   "dependencies": {
     "egg": "^3.31.0",
@@ -46,6 +47,7 @@
     "prettier": "^3.3.0",
     "@typescript-eslint/eslint-plugin": "^7.7.0",
     "@typescript-eslint/parser": "^7.7.0",
-    "autod": "^3.1.1"
+    "autod": "^3.1.1",
+    "cspell": "^8.0.0"
   }
 }

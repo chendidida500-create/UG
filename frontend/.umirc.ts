@@ -1,4 +1,4 @@
-import { defineConfig } from '@umijs/max';
+import { defineConfig } from 'umi';
 
 export default defineConfig({
   // 禁用MFSU以避免编译问题

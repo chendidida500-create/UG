@@ -36,6 +36,78 @@
       "type": "shell",
       "command": "${workspaceFolder}/scripts/init-database.bat",
       "group": "build"
+    },
+    {
+      "label": "诊断检查",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/diagnostic-checks.bat",
+      "group": "build"
+    },
+    {
+      "label": "性能分析",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/performance-analysis.bat",
+      "group": "build"
+    },
+    {
+      "label": "API接口测试",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/api-tests.bat",
+      "group": "test"
+    },
+    {
+      "label": "安全扫描",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/security-scan.bat",
+      "group": "build"
+    },
+    {
+      "label": "拼写检查",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/spellcheck.bat",
+      "group": "build"
+    },
+    {
+      "label": "终端编码测试",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/test-encoding.bat",
+      "group": "test"
+    },
+    {
+      "label": "修复TypeScript问题",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/fix-typescript-issues.bat",
+      "group": "build"
+    },
+    {
+      "label": "修复前端类型问题",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/fix-frontend-types.bat",
+      "group": "build"
+    },
+    {
+      "label": "刷新VS Code窗口",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/refresh-vscode-window.bat",
+      "group": "build"
+    },
+    {
+      "label": "清理和重建项目",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/clean-and-rebuild.bat",
+      "group": "build"
+    },
+    {
+      "label": "修复前端类型声明",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/fix-frontend-typings.bat",
+      "group": "build"
+    },
+    {
+      "label": "修复UMI配置",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/fix-umi-config.bat",
+      "group": "build"
     }
   ]
 }

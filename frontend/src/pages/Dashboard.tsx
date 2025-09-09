@@ -1,13 +1,14 @@
 import React from 'react';
 import { Card, Space, Typography } from 'antd';
+import styles from './Dashboard.module.css';
 
 const { Title, Paragraph } = Typography;
 
 const Dashboard: React.FC = () => {
   return (
-    <div style={{ padding: '24px' }}>
+    <div className={styles.container}>
       <Card>
-        <Space direction="vertical" size="large" style={{ width: '100%' }}>
+        <Space direction="vertical" size="large" className={styles.content}>
           <Title level={2}>欢迎使用UG管理系统</Title>
           <Paragraph>
             这是一个基于UMI + Egg.js的全栈管理系统。

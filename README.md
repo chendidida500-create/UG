@@ -1,22 +1,25 @@
-# UG管理系统
+# UG 管理系统
 
 这是一个基于 UMI + Egg.js 的全栈管理系统。
 
 ## 技术栈
 
 ### 前端
+
 - UMI 4.x
 - React 18
 - Ant Design 5.x
 - TypeScript
 
 ### 后端
+
 - Egg.js 3.x
 - MySQL 8.0
 - Sequelize 6.x
-- JWT认证
+- JWT 认证
 
 ## 环境要求
+
 - Node.js 20.19.0
 - pnpm 8.15.8
 - MySQL 8.0+
@@ -24,12 +27,14 @@
 ## 快速开始
 
 ### 1. 环境设置
+
 ```bash
 # 克隆项目后，运行环境设置脚本
 scripts\setup-environment.bat
 ```
 
 或者分步执行：
+
 ```bash
 # 安装前端依赖
 cd frontend && pnpm install
@@ -42,6 +47,7 @@ cd ../scripts && init-database.bat
 ```
 
 ### 2. 数据库配置
+
 1. 确保 MySQL 服务正在运行
 2. 修改 `backend/.env` 文件中的数据库连接信息：
    ```
@@ -53,12 +59,14 @@ cd ../scripts && init-database.bat
    ```
 
 ### 3. 启动开发服务器
+
 ```bash
 # 使用自动化脚本启动前后端开发服务器
 scripts\auto-dev-server.bat
 ```
 
 或者分别启动：
+
 ```bash
 # 启动后端开发服务器
 cd backend && pnpm dev
@@ -68,6 +76,7 @@ cd frontend && pnpm dev
 ```
 
 ## 项目结构
+
 ```
 UG/
 ├── backend/          # 后端服务
@@ -89,6 +98,17 @@ UG/
 - `scripts/auto-type-check.bat` - 类型检查
 - `scripts/setup-environment.bat` - 环境设置
 - `scripts/init-database.bat` - 数据库初始化
+- `scripts/diagnostic-checks.bat` - 诊断检查
+- `scripts/performance-analysis.bat` - 性能分析
+- `scripts/api-tests.bat` - API 接口测试
+- `scripts/security-scan.bat` - 安全扫描
+- `scripts/spellcheck.bat` - 拼写检查
+- `scripts/fix-typescript-issues.bat` - 修复 TypeScript 问题
+- `scripts/fix-frontend-types.bat` - 修复前端类型问题
+- `scripts/refresh-vscode-window.bat` - 刷新 VS Code 窗口
+- `scripts/clean-and-rebuild.bat` - 清理和重建项目
+- `scripts/fix-frontend-typings.bat` - 修复前端类型声明
+- `scripts/fix-umi-config.bat` - 修复 UMI 配置
 
 ## VS Code 任务
 
@@ -100,10 +120,98 @@ UG/
 - 启动开发服务器
 - 环境设置
 - 数据库初始化
+- 诊断检查
+- 性能分析
+- API 接口测试
+- 安全扫描
+- 拼写检查
+- 终端编码测试
+- 修复 TypeScript 问题
+- 修复前端类型问题
+- 刷新 VS Code 窗口
+- 清理和重建项目
+- 修复前端类型声明
+- 修复 UMI 配置
+
+## VS Code 扩展推荐
+
+项目推荐安装以下 VS Code 扩展以获得最佳开发体验：
+
+- TypeScript 开发支持
+- React 代码片段
+- 代码质量工具 (Prettier/ESLint/拼写检查)
+- Git 工具 (Git 图形化/GitLens/GitHub Pull Request)
+- 界面增强 (图标主题)
+- 开发效率工具 (IntelliCode/自动重命名标签/路径智能提示)
+- 数据库工具 (SQLTools 及 MySQL 驱动)
+- API 测试工具 (REST Client)
+- 文档支持 (更好的注释/Markdown 工具)
+- UMI 开发所需的 JavaScript 调试工具
+
+## 常见问题解决
+
+### TypeScript 类型错误
+
+如果遇到 TypeScript 类型错误，可以运行以下脚本修复：
+
+```bash
+scripts\fix-typescript-issues.bat
+```
+
+### 前端类型声明问题
+
+如果遇到前端类型声明问题（如找不到模块"@umijs/max"或 process 未定义），可以运行以下脚本修复：
+
+```bash
+scripts\fix-frontend-types.bat
+```
+
+### 前端类型声明文件问题
+
+如果遇到前端类型声明文件问题（如找不到模块"umi"或 NodeJS.Process 未导出），可以运行以下脚本修复：
+
+```bash
+scripts\fix-frontend-typings.bat
+```
+
+### UMI 配置问题
+
+如果遇到 UMI 配置问题（如模块"@umijs/max"没有导出的成员"defineConfig"），可以运行以下脚本修复：
+
+```bash
+scripts\fix-umi-config.bat
+```
+
+### VS Code 缓存问题
+
+如果 VS Code 显示的错误信息与实际文件不一致，可以运行以下脚本刷新窗口：
+
+```bash
+scripts\refresh-vscode-window.bat
+```
+
+然后在 VS Code 中按 `Ctrl+Shift+P`，输入 "Developer: Reload Window" 并执行。
+
+### 项目缓存问题
+
+如果项目出现奇怪的错误或构建问题，可以尝试清理和重建项目：
+
+```bash
+scripts\clean-and-rebuild.bat
+```
+
+### 内联样式警告
+
+项目已将内联样式替换为 CSS 模块，以符合最佳实践。
+
+### 类型定义缺失
+
+已安装缺失的类型定义包，包括`@types/node`。
 
 ## 环境变量
 
 ### 后端 (`backend/.env`)
+
 ```
 MYSQL_HOST=127.0.0.1
 MYSQL_PORT=3306
@@ -115,6 +223,7 @@ PORT=7001
 ```
 
 ### 前端 (`frontend/.env`)
+
 ```
 API_BASE_URL=http://localhost:7001
 PORT=8000
