@@ -5,11 +5,11 @@ export default () => {
   
   config.sequelize = {
     dialect: 'mysql',
-    host: '127.0.0.1',
-    port: 3306,
-    database: 'ug_development',
-    username: 'root',
-    password: 'password',
+    host: process.env.MYSQL_HOST || '127.0.0.1',
+    port: parseInt(process.env.MYSQL_PORT || '3306', 10),
+    database: process.env.MYSQL_DATABASE || 'ug_development',
+    username: process.env.MYSQL_USERNAME || 'root',
+    password: process.env.MYSQL_PASSWORD || 'password',
     timezone: '+08:00',
     define: {
       charset: 'utf8mb4',
@@ -19,7 +19,7 @@ export default () => {
   };
 
   config.jwt = {
-    secret: 'ug-jwt-secret',
+    secret: process.env.JWT_SECRET || 'ug-jwt-secret',
   };
 
   config.cors = {

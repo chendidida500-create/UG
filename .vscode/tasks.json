@@ -24,6 +24,18 @@
       "type": "shell",
       "command": "${workspaceFolder}/scripts/auto-dev-server.bat",
       "group": "build"
+    },
+    {
+      "label": "环境设置",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/setup-environment.bat",
+      "group": "build"
+    },
+    {
+      "label": "数据库初始化",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/init-database.bat",
+      "group": "build"
     }
   ]
 }

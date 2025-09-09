@@ -40,7 +40,7 @@ export default defineConfig({
   // 开发代理配置
   proxy: {
     '/api': {
-      target: 'http://localhost:7001',
+      target: process.env.API_BASE_URL || 'http://localhost:7001',
       changeOrigin: true,
       pathRewrite: { '^/api': '/api' }
     }
@@ -49,9 +49,7 @@ export default defineConfig({
   // 环境变量定义
   define: {
     'process.env.API_BASE_URL': JSON.stringify(
-      process.env.NODE_ENV === 'production'
-        ? 'https://api.example.com'
-        : 'http://localhost:7001'
+      process.env.API_BASE_URL || 'http://localhost:7001'
     )
   },
   
