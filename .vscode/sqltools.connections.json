@@ -1,6 +1,19 @@
 [
+  // 项目统一配置连接（推荐使用）
   {
-    "name": "UG MySQL",
+    "name": "UG Database (Unified Config)",
+    "driver": "MySQL",
+    "server": "localhost",
+    "port": 3306,
+    "database": "ug",
+    "username": "ug",
+    "password": "zcn231101",
+    "connectionTimeout": 30
+  },
+  
+  // Docker Compose 配置连接（用于Docker环境）
+  {
+    "name": "UG MySQL (Docker Config)",
     "driver": "MySQL",
     "server": "localhost",
     "port": 3306,
@@ -9,8 +22,10 @@
     "password": "ug_password",
     "connectionTimeout": 30
   },
+  
+  // Docker Compose Root用户连接（用于Docker环境）
   {
-    "name": "UG MySQL Root",
+    "name": "UG MySQL Root (Docker Config)",
     "driver": "MySQL",
     "server": "localhost",
     "port": 3306,
