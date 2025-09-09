@@ -1,8 +1,8 @@
 import { message } from 'antd';
 import { useCallback, useState } from 'react';
 // 修复UMI 4.x导入方式
-import { typedRequest as request } from '@/utils/request';
-import type { PaginationParams, User } from '../types';
+import type { PaginationParams, User } from '../types/index.js';
+import { typedRequest as request } from '../utils/request.js';
 
 // 定义通用API响应格式
 interface ApiResponse<T> {
@@ -16,12 +16,14 @@ export interface UserModelState {
   users: User[];
   loading: boolean;
   total: number;
-  getUserList: (params?: PaginationParams) => Promise<any>;
-  createUser: (data: Partial<User>) => Promise<any>;
-  updateUser: (id: string, data: Partial<User>) => Promise<any>;
-  deleteUser: (id: string) => Promise<any>;
-  batchDeleteUsers: (ids: string[]) => Promise<any>;
-  updateUserStatus: (id: string, status: 0 | 1) => Promise<any>;
+  getUserList: (
+    params?: PaginationParams
+  ) => Promise<ApiResponse<{ list: User[]; total: number }>>;
+  createUser: (data: Partial<User>) => Promise<ApiResponse<User>>;
+  updateUser: (id: string, data: Partial<User>) => Promise<ApiResponse<User>>;
+  deleteUser: (id: string) => Promise<ApiResponse<void>>;
+  batchDeleteUsers: (ids: string[]) => Promise<ApiResponse<void>>;
+  updateUserStatus: (id: string, status: 0 | 1) => Promise<ApiResponse<void>>;
   exportUsers: () => Promise<{ success: boolean; message?: string }>;
 }
 
@@ -48,9 +50,10 @@ export default function useUserModel(): UserModelState {
       } else {
         throw new Error(response.message || '获取用户列表失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '获取用户列表失败');
-      throw error;
+    } catch (error: unknown) {
+      const err = error as Error;
+      message.error(err.message || '获取用户列表失败');
+      throw err;
     } finally {
       setLoading(false);
     }
@@ -70,9 +73,10 @@ export default function useUserModel(): UserModelState {
       } else {
         throw new Error(response.message || '创建失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '创建失败');
-      throw error;
+    } catch (error: unknown) {
+      const err = error as Error;
+      message.error(err.message || '创建失败');
+      throw err;
     }
   }, []);
 
@@ -90,9 +94,10 @@ export default function useUserModel(): UserModelState {
       } else {
         throw new Error(response.message || '更新失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '更新失败');
-      throw error;
+    } catch (error: unknown) {
+      const err = error as Error;
+      message.error(err.message || '更新失败');
+      throw err;
     }
   }, []);
 
@@ -109,9 +114,10 @@ export default function useUserModel(): UserModelState {
       } else {
         throw new Error(response.message || '删除失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '删除失败');
-      throw error;
+    } catch (error: unknown) {
+      const err = error as Error;
+      message.error(err.message || '删除失败');
+      throw err;
     }
   }, []);
 
@@ -129,9 +135,10 @@ export default function useUserModel(): UserModelState {
       } else {
         throw new Error(response.message || '批量删除失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '批量删除失败');
-      throw error;
+    } catch (error: unknown) {
+      const err = error as Error;
+      message.error(err.message || '批量删除失败');
+      throw err;
     }
   }, []);
 
@@ -152,9 +159,10 @@ export default function useUserModel(): UserModelState {
       } else {
         throw new Error(response.message || '状态更新失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '状态更新失败');
-      throw error;
+    } catch (error: unknown) {
+      const err = error as Error;
+      message.error(err.message || '状态更新失败');
+      throw err;
     }
   }, []);
 
@@ -177,9 +185,10 @@ export default function useUserModel(): UserModelState {
 
       message.success('导出成功');
       return { success: true };
-    } catch (error: any) {
-      message.error(error.message || '导出失败');
-      return { success: false, message: error.message || '导出失败' };
+    } catch (error: unknown) {
+      const err = error as Error;
+      message.error(err.message || '导出失败');
+      return { success: false, message: err.message || '导出失败' };
     }
   }, []);
 

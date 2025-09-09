@@ -12,11 +12,10 @@ import DynamicTable from '../DynamicTable/index.tsx';
 export type {
   FormConfig,
   PaginationParams,
-  TableConfig
+  TableConfig,
 } from '../../types/index.ts';
 
-interface CrudComponentProps
-{
+interface CrudComponentProps {
   // 标题
   title: string;
 
@@ -42,11 +41,11 @@ interface CrudComponentProps
 
   // API接口
   api: {
-    list: ( params: PaginationParams ) => Promise<any>;
-    create: ( data: any ) => Promise<any>;
-    update: ( id: string, data: any ) => Promise<any>;
-    delete: ( id: string ) => Promise<any>;
-    detail?: ( id: string ) => Promise<any>;
+    list: (params: PaginationParams) => Promise<any>;
+    create: (data: any) => Promise<any>;
+    update: (id: string, data: any) => Promise<any>;
+    delete: (id: string) => Promise<any>;
+    detail?: (id: string) => Promise<any>;
   };
 
   // 权限配置
@@ -58,21 +57,20 @@ interface CrudComponentProps
   };
 
   // 权限检查函数
-  hasPermission?: ( permission: string ) => boolean;
+  hasPermission?: (permission: string) => boolean;
 
   // 自定义处理
-  onCustomAction?: ( action: string, record: any ) => void;
+  onCustomAction?: (action: string, record: any) => void;
 
   // 数据预处理
-  beforeSubmit?: ( values: any, mode: 'create' | 'edit' ) => any;
-  afterSubmit?: ( values: any, mode: 'create' | 'edit' ) => void;
+  beforeSubmit?: (values: any, mode: 'create' | 'edit') => any;
+  afterSubmit?: (values: any, mode: 'create' | 'edit') => void;
 
   // 额外操作按钮
   extraActions?: React.ReactNode;
 }
 
-const CrudComponent = ( props: CrudComponentProps ) =>
-{
+const CrudComponent = (props: CrudComponentProps) => {
   const {
     title,
     tableConfig,
@@ -87,34 +85,32 @@ const CrudComponent = ( props: CrudComponentProps ) =>
     extraActions,
   } = props;
 
-  const [ dataSource, setDataSource ] = useState<any[]>( [] );
-  const [ loading, setLoading ] = useState<boolean>( false );
-  const [ pagination, setPagination ] = useState<{
+  const [dataSource, setDataSource] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [pagination, setPagination] = useState<{
     current: number;
     pageSize: number;
     total: number;
-  }>( {
+  }>({
     current: 1,
     pageSize: 20,
     total: 0,
-  } );
-  const [ searchParams, setSearchParams ] = useState<PaginationParams>( {} );
+  });
+  const [searchParams, setSearchParams] = useState<PaginationParams>({});
 
   // 弹窗状态
-  const [ modalVisible, setModalVisible ] = useState<boolean>( false );
-  const [ modalMode, setModalMode ] = useState<'create' | 'edit' | 'view'>(
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [modalMode, setModalMode] = useState<'create' | 'edit' | 'view'>(
     'create'
   );
-  const [ currentRecord, setCurrentRecord ] = useState<any>( null );
+  const [currentRecord, setCurrentRecord] = useState<any>(null);
 
-  const formRef = useRef<DynamicFormRef | null>( null );
+  const formRef = useRef<DynamicFormRef | null>(null);
 
   // 加载数据
-  const loadData = async ( params?: PaginationParams ) =>
-  {
-    setLoading( true );
-    try
-    {
+  const loadData = async (params?: PaginationParams) => {
+    setLoading(true);
+    try {
       const queryParams = {
         current: pagination.current,
         pageSize: pagination.pageSize,
@@ -122,273 +118,231 @@ const CrudComponent = ( props: CrudComponentProps ) =>
         ...params,
       };
 
-      const response = await api.list( queryParams );
+      const response = await api.list(queryParams);
 
-      if ( response.success )
-      {
-        setDataSource( response.data.list || [] );
-        setPagination( {
+      if (response.success) {
+        setDataSource(response.data.list || []);
+        setPagination({
           ...pagination,
           total: response.data.pagination?.total || 0,
           current: response.data.pagination?.current || 1,
           pageSize: response.data.pagination?.pageSize || 20,
-        } );
-      } else
-      {
-        message.error( response.message || '获取数据失败' );
+        });
+      } else {
+        message.error(response.message || '获取数据失败');
       }
-    } catch ( error: any )
-    {
-      message.error( error.message || '获取数据失败' );
-    } finally
-    {
-      setLoading( false );
+    } catch (error: any) {
+      message.error(error.message || '获取数据失败');
+    } finally {
+      setLoading(false);
     }
   };
 
   // 初始化数据
-  useEffect( () =>
-  {
+  useEffect(() => {
     loadData();
-  }, [] );
+  }, []);
 
   // 搜索
-  const handleSearch = ( params: PaginationParams ) =>
-  {
-    setSearchParams( params );
-    setPagination( { ...pagination, current: 1 } );
-    loadData( { ...params, current: 1 } );
+  const handleSearch = (params: PaginationParams) => {
+    setSearchParams(params);
+    setPagination({ ...pagination, current: 1 });
+    loadData({ ...params, current: 1 });
   };
 
   // 分页变化
-  const handlePageChange = ( current: number, pageSize: number ) =>
-  {
-    setPagination( { ...pagination, current, pageSize } );
-    loadData( { ...searchParams, current, pageSize } );
+  const handlePageChange = (current: number, pageSize: number) => {
+    setPagination({ ...pagination, current, pageSize });
+    loadData({ ...searchParams, current, pageSize });
   };
 
   // 刷新
-  const handleRefresh = () =>
-  {
-    loadData( { ...searchParams, current: pagination.current } );
+  const handleRefresh = () => {
+    loadData({ ...searchParams, current: pagination.current });
   };
 
   // 新建
-  const handleCreate = () =>
-  {
-    setModalMode( 'create' );
-    setCurrentRecord( null );
-    setModalVisible( true );
+  const handleCreate = () => {
+    setModalMode('create');
+    setCurrentRecord(null);
+    setModalVisible(true);
   };
 
   // 查看
-  const handleView = async ( record: any ) =>
-  {
-    if ( api.detail )
-    {
-      try
-      {
-        const response = await api.detail( record.id );
-        if ( response.success )
-        {
-          setCurrentRecord( response.data );
-        } else
-        {
-          setCurrentRecord( record );
+  const handleView = async (record: any) => {
+    if (api.detail) {
+      try {
+        const response = await api.detail(record.id);
+        if (response.success) {
+          setCurrentRecord(response.data);
+        } else {
+          setCurrentRecord(record);
         }
-      } catch ( error )
-      {
-        setCurrentRecord( record );
+      } catch (error) {
+        setCurrentRecord(record);
       }
-    } else
-    {
-      setCurrentRecord( record );
+    } else {
+      setCurrentRecord(record);
     }
 
-    setModalMode( 'view' );
-    setModalVisible( true );
+    setModalMode('view');
+    setModalVisible(true);
   };
 
   // 编辑
-  const handleEdit = async ( record: any ) =>
-  {
-    if ( api.detail )
-    {
-      try
-      {
-        const response = await api.detail( record.id );
-        if ( response.success )
-        {
-          setCurrentRecord( response.data );
-        } else
-        {
-          setCurrentRecord( record );
+  const handleEdit = async (record: any) => {
+    if (api.detail) {
+      try {
+        const response = await api.detail(record.id);
+        if (response.success) {
+          setCurrentRecord(response.data);
+        } else {
+          setCurrentRecord(record);
         }
-      } catch ( error )
-      {
-        setCurrentRecord( record );
+      } catch (error) {
+        setCurrentRecord(record);
       }
-    } else
-    {
-      setCurrentRecord( record );
+    } else {
+      setCurrentRecord(record);
     }
 
-    setModalMode( 'edit' );
-    setModalVisible( true );
+    setModalMode('edit');
+    setModalVisible(true);
   };
 
   // 删除
-  const handleDelete = async ( record: any ) =>
-  {
-    try
-    {
-      const response = await api.delete( record.id );
-      if ( response.success )
-      {
-        message.success( '删除成功' );
+  const handleDelete = async (record: any) => {
+    try {
+      const response = await api.delete(record.id);
+      if (response.success) {
+        message.success('删除成功');
         handleRefresh();
-      } else
-      {
-        message.error( response.message || '删除失败' );
+      } else {
+        message.error(response.message || '删除失败');
       }
-    } catch ( error: any )
-    {
-      message.error( error.message || '删除失败' );
+    } catch (error: any) {
+      message.error(error.message || '删除失败');
     }
   };
 
   // 自定义操作
-  const handleCustomAction = ( action: string, record: any ) =>
-  {
-    if ( onCustomAction )
-    {
-      onCustomAction( action, record );
+  const handleCustomAction = (action: string, record: any) => {
+    if (onCustomAction) {
+      onCustomAction(action, record);
     }
   };
 
   // 表单提交
-  const handleSubmit = async ( values: any ) =>
-  {
-    try
-    {
+  const handleSubmit = async (values: any) => {
+    try {
       // 数据预处理
       const processedValues =
         beforeSubmit && modalMode !== 'view'
-          ? beforeSubmit( values, modalMode )
+          ? beforeSubmit(values, modalMode)
           : values;
 
       let response;
-      if ( modalMode === 'create' )
-      {
-        response = await api.create( processedValues );
-      } else if ( modalMode === 'edit' )
-      {
-        response = await api.update( currentRecord.id, processedValues );
+      if (modalMode === 'create') {
+        response = await api.create(processedValues);
+      } else if (modalMode === 'edit') {
+        response = await api.update(currentRecord.id, processedValues);
       }
 
-      if ( response && response.success )
-      {
-        setModalVisible( false );
+      if (response && response.success) {
+        setModalVisible(false);
         handleRefresh();
 
         // 后续处理
-        if ( afterSubmit && modalMode !== 'view' )
-        {
-          afterSubmit( values, modalMode );
+        if (afterSubmit && modalMode !== 'view') {
+          afterSubmit(values, modalMode);
         }
-      } else
-      {
-        throw new Error( response?.message || '操作失败' );
+      } else {
+        throw new Error(response?.message || '操作失败');
       }
-    } catch ( error: any )
-    {
+    } catch (error: any) {
       throw error; // 让DynamicForm处理错误显示
     }
   };
 
   // 取消弹窗
-  const handleCancel = () =>
-  {
-    setModalVisible( false );
-    setCurrentRecord( null );
+  const handleCancel = () => {
+    setModalVisible(false);
+    setCurrentRecord(null);
   };
 
   return (
     <div className="crud-component">
       <DynamicTable
-        config={ tableConfig }
-        dataSource={ dataSource }
-        loading={ loading }
-        pagination={ pagination }
+        config={tableConfig}
+        dataSource={dataSource}
+        loading={loading}
+        pagination={pagination}
         searchConfig={
           searchConfig
             ? {
-              keyword: {
-                placeholder: `搜索${ title }`,
-                allowClear: true,
-              },
-              filters: searchConfig.fields.map( field =>
-              {
-                // 创建一个符合 DynamicTable 期望类型的对象
-                const baseFilter = {
-                  key: field.name,
-                  label: field.label,
-                  type: field.type as 'select' | 'date' | 'dateRange',
-                };
+                keyword: {
+                  placeholder: `搜索${title}`,
+                  allowClear: true,
+                },
+                filters: searchConfig.fields.map(field => {
+                  // 创建一个符合 DynamicTable 期望类型的对象
+                  const baseFilter = {
+                    key: field.name,
+                    label: field.label,
+                    type: field.type as 'select' | 'date' | 'dateRange',
+                  };
 
-                // 根据是否有 options 和 placeholder 添加可选属性
-                if ( field.props?.options )
-                {
-                  ( baseFilter as any ).options = field.props.options;
-                }
+                  // 根据是否有 options 和 placeholder 添加可选属性
+                  if (field.props?.options) {
+                    (baseFilter as any).options = field.props.options;
+                  }
 
-                if ( field.props?.placeholder )
-                {
-                  ( baseFilter as any ).placeholder = field.props.placeholder;
-                }
+                  if (field.props?.placeholder) {
+                    (baseFilter as any).placeholder = field.props.placeholder;
+                  }
 
-                return baseFilter;
-              } ),
-            }
+                  return baseFilter;
+                }),
+              }
             : undefined
         }
-        actionConfig={ {
+        actionConfig={{
           create: {
-            show: hasPermission( permissions.create || 'create' ),
-            text: `新建${ title }`,
+            show: hasPermission(permissions.create || 'create'),
+            text: `新建${title}`,
           },
           refresh: {
             show: true,
           },
-        } }
-        extraActions={ extraActions }
-        onSearch={ handleSearch }
-        onPageChange={ handlePageChange }
-        onRefresh={ handleRefresh }
-        onCreate={ handleCreate }
-        onView={ handleView }
-        onEdit={ handleEdit }
-        onDelete={ handleDelete }
-        onCustomAction={ handleCustomAction }
-        hasPermission={ hasPermission }
+        }}
+        extraActions={extraActions}
+        onSearch={handleSearch}
+        onPageChange={handlePageChange}
+        onRefresh={handleRefresh}
+        onCreate={handleCreate}
+        onView={handleView}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+        onCustomAction={handleCustomAction}
+        hasPermission={hasPermission}
       />
 
       <Modal
-        title={ `${ modalMode === 'create' ? '新建' : modalMode === 'edit' ? '编辑' : '查看' }${ title }` }
-        open={ modalVisible }
-        onCancel={ handleCancel }
-        footer={ null }
-        width={ 800 }
+        title={`${modalMode === 'create' ? '新建' : modalMode === 'edit' ? '编辑' : '查看'}${title}`}
+        open={modalVisible}
+        onCancel={handleCancel}
+        footer={null}
+        width={800}
         destroyOnClose
       >
         <DynamicForm
-          ref={ formRef }
-          config={ formConfig }
-          initialValues={ currentRecord }
-          mode={ modalMode }
-          onSubmit={ handleSubmit }
-          onCancel={ handleCancel }
-          hasPermission={ hasPermission }
+          ref={formRef}
+          config={formConfig}
+          initialValues={currentRecord}
+          mode={modalMode}
+          onSubmit={handleSubmit}
+          onCancel={handleCancel}
+          hasPermission={hasPermission}
         />
       </Modal>
     </div>

@@ -2,7 +2,7 @@ import { Spin } from 'antd';
 import { useEffect } from 'react';
 import styles from './AuthWrapper.module.less';
 // 直接导入模型而不是使用useModel hook
-import useAuthModel from '@/models/auth';
+import useAuthModel from '@/models/auth.ts';
 import { Outlet, useLocation, useNavigate } from 'umi';
 
 const AuthWrapper = () => {

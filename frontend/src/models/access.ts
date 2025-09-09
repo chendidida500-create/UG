@@ -1,9 +1,9 @@
 // import { useModel } from 'umi';
 // 使用模拟的useModel
-import type { Permission, User } from '../types';
+import type { Permission, User } from '../types/index.ts';
 // 修复UMI 4.x导入方式
 // import { useModel } from 'umi';
-import { useModel } from '../utils/umiMock';
+import { useModel } from '../utils/umiMock.ts';
 
 // 定义AccessModelState类型，包含当前用户信息和权限检查方法
 export interface AccessModelState {

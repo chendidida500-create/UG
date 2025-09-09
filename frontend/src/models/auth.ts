@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useCallback, useState } from 'react';
 // 使用 browser history 代替 umi history
 import { createBrowserHistory } from 'history';
-import type { LoginParams, RegisterParams, User } from '../types';
+import type { LoginParams, RegisterParams, User } from '../types/index.ts';
 
 // 创建 browser history 实例
 const history = createBrowserHistory();
@@ -177,7 +177,7 @@ export default function useAuthModel(): AuthModelState {
 
       if (apiResponse.success) {
         // 更新当前用户信息
-        setCurrentUser(prev => {
+        setCurrentUser((prev: User | null) => {
           if (!prev) return null;
           return {
             ...prev,

@@ -1,31 +1,8 @@
 import { message } from 'antd';
 import { useCallback, useState } from 'react';
 // 修复UMI 4.x导入方式
-import { typedRequest as request } from '@/utils/request';
-
-interface Role {
-  id: string;
-  name: string;
-  code: string;
-  description?: string;
-  status: 'active' | 'inactive';
-  userCount: number;
-  permissions: string[];
-  createdAt: string;
-  updatedAt: string;
-}
-
-// 更新RoleListResponse接口，添加success和message属性
-interface RoleListResponse {
-  success: boolean;
-  message: string;
-  data: {
-    list: Role[];
-    total: number;
-    current: number;
-    pageSize: number;
-  };
-}
+import type { PaginationParams, Role } from '../types/index.js';
+import { typedRequest as request } from '../utils/request.js';
 
 // 定义通用API响应格式
 interface ApiResponse<T> {
@@ -41,16 +18,26 @@ export interface RoleModelState {
   total: number;
   current: number;
   pageSize: number;
-  getRoleList: (params?: any) => Promise<any>;
-  getRole: (id: string) => Promise<any>;
-  createRole: (data: Partial<Role>) => Promise<any>;
-  updateRole: (id: string, data: Partial<Role>) => Promise<any>;
-  deleteRole: (id: string) => Promise<any>;
-  batchDeleteRoles: (ids: string[]) => Promise<any>;
-  updateRoleStatus: (id: string, status: 'active' | 'inactive') => Promise<any>;
-  getRolePermissions: (id: string) => Promise<any>;
-  updateRolePermissions: (id: string, permissionIds: string[]) => Promise<any>;
-  getAllPermissions: () => Promise<any>;
+  getRoleList: (params?: PaginationParams) => Promise<
+    ApiResponse<{
+      list: Role[];
+      total: number;
+      current: number;
+      pageSize: number;
+    }>
+  >;
+  getRole: (id: string) => Promise<ApiResponse<Role>>;
+  createRole: (data: Partial<Role>) => Promise<ApiResponse<Role>>;
+  updateRole: (id: string, data: Partial<Role>) => Promise<ApiResponse<Role>>;
+  deleteRole: (id: string) => Promise<ApiResponse<void>>;
+  batchDeleteRoles: (ids: string[]) => Promise<ApiResponse<void>>;
+  updateRoleStatus: (id: string, status: 0 | 1) => Promise<ApiResponse<void>>;
+  getRolePermissions: (id: string) => Promise<ApiResponse<string[]>>;
+  updateRolePermissions: (
+    id: string,
+    permissionIds: string[]
+  ) => Promise<ApiResponse<void>>;
+  getAllPermissions: () => Promise<ApiResponse<unknown[]>>;
 }
 
 export default function useRoleModel(): RoleModelState {
@@ -62,10 +49,17 @@ export default function useRoleModel(): RoleModelState {
 
   // 获取角色列表
   const getRoleList = useCallback(
-    async (params?: any) => {
+    async (params?: PaginationParams) => {
       setLoading(true);
       try {
-        const response = await request<RoleListResponse>('/api/roles', {
+        const response = await request<
+          ApiResponse<{
+            list: Role[];
+            total: number;
+            current: number;
+            pageSize: number;
+          }>
+        >('/api/roles', {
           method: 'GET',
           params: {
             current,
@@ -83,9 +77,10 @@ export default function useRoleModel(): RoleModelState {
         } else {
           throw new Error(response.message || '获取角色列表失败');
         }
-      } catch (error: any) {
-        message.error(error.message || '获取角色列表失败');
-        throw error;
+      } catch (error: unknown) {
+        const err = error as Error;
+        message.error(err.message || '获取角色列表失败');
+        throw err;
       } finally {
         setLoading(false);
       }
@@ -101,13 +96,14 @@ export default function useRoleModel(): RoleModelState {
       });
 
       if (response.success) {
-        return response.data;
+        return response;
       } else {
         throw new Error(response.message || '获取角色失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '获取角色失败');
-      throw error;
+    } catch (error: unknown) {
+      const err = error as Error;
+      message.error(err.message || '获取角色失败');
+      throw err;
     }
   }, []);
 
@@ -121,13 +117,14 @@ export default function useRoleModel(): RoleModelState {
 
       if (response.success) {
         message.success('角色创建成功');
-        return response.data;
+        return response;
       } else {
         throw new Error(response.message || '角色创建失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '角色创建失败');
-      throw error;
+    } catch (error: unknown) {
+      const err = error as Error;
+      message.error(err.message || '角色创建失败');
+      throw err;
     }
   }, []);
 
@@ -141,13 +138,14 @@ export default function useRoleModel(): RoleModelState {
 
       if (response.success) {
         message.success('角色更新成功');
-        return response.data;
+        return response;
       } else {
         throw new Error(response.message || '角色更新失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '角色更新失败');
-      throw error;
+    } catch (error: unknown) {
+      const err = error as Error;
+      message.error(err.message || '角色更新失败');
+      throw err;
     }
   }, []);
 
@@ -161,13 +159,14 @@ export default function useRoleModel(): RoleModelState {
 
       if (response.success) {
         message.success('角色删除成功');
-        return true;
+        return response;
       } else {
         throw new Error(response.message || '角色删除失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '角色删除失败');
-      throw error;
+    } catch (error: unknown) {
+      const err = error as Error;
+      message.error(err.message || '角色删除失败');
+      throw err;
     }
   }, []);
 
@@ -182,42 +181,41 @@ export default function useRoleModel(): RoleModelState {
 
       if (response.success) {
         message.success('批量删除成功');
-        return true;
+        return response;
       } else {
         throw new Error(response.message || '批量删除失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '批量删除失败');
-      throw error;
+    } catch (error: unknown) {
+      const err = error as Error;
+      message.error(err.message || '批量删除失败');
+      throw err;
     }
   }, []);
 
   // 更新角色状态
-  const updateRoleStatus = useCallback(
-    async (id: string, status: 'active' | 'inactive') => {
-      try {
-        // 使用ApiResponse<void>类型来明确响应结构
-        const response = await request<ApiResponse<void>>(
-          `/api/roles/${id}/status`,
-          {
-            method: 'PUT',
-            data: { status },
-          }
-        );
-
-        if (response.success) {
-          message.success('状态更新成功');
-          return true;
-        } else {
-          throw new Error(response.message || '状态更新失败');
+  const updateRoleStatus = useCallback(async (id: string, status: 0 | 1) => {
+    try {
+      // 使用ApiResponse<void>类型来明确响应结构
+      const response = await request<ApiResponse<void>>(
+        `/api/roles/${id}/status`,
+        {
+          method: 'PUT',
+          data: { status },
         }
-      } catch (error: any) {
-        message.error(error.message || '状态更新失败');
-        throw error;
+      );
+
+      if (response.success) {
+        message.success('状态更新成功');
+        return response;
+      } else {
+        throw new Error(response.message || '状态更新失败');
       }
-    },
-    []
-  );
+    } catch (error: unknown) {
+      const err = error as Error;
+      message.error(err.message || '状态更新失败');
+      throw err;
+    }
+  }, []);
 
   // 获取角色权限
   const getRolePermissions = useCallback(async (id: string) => {
@@ -230,13 +228,14 @@ export default function useRoleModel(): RoleModelState {
       );
 
       if (response.success) {
-        return response.data;
+        return response;
       } else {
         throw new Error(response.message || '获取角色权限失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '获取角色权限失败');
-      throw error;
+    } catch (error: unknown) {
+      const err = error as Error;
+      message.error(err.message || '获取角色权限失败');
+      throw err;
     }
   }, []);
 
@@ -255,13 +254,14 @@ export default function useRoleModel(): RoleModelState {
 
         if (response.success) {
           message.success('权限更新成功');
-          return true;
+          return response;
         } else {
           throw new Error(response.message || '权限更新失败');
         }
-      } catch (error: any) {
-        message.error(error.message || '权限更新失败');
-        throw error;
+      } catch (error: unknown) {
+        const err = error as Error;
+        message.error(err.message || '权限更新失败');
+        throw err;
       }
     },
     []
@@ -275,10 +275,11 @@ export default function useRoleModel(): RoleModelState {
       // 实际实现中应该通过useModel('permission')获取权限模型
       // 然后调用permissionModel.getAllPermissions()
       // 这里暂时返回一个空的成功响应
-      return { success: true, data: [] };
-    } catch (error: any) {
-      message.error(error.message || '获取权限树失败');
-      throw error;
+      return { success: true, message: '', data: [] };
+    } catch (error: unknown) {
+      const err = error as Error;
+      message.error(err.message || '获取权限树失败');
+      throw err;
     }
   }, []);
 

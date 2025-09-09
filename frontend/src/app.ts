@@ -1,5 +1,6 @@
 import { userAPI } from './services/api.ts';
 import type { User } from './types/index.ts';
+import { logger } from './utils/logger.ts';
 
 // 全局初始状态，与后端用户认证系统保持一致
 export async function getInitialState (): Promise<{
@@ -59,7 +60,7 @@ export async function getInitialState (): Promise<{
     };
   } catch ( error )
   {
-    console.error( 'Failed to get initial user info:', error );
+    logger.error( 'Failed to get initial user info:', error );
 
     // 获取用户信息失败，清除无效token
     localStorage.removeItem( 'ug_token' );

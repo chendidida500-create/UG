@@ -1,4 +1,4 @@
-import type { FormConfig, TableConfig } from '../types';
+import type { FormConfig, TableConfig } from '../types/index.ts';
 
 // 用户管理表格配置示例
 export const userTableConfig: TableConfig = {
@@ -77,11 +77,11 @@ export const userFormConfig: FormConfig = {
   fieldGroups: [
     {
       title: '基本信息',
-      fields: ['username', 'email', 'nickname', 'phone'],
+      fields: [ 'username', 'email', 'nickname', 'phone' ],
     },
     {
       title: '角色权限',
-      fields: ['roleIds', 'status'],
+      fields: [ 'roleIds', 'status' ],
     },
   ],
   fields: [
@@ -105,7 +105,7 @@ export const userFormConfig: FormConfig = {
       type: 'input',
       required: true,
       span: 12,
-      rules: [{ type: 'email', message: '请输入有效的邮箱地址' }],
+      rules: [ { type: 'email', message: '请输入有效的邮箱地址' } ],
     },
     {
       key: 'nickname',
@@ -121,7 +121,7 @@ export const userFormConfig: FormConfig = {
       label: '手机号',
       type: 'input',
       span: 12,
-      rules: [{ pattern: /^1[3-9]\d{9}$/, message: '请输入有效的手机号码' }],
+      rules: [ { pattern: /^1[3-9]\d{9}$/, message: '请输入有效的手机号码' } ],
     },
     {
       key: 'roleIds',
@@ -208,7 +208,7 @@ export const roleFormConfig: FormConfig = {
       type: 'input',
       required: true,
       span: 12,
-      rules: [{ min: 2, max: 50, message: '角色名称长度为2-50个字符' }],
+      rules: [ { min: 2, max: 50, message: '角色名称长度为2-50个字符' } ],
     },
     {
       key: 'code',
@@ -309,15 +309,15 @@ export const permissionFormConfig: FormConfig = {
   fieldGroups: [
     {
       title: '基本信息',
-      fields: ['name', 'code', 'type', 'parent_id'],
+      fields: [ 'name', 'code', 'type', 'parent_id' ],
     },
     {
       title: '菜单配置',
-      fields: ['path', 'component', 'icon', 'sort'],
+      fields: [ 'path', 'component', 'icon', 'sort' ],
     },
     {
       title: '其他设置',
-      fields: ['description'],
+      fields: [ 'description' ],
     },
   ],
   fields: [

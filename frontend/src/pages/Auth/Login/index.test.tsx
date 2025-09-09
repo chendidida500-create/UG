@@ -1,6 +1,7 @@
-import Login from '@/pages/Auth/Login';
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import type { ReactNode } from 'react';
+import Login from './index.js';
 
 // Mock UMI
 jest.mock('umi', () => ({
@@ -12,8 +13,10 @@ jest.mock('umi', () => ({
     loading: false,
     getRememberedUsername: jest.fn(() => ''),
   })),
-  // 添加BrowserRouter的mock实现，使用any类型避免类型错误
-  BrowserRouter: ({ children }: { children: any }) => <div>{children}</div>,
+  // 添加BrowserRouter的mock实现，使用ReactNode类型
+  BrowserRouter: ({ children }: { children: ReactNode }) => (
+    <div>{children}</div>
+  ),
 }));
 
 // Mock Antd message
@@ -28,8 +31,8 @@ jest.mock('antd', () => ({
 }));
 
 // UMI测试渲染工具
-// 修复类型错误，使用any类型避免类型错误
-const renderWithProviders = (ui: any) => {
+// 修复类型错误，使用ReactNode类型
+const renderWithProviders = (ui: ReactNode) => {
   const { BrowserRouter } = require('umi');
   return render(<BrowserRouter>{ui}</BrowserRouter>);
 };

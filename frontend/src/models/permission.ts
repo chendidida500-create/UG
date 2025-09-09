@@ -1,7 +1,7 @@
 import { message } from 'antd';
 import { useCallback, useState } from 'react';
 // 修复UMI 4.x导入方式
-import { typedRequest as request } from '@/utils/request';
+import { typedRequest as request } from '../utils/request.js';
 
 // 定义通用API响应格式
 interface ApiResponse<T> {
