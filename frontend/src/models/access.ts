@@ -6,14 +6,13 @@ import type { Permission, User } from '../types';
 import { useModel } from '../utils/umiMock';
 
 // 定义AccessModelState类型，包含当前用户信息和权限检查方法
-export interface AccessModelState
-{
+export interface AccessModelState {
   currentUser: User | null;
-  hasPermission: ( permissionCode: string ) => boolean;
-  hasAnyPermission: ( permissionCodes: string[] ) => boolean;
-  hasAllPermissions: ( permissionCodes: string[] ) => boolean;
-  hasRole: ( roleCode: string ) => boolean;
-  hasAnyRole: ( roleCodes: string[] ) => boolean;
+  hasPermission: (permissionCode: string) => boolean;
+  hasAnyPermission: (permissionCodes: string[]) => boolean;
+  hasAllPermissions: (permissionCodes: string[]) => boolean;
+  hasRole: (roleCode: string) => boolean;
+  hasAnyRole: (roleCodes: string[]) => boolean;
   canUser: () => boolean;
   canAdmin: () => boolean;
   canSuperAdmin: () => boolean;
@@ -41,277 +40,233 @@ export interface AccessModelState
 }
 
 // 权限访问控制，与后端权限中间件逻辑保持一致
-export default function useAccessModel (): AccessModelState
-{
-  const { currentUser } = useModel<'auth'>( 'auth' );
+export default function useAccessModel(): AccessModelState {
+  const { currentUser } = useModel<'auth'>('auth');
 
   // 检查用户是否有指定权限
-  const hasPermission = ( permissionCode: string ): boolean =>
-  {
-    if ( !currentUser || !currentUser.roles )
-    {
+  const hasPermission = (permissionCode: string): boolean => {
+    if (!currentUser || !currentUser.roles) {
       return false;
     }
 
     // 超级管理员拥有所有权限
-    if ( currentUser.roles.some( ( role: any ) => role.code === 'super_admin' ) )
-    {
+    if (currentUser.roles.some((role: any) => role.code === 'super_admin')) {
       return true;
     }
 
     // 检查用户角色是否包含指定权限
-    return currentUser.roles.some( ( role: any ) =>
+    return currentUser.roles.some((role: any) =>
       role.permissions?.some(
-        ( permission: any ) =>
+        (permission: any) =>
           permission.code === permissionCode && permission.status === 1
       )
     );
   };
 
   // 检查用户是否有任意一个权限
-  const hasAnyPermission = ( permissionCodes: string[] ): boolean =>
-  {
-    return permissionCodes.some( code => hasPermission( code ) );
+  const hasAnyPermission = (permissionCodes: string[]): boolean => {
+    return permissionCodes.some(code => hasPermission(code));
   };
 
   // 检查用户是否拥有所有权限
-  const hasAllPermissions = ( permissionCodes: string[] ): boolean =>
-  {
-    return permissionCodes.every( code => hasPermission( code ) );
+  const hasAllPermissions = (permissionCodes: string[]): boolean => {
+    return permissionCodes.every(code => hasPermission(code));
   };
 
   // 检查用户是否有指定角色
-  const hasRole = ( roleCode: string ): boolean =>
-  {
-    if ( !currentUser || !currentUser.roles )
-    {
+  const hasRole = (roleCode: string): boolean => {
+    if (!currentUser || !currentUser.roles) {
       return false;
     }
 
     return currentUser.roles.some(
-      ( role: any ) => role.code === roleCode && role.status === 1
+      (role: any) => role.code === roleCode && role.status === 1
     );
   };
 
   // 检查用户是否有任意一个角色
-  const hasAnyRole = ( roleCodes: string[] ): boolean =>
-  {
-    return roleCodes.some( code => hasRole( code ) );
+  const hasAnyRole = (roleCodes: string[]): boolean => {
+    return roleCodes.some(code => hasRole(code));
   };
 
   // 基础访问权限定义，与后端路由权限保持一致
   const accessPermissions = {
     // 基础用户权限
-    canUser: (): boolean =>
-    {
-      return !!currentUser && ( currentUser as User ).status === 1;
+    canUser: (): boolean => {
+      return !!currentUser && (currentUser as User).status === 1;
     },
 
     // 管理员权限
-    canAdmin: (): boolean =>
-    {
-      return hasAnyRole( [ 'admin', 'super_admin' ] );
+    canAdmin: (): boolean => {
+      return hasAnyRole(['admin', 'super_admin']);
     },
 
     // 超级管理员权限
-    canSuperAdmin: (): boolean =>
-    {
-      return hasRole( 'super_admin' );
+    canSuperAdmin: (): boolean => {
+      return hasRole('super_admin');
     },
 
     // 用户管理权限
-    canManageUsers: (): boolean =>
-    {
-      return hasPermission( 'system:user:manage' ) || hasRole( 'super_admin' );
+    canManageUsers: (): boolean => {
+      return hasPermission('system:user:manage') || hasRole('super_admin');
     },
 
-    canViewUsers: (): boolean =>
-    {
+    canViewUsers: (): boolean => {
       return (
-        hasPermission( 'system:user:view' ) || accessPermissions.canManageUsers()
+        hasPermission('system:user:view') || accessPermissions.canManageUsers()
       );
     },
 
-    canCreateUser: (): boolean =>
-    {
+    canCreateUser: (): boolean => {
       return (
-        hasPermission( 'system:user:create' ) ||
+        hasPermission('system:user:create') ||
         accessPermissions.canManageUsers()
       );
     },
 
-    canUpdateUser: (): boolean =>
-    {
+    canUpdateUser: (): boolean => {
       return (
-        hasPermission( 'system:user:update' ) ||
+        hasPermission('system:user:update') ||
         accessPermissions.canManageUsers()
       );
     },
 
-    canDeleteUser: (): boolean =>
-    {
+    canDeleteUser: (): boolean => {
       return (
-        hasPermission( 'system:user:delete' ) ||
+        hasPermission('system:user:delete') ||
         accessPermissions.canManageUsers()
       );
     },
 
     // 角色管理权限
-    canManageRoles: (): boolean =>
-    {
-      return hasPermission( 'system:role:manage' ) || hasRole( 'super_admin' );
+    canManageRoles: (): boolean => {
+      return hasPermission('system:role:manage') || hasRole('super_admin');
     },
 
-    canViewRoles: (): boolean =>
-    {
+    canViewRoles: (): boolean => {
       return (
-        hasPermission( 'system:role:view' ) || accessPermissions.canManageRoles()
+        hasPermission('system:role:view') || accessPermissions.canManageRoles()
       );
     },
 
-    canCreateRole: (): boolean =>
-    {
+    canCreateRole: (): boolean => {
       return (
-        hasPermission( 'system:role:create' ) ||
+        hasPermission('system:role:create') ||
         accessPermissions.canManageRoles()
       );
     },
 
-    canUpdateRole: (): boolean =>
-    {
+    canUpdateRole: (): boolean => {
       return (
-        hasPermission( 'system:role:update' ) ||
+        hasPermission('system:role:update') ||
         accessPermissions.canManageRoles()
       );
     },
 
-    canDeleteRole: (): boolean =>
-    {
+    canDeleteRole: (): boolean => {
       return (
-        hasPermission( 'system:role:delete' ) ||
+        hasPermission('system:role:delete') ||
         accessPermissions.canManageRoles()
       );
     },
 
     // 权限管理权限
-    canManagePermissions: (): boolean =>
-    {
+    canManagePermissions: (): boolean => {
       return (
-        hasPermission( 'system:permission:manage' ) || hasRole( 'super_admin' )
+        hasPermission('system:permission:manage') || hasRole('super_admin')
       );
     },
 
-    canViewPermissions: (): boolean =>
-    {
+    canViewPermissions: (): boolean => {
       return (
-        hasPermission( 'system:permission:view' ) ||
+        hasPermission('system:permission:view') ||
         accessPermissions.canManagePermissions()
       );
     },
 
-    canCreatePermission: (): boolean =>
-    {
+    canCreatePermission: (): boolean => {
       return (
-        hasPermission( 'system:permission:create' ) ||
+        hasPermission('system:permission:create') ||
         accessPermissions.canManagePermissions()
       );
     },
 
-    canUpdatePermission: (): boolean =>
-    {
+    canUpdatePermission: (): boolean => {
       return (
-        hasPermission( 'system:permission:update' ) ||
+        hasPermission('system:permission:update') ||
         accessPermissions.canManagePermissions()
       );
     },
 
-    canDeletePermission: (): boolean =>
-    {
+    canDeletePermission: (): boolean => {
       return (
-        hasPermission( 'system:permission:delete' ) ||
+        hasPermission('system:permission:delete') ||
         accessPermissions.canManagePermissions()
       );
     },
 
     // 个人中心权限
-    canViewProfile: (): boolean =>
-    {
+    canViewProfile: (): boolean => {
       return accessPermissions.canUser();
     },
 
-    canUpdateProfile: (): boolean =>
-    {
+    canUpdateProfile: (): boolean => {
       return accessPermissions.canUser();
     },
 
-    canUpdatePassword: (): boolean =>
-    {
+    canUpdatePassword: (): boolean => {
       return accessPermissions.canUser();
     },
 
     // 工作台权限
-    canViewDashboard: (): boolean =>
-    {
+    canViewDashboard: (): boolean => {
       return accessPermissions.canUser();
     },
   };
 
   // 获取用户菜单权限，与后端菜单权限保持一致
-  const getMenuPermissions = (): Permission[] =>
-  {
-    if ( !currentUser || !currentUser.roles )
-    {
+  const getMenuPermissions = (): Permission[] => {
+    if (!currentUser || !currentUser.roles) {
       return [];
     }
 
     const menuPermissions: Permission[] = [];
 
-    currentUser.roles.forEach( ( role: any ) =>
-    {
-      if ( role.permissions && role.status === 1 )
-      {
-        role.permissions.forEach( ( permission: any ) =>
-        {
-          if ( permission.type === 'menu' && permission.status === 1 )
-          {
+    currentUser.roles.forEach((role: any) => {
+      if (role.permissions && role.status === 1) {
+        role.permissions.forEach((permission: any) => {
+          if (permission.type === 'menu' && permission.status === 1) {
             // 避免重复添加
-            if ( !menuPermissions.find( p => p.id === permission.id ) )
-            {
-              menuPermissions.push( permission );
+            if (!menuPermissions.find(p => p.id === permission.id)) {
+              menuPermissions.push(permission);
             }
           }
-        } );
+        });
       }
-    } );
+    });
 
     return menuPermissions;
   };
 
   // 获取用户按钮权限
-  const getButtonPermissions = (): string[] =>
-  {
-    if ( !currentUser || !currentUser.roles )
-    {
+  const getButtonPermissions = (): string[] => {
+    if (!currentUser || !currentUser.roles) {
       return [];
     }
 
     const buttonPermissions: string[] = [];
 
-    currentUser.roles.forEach( ( role: any ) =>
-    {
-      if ( role.permissions && role.status === 1 )
-      {
-        role.permissions.forEach( ( permission: any ) =>
-        {
-          if ( permission.type === 'button' && permission.status === 1 )
-          {
-            buttonPermissions.push( permission.code );
+    currentUser.roles.forEach((role: any) => {
+      if (role.permissions && role.status === 1) {
+        role.permissions.forEach((permission: any) => {
+          if (permission.type === 'button' && permission.status === 1) {
+            buttonPermissions.push(permission.code);
           }
-        } );
+        });
       }
-    } );
+    });
 
-    return [ ...new Set( buttonPermissions ) ]; // 去重
+    return [...new Set(buttonPermissions)]; // 去重
   };
 
   return {

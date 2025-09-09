@@ -65,4 +65,3 @@ function testTypeCompatibility() {
 }
 
 export { testAccessModel, testTypeCompatibility, testUser };
-

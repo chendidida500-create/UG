@@ -64,12 +64,7 @@
     "type": "git",
     "url": ""
   },
-  "keywords": [
-    "react",
-    "typescript",
-    "antd",
-    "admin"
-  ],
+  "keywords": ["react", "typescript", "antd", "admin"],
   "author": "UG Team",
   "license": "MIT",
   "packageManager": "pnpm@8.15.8"

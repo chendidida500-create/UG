@@ -108,6 +108,8 @@ export interface PaginationParams {
   status?: 0 | 1;
   startTime?: string;
   endTime?: string;
+  // 添加字符串索引签名，使其与Record<string, unknown>兼容
+  [key: string]: any;
 }
 
 // 用户管理相关类型

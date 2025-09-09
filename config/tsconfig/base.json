@@ -26,8 +26,8 @@
       "./node_modules/@types"
     ],
     // 移除 types 数组，让 TypeScript 自动解析类型,
-    // 忽略弃用警告 - 设置为"6.0"以解决moduleResolution弃用警告
-    "ignoreDeprecations": "6.0",
+    // 忽略弃用警告 - 设置为"5.0"以兼容TypeScript 5.9.2版本
+    "ignoreDeprecations": "5.0",
     // 更严格的类型检查
     "noImplicitAny": true,
     "noImplicitReturns": true,

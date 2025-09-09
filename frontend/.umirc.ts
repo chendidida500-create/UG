@@ -1,6 +1,6 @@
 import { defineConfig } from 'umi';
 
-export default defineConfig( {
+export default defineConfig({
   routes: [
     // 认证相关路由
     {
@@ -25,7 +25,7 @@ export default defineConfig( {
     {
       path: '/',
       component: '@/layouts/BasicLayout',
-      wrappers: [ '@/wrappers/AuthWrapper' ],
+      wrappers: ['@/wrappers/AuthWrapper'],
       routes: [
         {
           path: '/dashboard',
@@ -131,7 +131,7 @@ export default defineConfig( {
     jsStrategy: 'granularChunks',
   },
   title: 'UG管理系统',
-  favicons: [ '/favicon.ico' ],
+  favicons: ['/favicon.ico'],
   metas: [
     {
       name: 'description',
@@ -142,4 +142,8 @@ export default defineConfig( {
       content: 'UG,管理系统,UMI,Ant Design,React,TypeScript',
     },
   ],
-} );
+  // 严格遵循UMI 4.x官方规范，配置路径别名
+  alias: {
+    '@': require('path').resolve(__dirname, 'src'),
+  },
+});

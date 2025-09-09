@@ -22,34 +22,10 @@
     "jsx": "react-jsx",
     "declaration": false,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "../../frontend",
     "paths": {
       "@/*": [
-        "./src/*"
-      ],
-      "@/components/*": [
-        "./src/components/*"
-      ],
-      "@/pages/*": [
-        "./src/pages/*"
-      ],
-      "@/services/*": [
-        "./src/services/*"
-      ],
-      "@/utils/*": [
-        "./src/utils/*"
-      ],
-      "@/models/*": [
-        "./src/models/*"
-      ],
-      "@/types": [
-        "./src/types/index.ts"
-      ],
-      "@/types/*": [
-        "./src/types/*"
-      ],
-      "@/styles/*": [
-        "./src/styles/*"
+        "src/*"
       ]
     },
     // 配置类型定义路径

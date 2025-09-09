@@ -8,7 +8,7 @@ import reactHooks from 'eslint-plugin-react-hooks';
 export default [
   // JavaScript/TypeScript基础配置
   {
-    files: [ '**/*.{js,mjs,cjs,ts,jsx,tsx}' ],
+    files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
       sourceType: 'module',
@@ -30,7 +30,7 @@ export default [
 
   // TypeScript特定配置
   {
-    files: [ '**/*.{ts,tsx}' ],
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parser: tsparser,
     },
@@ -48,7 +48,7 @@ export default [
 
   // React特定配置
   {
-    files: [ '**/*.{js,jsx,ts,tsx}' ],
+    files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {
       react: react,
       'react-hooks': reactHooks,
@@ -66,7 +66,7 @@ export default [
 
   // Prettier配置（确保与ESLint规则不冲突）
   {
-    files: [ '**/*.{js,jsx,ts,tsx}' ],
+    files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {
       prettier: prettier,
     },
@@ -77,6 +77,6 @@ export default [
 
   // 忽略目录
   {
-    ignores: [ 'dist', 'build', '.umi', 'node_modules', '.umi-production' ],
+    ignores: ['dist', 'build', '.umi', 'node_modules', '.umi-production'],
   },
 ];

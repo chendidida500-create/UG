@@ -64,7 +64,5 @@
     ".umi/**",
     ".umi-production/**"
   ],
-  "import": [
-    "../config/cspell/frontend.json"
-  ]
+  "import": ["../config/cspell/frontend.json"]
 }

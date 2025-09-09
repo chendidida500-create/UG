@@ -1,10 +1,10 @@
 // Type definitions for umi
 declare module 'umi' {
-  export const defineConfig: <T>( config: T ) => T;
+  export const defineConfig: <T>(config: T) => T;
   export const history: {
-    push: ( path: string ) => void;
-    replace: ( path: string ) => void;
-    go: ( n: number ) => void;
+    push: (path: string) => void;
+    replace: (path: string) => void;
+    go: (n: number) => void;
     back: () => void;
     forward: () => void;
   };
@@ -25,9 +25,9 @@ declare module 'umi' {
   export const useParams: <T = Record<string, string>>() => T;
   export const useSearchParams: () => [
     URLSearchParams,
-    ( params: URLSearchParams ) => void,
+    (params: URLSearchParams) => void,
   ];
-  export const useModel: <T = unknown>( namespace: string ) => T;
+  export const useModel: <T = unknown>(namespace: string) => T;
   export const useAccess: () => any;
   export const useIntl: () => {
     formatMessage: (
@@ -51,7 +51,7 @@ declare module 'umi' {
     routes: any[],
     location: { pathname: string }
   ) => any;
-  export const renderClient: ( props: any ) => void;
+  export const renderClient: (props: any) => void;
   export const ApplyPluginsType: { modify: string; event: string };
   export const PluginEvent: any;
   export const __USE_MODEL__: any;
@@ -84,7 +84,7 @@ declare module '@umijs/plugins/dist/request' {
 }
 
 declare module 'umi-request' {
-  export const extend: ( options: any ) => typeof request;
+  export const extend: (options: any) => typeof request;
   export const request: <T = unknown>(
     url: string,
     options?: RequestOptions

@@ -143,7 +143,7 @@ declare module 'antd/es/form' {
 }
 
 declare module 'antd/es/table' {
-  export interface ColumnsType<T> extends Array<any> { }
+  export interface ColumnsType<T> extends Array<any> {}
   export interface TableProps<T> {
     onChange?: (pagination: any, filters: any, sorter: any) => void;
     [key: string]: any;

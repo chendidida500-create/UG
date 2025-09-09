@@ -21,7 +21,8 @@ const LoginPage: React.FC = () => {
   const location = useLocation();
 
   // 获取重定向路径
-  const redirectPath = new URLSearchParams(location.search).get('redirect') || '/';
+  const redirectPath =
+    new URLSearchParams(location.search).get('redirect') || '/';
 
   const handleLogin = async (values: LoginFormData) => {
     setLoading(true);

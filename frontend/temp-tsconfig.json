@@ -1,1 +1,1 @@
-{ "extends": "./tsconfig.json", "include": ["src/pages/System/Role/index.tsx"] } 
+{ "extends": "./tsconfig.json", "include": ["src/pages/System/Role/index.tsx"] }
