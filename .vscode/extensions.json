@@ -1,37 +1,60 @@
 {
   "recommendations": [
-    // TypeScript开发
+    // === UMI 4.x 官方推荐插件 ===
+    // TypeScript开发核心插件
     "vscode.typescript-language-features",
-    // React开发
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    
+    // React开发相关插件
     "dsznajder.es7-react-js-snippets",
     "burkeholland.simple-react-snippets",
-    // 代码质量
+    "xabikos.ReactSnippets",
+    
+    // UMI 4.x 专用开发工具
+    "umi.umi-plugin-vscode",
+    
+    // 代码质量和格式化工具
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
     "streetsidesoftware.code-spell-checker",
+    
     // Git工具
     "mhutchie.git-graph",
     "eamodio.gitlens",
     "GitHub.vscode-pull-request-github",
+    
     // 界面增强
     "vscode-icons-team.vscode-icons",
     "pkief.material-icon-theme",
-    // 开发效率
+    
+    // 开发效率提升
     "VisualStudioExptTeam.vscodeintellicode",
     "formulahendry.auto-rename-tag",
+    "formulahendry.auto-close-tag",
     "christian-kohler.path-intellisense",
-    "bradlc.vscode-tailwindcss",
     "christian-kohler.npm-intellisense",
-    // NocoBase相关
+    "abusaidm.html-snippets",
+    
+    // 调试工具
+    "ms-vscode.js-debug",
+    "ms-vscode.js-debug-companion",
+    "oderwat.indent-rainbow",
+    
+    // API开发和测试
+    "humao.rest-client",
+    "rangav.vscode-thunder-client",
+    
+    // 数据库工具
     "mtxr.sqltools",
     "mtxr.sqltools-driver-mysql",
-    "humao.rest-client",
+    
     // 文档和注释
     "aaron-bond.better-comments",
     "yzhang.markdown-all-in-one",
     "shd101wyy.markdown-preview-enhanced",
-    // UMI开发
-    "ms-vscode.js-debug",
-    "ms-vscode.js-debug-companion"
+    
+    // 项目配置文件支持
+    "EditorConfig.EditorConfig",
+    "redhat.vscode-yaml"
   ]
 }
