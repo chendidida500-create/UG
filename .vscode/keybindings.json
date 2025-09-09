@@ -1,0 +1,23 @@
+// 将workbench.action.openWalkthrough命令重定向到workbench.action.openHelp
+{
+  "key": "ctrl+shift+h",
+  "command": "workbench.action.openHelp",
+  "args": {
+    "query": "walkthrough"
+  },
+  "when": "workbench.action.openWalkthrough"
+}
+
+// 添加自定义命令来打开SQLTools连接管理器
+{
+  "key": "ctrl+shift+c",
+  "command": "sqltools.connections.createConnectionUI",
+  "when": "!terminalFocus"
+}
+
+// 添加自定义命令来刷新Git状态
+{
+  "key": "ctrl+shift+g",
+  "command": "git.refresh",
+  "when": "!terminalFocus"
+}

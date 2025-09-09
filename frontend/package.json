@@ -8,7 +8,6 @@
     "build": "max build",
     "dev": "max dev",
     "format": "prettier --cache --write .",
-    "postinstall": "max setup",
     "setup": "max setup",
     "start": "pnpm dev",
     "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx ./src",

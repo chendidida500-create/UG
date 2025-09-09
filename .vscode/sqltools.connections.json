@@ -1,0 +1,22 @@
+[
+  {
+    "name": "UG MySQL",
+    "driver": "MySQL",
+    "server": "localhost",
+    "port": 3306,
+    "database": "ug_management",
+    "username": "ug_user",
+    "password": "ug_password",
+    "connectionTimeout": 30
+  },
+  {
+    "name": "UG MySQL Root",
+    "driver": "MySQL",
+    "server": "localhost",
+    "port": 3306,
+    "database": "ug_management",
+    "username": "root",
+    "password": "root123456",
+    "connectionTimeout": 30
+  }
+]

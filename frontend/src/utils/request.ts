@@ -3,6 +3,15 @@ import { message } from 'antd';
 import { history } from 'umi';
 import { extend } from 'umi-request';
 
+// 定义刷新token响应类型
+interface RefreshTokenResponse {
+  success: boolean;
+  data?: {
+    token: string;
+    refreshToken: string;
+  };
+}
+
 // 创建请求实例
 const request = extend({
   prefix: process.env.API_BASE_URL || 'http://localhost:15001',
@@ -73,14 +82,14 @@ request.interceptors.response.use(async (response: any, options: any) => {
       // 尝试刷新token
       const refreshToken = localStorage.getItem('refreshToken');
       if (refreshToken) {
-        const refreshResponse = await request('/api/auth/refresh', {
+        const refreshResponse: RefreshTokenResponse = await request('/api/auth/refresh', {
           method: 'POST',
           data: { refreshToken },
           skipTokenRefresh: true, // 避免无限递归
         });
 
-        if (refreshResponse.success) {
-          const { token: newToken, refreshToken: newRefreshToken } =
+        if (refreshResponse.success && refreshResponse.data) {
+          const { token: newToken, refreshToken: newRefreshToken } = 
             refreshResponse.data;
           localStorage.setItem('token', newToken);
           localStorage.setItem('refreshToken', newRefreshToken);
@@ -195,7 +204,7 @@ export const downloadFile = async (url: string, filename?: string) => {
       responseType: 'blob',
     });
 
-    const blob = new Blob([response]);
+    const blob = new Blob([response as BlobPart]);
     const downloadUrl = window.URL.createObjectURL(blob);
 
     const link = document.createElement('a');

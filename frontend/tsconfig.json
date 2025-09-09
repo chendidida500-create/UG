@@ -5,30 +5,6 @@
     "paths": {
       "@/*": [
         "src/*"
-      ],
-      "@/components/*": [
-        "src/components/*"
-      ],
-      "@/pages/*": [
-        "src/pages/*"
-      ],
-      "@/services/*": [
-        "src/services/*"
-      ],
-      "@/utils/*": [
-        "src/utils/*"
-      ],
-      "@/models/*": [
-        "src/models/*"
-      ],
-      "@/types": [
-        "src/types/index.ts"
-      ],
-      "@/types/*": [
-        "src/types/*"
-      ],
-      "@/styles/*": [
-        "src/styles/*"
       ]
     },
     "typeRoots": [
