@@ -1,7 +1,10 @@
-import CrudComponent from '@/components/CrudComponent';
-import type { FormConfig } from '@/components/DynamicForm';
-import type { PaginationParams, TableConfig } from '@/components/DynamicTable';
-import { useModel } from '@/utils/umiMock';
+import CrudComponent from '@/components/CrudComponent/index.tsx';
+import type { FormConfig } from '@/components/DynamicForm/index.tsx';
+import type {
+  PaginationParams,
+  TableConfig,
+} from '@/components/DynamicTable/index.tsx';
+import { useModel } from '@/utils/umiMock.ts';
 import {
   DeleteOutlined,
   EditOutlined,
@@ -92,7 +95,7 @@ const RoleManagement: React.FC = () => {
         dataIndex: 'roleInfo',
         key: 'roleInfo',
         width: 200,
-        render: (_: any, record: Role) => (
+        render: (_value: unknown, record: Role) => (
           <div>
             <div className={styles.roleName}>{record.name}</div>
             <Text type="secondary" className={styles.roleCode}>
@@ -114,7 +117,19 @@ const RoleManagement: React.FC = () => {
         dataIndex: 'userCount',
         key: 'userCount',
         width: 100,
-        sorter: (a: Role, b: Role) => a.userCount - b.userCount,
+        sorter: (a: unknown, b: unknown) => {
+          if (
+            a &&
+            typeof a === 'object' &&
+            'userCount' in a &&
+            b &&
+            typeof b === 'object' &&
+            'userCount' in b
+          ) {
+            return (a as Role).userCount - (b as Role).userCount;
+          }
+          return 0;
+        },
         render: (count: number) => (
           <Space>
             <UserOutlined />
@@ -127,8 +142,22 @@ const RoleManagement: React.FC = () => {
         dataIndex: 'permissions',
         key: 'permissions',
         width: 100,
-        sorter: (a: Role, b: Role) =>
-          a.permissions.length - b.permissions.length,
+        sorter: (a: unknown, b: unknown) => {
+          if (
+            a &&
+            typeof a === 'object' &&
+            'permissions' in a &&
+            b &&
+            typeof b === 'object' &&
+            'permissions' in b
+          ) {
+            return (
+              (a as { permissions: string[] }).permissions.length -
+              (b as { permissions: string[] }).permissions.length
+            );
+          }
+          return 0;
+        },
         render: (permissions: string[]) => (
           <Space>
             <SafetyCertificateOutlined />
@@ -182,7 +211,7 @@ const RoleManagement: React.FC = () => {
         key: 'actions',
         width: 150,
         fixed: 'right',
-        render: (_: any, record: Role) => {
+        render: (_: unknown, record: Role) => {
           const moreMenuItems = [
             {
               key: 'permissions',
@@ -361,14 +390,14 @@ const RoleManagement: React.FC = () => {
             message: result?.message || '获取角色列表失败',
           };
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         return {
           success: false,
-          message: error.message || '获取角色列表失败',
+          message: (error as Error).message || '获取角色列表失败',
         };
       }
     },
-    create: async (data: any) => {
+    create: async (data: Partial<Role>) => {
       try {
         const result = await createRole?.(data);
         if (result?.success) {
@@ -380,14 +409,14 @@ const RoleManagement: React.FC = () => {
             message: result?.message || '角色创建失败',
           };
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         return {
           success: false,
-          message: error.message || '角色创建失败',
+          message: (error as Error).message || '角色创建失败',
         };
       }
     },
-    update: async (id: string, data: any) => {
+    update: async (id: string, data: Partial<Role>) => {
       try {
         const result = await updateRole?.(id, data);
         if (result?.success) {
@@ -399,10 +428,10 @@ const RoleManagement: React.FC = () => {
             message: result?.message || '角色更新失败',
           };
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         return {
           success: false,
-          message: error.message || '角色更新失败',
+          message: (error as Error).message || '角色更新失败',
         };
       }
     },
@@ -418,17 +447,16 @@ const RoleManagement: React.FC = () => {
             message: result?.message || '角色删除失败',
           };
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         return {
           success: false,
-          message: error.message || '角色删除失败',
+          message: (error as Error).message || '角色删除失败',
         };
       }
     },
-    detail: async (id: string) => {
+    detail: async (_id: string) => {
       // 这里应该调用获取角色详情的API
       // 暂时返回空实现，但至少使用id参数避免ts(6133)错误
-      console.log('Fetching role detail for id:', id);
       return { success: true, data: {} };
     },
   };
@@ -485,8 +513,8 @@ const RoleManagement: React.FC = () => {
             '获取权限信息失败'
         );
       }
-    } catch (error: any) {
-      message.error(error.message || '获取权限信息失败');
+    } catch (error: unknown) {
+      message.error((error as Error).message || '获取权限信息失败');
     } finally {
       setLoading(false);
     }
@@ -501,8 +529,8 @@ const RoleManagement: React.FC = () => {
         try {
           // 这里应该调用复制角色的API
           message.success('角色复制成功');
-        } catch (error: any) {
-          message.error(error.message || '角色复制失败');
+        } catch (error: unknown) {
+          message.error((error as Error).message || '角色复制失败');
         }
       },
     });
@@ -526,8 +554,8 @@ const RoleManagement: React.FC = () => {
           } else {
             message.error(result?.message || '角色删除失败');
           }
-        } catch (error: any) {
-          message.error(error.message || '角色删除失败');
+        } catch (error: unknown) {
+          message.error((error as Error).message || '角色删除失败');
         }
       },
     });
@@ -545,8 +573,8 @@ const RoleManagement: React.FC = () => {
       } else {
         message.error(result?.message || '角色状态更新失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '角色状态更新失败');
+    } catch (error: unknown) {
+      message.error((error as Error).message || '角色状态更新失败');
     }
   };
 
@@ -569,8 +597,8 @@ const RoleManagement: React.FC = () => {
           } else {
             message.error(result?.message || '批量删除失败');
           }
-        } catch (error: any) {
-          message.error(error.message || '批量删除失败');
+        } catch (error: unknown) {
+          message.error((error as Error).message || '批量删除失败');
         }
       },
     });
@@ -581,8 +609,8 @@ const RoleManagement: React.FC = () => {
     try {
       // 这里应该调用导出角色的API
       message.success('角色导出成功');
-    } catch (error: any) {
-      message.error(error.message || '角色导出失败');
+    } catch (error: unknown) {
+      message.error((error as Error).message || '角色导出失败');
     }
   };
 
@@ -612,8 +640,8 @@ const RoleManagement: React.FC = () => {
       } else {
         message.error(result?.message || '权限设置保存失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '权限设置保存失败');
+    } catch (error: unknown) {
+      message.error((error as Error).message || '权限设置保存失败');
     } finally {
       setLoading(false);
     }
@@ -637,8 +665,8 @@ const RoleManagement: React.FC = () => {
   }, []);
 
   // 权限树选择处理
-  const handlePermissionTreeCheck = (checkedKeys: any) => {
-    setSelectedPermissions(checkedKeys);
+  const handlePermissionTreeCheck = (checkedKeys: unknown) => {
+    setSelectedPermissions(checkedKeys as string[]);
   };
 
   return (

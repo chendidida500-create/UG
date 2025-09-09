@@ -228,7 +228,7 @@ export interface TableConfig {
     width?: number;
     fixed?: 'left' | 'right';
     render?: string | ((value: any, record: any, index: number) => ReactNode); // 支持渲染函数名或函数
-    sorter?: boolean | ((a: any, b: any) => number);
+    sorter?: boolean | ((a: unknown, b: unknown) => number);
     filters?: Array<{ text: string; value: any }>;
     ellipsis?: boolean;
   }[];
@@ -262,12 +262,12 @@ export interface TableConfig {
     onSelectInvert?: (selectedRowKeys: React.Key[]) => void;
     onSelectNone?: () => void;
     selections?:
-      | Array<{
-          key: string;
-          text: ReactNode;
-          onSelect?: (changeableRowKeys: React.Key[]) => void;
-        }>
-      | boolean;
+    | Array<{
+      key: string;
+      text: ReactNode;
+      onSelect?: (changeableRowKeys: React.Key[]) => void;
+    }>
+    | boolean;
     hideSelectAll?: boolean;
     preserveSelectedRowKeys?: boolean;
     columnWidth?: string | number;
@@ -304,21 +304,21 @@ export interface FormConfig {
     name?: string; // 为了兼容旧配置，添加name字段
     label: string;
     type:
-      | 'input'
-      | 'password'
-      | 'textarea'
-      | 'number'
-      | 'select'
-      | 'radio'
-      | 'checkbox'
-      | 'date'
-      | 'time'
-      | 'upload'
-      | 'switch'
-      | 'rate'
-      | 'slider'
-      | 'cascader'
-      | 'tree-select';
+    | 'input'
+    | 'password'
+    | 'textarea'
+    | 'number'
+    | 'select'
+    | 'radio'
+    | 'checkbox'
+    | 'date'
+    | 'time'
+    | 'upload'
+    | 'switch'
+    | 'rate'
+    | 'slider'
+    | 'cascader'
+    | 'tree-select';
     required?: boolean;
     placeholder?: string;
     options?: Array<{ label: string; value: any }>;
@@ -330,7 +330,7 @@ export interface FormConfig {
     hidden?: boolean; // 是否隐藏
     permission?: string; // 权限要求
     dependencies?: string[]; // 添加dependencies属性
-    visible?: (values: any) => boolean; // 添加visible属性
+    visible?: (values: Record<string, unknown>) => boolean; // 添加visible属性
   }>;
   // 字段分组配置
   fieldGroups?: Array<{
@@ -350,4 +350,4 @@ declare global {
   }
 }
 
-export {};
+export { };

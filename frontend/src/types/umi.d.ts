@@ -16,11 +16,11 @@ declare module 'umi' {
     pathname: string;
     search: string;
     hash: string;
-    state?: any;
+    state?: unknown;
   };
   export const useNavigate: () => (
     to: string | number,
-    options?: { replace?: boolean; state?: any }
+    options?: { replace?: boolean; state?: unknown }
   ) => void;
   export const useParams: <T = Record<string, string>>() => T;
   export const useSearchParams: () => [
@@ -28,17 +28,17 @@ declare module 'umi' {
     (params: URLSearchParams) => void,
   ];
   export const useModel: <T = unknown>(namespace: string) => T;
-  export const useAccess: () => any;
+  export const useAccess: () => unknown;
   export const useIntl: () => {
     formatMessage: (
       descriptor: { id: string; defaultMessage?: string },
-      values?: Record<string, any>
+      values?: Record<string, unknown>
     ) => string;
   };
-  export const useAppData: () => any;
-  export const useRouteData: () => any;
-  export const useRoutes: () => any;
-  export const useSelectedRoutes: () => any;
+  export const useAppData: () => unknown;
+  export const useRouteData: () => unknown;
+  export const useRoutes: () => unknown;
+  export const useSelectedRoutes: () => unknown;
   export const Outlet: React.ComponentType;
   export const Link: React.ComponentType<
     { to: string } & React.AnchorHTMLAttributes<HTMLAnchorElement>
@@ -48,43 +48,43 @@ declare module 'umi' {
   >;
   export const useOutlet: () => React.ReactElement | null;
   export const matchRoutes: (
-    routes: any[],
+    routes: unknown[],
     location: { pathname: string }
-  ) => any;
-  export const renderClient: (props: any) => void;
+  ) => unknown;
+  export const renderClient: (props: unknown) => void;
   export const ApplyPluginsType: { modify: string; event: string };
-  export const PluginEvent: any;
-  export const __USE_MODEL__: any;
-  export const __ACCESS__: any;
+  export const PluginEvent: unknown;
+  export const __USE_MODEL__: unknown;
+  export const __ACCESS__: unknown;
 }
 
 declare module '@umijs/plugins/dist/antd' {
-  const content: any;
+  const content: unknown;
   export default content;
 }
 
 declare module '@umijs/plugins/dist/model' {
-  const content: any;
+  const content: unknown;
   export default content;
 }
 
 declare module '@umijs/plugins/dist/access' {
-  const content: any;
+  const content: unknown;
   export default content;
 }
 
 declare module '@umijs/plugins/dist/initial-state' {
-  const content: any;
+  const content: unknown;
   export default content;
 }
 
 declare module '@umijs/plugins/dist/request' {
-  const content: any;
+  const content: unknown;
   export default content;
 }
 
 declare module 'umi-request' {
-  export const extend: (options: any) => typeof request;
+  export const extend: (options: Record<string, unknown>) => typeof request;
   export const request: <T = unknown>(
     url: string,
     options?: RequestOptions
