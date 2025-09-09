@@ -3,8 +3,8 @@
 
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import type { TableConfig } from './index';
-import DynamicTable from './index';
+import type { TableConfig } from './index.js';
+import DynamicTable from './index.js';
 
 // Mock Antd
 jest.mock( 'antd', () => ( {

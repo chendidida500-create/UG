@@ -110,7 +110,7 @@ export default function useAccessModel (): AccessModelState
     // 基础用户权限
     canUser: (): boolean =>
     {
-      return !!currentUser && ( currentUser as User ).status === 1;
+      return !!currentUser && currentUser.status === 1;
     },
 
     // 管理员权限

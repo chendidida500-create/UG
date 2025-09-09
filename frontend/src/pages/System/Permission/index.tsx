@@ -1,4 +1,4 @@
-import type { Permission } from '@/types';
+import type { Permission } from '@/types/index';
 import { useModel } from '@/utils/umiMock';
 import
 {
