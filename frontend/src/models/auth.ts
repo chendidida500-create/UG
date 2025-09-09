@@ -15,20 +15,47 @@ interface ApiResponse<T> {
   data: T;
 }
 
+// 定义错误类型
+interface ApiError extends Error {
+  message: string;
+}
+
+// 定义更新个人信息的参数类型
+interface UpdateProfileParams {
+  nickname?: string;
+  email?: string;
+  phone?: string;
+  avatar?: string;
+  description?: string;
+}
+
+// 定义更新密码的参数类型
+interface UpdatePasswordParams {
+  oldPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}
+
 // 定义AuthModelState类型，包含当前用户信息和认证相关操作
 export interface AuthModelState {
   currentUser: User | null;
   loading: boolean;
   loginLoading: boolean;
-  login: (params: LoginParams) => Promise<any>;
-  register: (params: RegisterParams) => Promise<any>;
+  login: (params: LoginParams) => Promise<{ success: boolean; data?: User }>;
+  register: (
+    params: RegisterParams
+  ) => Promise<{ success: boolean; data?: User }>;
   logout: () => Promise<void>;
   checkAuth: () => Promise<void>;
-  updateProfile: (params: any) => Promise<any>;
-  updatePassword: (params: any) => Promise<any>;
+  updateProfile: (
+    params: UpdateProfileParams
+  ) => Promise<{ success: boolean; data?: User }>;
+  updatePassword: (
+    params: UpdatePasswordParams
+  ) => Promise<{ success: boolean }>;
   getRememberedUsername: () => string;
   // 添加sendCaptcha函数到接口定义中
-  sendCaptcha: (email: string) => Promise<any>;
+  sendCaptcha: (email: string) => Promise<{ success: boolean }>;
 }
 
 export default function useAuthModel(): AuthModelState {
@@ -75,8 +102,9 @@ export default function useAuthModel(): AuthModelState {
       } else {
         throw new Error(apiResponse.message || '登录失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '登录失败');
+    } catch (error: unknown) {
+      const apiError = error as ApiError;
+      message.error(apiError.message || '登录失败');
       throw error;
     } finally {
       setLoginLoading(false);
@@ -95,8 +123,9 @@ export default function useAuthModel(): AuthModelState {
       } else {
         throw new Error(apiResponse.message || '注册失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '注册失败');
+    } catch (error: unknown) {
+      const apiError = error as ApiError;
+      message.error(apiError.message || '注册失败');
       throw error;
     }
   }, []);
@@ -113,8 +142,9 @@ export default function useAuthModel(): AuthModelState {
       } else {
         throw new Error(apiResponse.message || '发送验证码失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '发送验证码失败');
+    } catch (error: unknown) {
+      const apiError = error as ApiError;
+      message.error(apiError.message || '发送验证码失败');
       throw error;
     }
   }, []);
@@ -123,8 +153,8 @@ export default function useAuthModel(): AuthModelState {
   const logout = useCallback(async () => {
     try {
       await axios.post('/api/auth/logout');
-    } catch (error) {
-      console.log('logout error:', error);
+    } catch (error: unknown) {
+      message.error('退出登录时发生错误');
     } finally {
       // 清除本地存储
       localStorage.removeItem('token');
@@ -158,8 +188,8 @@ export default function useAuthModel(): AuthModelState {
         localStorage.removeItem('refreshToken');
         setCurrentUser(null);
       }
-    } catch (error) {
-      console.log('checkAuth error:', error);
+    } catch (error: unknown) {
+      message.error('检查认证状态时发生错误');
       // 网络错误或其他异常，清除本地存储
       localStorage.removeItem('token');
       localStorage.removeItem('refreshToken');
@@ -170,7 +200,7 @@ export default function useAuthModel(): AuthModelState {
   }, []);
 
   // 更新个人信息
-  const updateProfile = useCallback(async (params: any) => {
+  const updateProfile = useCallback(async (params: UpdateProfileParams) => {
     try {
       const response = await axios.put('/api/me', params);
       const apiResponse = response.data as ApiResponse<User>;
@@ -189,14 +219,15 @@ export default function useAuthModel(): AuthModelState {
       } else {
         throw new Error(apiResponse.message || '更新失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '更新失败');
+    } catch (error: unknown) {
+      const apiError = error as ApiError;
+      message.error(apiError.message || '更新失败');
       throw error;
     }
   }, []);
 
   // 修改密码
-  const updatePassword = useCallback(async (params: any) => {
+  const updatePassword = useCallback(async (params: UpdatePasswordParams) => {
     try {
       const response = await axios.put('/api/me/password', params);
       const apiResponse = response.data as ApiResponse<void>;
@@ -207,8 +238,9 @@ export default function useAuthModel(): AuthModelState {
       } else {
         throw new Error(apiResponse.message || '密码修改失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '密码修改失败');
+    } catch (error: unknown) {
+      const apiError = error as ApiError;
+      message.error(apiError.message || '密码修改失败');
       throw error;
     }
   }, []);

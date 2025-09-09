@@ -1,5 +1,6 @@
-import { useModel } from '@/utils/umiMock.ts';
-import {
+import { useModel } from '@/utils/umiMock.js';
+import
+{
   LockOutlined,
   MailOutlined,
   SafetyCertificateOutlined,
@@ -11,7 +12,8 @@ import { useState } from 'react';
 import { useNavigate } from 'umi';
 import styles from './index.module.less';
 
-interface RegisterFormData {
+interface RegisterFormData
+{
   username: string;
   email: string;
   password: string;
@@ -19,81 +21,93 @@ interface RegisterFormData {
   nickname?: string;
 }
 
-const RegisterPage: React.FC = () => {
-  const [loading, setLoading] = useState(false);
-  const [countdown, setCountdown] = useState(0);
+const RegisterPage: React.FC = () =>
+{
+  const [ loading, setLoading ] = useState( false );
+  const [ countdown, setCountdown ] = useState( 0 );
 
-  const authModel = useModel('auth');
+  const authModel = useModel( 'auth' );
   const { register } = authModel;
   const navigate = useNavigate();
 
-  const handleRegister = async (values: RegisterFormData) => {
-    if (values.password !== values.confirmPassword) {
-      message.error('两次输入的密码不一致');
+  const handleRegister = async ( values: RegisterFormData ) =>
+  {
+    if ( values.password !== values.confirmPassword )
+    {
+      message.error( '两次输入的密码不一致' );
       return;
     }
 
-    setLoading(true);
-    try {
-      const result = await register?.(values);
-      if (result?.success) {
-        message.success('注册成功');
-        navigate('/auth/login');
-      } else {
-        message.error(result?.message || '注册失败');
+    setLoading( true );
+    try
+    {
+      const result = await register?.( values );
+      if ( result?.success )
+      {
+        message.success( '注册成功' );
+        navigate( '/auth/login' );
+      } else
+      {
+        message.error( '注册失败' );
       }
-    } catch (error: any) {
-      message.error(error.message || '注册失败');
-    } finally {
-      setLoading(false);
+    } catch ( error: unknown )
+    {
+      message.error( ( error as Error ).message || '注册失败' );
+    } finally
+    {
+      setLoading( false );
     }
   };
 
-  const handleGetCaptcha = () => {
-    if (countdown > 0) return;
+  const handleGetCaptcha = () =>
+  {
+    if ( countdown > 0 ) return;
 
     // 这里应该调用获取验证码的API
-    message.success('验证码已发送');
-    setCountdown(60);
+    message.success( '验证码已发送' );
+    setCountdown( 60 );
 
-    const timer = setInterval(() => {
-      setCountdown(prev => {
-        if (prev <= 1) {
-          clearInterval(timer);
+    const timer = setInterval( () =>
+    {
+      setCountdown( prev =>
+      {
+        if ( prev <= 1 )
+        {
+          clearInterval( timer );
           return 0;
         }
         return prev - 1;
-      });
-    }, 1000);
+      } );
+    }, 1000 );
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.registerForm}>
-        <div className={styles.logo}>
+    <div className={ styles.container }>
+      <div className={ styles.registerForm }>
+        <div className={ styles.logo }>
           <img src="/logo.png" alt="Logo" />
           <h1>UG管理系统</h1>
         </div>
 
         <Tabs
-          items={[
+          items={ [
             {
               key: 'register',
               label: '用户注册',
             },
-          ]}
+          ] }
         >
-          <Form name="register" onFinish={handleRegister}>
+          <Form name="register" onFinish={ handleRegister }>
             <Form.Item
               name="username"
-              rules={[
+              rules={ [
                 { required: true, message: '请输入用户名!' },
                 { min: 3, message: '用户名至少3个字符' },
                 { max: 20, message: '用户名最多20个字符' },
-              ]}
+              ] }
             >
               <Input
-                prefix={<UserOutlined />}
+                prefix={ <UserOutlined /> }
                 placeholder="用户名"
                 size="large"
               />
@@ -101,13 +115,13 @@ const RegisterPage: React.FC = () => {
 
             <Form.Item
               name="email"
-              rules={[
+              rules={ [
                 { required: true, message: '请输入邮箱!' },
                 { type: 'email', message: '请输入有效的邮箱地址!' },
-              ]}
+              ] }
             >
               <Input
-                prefix={<MailOutlined />}
+                prefix={ <MailOutlined /> }
                 placeholder="邮箱"
                 size="large"
               />
@@ -115,13 +129,13 @@ const RegisterPage: React.FC = () => {
 
             <Form.Item
               name="password"
-              rules={[
+              rules={ [
                 { required: true, message: '请输入密码!' },
                 { min: 6, message: '密码至少6个字符' },
-              ]}
+              ] }
             >
               <Input
-                prefix={<LockOutlined />}
+                prefix={ <LockOutlined /> }
                 type="password"
                 placeholder="密码"
                 size="large"
@@ -130,13 +144,13 @@ const RegisterPage: React.FC = () => {
 
             <Form.Item
               name="confirmPassword"
-              rules={[
+              rules={ [
                 { required: true, message: '请确认密码!' },
                 { min: 6, message: '密码至少6个字符' },
-              ]}
+              ] }
             >
               <Input
-                prefix={<LockOutlined />}
+                prefix={ <LockOutlined /> }
                 type="password"
                 placeholder="确认密码"
                 size="large"
@@ -145,20 +159,20 @@ const RegisterPage: React.FC = () => {
 
             <Form.Item
               name="captcha"
-              rules={[{ required: true, message: '请输入验证码!' }]}
+              rules={ [ { required: true, message: '请输入验证码!' } ] }
             >
-              <div className={styles.captchaInput}>
+              <div className={ styles.captchaInput }>
                 <Input
-                  prefix={<SafetyCertificateOutlined />}
+                  prefix={ <SafetyCertificateOutlined /> }
                   placeholder="验证码"
                   size="large"
                 />
                 <Button
-                  onClick={handleGetCaptcha}
-                  disabled={countdown > 0}
+                  onClick={ handleGetCaptcha }
+                  disabled={ countdown > 0 }
                   size="large"
                 >
-                  {countdown > 0 ? `${countdown}秒后重新获取` : '获取验证码'}
+                  { countdown > 0 ? `${ countdown }秒后重新获取` : '获取验证码' }
                 </Button>
               </div>
             </Form.Item>
@@ -167,7 +181,7 @@ const RegisterPage: React.FC = () => {
               <Button
                 type="primary"
                 htmlType="submit"
-                loading={loading}
+                loading={ loading }
                 size="large"
                 block
               >

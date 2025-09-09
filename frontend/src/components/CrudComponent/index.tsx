@@ -4,18 +4,94 @@ import type {
   FormConfig,
   PaginationParams,
   TableConfig,
-} from '../../types/index.ts';
-import DynamicForm, { type DynamicFormRef } from '../DynamicForm/index.tsx';
-import DynamicTable from '../DynamicTable/index.tsx';
+} from '../../types/index.js';
+import DynamicForm, { type DynamicFormRef } from '../DynamicForm/index.js';
+import DynamicTable from '../DynamicTable/index.js';
+
+// 定义通用API响应格式
+interface ApiResponse<T = unknown> {
+  success: boolean;
+  message: string;
+  data: T;
+}
+
+// 定义分页数据格式
+interface PaginationData<T> {
+  list: T[];
+  pagination: {
+    current: number;
+    pageSize: number;
+    total: number;
+  };
+}
+
+// 定义搜索字段选项
+interface SearchFieldOption {
+  label: string;
+  value: string | number;
+}
+
+// 定义搜索字段
+interface SearchField {
+  name: string;
+  label: string;
+  type: 'input' | 'select' | 'date' | 'dateRange';
+  props?: {
+    placeholder?: string;
+    allowClear?: boolean;
+    options?: SearchFieldOption[];
+  };
+}
+
+// 定义baseFilter类型来替换any
+interface BaseFilter {
+  key: string;
+  label: string;
+  type: 'select' | 'date' | 'dateRange';
+  options?: SearchFieldOption[];
+  placeholder?: string;
+}
+
+// 定义API接口
+interface CrudApi<T> {
+  list: (params: PaginationParams) => Promise<ApiResponse<PaginationData<T>>>;
+  create: (data: Partial<T>) => Promise<ApiResponse<T>>;
+  update: (id: string, data: Partial<T>) => Promise<ApiResponse<T>>;
+  delete: (id: string) => Promise<ApiResponse<void>>;
+  detail?: (id: string) => Promise<ApiResponse<T>>;
+}
+
+// 定义权限配置
+interface PermissionsConfig {
+  view?: string;
+  create?: string;
+  update?: string;
+  delete?: string;
+}
+
+// 定义自定义操作处理函数
+type CustomActionHandler<T> = (action: string, record: T) => void;
+
+// 定义数据预处理函数
+type DataPreprocessor<T> = (
+  values: Partial<T>,
+  mode: 'create' | 'edit'
+) => Partial<T>;
+type DataPostprocessor<T> = (
+  values: Partial<T>,
+  mode: 'create' | 'edit'
+) => void;
 
 // 导出类型供其他组件使用，便于类型检查和复用
 export type {
   FormConfig,
   PaginationParams,
   TableConfig,
-} from '../../types/index.ts';
+} from '../../types/index.js';
 
-interface CrudComponentProps {
+interface CrudComponentProps<
+  T extends Record<string, unknown> = Record<string, unknown>,
+> {
   // 标题
   title: string;
 
@@ -27,50 +103,35 @@ interface CrudComponentProps {
 
   // 搜索配置
   searchConfig?: {
-    fields: Array<{
-      name: string;
-      label: string;
-      type: 'input' | 'select' | 'date' | 'dateRange';
-      props?: {
-        placeholder?: string;
-        allowClear?: boolean;
-        options?: Array<{ label: string; value: any }>;
-      };
-    }>;
+    fields: SearchField[];
   };
 
   // API接口
-  api: {
-    list: (params: PaginationParams) => Promise<any>;
-    create: (data: any) => Promise<any>;
-    update: (id: string, data: any) => Promise<any>;
-    delete: (id: string) => Promise<any>;
-    detail?: (id: string) => Promise<any>;
-  };
+  api: CrudApi<T>;
 
   // 权限配置
-  permissions?: {
-    view?: string;
-    create?: string;
-    update?: string;
-    delete?: string;
-  };
+  permissions?: PermissionsConfig;
 
   // 权限检查函数
   hasPermission?: (permission: string) => boolean;
 
   // 自定义处理
-  onCustomAction?: (action: string, record: any) => void;
+  onCustomAction?: CustomActionHandler<T>;
 
   // 数据预处理
-  beforeSubmit?: (values: any, mode: 'create' | 'edit') => any;
-  afterSubmit?: (values: any, mode: 'create' | 'edit') => void;
+  beforeSubmit?: DataPreprocessor<T>;
+  afterSubmit?: DataPostprocessor<T>;
 
   // 额外操作按钮
   extraActions?: React.ReactNode;
 }
 
-const CrudComponent = (props: CrudComponentProps) => {
+// 定义具有ID的记录类型
+type RecordWithId<T> = T & { id: string };
+
+const CrudComponent = <T extends Record<string, unknown>>(
+  props: CrudComponentProps<T>
+) => {
   const {
     title,
     tableConfig,
@@ -85,7 +146,7 @@ const CrudComponent = (props: CrudComponentProps) => {
     extraActions,
   } = props;
 
-  const [dataSource, setDataSource] = useState<any[]>([]);
+  const [dataSource, setDataSource] = useState<T[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [pagination, setPagination] = useState<{
     current: number;
@@ -103,7 +164,7 @@ const CrudComponent = (props: CrudComponentProps) => {
   const [modalMode, setModalMode] = useState<'create' | 'edit' | 'view'>(
     'create'
   );
-  const [currentRecord, setCurrentRecord] = useState<any>(null);
+  const [currentRecord, setCurrentRecord] = useState<T | null>(null);
 
   const formRef = useRef<DynamicFormRef | null>(null);
 
@@ -131,8 +192,9 @@ const CrudComponent = (props: CrudComponentProps) => {
       } else {
         message.error(response.message || '获取数据失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '获取数据失败');
+    } catch (error: unknown) {
+      const apiError = error as Error;
+      message.error(apiError.message || '获取数据失败');
     } finally {
       setLoading(false);
     }
@@ -169,7 +231,7 @@ const CrudComponent = (props: CrudComponentProps) => {
   };
 
   // 查看
-  const handleView = async (record: any) => {
+  const handleView = async (record: RecordWithId<T>) => {
     if (api.detail) {
       try {
         const response = await api.detail(record.id);
@@ -190,7 +252,7 @@ const CrudComponent = (props: CrudComponentProps) => {
   };
 
   // 编辑
-  const handleEdit = async (record: any) => {
+  const handleEdit = async (record: RecordWithId<T>) => {
     if (api.detail) {
       try {
         const response = await api.detail(record.id);
@@ -211,7 +273,7 @@ const CrudComponent = (props: CrudComponentProps) => {
   };
 
   // 删除
-  const handleDelete = async (record: any) => {
+  const handleDelete = async (record: RecordWithId<T>) => {
     try {
       const response = await api.delete(record.id);
       if (response.success) {
@@ -220,32 +282,36 @@ const CrudComponent = (props: CrudComponentProps) => {
       } else {
         message.error(response.message || '删除失败');
       }
-    } catch (error: any) {
-      message.error(error.message || '删除失败');
+    } catch (error: unknown) {
+      const apiError = error as Error;
+      message.error(apiError.message || '删除失败');
     }
   };
 
   // 自定义操作
-  const handleCustomAction = (action: string, record: any) => {
+  const handleCustomAction = (action: string, record: T) => {
     if (onCustomAction) {
       onCustomAction(action, record);
     }
   };
 
   // 表单提交
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = async (values: Record<string, unknown>) => {
     try {
       // 数据预处理
       const processedValues =
         beforeSubmit && modalMode !== 'view'
-          ? beforeSubmit(values, modalMode)
-          : values;
+          ? beforeSubmit(values as Partial<T>, modalMode)
+          : (values as Partial<T>);
 
-      let response;
+      let response: ApiResponse<T> | undefined;
       if (modalMode === 'create') {
         response = await api.create(processedValues);
-      } else if (modalMode === 'edit') {
-        response = await api.update(currentRecord.id, processedValues);
+      } else if (modalMode === 'edit' && currentRecord) {
+        response = await api.update(
+          (currentRecord as RecordWithId<T>).id,
+          processedValues
+        );
       }
 
       if (response && response.success) {
@@ -254,13 +320,14 @@ const CrudComponent = (props: CrudComponentProps) => {
 
         // 后续处理
         if (afterSubmit && modalMode !== 'view') {
-          afterSubmit(values, modalMode);
+          afterSubmit(values as Partial<T>, modalMode);
         }
       } else {
         throw new Error(response?.message || '操作失败');
       }
-    } catch (error: any) {
-      throw error; // 让DynamicForm处理错误显示
+    } catch (error: unknown) {
+      const apiError = error as Error;
+      throw apiError; // 让DynamicForm处理错误显示
     }
   };
 
@@ -286,7 +353,7 @@ const CrudComponent = (props: CrudComponentProps) => {
                 },
                 filters: searchConfig.fields.map(field => {
                   // 创建一个符合 DynamicTable 期望类型的对象
-                  const baseFilter = {
+                  const baseFilter: BaseFilter = {
                     key: field.name,
                     label: field.label,
                     type: field.type as 'select' | 'date' | 'dateRange',
@@ -294,11 +361,11 @@ const CrudComponent = (props: CrudComponentProps) => {
 
                   // 根据是否有 options 和 placeholder 添加可选属性
                   if (field.props?.options) {
-                    (baseFilter as any).options = field.props.options;
+                    baseFilter.options = field.props.options;
                   }
 
                   if (field.props?.placeholder) {
-                    (baseFilter as any).placeholder = field.props.placeholder;
+                    baseFilter.placeholder = field.props.placeholder;
                   }
 
                   return baseFilter;
@@ -338,7 +405,11 @@ const CrudComponent = (props: CrudComponentProps) => {
         <DynamicForm
           ref={formRef}
           config={formConfig}
-          initialValues={currentRecord}
+          initialValues={
+            currentRecord
+              ? (currentRecord as Record<string, unknown>)
+              : ({} as Record<string, unknown>)
+          }
           mode={modalMode}
           onSubmit={handleSubmit}
           onCancel={handleCancel}
