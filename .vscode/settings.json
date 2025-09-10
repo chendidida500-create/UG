@@ -4,7 +4,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "typescript.preferences.includePackageJsonAutoImports": "on",
+  "typescript.preferences.includePackageJsonAutoImports": "off",
   "typescript.suggest.autoImports": true,
   "javascript.suggest.autoImports": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -32,15 +32,10 @@
   "files.trimTrailingWhitespace": true,
   // 确保换行符为 LF
   "files.eol": "\n",
-  // 忽略特定的 TypeScript 错误
-  "typescript.preferences.includePackageJsonAutoImports": "off",
   // 配置问题忽略
   "files.exclude": {
     "**/node_modules": true,
     "**/dist": true
   },
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/dist": true
-  }
+  "search.exclude": {}
 }

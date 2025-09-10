@@ -150,6 +150,12 @@
       "type": "shell",
       "command": "${workspaceFolder}/scripts/ignore-all-dependency-errors.cmd",
       "group": "build"
+    },
+    {
+      "label": "修复Qoder diff apply问题",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/fix-qoder-diff-apply.cmd",
+      "group": "build"
     }
   ]
 }
