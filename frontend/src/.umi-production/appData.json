@@ -1,5 +1,5 @@
 {
-  "cwd": "E:\\YSY\\UG\\frontend",
+  "cwd": "e:\\YSY\\UG\\frontend",
   "pkg": {
     "name": "ug-frontend",
     "version": "1.0.0",
@@ -43,18 +43,18 @@
       "typescript": "^5.9.2"
     }
   },
-  "pkgPath": "E:\\YSY\\UG\\frontend\\package.json",
+  "pkgPath": "e:\\YSY\\UG\\frontend\\package.json",
   "plugins": {
     "@umijs/core/dist/service/servicePlugin": {
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "preset",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+core@4.4.12/node_modules/@umijs/core/dist/service/servicePlugin.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/core/dist/service/servicePlugin",
       "key": "servicePlugin"
     },
@@ -62,12 +62,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 82
+        "register": 87
       },
       "enableBy": "register",
       "type": "preset",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/index.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi",
       "key": "umi"
     },
@@ -80,7 +80,7 @@
       "enableBy": "register",
       "type": "preset",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+max@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_dva@2.5.0-b_kg545e67woene2pr3d2docwlum/node_modules/@umijs/max/dist/preset.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/max/dist/preset",
       "key": "preset"
     },
@@ -89,15 +89,15 @@
       "time": {
         "hooks": {
           "onStart": [
-            30
+            32
           ]
         },
-        "register": 22
+        "register": 16
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/registerMethods.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/registerMethods",
       "key": "registerMethods"
     },
@@ -109,12 +109,12 @@
             5
           ]
         },
-        "register": 7
+        "register": 8
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+did-you-know@1.0.4/node_modules/@umijs/did-you-know/dist/plugin.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/did-you-know",
       "key": "umijsDidYouKnow"
     },
@@ -126,12 +126,12 @@
             0
           ]
         },
-        "register": 3
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/404/404.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/404/404",
       "key": "404"
     },
@@ -139,12 +139,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 8
+        "register": 4
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/aiDev/aiDev.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/aiDev/aiDev",
       "key": "aiDev"
     },
@@ -153,15 +153,15 @@
       "time": {
         "hooks": {
           "modifyAppData": [
-            21
+            50
           ]
         },
-        "register": 60
+        "register": 65
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/appData/appData.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/appData/appData",
       "key": "appData"
     },
@@ -174,7 +174,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/appData/umiInfo.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/appData/umiInfo",
       "key": "umiInfo"
     },
@@ -186,15 +186,15 @@
             0
           ],
           "onCheck": [
-            1
+            0
           ]
         },
-        "register": 4
+        "register": 5
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/check/check.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/check/check",
       "key": "check"
     },
@@ -211,7 +211,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/check/babel722.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/check/babel722",
       "key": "babel722"
     },
@@ -224,7 +224,7 @@
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/codeSplitting/codeSplitting.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/codeSplitting/codeSplitting",
       "key": "codeSplitting"
     },
@@ -236,12 +236,12 @@
             0
           ]
         },
-        "register": 41
+        "register": 59
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/configPlugins/configPlugins.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/configPlugins/configPlugins",
       "key": "configPlugins"
     },
@@ -1088,12 +1088,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/crossorigin/crossorigin.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/crossorigin/crossorigin",
       "key": "crossorigin"
     },
@@ -1110,7 +1110,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/depsOnDemand/depsOnDemand.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/depsOnDemand/depsOnDemand",
       "key": "depsOnDemand"
     },
@@ -1118,12 +1118,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 7
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/devTool/devTool.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/devTool/devTool",
       "key": "devTool"
     },
@@ -1131,12 +1131,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 155
+        "register": 229
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/esbuildHelperChecker/esbuildHelperChecker.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/esbuildHelperChecker/esbuildHelperChecker",
       "key": "esbuildHelperChecker"
     },
@@ -1144,12 +1144,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 433
+        "register": 415
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/esmi/esmi.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/esmi/esmi",
       "key": "esmi"
     },
@@ -1157,12 +1157,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 52
+        "register": 48
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/exportStatic/exportStatic.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/exportStatic/exportStatic",
       "key": "exportStatic"
     },
@@ -1171,15 +1171,15 @@
       "time": {
         "hooks": {
           "modifyAppData": [
-            1
+            0
           ]
         },
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/favicons/favicons.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/favicons/favicons",
       "key": "favicons"
     },
@@ -1187,12 +1187,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 7
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/helmet/helmet.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/helmet/helmet",
       "key": "helmet"
     },
@@ -1200,12 +1200,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 9
+        "register": 8
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/icons/icons.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/icons/icons",
       "key": "icons"
     },
@@ -1217,7 +1217,7 @@
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/mock/mock.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/mock/mock",
       "key": "mock"
     },
@@ -1225,12 +1225,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 5
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/mpa/mpa.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/mpa/mpa",
       "key": "mpa"
     },
@@ -1242,7 +1242,7 @@
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/okam/okam.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/okam/okam",
       "key": "okam"
     },
@@ -1255,7 +1255,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/overrides/overrides.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/overrides/overrides",
       "key": "overrides"
     },
@@ -1268,7 +1268,7 @@
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/phantomDependency/phantomDependency.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/phantomDependency/phantomDependency",
       "key": "phantomDependency"
     },
@@ -1277,14 +1277,14 @@
       "time": {
         "hooks": {
           "modifyConfig": [
-            3
+            4
           ]
         },
-        "register": 9
+        "register": 10
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/polyfill/polyfill.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/polyfill/polyfill",
       "key": "polyfill"
     },
@@ -1297,7 +1297,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/polyfill/publicPathPolyfill.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/polyfill/publicPathPolyfill",
       "key": "publicPathPolyfill"
     },
@@ -1305,12 +1305,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 9
+        "register": 8
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/prepare/prepare.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/prepare/prepare",
       "key": "prepare"
     },
@@ -1323,7 +1323,7 @@
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/routePrefetch/routePrefetch.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/routePrefetch/routePrefetch",
       "key": "routePrefetch"
     },
@@ -1336,7 +1336,7 @@
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/stagewise/stagewise.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/stagewise/stagewise",
       "key": "stagewise"
     },
@@ -1344,12 +1344,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 6
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/terminal/terminal.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/terminal/terminal",
       "key": "terminal"
     },
@@ -1357,12 +1357,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 19
+        "register": 20
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/tmpFiles/tmpFiles.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/tmpFiles/tmpFiles",
       "key": "tmpFiles"
     },
@@ -1370,12 +1370,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 7
+        "register": 6
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/clientLoader/clientLoader.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/clientLoader/clientLoader",
       "key": "clientLoader"
     },
@@ -1387,7 +1387,7 @@
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/routeProps/routeProps.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/routeProps/routeProps",
       "key": "routeProps"
     },
@@ -1395,12 +1395,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 11
+        "register": 13
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/ssr/ssr.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/ssr/ssr",
       "key": "ssr"
     },
@@ -1413,7 +1413,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/tmpFiles/configTypes.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/tmpFiles/configTypes",
       "key": "configTypes"
     },
@@ -1426,7 +1426,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/transform/transform.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/transform/transform",
       "key": "transform"
     },
@@ -1434,12 +1434,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 8
+        "register": 10
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/lowImport/lowImport.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/lowImport/lowImport",
       "key": "lowImport"
     },
@@ -1447,12 +1447,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 3
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/vite/vite.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/vite/vite",
       "key": "vite"
     },
@@ -1460,11 +1460,11 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 26
+        "register": 28
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/apiRoute/apiRoute.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/apiRoute/apiRoute",
       "key": "apiRoute"
     },
@@ -1472,12 +1472,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 52
+        "register": 57
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/monorepo/redirect.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/monorepo/redirect",
       "key": "monorepoRedirect"
     },
@@ -1485,11 +1485,11 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 7
+        "register": 4
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/test/test.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/test/test",
       "key": "test"
     },
@@ -1501,7 +1501,7 @@
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/clickToComponent/clickToComponent.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/clickToComponent/clickToComponent",
       "key": "clickToComponent"
     },
@@ -1509,12 +1509,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 6
+        "register": 11
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/legacy/legacy.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/legacy/legacy",
       "key": "legacy"
     },
@@ -1522,12 +1522,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/classPropertiesLoose/classPropertiesLoose.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/classPropertiesLoose/classPropertiesLoose",
       "key": "classPropertiesLoose"
     },
@@ -1535,11 +1535,11 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 3
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/webpack/webpack.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/webpack/webpack",
       "key": "preset-umi:webpack"
     },
@@ -1556,7 +1556,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/swc/swc.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/swc/swc",
       "key": "swc"
     },
@@ -1564,11 +1564,11 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 11
+        "register": 14
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/ui/ui.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/ui/ui",
       "key": "ui"
     },
@@ -1576,12 +1576,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/mako/mako.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/mako/mako",
       "key": "mako"
     },
@@ -1589,11 +1589,11 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 8
+        "register": 12
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/hmrGuardian/hmrGuardian.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/hmrGuardian/hmrGuardian",
       "key": "hmrGuardian"
     },
@@ -1601,11 +1601,11 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 8
+        "register": 6
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/routePreloadOnLoad/routePreloadOnLoad.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/routePreloadOnLoad/routePreloadOnLoad",
       "key": "routePreloadOnLoad"
     },
@@ -1613,12 +1613,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 6
+        "register": 8
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/forget/forget.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/forget/forget",
       "key": "forget"
     },
@@ -1626,12 +1626,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 6
+        "register": 5
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/bundler/bundler.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/features/bundler/bundler",
       "key": "preset-umi:bundler"
     },
@@ -1639,12 +1639,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 22
+        "register": 26
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/build.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/build",
       "key": "build"
     },
@@ -1652,12 +1652,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 99
+        "register": 104
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/config/config.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/config/config",
       "key": "config"
     },
@@ -1665,11 +1665,11 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 171
+        "register": 206
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/dev/dev.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/dev/dev",
       "key": "dev"
     },
@@ -1677,12 +1677,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/help.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/help",
       "key": "help"
     },
@@ -1690,12 +1690,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/lint.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/lint",
       "key": "lint"
     },
@@ -1703,12 +1703,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/setup.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/setup",
       "key": "setup"
     },
@@ -1721,7 +1721,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/deadcode.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/deadcode",
       "key": "deadcode"
     },
@@ -1734,7 +1734,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/version.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/version",
       "key": "version"
     },
@@ -1747,7 +1747,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/generators/page.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/generators/page",
       "key": "generator:page"
     },
@@ -1755,12 +1755,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/generators/prettier.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/generators/prettier",
       "key": "generator:prettier"
     },
@@ -1773,7 +1773,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/generators/tsconfig.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/generators/tsconfig",
       "key": "generator:tsconfig"
     },
@@ -1781,12 +1781,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/generators/jest.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/generators/jest",
       "key": "generator:jest"
     },
@@ -1799,7 +1799,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/generators/tailwindcss.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/generators/tailwindcss",
       "key": "generator:tailwindcss"
     },
@@ -1812,7 +1812,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/generators/dva.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/generators/dva",
       "key": "generator:dva"
     },
@@ -1820,12 +1820,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/generators/component.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/generators/component",
       "key": "generator:component"
     },
@@ -1833,12 +1833,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 4
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/generators/mock.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/generators/mock",
       "key": "generator:mock"
     },
@@ -1846,12 +1846,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/generators/cypress.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/generators/cypress",
       "key": "generator:cypress"
     },
@@ -1864,7 +1864,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/generators/api.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/generators/api",
       "key": "generator:api"
     },
@@ -1877,7 +1877,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/generators/precommit.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/generators/precommit",
       "key": "generator:precommit"
     },
@@ -1890,7 +1890,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/plugin.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/plugin",
       "key": "command:plugin"
     },
@@ -1903,7 +1903,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/verify-commit.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/verify-commit",
       "key": "verifyCommit"
     },
@@ -1911,12 +1911,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 65
+        "register": 70
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/preview.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/preview",
       "key": "preview"
     },
@@ -1924,12 +1924,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 5
+        "register": 7
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/mfsu/mfsu.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/preset-umi/dist/commands/mfsu/mfsu",
       "key": "mfsu-cli"
     },
@@ -1937,12 +1937,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 18
+        "register": 22
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugin-run@4.4.12/node_modules/@umijs/plugin-run/dist/index.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugin-run",
       "key": "run"
     },
@@ -1955,7 +1955,7 @@
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/access.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/access",
       "key": "access"
     },
@@ -1965,11 +1965,11 @@
       },
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/analytics.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/analytics",
       "key": "analytics"
     },
@@ -1984,11 +1984,11 @@
             0
           ]
         },
-        "register": 16
+        "register": 20
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/antd.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/antd",
       "key": "antd"
     },
@@ -1996,12 +1996,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 24
+        "register": 27
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/dva.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/dva",
       "key": "dva"
     },
@@ -2014,7 +2014,7 @@
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/initial-state.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/initial-state",
       "key": "initialState"
     },
@@ -2024,12 +2024,12 @@
       },
       "time": {
         "hooks": {},
-        "register": 10
+        "register": 12
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/layout.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/layout",
       "key": "layout"
     },
@@ -2037,12 +2037,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 9
+        "register": 12
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/locale.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/locale",
       "key": "locale"
     },
@@ -2050,12 +2050,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 7
+        "register": 5
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/mf.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/mf",
       "key": "mf"
     },
@@ -2063,12 +2063,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 3
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/model.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/model",
       "key": "model"
     },
@@ -2081,7 +2081,7 @@
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/moment2dayjs.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/moment2dayjs",
       "key": "moment2dayjs"
     },
@@ -2089,12 +2089,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 5
+        "register": 7
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/qiankun.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/qiankun",
       "key": "qiankun"
     },
@@ -2106,7 +2106,7 @@
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/qiankun/master.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/qiankun/master",
       "key": "qiankun-master"
     },
@@ -2118,7 +2118,7 @@
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/qiankun/slave.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/qiankun/slave",
       "key": "qiankun-slave"
     },
@@ -2131,7 +2131,7 @@
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/react-query.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/react-query",
       "key": "reactQuery"
     },
@@ -2139,12 +2139,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/request.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/request",
       "key": "request"
     },
@@ -2157,7 +2157,7 @@
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/styled-components.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/styled-components",
       "key": "styledComponents"
     },
@@ -2170,7 +2170,7 @@
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/tailwindcss.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/tailwindcss",
       "key": "tailwindcss"
     },
@@ -2178,12 +2178,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 3
       },
       "enableBy": "config",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/valtio.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/plugins/dist/valtio",
       "key": "valtio"
     },
@@ -2200,7 +2200,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+max@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_dva@2.5.0-b_kg545e67woene2pr3d2docwlum/node_modules/@umijs/max/dist/plugins/maxAlias.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/max/dist/plugins/maxAlias",
       "key": "maxAlias"
     },
@@ -2217,7 +2217,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+max@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_dva@2.5.0-b_kg545e67woene2pr3d2docwlum/node_modules/@umijs/max/dist/plugins/maxAppData.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/max/dist/plugins/maxAppData",
       "key": "maxAppData"
     },
@@ -2234,7 +2234,7 @@
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+max@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_dva@2.5.0-b_kg545e67woene2pr3d2docwlum/node_modules/@umijs/max/dist/plugins/maxChecker.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/max/dist/plugins/maxChecker",
       "key": "maxChecker"
     },
@@ -2242,12 +2242,12 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 3
       },
       "enableBy": "register",
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+core@4.4.12/node_modules/@umijs/core/dist/service/generatePlugin.js",
-      "cwd": "E:\\YSY\\UG\\frontend",
+      "cwd": "e:\\YSY\\UG\\frontend",
       "id": "@umijs/core/dist/service/generatePlugin",
       "key": "generatePlugin"
     }
@@ -2259,15 +2259,65 @@
   },
   "userConfig": {
     "mfsu": false,
+    "metas": [
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1"
+      }
+    ],
+    "styles": [
+      "@/styles/global.css"
+    ],
     "routes": [
       {
-        "path": "/",
-        "redirect": "/dashboard"
+        "path": "/auth",
+        "component": "@/layouts/AuthLayout",
+        "routes": [
+          {
+            "path": "/auth/login",
+            "component": "@/pages/Auth/Login"
+          },
+          {
+            "path": "/auth/register",
+            "component": "@/pages/Auth/Register"
+          }
+        ]
       },
       {
-        "name": "仪表盘",
-        "path": "/dashboard",
-        "component": "./Dashboard"
+        "path": "/",
+        "component": "@/layouts/BasicLayout",
+        "wrappers": [
+          "@/wrappers/AuthWrapper"
+        ],
+        "routes": [
+          {
+            "path": "/dashboard",
+            "name": "仪表盘",
+            "icon": "DashboardOutlined",
+            "component": "@/pages/Dashboard"
+          },
+          {
+            "path": "/system",
+            "name": "系统管理",
+            "routes": [
+              {
+                "path": "/system/users",
+                "name": "用户管理",
+                "component": "@/pages/System/User"
+              },
+              {
+                "path": "/system/roles",
+                "name": "角色管理",
+                "component": "@/pages/System/Role"
+              },
+              {
+                "path": "/system/permissions",
+                "name": "权限管理",
+                "component": "@/pages/System/Permission"
+              }
+            ]
+          }
+        ]
       }
     ],
     "antd": {},
@@ -2276,19 +2326,22 @@
     "request": {},
     "proxy": {
       "/api": {
-        "target": "http://localhost:7001",
+        "target": "http://localhost:15001",
         "changeOrigin": true,
         "pathRewrite": {
           "^/api": "/api"
         }
       }
     },
-    "define": {
-      "process.env.API_BASE_URL": "\"http://localhost:7001\""
+    "analyze": {
+      "analyzerMode": "static",
+      "openAnalyzer": false,
+      "generateStatsFile": true,
+      "statsFilename": "stats.json"
     },
     "npmClient": "pnpm"
   },
-  "mainConfigFile": "E:\\YSY\\UG\\frontend\\.umirc.ts",
+  "mainConfigFile": "e:\\YSY\\UG\\frontend\\.umirc.ts",
   "config": {
     "routeLoader": {
       "moduleType": "esm"
@@ -2310,21 +2363,71 @@
       "react-dom": "E:\\YSY\\UG\\node_modules\\.pnpm\\react-dom@18.3.1_react@18.3.1\\node_modules\\react-dom",
       "react-router": "E:\\YSY\\UG\\node_modules\\.pnpm\\react-router@6.3.0_react@18.3.1\\node_modules\\react-router",
       "react-router-dom": "E:\\YSY\\UG\\node_modules\\.pnpm\\react-router-dom@6.3.0_react-dom@18.3.1_react@18.3.1\\node_modules\\react-router-dom",
-      "@": "E:/YSY/UG/frontend/src",
-      "@@": "E:/YSY/UG/frontend/src/.umi-production",
+      "@": "e:/YSY/UG/frontend/src",
+      "@@": "e:/YSY/UG/frontend/src/.umi-production",
       "regenerator-runtime": "E:\\YSY\\UG\\node_modules\\.pnpm\\regenerator-runtime@0.13.11\\node_modules\\regenerator-runtime",
-      "antd": "E:\\YSY\\UG\\frontend\\node_modules\\antd",
+      "antd": "e:\\YSY\\UG\\frontend\\node_modules\\antd",
       "@umijs/max": "@@/exports"
     },
+    "metas": [
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1"
+      }
+    ],
+    "styles": [
+      "@/styles/global.css"
+    ],
     "routes": [
       {
-        "path": "/",
-        "redirect": "/dashboard"
+        "path": "/auth",
+        "component": "@/layouts/AuthLayout",
+        "routes": [
+          {
+            "path": "/auth/login",
+            "component": "@/pages/Auth/Login"
+          },
+          {
+            "path": "/auth/register",
+            "component": "@/pages/Auth/Register"
+          }
+        ]
       },
       {
-        "name": "仪表盘",
-        "path": "/dashboard",
-        "component": "./Dashboard"
+        "path": "/",
+        "component": "@/layouts/BasicLayout",
+        "wrappers": [
+          "@/wrappers/AuthWrapper"
+        ],
+        "routes": [
+          {
+            "path": "/dashboard",
+            "name": "仪表盘",
+            "icon": "DashboardOutlined",
+            "component": "@/pages/Dashboard"
+          },
+          {
+            "path": "/system",
+            "name": "系统管理",
+            "routes": [
+              {
+                "path": "/system/users",
+                "name": "用户管理",
+                "component": "@/pages/System/User"
+              },
+              {
+                "path": "/system/roles",
+                "name": "角色管理",
+                "component": "@/pages/System/Role"
+              },
+              {
+                "path": "/system/permissions",
+                "name": "权限管理",
+                "component": "@/pages/System/Permission"
+              }
+            ]
+          }
+        ]
       }
     ],
     "antd": {},
@@ -2333,15 +2436,18 @@
     "request": {},
     "proxy": {
       "/api": {
-        "target": "http://localhost:7001",
+        "target": "http://localhost:15001",
         "changeOrigin": true,
         "pathRewrite": {
           "^/api": "/api"
         }
       }
     },
-    "define": {
-      "process.env.API_BASE_URL": "\"http://localhost:7001\""
+    "analyze": {
+      "analyzerMode": "static",
+      "openAnalyzer": false,
+      "generateStatsFile": true,
+      "statsFilename": "stats.json"
     },
     "npmClient": "pnpm",
     "targets": {
@@ -3263,20 +3369,106 @@
   },
   "routes": {
     "1": {
-      "path": "/",
-      "redirect": "/dashboard",
+      "path": "/auth",
+      "file": "@/layouts/AuthLayout/index.tsx",
       "id": "1",
-      "absPath": "/"
+      "absPath": "/auth",
+      "__content": "import React from 'react';\nimport { Layout, Card } from 'antd';\nimport styles from './styles.less';\n\nconst { Content } = Layout;\n\ninterface AuthLayoutProps {\n  children: React.ReactNode;\n}\n\nconst AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {\n  return (\n    <Layout className={styles.layout}>\n      <Content className={styles.content}>\n        <div className={styles.container}>\n          <div className={styles.logo}>\n            <img src=\"/logo.png\" alt=\"系统Logo\" />\n            <h1>UG管理系统</h1>\n          </div>\n          <Card className={styles.card}>{children}</Card>\n        </div>\n      </Content>\n    </Layout>\n  );\n};\n\nexport default AuthLayout;\n",
+      "__isJSFile": true,
+      "__absFile": "e:/YSY/UG/frontend/src/layouts/AuthLayout/index.tsx"
     },
     "2": {
-      "name": "仪表盘",
-      "path": "/dashboard",
-      "file": "@/pages/Dashboard.tsx",
+      "path": "/auth/login",
+      "file": "@/pages/Auth/Login.tsx",
+      "parentId": "1",
       "id": "2",
+      "absPath": "/auth/login",
+      "__content": "import React from 'react';\nimport { Card, Form, Input, Button, Checkbox, Space } from 'antd';\nimport { UserOutlined, LockOutlined } from '@ant-design/icons';\nimport styles from './Login.module.css';\n\ninterface LoginFormValues {\n  username: string;\n  password: string;\n  remember: boolean;\n}\n\nconst Login: React.FC = () => {\n  const onFinish = (values: LoginFormValues) => {\n    // 在实际应用中，这里应该调用登录API\n    // 临时使用console.log来显示表单值\n    /* eslint-disable no-console */\n    console.log('Received values of form: ', values);\n    /* eslint-enable no-console */\n  };\n\n  return (\n    <Card title=\"用户登录\" className={styles.loginCard}>\n      <Form\n        name=\"normal_login\"\n        className={styles.loginForm}\n        initialValues={{ remember: true }}\n        onFinish={onFinish}\n      >\n        <Form.Item\n          name=\"username\"\n          rules={[{ required: true, message: '请输入用户名!' }]}\n        >\n          <Input\n            prefix={<UserOutlined className=\"site-form-item-icon\" />}\n            placeholder=\"用户名\"\n          />\n        </Form.Item>\n        <Form.Item\n          name=\"password\"\n          rules={[{ required: true, message: '请输入密码!' }]}\n        >\n          <Input\n            prefix={<LockOutlined className=\"site-form-item-icon\" />}\n            type=\"password\"\n            placeholder=\"密码\"\n          />\n        </Form.Item>\n        <Form.Item>\n          <Form.Item name=\"remember\" valuePropName=\"checked\" noStyle>\n            <Checkbox>记住我</Checkbox>\n          </Form.Item>\n\n          <a className={styles.loginFormForgot} href=\"\">\n            忘记密码\n          </a>\n        </Form.Item>\n\n        <Form.Item>\n          <Space direction=\"vertical\" style={{ width: '100%' }}>\n            <Button\n              type=\"primary\"\n              htmlType=\"submit\"\n              className={styles.loginFormButton}\n            >\n              登录\n            </Button>\n            或 <a href=\"/auth/register\">立即注册!</a>\n          </Space>\n        </Form.Item>\n      </Form>\n    </Card>\n  );\n};\n\nexport default Login;\n",
+      "__isJSFile": true,
+      "__absFile": "e:/YSY/UG/frontend/src/pages/Auth/Login.tsx"
+    },
+    "3": {
+      "path": "/auth/register",
+      "file": "@/pages/Auth/Register.tsx",
+      "parentId": "1",
+      "id": "3",
+      "absPath": "/auth/register",
+      "__content": "import React from 'react';\nimport { Card, Form, Input, Button, Space } from 'antd';\nimport { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';\nimport styles from './Register.module.css';\n\ninterface RegisterFormValues {\n  username: string;\n  email: string;\n  password: string;\n  confirm: string;\n}\n\nconst Register: React.FC = () => {\n  const onFinish = (values: RegisterFormValues) => {\n    // 在实际应用中，这里应该调用注册API\n    // 临时使用console.log来显示表单值\n    /* eslint-disable no-console */\n    console.log('Received values of form: ', values);\n    /* eslint-enable no-console */\n  };\n\n  return (\n    <Card title=\"用户注册\" className={styles.registerCard}>\n      <Form\n        name=\"normal_register\"\n        className={styles.registerForm}\n        initialValues={{ remember: true }}\n        onFinish={onFinish}\n      >\n        <Form.Item\n          name=\"username\"\n          rules={[{ required: true, message: '请输入用户名!' }]}\n        >\n          <Input\n            prefix={<UserOutlined className=\"site-form-item-icon\" />}\n            placeholder=\"用户名\"\n          />\n        </Form.Item>\n        <Form.Item\n          name=\"email\"\n          rules={[{ required: true, message: '请输入邮箱地址!' }]}\n        >\n          <Input\n            prefix={<MailOutlined className=\"site-form-item-icon\" />}\n            placeholder=\"邮箱地址\"\n          />\n        </Form.Item>\n        <Form.Item\n          name=\"password\"\n          rules={[{ required: true, message: '请输入密码!' }]}\n        >\n          <Input\n            prefix={<LockOutlined className=\"site-form-item-icon\" />}\n            type=\"password\"\n            placeholder=\"密码\"\n          />\n        </Form.Item>\n        <Form.Item\n          name=\"confirm\"\n          dependencies={['password']}\n          rules={[\n            { required: true, message: '请确认密码!' },\n            ({ getFieldValue }) => ({\n              validator(_, value) {\n                if (!value || getFieldValue('password') === value) {\n                  return Promise.resolve();\n                }\n                return Promise.reject(new Error('两次输入的密码不一致!'));\n              },\n            }),\n          ]}\n        >\n          <Input\n            prefix={<LockOutlined className=\"site-form-item-icon\" />}\n            type=\"password\"\n            placeholder=\"确认密码\"\n          />\n        </Form.Item>\n\n        <Form.Item>\n          <Space direction=\"vertical\" style={{ width: '100%' }}>\n            <Button\n              type=\"primary\"\n              htmlType=\"submit\"\n              className={styles.registerFormButton}\n            >\n              注册\n            </Button>\n            或 <a href=\"/auth/login\">已有账户，立即登录!</a>\n          </Space>\n        </Form.Item>\n      </Form>\n    </Card>\n  );\n};\n\nexport default Register;\n",
+      "__isJSFile": true,
+      "__absFile": "e:/YSY/UG/frontend/src/pages/Auth/Register.tsx"
+    },
+    "4": {
+      "path": "",
+      "file": "@/layouts/BasicLayout/index.tsx",
+      "parentId": "5",
+      "id": "4",
+      "absPath": "/",
+      "originPath": "/",
+      "__content": "import React, { useState } from 'react';\nimport { Layout, theme } from 'antd';\nimport HeaderContent from './HeaderContent';\nimport SiderMenu from './SiderMenu';\nimport styles from './styles.less';\n\nconst { Header, Sider, Content, Footer } = Layout;\n\ninterface BasicLayoutProps {\n  children: React.ReactNode;\n}\n\nconst BasicLayout: React.FC<BasicLayoutProps> = ({ children }) => {\n  const [collapsed, setCollapsed] = useState(false);\n\n  const {\n    token: { colorBgContainer, borderRadiusLG },\n  } = theme.useToken();\n\n  return (\n    <Layout className={styles.layout}>\n      <Sider\n        collapsible\n        collapsed={collapsed}\n        onCollapse={setCollapsed}\n        className={styles.sider}\n      >\n        <div className={styles.logo} />\n        <SiderMenu />\n      </Sider>\n      <Layout>\n        <Header className={styles.header}>\n          <HeaderContent _collapsed={collapsed} _setCollapsed={setCollapsed} />\n        </Header>\n        <Content\n          className={styles.content}\n          style={{\n            background: colorBgContainer,\n            borderRadius: borderRadiusLG,\n          }}\n        >\n          <div className={styles.contentInner}>{children}</div>\n        </Content>\n        <Footer className={styles.footer}>\n          UG管理系统 ©2025 Created by UG Team\n        </Footer>\n      </Layout>\n    </Layout>\n  );\n};\n\nexport default BasicLayout;\n",
+      "__isJSFile": true,
+      "__absFile": "e:/YSY/UG/frontend/src/layouts/BasicLayout/index.tsx"
+    },
+    "5": {
+      "path": "/",
+      "isWrapper": true,
+      "file": "@/wrappers/AuthWrapper.tsx",
+      "id": "5",
+      "absPath": "/",
+      "__content": "import React, { useEffect } from 'react';\nimport { useModel, useNavigate, useLocation } from 'umi';\nimport { Spin } from 'antd';\nimport type { InitialState } from '@/models/initialState';\nimport styles from './AuthWrapper.module.css';\n\n// 定义useModel返回值的类型\ninterface InitialStateModel {\n  initialState?: InitialState;\n  loading?: boolean;\n  error?: Error;\n}\n\ninterface AuthWrapperProps {\n  children: React.ReactNode;\n}\n\nconst AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {\n  const model = useModel('@@initialState') as InitialStateModel | undefined;\n  const { initialState, loading, error } = model || {};\n  const navigate = useNavigate();\n  const location = useLocation();\n\n  // 确保initialState不为undefined\n  const safeInitialState = initialState;\n  const isLoading = loading !== undefined ? loading : true;\n\n  useEffect(() => {\n    // 检查用户认证状态\n    if (safeInitialState && !safeInitialState.currentUser && !isLoading) {\n      // 未登录则跳转到登录页\n      navigate('/auth/login', {\n        state: {\n          redirect: location.pathname,\n        },\n      });\n    }\n  }, [safeInitialState, isLoading, navigate, location.pathname]);\n\n  // 处理模型加载错误\n  if (error) {\n    console.error('Initial state model error:', error);\n    return (\n      <div className={styles.errorContainer}>\n        <p>加载用户信息失败</p>\n      </div>\n    );\n  }\n\n  if (isLoading) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  // 如果initialState为undefined，也显示加载状态\n  if (!safeInitialState) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  return <>{children}</>;\n};\n\nexport default AuthWrapper;\n",
+      "__isJSFile": true,
+      "__absFile": "e:/YSY/UG/frontend/src/wrappers/AuthWrapper.tsx"
+    },
+    "6": {
+      "path": "/dashboard",
+      "name": "仪表盘",
+      "icon": "DashboardOutlined",
+      "file": "@/pages/Dashboard.tsx",
+      "parentId": "4",
+      "id": "6",
       "absPath": "/dashboard",
       "__content": "import React from 'react';\nimport { Card, Space, Typography } from 'antd';\nimport styles from './Dashboard.module.css';\n\nconst { Title, Paragraph } = Typography;\n\nconst Dashboard: React.FC = () => {\n  return (\n    <div className={styles.container}>\n      <Card>\n        <Space direction=\"vertical\" size=\"large\" className={styles.content}>\n          <Title level={2}>欢迎使用UG管理系统</Title>\n          <Paragraph>这是一个基于UMI + Egg.js的全栈管理系统。</Paragraph>\n          <Paragraph>\n            前端技术栈：\n            <ul>\n              <li>UMI 4.x</li>\n              <li>React 18</li>\n              <li>Ant Design 5.x</li>\n              <li>TypeScript</li>\n            </ul>\n          </Paragraph>\n          <Paragraph>\n            后端技术栈：\n            <ul>\n              <li>Egg.js 3.x</li>\n              <li>MySQL 8.0</li>\n              <li>Sequelize 6.x</li>\n              <li>JWT认证</li>\n            </ul>\n          </Paragraph>\n        </Space>\n      </Card>\n    </div>\n  );\n};\n\nexport default Dashboard;\n",
       "__isJSFile": true,
-      "__absFile": "E:/YSY/UG/frontend/src/pages/Dashboard.tsx"
+      "__absFile": "e:/YSY/UG/frontend/src/pages/Dashboard.tsx"
+    },
+    "7": {
+      "path": "/system",
+      "name": "系统管理",
+      "parentId": "4",
+      "id": "7",
+      "absPath": "/system"
+    },
+    "8": {
+      "path": "/system/users",
+      "name": "用户管理",
+      "file": "@/pages/System/User.tsx",
+      "parentId": "7",
+      "id": "8",
+      "absPath": "/system/users",
+      "__content": "import React from 'react';\nimport { Card, Space, Typography } from 'antd';\n\nconst { Title } = Typography;\n\nconst User: React.FC = () => {\n  return (\n    <Card>\n      <Space direction=\"vertical\" size=\"large\" style={{ width: '100%' }}>\n        <Title level={2}>用户管理</Title>\n        <p>用户管理页面</p>\n      </Space>\n    </Card>\n  );\n};\n\nexport default User;\n",
+      "__isJSFile": true,
+      "__absFile": "e:/YSY/UG/frontend/src/pages/System/User.tsx"
+    },
+    "9": {
+      "path": "/system/roles",
+      "name": "角色管理",
+      "file": "@/pages/System/Role.tsx",
+      "parentId": "7",
+      "id": "9",
+      "absPath": "/system/roles",
+      "__content": "import React from 'react';\nimport { Card, Space, Typography } from 'antd';\n\nconst { Title } = Typography;\n\nconst Role: React.FC = () => {\n  return (\n    <Card>\n      <Space direction=\"vertical\" size=\"large\" style={{ width: '100%' }}>\n        <Title level={2}>角色管理</Title>\n        <p>角色管理页面</p>\n      </Space>\n    </Card>\n  );\n};\n\nexport default Role;\n",
+      "__isJSFile": true,
+      "__absFile": "e:/YSY/UG/frontend/src/pages/System/Role.tsx"
+    },
+    "10": {
+      "path": "/system/permissions",
+      "name": "权限管理",
+      "file": "@/pages/System/Permission.tsx",
+      "parentId": "7",
+      "id": "10",
+      "absPath": "/system/permissions",
+      "__content": "import React from 'react';\nimport { Card, Space, Typography } from 'antd';\n\nconst { Title } = Typography;\n\nconst Permission: React.FC = () => {\n  return (\n    <Card>\n      <Space direction=\"vertical\" size=\"large\" style={{ width: '100%' }}>\n        <Title level={2}>权限管理</Title>\n        <p>权限管理页面</p>\n      </Space>\n    </Card>\n  );\n};\n\nexport default Permission;\n",
+      "__isJSFile": true,
+      "__absFile": "e:/YSY/UG/frontend/src/pages/System/Permission.tsx"
     }
   },
   "apiRoutes": {},
@@ -3315,7 +3507,7 @@
   },
   "faviconFiles": [],
   "antd": {
-    "pkgPath": "E:\\YSY\\UG\\frontend\\node_modules\\antd",
+    "pkgPath": "e:\\YSY\\UG\\frontend\\node_modules\\antd",
     "version": "5.27.3"
   }
 }

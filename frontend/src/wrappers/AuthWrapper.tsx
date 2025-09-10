@@ -23,7 +23,7 @@ const AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {
 
   // 确保initialState不为undefined
   const safeInitialState = initialState;
-  const isLoading = loading !== undefined ? loading : true;
+  const isLoading = loading !== undefined ? loading : false; // 默认为false而不是true
 
   useEffect(() => {
     // 检查用户认证状态
@@ -47,12 +47,23 @@ const AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {
     );
   }
 
+  // 如果正在加载，显示加载指示器
   if (isLoading) {
     return <Spin size="large" className={styles.loadingSpinner} />;
   }
 
   // 如果initialState为undefined，也显示加载状态
   if (!safeInitialState) {
+    return <Spin size="large" className={styles.loadingSpinner} />;
+  }
+
+  // 如果没有当前用户信息，跳转到登录页面
+  if (!safeInitialState.currentUser) {
+    navigate('/auth/login', {
+      state: {
+        redirect: location.pathname,
+      },
+    });
     return <Spin size="large" className={styles.loadingSpinner} />;
   }
 

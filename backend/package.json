@@ -8,7 +8,7 @@
   },
   "packageManager": "pnpm@8.15.8",
   "scripts": {
-    "dev": "egg-bin dev",
+    "dev": "egg-bin dev --port=7001",
     "debug": "egg-bin debug",
     "start": "egg-scripts start --daemon --title=ug-backend",
     "stop": "egg-scripts stop --title=ug-backend",

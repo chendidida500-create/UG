@@ -5,13 +5,13 @@
 export { defineApp } from './core/defineApp'
 export type { RuntimeConfig } from './core/defineApp'
 // plugins
-export { Access, useAccess, useAccessMarkedRoutes } from 'E:/YSY/UG/frontend/src/.umi/plugin-access';
-export { Provider, useModel } from 'E:/YSY/UG/frontend/src/.umi/plugin-model';
-export { useRequest, UseRequestProvider, request, getRequestInstance } from 'E:/YSY/UG/frontend/src/.umi/plugin-request';
+export { Access, useAccess, useAccessMarkedRoutes } from 'e:/YSY/UG/frontend/src/.umi/plugin-access';
+export { Provider, useModel } from 'e:/YSY/UG/frontend/src/.umi/plugin-model';
+export { useRequest, UseRequestProvider, request, getRequestInstance } from 'e:/YSY/UG/frontend/src/.umi/plugin-request';
 // plugins types.d.ts
-export * from 'E:/YSY/UG/frontend/src/.umi/plugin-access/types.d';
-export * from 'E:/YSY/UG/frontend/src/.umi/plugin-antd/types.d';
-export * from 'E:/YSY/UG/frontend/src/.umi/plugin-request/types.d';
+export * from 'e:/YSY/UG/frontend/src/.umi/plugin-access/types.d';
+export * from 'e:/YSY/UG/frontend/src/.umi/plugin-antd/types.d';
+export * from 'e:/YSY/UG/frontend/src/.umi/plugin-request/types.d';
 // @umijs/renderer-*
 export { createBrowserHistory, createHashHistory, createMemoryHistory, Helmet, HelmetProvider, createSearchParams, generatePath, matchPath, matchRoutes, Navigate, NavLink, Outlet, resolvePath, useLocation, useMatch, useNavigate, useOutlet, useOutletContext, useParams, useResolvedPath, useRoutes, useSearchParams, useAppData, useClientLoaderData, useLoaderData, useRouteProps, useSelectedRoutes, useServerLoaderData, renderClient, __getRoot, Link, useRouteData, __useFetcher, withRouter } from 'E:/YSY/UG/node_modules/.pnpm/@umijs+renderer-react@4.4.12_react-dom@18.3.1_react@18.3.1/node_modules/@umijs/renderer-react';
 export type { History, ClientLoader } from 'E:/YSY/UG/node_modules/.pnpm/@umijs+renderer-react@4.4.12_react-dom@18.3.1_react@18.3.1/node_modules/@umijs/renderer-react'

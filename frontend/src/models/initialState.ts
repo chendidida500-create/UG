@@ -40,10 +40,12 @@ const useInitialState = (): InitialState => {
   const [currentUser, setCurrentUser] = useState<CurrentUser | undefined>(
     undefined
   );
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false); // 默认为false
 
   const fetchUserInfo = async (): Promise<CurrentUser | undefined> => {
     try {
+      setLoading(true); // 开始加载时设置为true
+
       // 这里应该调用实际的API获取用户信息
       // 暂时返回模拟数据
       const mockUser: CurrentUser = {
@@ -87,7 +89,7 @@ const useInitialState = (): InitialState => {
       console.error('获取用户信息失败:', error);
       return undefined;
     } finally {
-      setLoading(false);
+      setLoading(false); // 完成后设置为false
     }
   };
 

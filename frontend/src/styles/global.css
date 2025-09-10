@@ -2,31 +2,31 @@
 
 /* 文本大小调整兼容性 */
 * {
-  text-size-adjust: none; /* 标准写法 */
   -webkit-text-size-adjust: none; /* Safari 兼容 */
   -moz-text-size-adjust: none; /* Firefox 兼容 */
   -ms-text-size-adjust: none; /* IE 兼容 */
+  text-size-adjust: none; /* 标准写法 */
 }
 
 /* 用户选择兼容性 */
 .no-select {
-  user-select: none;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE */
+  user-select: none;
 }
 
 /* 默认的用户选择样式 */
 .user-select-all {
-  user-select: all;
   -webkit-user-select: all; /* Safari */
   -moz-user-select: all; /* Firefox */
   -ms-user-select: all; /* IE */
+  user-select: all;
 }
 
 .user-select-text {
-  user-select: text;
   -webkit-user-select: text; /* Safari */
   -moz-user-select: text; /* Firefox */
   -ms-user-select: text; /* IE */
+  user-select: text;
 }

@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-console
 console.log("数据库配置验证:");
 // eslint-disable-next-line no-console
-console.log("- 主机地址:", process.env.MYSQL_HOST || "127.0.0.1");
+console.log("- 主机地址:", process.env.MYSQL_HOST || "localhost");
 // eslint-disable-next-line no-console
 console.log("- 端口:", process.env.MYSQL_PORT || "3306");
 // eslint-disable-next-line no-console

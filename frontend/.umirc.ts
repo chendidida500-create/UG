@@ -80,6 +80,14 @@ export default {
     },
   },
 
+  // 构建分析配置
+  analyze: {
+    analyzerMode: 'static',
+    openAnalyzer: false,
+    generateStatsFile: true,
+    statsFilename: 'stats.json',
+  },
+
   // npm客户端配置
   npmClient: 'pnpm',
 };

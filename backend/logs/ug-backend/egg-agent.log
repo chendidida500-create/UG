@@ -1,0 +1,487 @@
+2025-09-11 00:56:58,156 INFO 24116 [egg:logger] init all loggers with options: {"dir":"e:\\YSY\\UG\\backend\\logs\\ug-backend","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"ug-backend-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"enableFastContextLogger":false,"type":"agent","localStorage":{"enabled":false}}
+2025-09-11 00:57:00,273 INFO 24116 [egg:core] dump config after load, 37ms
+2025-09-11 00:57:00,890 INFO 24116 [egg-watcher] Start watching: ["e:\\YSY\\UG\\backend\\app","e:\\YSY\\UG\\backend\\config","e:\\YSY\\UG\\backend\\mocks","e:\\YSY\\UG\\backend\\mocks_proxy","e:\\YSY\\UG\\backend\\app.js"]
+2025-09-11 00:57:00,891 INFO 24116 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\app"
+2025-09-11 00:57:00,892 INFO 24116 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\config"
+2025-09-11 00:57:00,892 INFO 24116 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\mocks"
+2025-09-11 00:57:00,893 INFO 24116 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\mocks_proxy"
+2025-09-11 00:57:00,893 INFO 24116 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\app.js"
+2025-09-11 00:57:00,894 INFO 24116 [egg-watcher:agent] watcher start success
+2025-09-11 00:57:01,229 INFO 24116 [egg-sequelize](2ms) Executed (default): SELECT 1+1 AS result
+2025-09-11 00:57:01,278 INFO 24116 egg start timeline:
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [4005ms] - #0 Process Start
+              ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [9960ms] - #1 Application Start
+              ▇ [258ms] - #2 Load Plugin
+               ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [5931ms] - #3 Load Config
+               ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [5803ms] - #4 Require(0) config/config.default.ts
+                                    ▇ [47ms] - #5 Require(1) config/config.local.ts
+                                    ▇ [1ms] - #6 Require(2) E:/YSY/UG/node_modules/.pnpm/egg-session@3.3.0/node_modules/egg-session/config/config.default.js
+                                    ▇ [2ms] - #7 Require(3) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/config/config.default.js
+                                    ▇ [1ms] - #8 Require(4) E:/YSY/UG/node_modules/.pnpm/egg-jsonp@2.0.0/node_modules/egg-jsonp/config/config.default.js
+                                    ▇ [2ms] - #9 Require(5) E:/YSY/UG/node_modules/.pnpm/egg-onerror@2.4.0/node_modules/egg-onerror/config/config.default.js
+                                    ▇ [2ms] - #10 Require(6) E:/YSY/UG/node_modules/.pnpm/egg-i18n@2.1.1/node_modules/egg-i18n/config/config.default.js
+                                    ▇ [1ms] - #11 Require(7) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/config/config.default.js
+                                    ▇ [1ms] - #12 Require(8) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/config/config.default.js
+                                    ▇ [1ms] - #13 Require(9) E:/YSY/UG/node_modules/.pnpm/egg-multipart@3.5.0/node_modules/egg-multipart/config/config.default.js
+                                    ▇ [1ms] - #14 Require(10) E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/config/config.default.js
+                                    ▇ [1ms] - #15 Require(11) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/config/config.default.js
+                                    ▇ [1ms] - #16 Require(12) E:/YSY/UG/node_modules/.pnpm/egg-static@2.3.1/node_modules/egg-static/config/config.default.js
+                                    ▇ [1ms] - #17 Require(13) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/config/config.default.js
+                                    ▇ [1ms] - #18 Require(14) E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/config/config.default.js
+                                    ▇ [0ms] - #19 Require(15) E:/YSY/UG/node_modules/.pnpm/egg-jwt@3.1.7/node_modules/egg-jwt/config/config.default.js
+                                    ▇ [1ms] - #20 Require(16) E:/YSY/UG/node_modules/.pnpm/egg-cors@3.0.1/node_modules/egg-cors/config/config.default.js
+                                    ▇ [1ms] - #21 Require(17) E:/YSY/UG/node_modules/.pnpm/egg-validate@2.0.2/node_modules/egg-validate/config/config.default.js
+                                    ▇ [3ms] - #22 Require(18) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/config/config.default.js
+                                    ▇ [0ms] - #23 Require(19) config/config.default.ts
+                                    ▇ [0ms] - #24 Require(20) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/config/config.local.js
+                                    ▇ [0ms] - #25 Require(21) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/config/config.local.js
+                                    ▇ [2ms] - #26 Require(22) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/config/config.local.js
+                                    ▇ [1ms] - #27 Require(23) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/config/config.local.js
+                                    ▇ [0ms] - #28 Require(24) config/config.local.ts
+                                    ▇ [232ms] - #29 Load extend/agent.js
+                                    ▇ [6ms] - #30 Require(25) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/app/extend/agent.js
+                                    ▇ [180ms] - #31 Require(26) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/app/extend/agent.js
+                                     ▇ [9ms] - #32 Require(27) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/app/extend/agent.js
+                                     ▇ [224ms] - #33 Load extend/context.js
+                                     ▇ [65ms] - #34 Require(28) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/app/extend/context.js
+                                     ▇ [14ms] - #35 Require(29) E:/YSY/UG/node_modules/.pnpm/egg-jsonp@2.0.0/node_modules/egg-jsonp/app/extend/context.js
+                                     ▇ [1ms] - #36 Require(30) E:/YSY/UG/node_modules/.pnpm/egg-i18n@2.1.1/node_modules/egg-i18n/app/extend/context.js
+                                     ▇ [94ms] - #37 Require(31) E:/YSY/UG/node_modules/.pnpm/egg-multipart@3.5.0/node_modules/egg-multipart/app/extend/context.js
+                                      ▇ [5ms] - #38 Require(32) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/app/extend/context.js
+                                      ▇ [1ms] - #39 Require(33) E:/YSY/UG/node_modules/.pnpm/egg-validate@2.0.2/node_modules/egg-validate/app/extend/context.js
+                                      ▇ [6ms] - #40 Require(34) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/app/extend/context.js
+                                      ▇ [114ms] - #41 Load agent.js
+                                      ▇ [1ms] - #42 Require(35) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/agent.js
+                                      ▇ [0ms] - #43 Require(36) E:/YSY/UG/node_modules/.pnpm/egg-onerror@2.4.0/node_modules/egg-onerror/agent.js
+                                      ▇ [19ms] - #44 Require(37) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/agent.js
+                                      ▇ [7ms] - #45 Require(38) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/agent.js
+                                      ▇ [61ms] - #46 Require(39) E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/agent.js
+                                      ▇ [3ms] - #47 Require(40) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/agent.js
+                                      ▇ [1ms] - #48 Require(41) E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/agent.js
+                                      ▇ [1ms] - #49 Require(42) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/agent.js
+                                      ▇▇▇▇▇▇▇▇▇ [2732ms] - #50 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/lib/init.js:15:14
+                                      ▇▇▇▇▇▇▇▇▇ [2550ms] - #51 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/agent.js:12:9
+                                      ▇▇▇▇▇▇▇▇▇▇ [2823ms] - #52 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/agent.js:9:9
+                                              ▇ [19ms] - #53 Load "Symbol(model)" to Application
+                                              ▇▇▇ [1034ms] - #54 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/lib/loader.js:39:7
+2025-09-11 00:57:01,279 WARN 24116 [egg:core][slow-boot-action] #1 9960ms, name: Application Start
+2025-09-11 00:57:01,332 WARN 24116 [egg:core][slow-boot-action] #3 5931ms, name: Load Config
+2025-09-11 00:57:01,393 WARN 24116 [egg:core][slow-boot-action] #4 5803ms, name: Require(0) config/config.default.ts
+2025-09-11 00:57:01,444 INFO 24116 [egg:core] dump config after ready, 173ms
+2025-09-11 00:57:15,687 INFO 24116 [egg-watcher] Received a change event from eventSource: {"event":"rename","path":"e:\\YSY\\UG\\backend\\app\\public","stat":{"dev":641402845,"mode":16822,"nlink":1,"uid":0,"gid":0,"rdev":0,"blksize":4096,"ino":1125899907708324,"size":0,"blocks":0,"atimeMs":1757523435684.866,"mtimeMs":1757523435684.866,"ctimeMs":1757523435684.866,"birthtimeMs":1757523435684.866,"atime":"2025-09-10T16:57:15.685Z","mtime":"2025-09-10T16:57:15.685Z","ctime":"2025-09-10T16:57:15.685Z","birthtime":"2025-09-10T16:57:15.685Z"},"remove":false,"isDirectory":true,"isFile":false}
+2025-09-11 01:03:04,962 INFO 34636 [egg:logger] init all loggers with options: {"dir":"e:\\YSY\\UG\\backend\\logs\\ug-backend","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"ug-backend-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"enableFastContextLogger":false,"type":"agent","localStorage":{"enabled":false}}
+2025-09-11 01:03:06,802 INFO 34636 [egg:core] dump config after load, 11ms
+2025-09-11 01:03:07,072 INFO 34636 [egg-watcher] Start watching: ["e:\\YSY\\UG\\backend\\app","e:\\YSY\\UG\\backend\\config","e:\\YSY\\UG\\backend\\mocks","e:\\YSY\\UG\\backend\\mocks_proxy","e:\\YSY\\UG\\backend\\app.js"]
+2025-09-11 01:03:07,073 INFO 34636 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\app"
+2025-09-11 01:03:07,074 INFO 34636 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\config"
+2025-09-11 01:03:07,074 INFO 34636 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\mocks"
+2025-09-11 01:03:07,075 INFO 34636 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\mocks_proxy"
+2025-09-11 01:03:07,075 INFO 34636 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\app.js"
+2025-09-11 01:03:07,076 INFO 34636 [egg-watcher:agent] watcher start success
+2025-09-11 01:03:07,208 INFO 34636 [egg-sequelize](2ms) Executed (default): SELECT 1+1 AS result
+2025-09-11 01:03:07,222 INFO 34636 egg start timeline:
+▇▇▇▇▇▇▇▇▇▇▇▇▇ [3503ms] - #0 Process Start
+             ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [9087ms] - #1 Application Start
+              ▇ [118ms] - #2 Load Plugin
+              ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [5856ms] - #3 Load Config
+              ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [5719ms] - #4 Require(0) config/config.default.ts
+                                     ▇ [50ms] - #5 Require(1) config/config.local.ts
+                                     ▇ [2ms] - #6 Require(2) E:/YSY/UG/node_modules/.pnpm/egg-session@3.3.0/node_modules/egg-session/config/config.default.js
+                                     ▇ [1ms] - #7 Require(3) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/config/config.default.js
+                                     ▇ [1ms] - #8 Require(4) E:/YSY/UG/node_modules/.pnpm/egg-jsonp@2.0.0/node_modules/egg-jsonp/config/config.default.js
+                                     ▇ [1ms] - #9 Require(5) E:/YSY/UG/node_modules/.pnpm/egg-onerror@2.4.0/node_modules/egg-onerror/config/config.default.js
+                                     ▇ [1ms] - #10 Require(6) E:/YSY/UG/node_modules/.pnpm/egg-i18n@2.1.1/node_modules/egg-i18n/config/config.default.js
+                                     ▇ [1ms] - #11 Require(7) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/config/config.default.js
+                                     ▇ [1ms] - #12 Require(8) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/config/config.default.js
+                                     ▇ [1ms] - #13 Require(9) E:/YSY/UG/node_modules/.pnpm/egg-multipart@3.5.0/node_modules/egg-multipart/config/config.default.js
+                                     ▇ [1ms] - #14 Require(10) E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/config/config.default.js
+                                     ▇ [3ms] - #15 Require(11) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/config/config.default.js
+                                     ▇ [2ms] - #16 Require(12) E:/YSY/UG/node_modules/.pnpm/egg-static@2.3.1/node_modules/egg-static/config/config.default.js
+                                     ▇ [1ms] - #17 Require(13) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/config/config.default.js
+                                     ▇ [1ms] - #18 Require(14) E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/config/config.default.js
+                                     ▇ [1ms] - #19 Require(15) E:/YSY/UG/node_modules/.pnpm/egg-jwt@3.1.7/node_modules/egg-jwt/config/config.default.js
+                                     ▇ [1ms] - #20 Require(16) E:/YSY/UG/node_modules/.pnpm/egg-cors@3.0.1/node_modules/egg-cors/config/config.default.js
+                                     ▇ [1ms] - #21 Require(17) E:/YSY/UG/node_modules/.pnpm/egg-validate@2.0.2/node_modules/egg-validate/config/config.default.js
+                                     ▇ [1ms] - #22 Require(18) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/config/config.default.js
+                                     ▇ [0ms] - #23 Require(19) config/config.default.ts
+                                     ▇ [3ms] - #24 Require(20) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/config/config.local.js
+                                     ▇ [0ms] - #25 Require(21) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/config/config.local.js
+                                     ▇ [0ms] - #26 Require(22) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/config/config.local.js
+                                     ▇ [6ms] - #27 Require(23) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/config/config.local.js
+                                     ▇ [0ms] - #28 Require(24) config/config.local.ts
+                                     ▇ [266ms] - #29 Load extend/agent.js
+                                     ▇ [2ms] - #30 Require(25) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/app/extend/agent.js
+                                     ▇ [217ms] - #31 Require(26) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/app/extend/agent.js
+                                      ▇ [7ms] - #32 Require(27) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/app/extend/agent.js
+                                      ▇ [376ms] - #33 Load extend/context.js
+                                      ▇ [133ms] - #34 Require(28) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/app/extend/context.js
+                                       ▇ [41ms] - #35 Require(29) E:/YSY/UG/node_modules/.pnpm/egg-jsonp@2.0.0/node_modules/egg-jsonp/app/extend/context.js
+                                       ▇ [2ms] - #36 Require(30) E:/YSY/UG/node_modules/.pnpm/egg-i18n@2.1.1/node_modules/egg-i18n/app/extend/context.js
+                                       ▇ [128ms] - #37 Require(31) E:/YSY/UG/node_modules/.pnpm/egg-multipart@3.5.0/node_modules/egg-multipart/app/extend/context.js
+                                        ▇ [3ms] - #38 Require(32) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/app/extend/context.js
+                                        ▇ [1ms] - #39 Require(33) E:/YSY/UG/node_modules/.pnpm/egg-validate@2.0.2/node_modules/egg-validate/app/extend/context.js
+                                        ▇ [10ms] - #40 Require(34) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/app/extend/context.js
+                                        ▇ [161ms] - #41 Load agent.js
+                                        ▇ [1ms] - #42 Require(35) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/agent.js
+                                        ▇ [1ms] - #43 Require(36) E:/YSY/UG/node_modules/.pnpm/egg-onerror@2.4.0/node_modules/egg-onerror/agent.js
+                                        ▇ [20ms] - #44 Require(37) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/agent.js
+                                        ▇ [8ms] - #45 Require(38) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/agent.js
+                                        ▇ [68ms] - #46 Require(39) E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/agent.js
+                                        ▇ [1ms] - #47 Require(40) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/agent.js
+                                        ▇ [1ms] - #48 Require(41) E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/agent.js
+                                        ▇ [1ms] - #49 Require(42) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/agent.js
+                                         ▇▇▇▇▇▇▇▇ [2105ms] - #50 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/lib/init.js:15:14
+                                         ▇▇▇▇▇▇▇▇ [2036ms] - #51 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/agent.js:12:9
+                                         ▇▇▇▇▇▇▇▇ [2222ms] - #52 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/agent.js:9:9
+                                                ▇ [16ms] - #53 Load "Symbol(model)" to Application
+                                                ▇ [422ms] - #54 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/lib/loader.js:39:7
+2025-09-11 01:03:07,223 WARN 34636 [egg:core][slow-boot-action] #1 9087ms, name: Application Start
+2025-09-11 01:03:07,239 WARN 34636 [egg:core][slow-boot-action] #3 5856ms, name: Load Config
+2025-09-11 01:03:07,242 WARN 34636 [egg:core][slow-boot-action] #4 5719ms, name: Require(0) config/config.default.ts
+2025-09-11 01:03:07,247 INFO 34636 [egg:core] dump config after ready, 34ms
+2025-09-11 01:03:07,069 INFO 17848 [egg:logger] init all loggers with options: {"dir":"E:\\YSY\\UG\\backend\\logs\\ug-backend","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"ug-backend-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"enableFastContextLogger":false,"type":"agent","localStorage":{"enabled":false}}
+2025-09-11 01:03:08,466 INFO 17848 [egg:core] dump config after load, 12ms
+2025-09-11 01:03:08,715 INFO 17848 [egg-watcher] Start watching: ["E:\\YSY\\UG\\backend\\app","E:\\YSY\\UG\\backend\\config","E:\\YSY\\UG\\backend\\mocks","E:\\YSY\\UG\\backend\\mocks_proxy","E:\\YSY\\UG\\backend\\app.js"]
+2025-09-11 01:03:08,716 INFO 17848 [egg-watcher] Start watching: "E:\\YSY\\UG\\backend\\app"
+2025-09-11 01:03:08,717 INFO 17848 [egg-watcher] Start watching: "E:\\YSY\\UG\\backend\\config"
+2025-09-11 01:03:08,717 INFO 17848 [egg-watcher] Start watching: "E:\\YSY\\UG\\backend\\mocks"
+2025-09-11 01:03:08,718 INFO 17848 [egg-watcher] Start watching: "E:\\YSY\\UG\\backend\\mocks_proxy"
+2025-09-11 01:03:08,718 INFO 17848 [egg-watcher] Start watching: "E:\\YSY\\UG\\backend\\app.js"
+2025-09-11 01:03:08,719 INFO 17848 [egg-watcher:agent] watcher start success
+2025-09-11 01:03:08,876 INFO 17848 [egg-sequelize](14ms) Executed (default): SELECT 1+1 AS result
+2025-09-11 01:03:08,928 INFO 17848 egg start timeline:
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [3900ms] - #0 Process Start
+               ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [8965ms] - #1 Application Start
+               ▇ [200ms] - #2 Load Plugin
+                ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [6150ms] - #3 Load Config
+                ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [6014ms] - #4 Require(0) config/config.default.ts
+                                       ▇ [38ms] - #5 Require(1) config/config.local.ts
+                                       ▇ [2ms] - #6 Require(2) E:/YSY/UG/node_modules/.pnpm/egg-session@3.3.0/node_modules/egg-session/config/config.default.js
+                                       ▇ [1ms] - #7 Require(3) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/config/config.default.js
+                                       ▇ [2ms] - #8 Require(4) E:/YSY/UG/node_modules/.pnpm/egg-jsonp@2.0.0/node_modules/egg-jsonp/config/config.default.js
+                                       ▇ [1ms] - #9 Require(5) E:/YSY/UG/node_modules/.pnpm/egg-onerror@2.4.0/node_modules/egg-onerror/config/config.default.js
+                                       ▇ [1ms] - #10 Require(6) E:/YSY/UG/node_modules/.pnpm/egg-i18n@2.1.1/node_modules/egg-i18n/config/config.default.js
+                                       ▇ [3ms] - #11 Require(7) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/config/config.default.js
+                                       ▇ [2ms] - #12 Require(8) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/config/config.default.js
+                                       ▇ [1ms] - #13 Require(9) E:/YSY/UG/node_modules/.pnpm/egg-multipart@3.5.0/node_modules/egg-multipart/config/config.default.js
+                                       ▇ [1ms] - #14 Require(10) E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/config/config.default.js
+                                       ▇ [1ms] - #15 Require(11) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/config/config.default.js
+                                       ▇ [2ms] - #16 Require(12) E:/YSY/UG/node_modules/.pnpm/egg-static@2.3.1/node_modules/egg-static/config/config.default.js
+                                       ▇ [2ms] - #17 Require(13) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/config/config.default.js
+                                       ▇ [1ms] - #18 Require(14) E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/config/config.default.js
+                                       ▇ [1ms] - #19 Require(15) E:/YSY/UG/node_modules/.pnpm/egg-jwt@3.1.7/node_modules/egg-jwt/config/config.default.js
+                                       ▇ [1ms] - #20 Require(16) E:/YSY/UG/node_modules/.pnpm/egg-cors@3.0.1/node_modules/egg-cors/config/config.default.js
+                                       ▇ [0ms] - #21 Require(17) E:/YSY/UG/node_modules/.pnpm/egg-validate@2.0.2/node_modules/egg-validate/config/config.default.js
+                                       ▇ [1ms] - #22 Require(18) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/config/config.default.js
+                                       ▇ [1ms] - #23 Require(19) config/config.default.ts
+                                       ▇ [1ms] - #24 Require(20) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/config/config.local.js
+                                       ▇ [0ms] - #25 Require(21) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/config/config.local.js
+                                       ▇ [1ms] - #26 Require(22) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/config/config.local.js
+                                       ▇ [1ms] - #27 Require(23) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/config/config.local.js
+                                       ▇ [0ms] - #28 Require(24) config/config.local.ts
+                                       ▇ [248ms] - #29 Load extend/agent.js
+                                        ▇ [7ms] - #30 Require(25) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/app/extend/agent.js
+                                        ▇ [191ms] - #31 Require(26) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/app/extend/agent.js
+                                        ▇ [5ms] - #32 Require(27) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/app/extend/agent.js
+                                        ▇ [348ms] - #33 Load extend/context.js
+                                        ▇ [131ms] - #34 Require(28) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/app/extend/context.js
+                                         ▇ [8ms] - #35 Require(29) E:/YSY/UG/node_modules/.pnpm/egg-jsonp@2.0.0/node_modules/egg-jsonp/app/extend/context.js
+                                         ▇ [4ms] - #36 Require(30) E:/YSY/UG/node_modules/.pnpm/egg-i18n@2.1.1/node_modules/egg-i18n/app/extend/context.js
+                                         ▇ [133ms] - #37 Require(31) E:/YSY/UG/node_modules/.pnpm/egg-multipart@3.5.0/node_modules/egg-multipart/app/extend/context.js
+                                          ▇ [11ms] - #38 Require(32) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/app/extend/context.js
+                                          ▇ [1ms] - #39 Require(33) E:/YSY/UG/node_modules/.pnpm/egg-validate@2.0.2/node_modules/egg-validate/app/extend/context.js
+                                          ▇ [7ms] - #40 Require(34) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/app/extend/context.js
+                                          ▇ [114ms] - #41 Load agent.js
+                                          ▇ [1ms] - #42 Require(35) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/agent.js
+                                          ▇ [1ms] - #43 Require(36) E:/YSY/UG/node_modules/.pnpm/egg-onerror@2.4.0/node_modules/egg-onerror/agent.js
+                                          ▇ [17ms] - #44 Require(37) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/agent.js
+                                          ▇ [6ms] - #45 Require(38) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/agent.js
+                                          ▇ [69ms] - #46 Require(39) E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/agent.js
+                                          ▇ [1ms] - #47 Require(40) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/agent.js
+                                          ▇ [1ms] - #48 Require(41) E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/agent.js
+                                          ▇ [1ms] - #49 Require(42) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/agent.js
+                                          ▇▇▇▇▇▇ [1644ms] - #50 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/lib/init.js:15:14
+                                          ▇▇▇▇▇▇ [1560ms] - #51 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/agent.js:12:9
+                                          ▇▇▇▇▇▇ [1746ms] - #52 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/agent.js:9:9
+                                                ▇ [15ms] - #53 Load "Symbol(model)" to Application
+                                                ▇ [431ms] - #54 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/lib/loader.js:39:7
+2025-09-11 01:03:08,928 WARN 17848 [egg:core][slow-boot-action] #1 8965ms, name: Application Start
+2025-09-11 01:03:08,935 WARN 17848 [egg:core][slow-boot-action] #3 6150ms, name: Load Config
+2025-09-11 01:03:08,939 WARN 17848 [egg:core][slow-boot-action] #4 6014ms, name: Require(0) config/config.default.ts
+2025-09-11 01:03:08,943 INFO 17848 [egg:core] dump config after ready, 55ms
+2025-09-11 01:03:24,940 WARN 17848 [ClusterClient:Connection] socket is closed by other side while there were still unhandled data in the socket buffer
+2025-09-11 01:05:53,516 INFO 33956 [egg:logger] init all loggers with options: {"dir":"e:\\YSY\\UG\\backend\\logs\\ug-backend","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"ug-backend-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"enableFastContextLogger":false,"type":"agent","localStorage":{"enabled":false}}
+2025-09-11 01:05:54,384 INFO 33956 [egg:core] dump config after load, 18ms
+2025-09-11 01:05:54,560 INFO 33956 [egg-watcher] Start watching: ["e:\\YSY\\UG\\backend\\app","e:\\YSY\\UG\\backend\\config","e:\\YSY\\UG\\backend\\mocks","e:\\YSY\\UG\\backend\\mocks_proxy","e:\\YSY\\UG\\backend\\app.js"]
+2025-09-11 01:05:54,560 INFO 33956 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\app"
+2025-09-11 01:05:54,561 INFO 33956 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\config"
+2025-09-11 01:05:54,561 INFO 33956 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\mocks"
+2025-09-11 01:05:54,561 INFO 33956 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\mocks_proxy"
+2025-09-11 01:05:54,562 INFO 33956 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\app.js"
+2025-09-11 01:05:54,562 INFO 33956 [egg-watcher:agent] watcher start success
+2025-09-11 01:05:54,640 INFO 33956 [egg-sequelize](2ms) Executed (default): SELECT 1+1 AS result
+2025-09-11 01:05:54,651 INFO 33956 egg start timeline:
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [2332ms] - #0 Process Start
+              ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [5691ms] - #1 Application Start
+              ▇ [107ms] - #2 Load Plugin
+               ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [4072ms] - #3 Load Config
+               ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [3984ms] - #4 Require(0) config/config.default.ts
+                                        ▇ [37ms] - #5 Require(1) config/config.local.ts
+                                        ▇ [1ms] - #6 Require(2) E:/YSY/UG/node_modules/.pnpm/egg-session@3.3.0/node_modules/egg-session/config/config.default.js
+                                        ▇ [1ms] - #7 Require(3) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/config/config.default.js
+                                        ▇ [1ms] - #8 Require(4) E:/YSY/UG/node_modules/.pnpm/egg-jsonp@2.0.0/node_modules/egg-jsonp/config/config.default.js
+                                        ▇ [1ms] - #9 Require(5) E:/YSY/UG/node_modules/.pnpm/egg-onerror@2.4.0/node_modules/egg-onerror/config/config.default.js
+                                        ▇ [1ms] - #10 Require(6) E:/YSY/UG/node_modules/.pnpm/egg-i18n@2.1.1/node_modules/egg-i18n/config/config.default.js
+                                        ▇ [0ms] - #11 Require(7) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/config/config.default.js
+                                        ▇ [1ms] - #12 Require(8) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/config/config.default.js
+                                        ▇ [2ms] - #13 Require(9) E:/YSY/UG/node_modules/.pnpm/egg-multipart@3.5.0/node_modules/egg-multipart/config/config.default.js
+                                        ▇ [1ms] - #14 Require(10) E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/config/config.default.js
+                                        ▇ [1ms] - #15 Require(11) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/config/config.default.js
+                                        ▇ [1ms] - #16 Require(12) E:/YSY/UG/node_modules/.pnpm/egg-static@2.3.1/node_modules/egg-static/config/config.default.js
+                                        ▇ [0ms] - #17 Require(13) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/config/config.default.js
+                                        ▇ [1ms] - #18 Require(14) E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/config/config.default.js
+                                        ▇ [0ms] - #19 Require(15) E:/YSY/UG/node_modules/.pnpm/egg-jwt@3.1.7/node_modules/egg-jwt/config/config.default.js
+                                        ▇ [1ms] - #20 Require(16) E:/YSY/UG/node_modules/.pnpm/egg-cors@3.0.1/node_modules/egg-cors/config/config.default.js
+                                        ▇ [1ms] - #21 Require(17) E:/YSY/UG/node_modules/.pnpm/egg-validate@2.0.2/node_modules/egg-validate/config/config.default.js
+                                        ▇ [1ms] - #22 Require(18) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/config/config.default.js
+                                        ▇ [0ms] - #23 Require(19) config/config.default.ts
+                                        ▇ [1ms] - #24 Require(20) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/config/config.local.js
+                                        ▇ [0ms] - #25 Require(21) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/config/config.local.js
+                                        ▇ [0ms] - #26 Require(22) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/config/config.local.js
+                                        ▇ [0ms] - #27 Require(23) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/config/config.local.js
+                                        ▇ [0ms] - #28 Require(24) config/config.local.ts
+                                        ▇ [137ms] - #29 Load extend/agent.js
+                                        ▇ [2ms] - #30 Require(25) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/app/extend/agent.js
+                                        ▇ [106ms] - #31 Require(26) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/app/extend/agent.js
+                                         ▇ [4ms] - #32 Require(27) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/app/extend/agent.js
+                                         ▇ [134ms] - #33 Load extend/context.js
+                                         ▇ [40ms] - #34 Require(28) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/app/extend/context.js
+                                         ▇ [11ms] - #35 Require(29) E:/YSY/UG/node_modules/.pnpm/egg-jsonp@2.0.0/node_modules/egg-jsonp/app/extend/context.js
+                                          ▇ [0ms] - #36 Require(30) E:/YSY/UG/node_modules/.pnpm/egg-i18n@2.1.1/node_modules/egg-i18n/app/extend/context.js
+                                          ▇ [49ms] - #37 Require(31) E:/YSY/UG/node_modules/.pnpm/egg-multipart@3.5.0/node_modules/egg-multipart/app/extend/context.js
+                                          ▇ [3ms] - #38 Require(32) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/app/extend/context.js
+                                          ▇ [1ms] - #39 Require(33) E:/YSY/UG/node_modules/.pnpm/egg-validate@2.0.2/node_modules/egg-validate/app/extend/context.js
+                                          ▇ [4ms] - #40 Require(34) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/app/extend/context.js
+                                          ▇ [62ms] - #41 Load agent.js
+                                          ▇ [0ms] - #42 Require(35) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/agent.js
+                                          ▇ [0ms] - #43 Require(36) E:/YSY/UG/node_modules/.pnpm/egg-onerror@2.4.0/node_modules/egg-onerror/agent.js
+                                          ▇ [11ms] - #44 Require(37) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/agent.js
+                                          ▇ [2ms] - #45 Require(38) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/agent.js
+                                          ▇ [34ms] - #46 Require(39) E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/agent.js
+                                          ▇ [1ms] - #47 Require(40) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/agent.js
+                                          ▇ [1ms] - #48 Require(41) E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/agent.js
+                                          ▇ [1ms] - #49 Require(42) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/agent.js
+                                          ▇▇▇▇▇▇ [1041ms] - #50 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/lib/init.js:15:14
+                                          ▇▇▇▇▇▇ [1000ms] - #51 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/agent.js:12:9
+                                          ▇▇▇▇▇▇ [1113ms] - #52 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/agent.js:9:9
+                                                ▇ [15ms] - #53 Load "Symbol(model)" to Application
+                                                ▇ [278ms] - #54 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/lib/loader.js:39:7
+2025-09-11 01:05:54,652 WARN 33956 [egg:core][slow-boot-action] #1 5691ms, name: Application Start
+2025-09-11 01:05:54,652 INFO 33956 [egg:core] dump config after ready, 8ms
+2025-09-11 01:31:45,597 INFO 18332 [egg:logger] init all loggers with options: {"dir":"e:\\YSY\\UG\\backend\\logs\\ug-backend","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"ug-backend-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"enableFastContextLogger":false,"type":"agent","localStorage":{"enabled":false}}
+2025-09-11 01:31:46,489 INFO 18332 [egg:core] dump config after load, 6ms
+2025-09-11 01:31:46,615 INFO 18332 [egg-watcher] Start watching: ["e:\\YSY\\UG\\backend\\app","e:\\YSY\\UG\\backend\\config","e:\\YSY\\UG\\backend\\mocks","e:\\YSY\\UG\\backend\\mocks_proxy","e:\\YSY\\UG\\backend\\app.js"]
+2025-09-11 01:31:46,615 INFO 18332 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\app"
+2025-09-11 01:31:46,616 INFO 18332 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\config"
+2025-09-11 01:31:46,616 INFO 18332 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\mocks"
+2025-09-11 01:31:46,616 INFO 18332 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\mocks_proxy"
+2025-09-11 01:31:46,616 INFO 18332 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\app.js"
+2025-09-11 01:31:46,617 INFO 18332 [egg-watcher:agent] watcher start success
+2025-09-11 01:31:46,699 INFO 18332 [egg-sequelize](1ms) Executed (default): SELECT 1+1 AS result
+2025-09-11 01:31:46,709 INFO 18332 egg start timeline:
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [2329ms] - #0 Process Start
+               ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [5177ms] - #1 Application Start
+               ▇ [108ms] - #2 Load Plugin
+                ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [3504ms] - #3 Load Config
+                ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [3422ms] - #4 Require(0) config/config.default.ts
+                                       ▇ [27ms] - #5 Require(1) config/config.local.ts
+                                       ▇ [1ms] - #6 Require(2) E:/YSY/UG/node_modules/.pnpm/egg-session@3.3.0/node_modules/egg-session/config/config.default.js
+                                       ▇ [0ms] - #7 Require(3) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/config/config.default.js
+                                       ▇ [1ms] - #8 Require(4) E:/YSY/UG/node_modules/.pnpm/egg-jsonp@2.0.0/node_modules/egg-jsonp/config/config.default.js
+                                       ▇ [2ms] - #9 Require(5) E:/YSY/UG/node_modules/.pnpm/egg-onerror@2.4.0/node_modules/egg-onerror/config/config.default.js
+                                       ▇ [2ms] - #10 Require(6) E:/YSY/UG/node_modules/.pnpm/egg-i18n@2.1.1/node_modules/egg-i18n/config/config.default.js
+                                       ▇ [2ms] - #11 Require(7) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/config/config.default.js
+                                       ▇ [1ms] - #12 Require(8) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/config/config.default.js
+                                       ▇ [1ms] - #13 Require(9) E:/YSY/UG/node_modules/.pnpm/egg-multipart@3.5.0/node_modules/egg-multipart/config/config.default.js
+                                       ▇ [0ms] - #14 Require(10) E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/config/config.default.js
+                                       ▇ [1ms] - #15 Require(11) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/config/config.default.js
+                                       ▇ [0ms] - #16 Require(12) E:/YSY/UG/node_modules/.pnpm/egg-static@2.3.1/node_modules/egg-static/config/config.default.js
+                                       ▇ [1ms] - #17 Require(13) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/config/config.default.js
+                                       ▇ [1ms] - #18 Require(14) E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/config/config.default.js
+                                       ▇ [1ms] - #19 Require(15) E:/YSY/UG/node_modules/.pnpm/egg-jwt@3.1.7/node_modules/egg-jwt/config/config.default.js
+                                       ▇ [1ms] - #20 Require(16) E:/YSY/UG/node_modules/.pnpm/egg-cors@3.0.1/node_modules/egg-cors/config/config.default.js
+                                       ▇ [0ms] - #21 Require(17) E:/YSY/UG/node_modules/.pnpm/egg-validate@2.0.2/node_modules/egg-validate/config/config.default.js
+                                       ▇ [0ms] - #22 Require(18) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/config/config.default.js
+                                       ▇ [0ms] - #23 Require(19) config/config.default.ts
+                                       ▇ [1ms] - #24 Require(20) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/config/config.local.js
+                                       ▇ [0ms] - #25 Require(21) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/config/config.local.js
+                                       ▇ [0ms] - #26 Require(22) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/config/config.local.js
+                                       ▇ [0ms] - #27 Require(23) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/config/config.local.js
+                                       ▇ [0ms] - #28 Require(24) config/config.local.ts
+                                       ▇ [143ms] - #29 Load extend/agent.js
+                                       ▇ [2ms] - #30 Require(25) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/app/extend/agent.js
+                                       ▇ [113ms] - #31 Require(26) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/app/extend/agent.js
+                                        ▇ [6ms] - #32 Require(27) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/app/extend/agent.js
+                                        ▇ [157ms] - #33 Load extend/context.js
+                                        ▇ [38ms] - #34 Require(28) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/app/extend/context.js
+                                         ▇ [9ms] - #35 Require(29) E:/YSY/UG/node_modules/.pnpm/egg-jsonp@2.0.0/node_modules/egg-jsonp/app/extend/context.js
+                                         ▇ [1ms] - #36 Require(30) E:/YSY/UG/node_modules/.pnpm/egg-i18n@2.1.1/node_modules/egg-i18n/app/extend/context.js
+                                         ▇ [66ms] - #37 Require(31) E:/YSY/UG/node_modules/.pnpm/egg-multipart@3.5.0/node_modules/egg-multipart/app/extend/context.js
+                                         ▇ [2ms] - #38 Require(32) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/app/extend/context.js
+                                         ▇ [1ms] - #39 Require(33) E:/YSY/UG/node_modules/.pnpm/egg-validate@2.0.2/node_modules/egg-validate/app/extend/context.js
+                                         ▇ [5ms] - #40 Require(34) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/app/extend/context.js
+                                         ▇ [99ms] - #41 Load agent.js
+                                         ▇ [1ms] - #42 Require(35) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/agent.js
+                                         ▇ [0ms] - #43 Require(36) E:/YSY/UG/node_modules/.pnpm/egg-onerror@2.4.0/node_modules/egg-onerror/agent.js
+                                         ▇ [16ms] - #44 Require(37) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/agent.js
+                                          ▇ [5ms] - #45 Require(38) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/agent.js
+                                          ▇ [49ms] - #46 Require(39) E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/agent.js
+                                          ▇ [1ms] - #47 Require(40) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/agent.js
+                                          ▇ [1ms] - #48 Require(41) E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/agent.js
+                                          ▇ [1ms] - #49 Require(42) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/agent.js
+                                          ▇▇▇▇▇▇ [1013ms] - #50 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/lib/init.js:15:14
+                                          ▇▇▇▇▇▇ [973ms] - #51 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/agent.js:12:9
+                                          ▇▇▇▇▇▇▇ [1074ms] - #52 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/agent.js:9:9
+                                                ▇ [11ms] - #53 Load "Symbol(model)" to Application
+                                                ▇ [218ms] - #54 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/lib/loader.js:39:7
+2025-09-11 01:31:46,710 WARN 18332 [egg:core][slow-boot-action] #1 5177ms, name: Application Start
+2025-09-11 01:31:46,713 INFO 18332 [egg:core] dump config after ready, 11ms
+2025-09-11 01:38:47,402 INFO 13100 [egg:logger] init all loggers with options: {"dir":"e:\\YSY\\UG\\backend\\logs\\ug-backend","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"ug-backend-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"enableFastContextLogger":false,"type":"agent","localStorage":{"enabled":false}}
+2025-09-11 01:38:48,290 INFO 13100 [egg:core] dump config after load, 14ms
+2025-09-11 01:38:48,567 INFO 13100 [egg-watcher] Start watching: ["e:\\YSY\\UG\\backend\\app","e:\\YSY\\UG\\backend\\config","e:\\YSY\\UG\\backend\\mocks","e:\\YSY\\UG\\backend\\mocks_proxy","e:\\YSY\\UG\\backend\\app.js"]
+2025-09-11 01:38:48,567 INFO 13100 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\app"
+2025-09-11 01:38:48,568 INFO 13100 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\config"
+2025-09-11 01:38:48,569 INFO 13100 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\mocks"
+2025-09-11 01:38:48,569 INFO 13100 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\mocks_proxy"
+2025-09-11 01:38:48,570 INFO 13100 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\app.js"
+2025-09-11 01:38:48,571 INFO 13100 [egg-watcher:agent] watcher start success
+2025-09-11 01:38:48,731 INFO 13100 [egg-sequelize](1ms) Executed (default): SELECT 1+1 AS result
+2025-09-11 01:38:48,748 INFO 13100 egg start timeline:
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [4814ms] - #0 Process Start
+                     ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [6584ms] - #1 Application Start
+                     ▇ [215ms] - #2 Load Plugin
+                      ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [4526ms] - #3 Load Config
+                      ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [4433ms] - #4 Require(0) config/config.default.ts
+                                         ▇ [24ms] - #5 Require(1) config/config.local.ts
+                                          ▇ [1ms] - #6 Require(2) E:/YSY/UG/node_modules/.pnpm/egg-session@3.3.0/node_modules/egg-session/config/config.default.js
+                                          ▇ [1ms] - #7 Require(3) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/config/config.default.js
+                                          ▇ [3ms] - #8 Require(4) E:/YSY/UG/node_modules/.pnpm/egg-jsonp@2.0.0/node_modules/egg-jsonp/config/config.default.js
+                                          ▇ [1ms] - #9 Require(5) E:/YSY/UG/node_modules/.pnpm/egg-onerror@2.4.0/node_modules/egg-onerror/config/config.default.js
+                                          ▇ [1ms] - #10 Require(6) E:/YSY/UG/node_modules/.pnpm/egg-i18n@2.1.1/node_modules/egg-i18n/config/config.default.js
+                                          ▇ [0ms] - #11 Require(7) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/config/config.default.js
+                                          ▇ [1ms] - #12 Require(8) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/config/config.default.js
+                                          ▇ [0ms] - #13 Require(9) E:/YSY/UG/node_modules/.pnpm/egg-multipart@3.5.0/node_modules/egg-multipart/config/config.default.js
+                                          ▇ [0ms] - #14 Require(10) E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/config/config.default.js
+                                          ▇ [1ms] - #15 Require(11) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/config/config.default.js
+                                          ▇ [0ms] - #16 Require(12) E:/YSY/UG/node_modules/.pnpm/egg-static@2.3.1/node_modules/egg-static/config/config.default.js
+                                          ▇ [2ms] - #17 Require(13) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/config/config.default.js
+                                          ▇ [1ms] - #18 Require(14) E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/config/config.default.js
+                                          ▇ [0ms] - #19 Require(15) E:/YSY/UG/node_modules/.pnpm/egg-jwt@3.1.7/node_modules/egg-jwt/config/config.default.js
+                                          ▇ [1ms] - #20 Require(16) E:/YSY/UG/node_modules/.pnpm/egg-cors@3.0.1/node_modules/egg-cors/config/config.default.js
+                                          ▇ [3ms] - #21 Require(17) E:/YSY/UG/node_modules/.pnpm/egg-validate@2.0.2/node_modules/egg-validate/config/config.default.js
+                                          ▇ [1ms] - #22 Require(18) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/config/config.default.js
+                                          ▇ [0ms] - #23 Require(19) config/config.default.ts
+                                          ▇ [1ms] - #24 Require(20) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/config/config.local.js
+                                          ▇ [1ms] - #25 Require(21) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/config/config.local.js
+                                          ▇ [1ms] - #26 Require(22) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/config/config.local.js
+                                          ▇ [0ms] - #27 Require(23) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/config/config.local.js
+                                          ▇ [0ms] - #28 Require(24) config/config.local.ts
+                                          ▇ [183ms] - #29 Load extend/agent.js
+                                          ▇ [3ms] - #30 Require(25) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/app/extend/agent.js
+                                          ▇ [144ms] - #31 Require(26) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/app/extend/agent.js
+                                          ▇ [8ms] - #32 Require(27) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/app/extend/agent.js
+                                           ▇ [154ms] - #33 Load extend/context.js
+                                           ▇ [51ms] - #34 Require(28) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/app/extend/context.js
+                                           ▇ [10ms] - #35 Require(29) E:/YSY/UG/node_modules/.pnpm/egg-jsonp@2.0.0/node_modules/egg-jsonp/app/extend/context.js
+                                           ▇ [1ms] - #36 Require(30) E:/YSY/UG/node_modules/.pnpm/egg-i18n@2.1.1/node_modules/egg-i18n/app/extend/context.js
+                                           ▇ [60ms] - #37 Require(31) E:/YSY/UG/node_modules/.pnpm/egg-multipart@3.5.0/node_modules/egg-multipart/app/extend/context.js
+                                           ▇ [2ms] - #38 Require(32) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/app/extend/context.js
+                                           ▇ [1ms] - #39 Require(33) E:/YSY/UG/node_modules/.pnpm/egg-validate@2.0.2/node_modules/egg-validate/app/extend/context.js
+                                           ▇ [6ms] - #40 Require(34) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/app/extend/context.js
+                                           ▇ [65ms] - #41 Load agent.js
+                                           ▇ [1ms] - #42 Require(35) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/agent.js
+                                           ▇ [0ms] - #43 Require(36) E:/YSY/UG/node_modules/.pnpm/egg-onerror@2.4.0/node_modules/egg-onerror/agent.js
+                                           ▇ [9ms] - #44 Require(37) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/agent.js
+                                           ▇ [4ms] - #45 Require(38) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/agent.js
+                                           ▇ [35ms] - #46 Require(39) E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/agent.js
+                                            ▇ [0ms] - #47 Require(40) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/agent.js
+                                            ▇ [0ms] - #48 Require(41) E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/agent.js
+                                            ▇ [1ms] - #49 Require(42) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/agent.js
+                                            ▇▇▇▇▇ [1165ms] - #50 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/lib/init.js:15:14
+                                            ▇▇▇▇ [1090ms] - #51 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/agent.js:12:9
+                                            ▇▇▇▇▇ [1312ms] - #52 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/agent.js:9:9
+                                               ▇ [16ms] - #53 Load "Symbol(model)" to Application
+                                               ▇▇ [462ms] - #54 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/lib/loader.js:39:7
+2025-09-11 01:38:48,749 WARN 13100 [egg:core][slow-boot-action] #1 6584ms, name: Application Start
+2025-09-11 01:38:48,764 INFO 13100 [egg:core] dump config after ready, 25ms
+2025-09-11 01:44:37,020 INFO 23288 [egg-sequelize](1ms) Executed (default): SELECT 1+1 AS result
+2025-09-11 01:44:36,025 INFO 23288 [egg:logger] init all loggers with options: {"dir":"e:\\YSY\\UG\\backend\\logs\\ug-backend","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"ug-backend-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"enableFastContextLogger":false,"type":"agent","localStorage":{"enabled":false}}
+2025-09-11 01:44:36,818 INFO 23288 [egg:core] dump config after load, 6ms
+2025-09-11 01:44:36,946 INFO 23288 [egg-watcher] Start watching: ["e:\\YSY\\UG\\backend\\app","e:\\YSY\\UG\\backend\\config","e:\\YSY\\UG\\backend\\mocks","e:\\YSY\\UG\\backend\\mocks_proxy","e:\\YSY\\UG\\backend\\app.js"]
+2025-09-11 01:44:36,946 INFO 23288 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\app"
+2025-09-11 01:44:36,947 INFO 23288 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\config"
+2025-09-11 01:44:36,947 INFO 23288 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\mocks"
+2025-09-11 01:44:36,948 INFO 23288 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\mocks_proxy"
+2025-09-11 01:44:36,948 INFO 23288 [egg-watcher] Start watching: "e:\\YSY\\UG\\backend\\app.js"
+2025-09-11 01:44:36,949 INFO 23288 [egg-watcher:agent] watcher start success
+2025-09-11 01:44:37,033 INFO 23288 egg start timeline:
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [2289ms] - #0 Process Start
+                ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [4861ms] - #1 Application Start
+                ▇ [112ms] - #2 Load Plugin
+                 ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [3373ms] - #3 Load Config
+                 ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ [3297ms] - #4 Require(0) config/config.default.ts
+                                        ▇ [24ms] - #5 Require(1) config/config.local.ts
+                                        ▇ [2ms] - #6 Require(2) E:/YSY/UG/node_modules/.pnpm/egg-session@3.3.0/node_modules/egg-session/config/config.default.js
+                                        ▇ [0ms] - #7 Require(3) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/config/config.default.js
+                                        ▇ [1ms] - #8 Require(4) E:/YSY/UG/node_modules/.pnpm/egg-jsonp@2.0.0/node_modules/egg-jsonp/config/config.default.js
+                                        ▇ [1ms] - #9 Require(5) E:/YSY/UG/node_modules/.pnpm/egg-onerror@2.4.0/node_modules/egg-onerror/config/config.default.js
+                                        ▇ [0ms] - #10 Require(6) E:/YSY/UG/node_modules/.pnpm/egg-i18n@2.1.1/node_modules/egg-i18n/config/config.default.js
+                                        ▇ [1ms] - #11 Require(7) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/config/config.default.js
+                                        ▇ [0ms] - #12 Require(8) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/config/config.default.js
+                                        ▇ [1ms] - #13 Require(9) E:/YSY/UG/node_modules/.pnpm/egg-multipart@3.5.0/node_modules/egg-multipart/config/config.default.js
+                                        ▇ [1ms] - #14 Require(10) E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/config/config.default.js
+                                        ▇ [1ms] - #15 Require(11) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/config/config.default.js
+                                        ▇ [1ms] - #16 Require(12) E:/YSY/UG/node_modules/.pnpm/egg-static@2.3.1/node_modules/egg-static/config/config.default.js
+                                        ▇ [1ms] - #17 Require(13) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/config/config.default.js
+                                        ▇ [0ms] - #18 Require(14) E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/config/config.default.js
+                                        ▇ [1ms] - #19 Require(15) E:/YSY/UG/node_modules/.pnpm/egg-jwt@3.1.7/node_modules/egg-jwt/config/config.default.js
+                                        ▇ [0ms] - #20 Require(16) E:/YSY/UG/node_modules/.pnpm/egg-cors@3.0.1/node_modules/egg-cors/config/config.default.js
+                                        ▇ [1ms] - #21 Require(17) E:/YSY/UG/node_modules/.pnpm/egg-validate@2.0.2/node_modules/egg-validate/config/config.default.js
+                                        ▇ [1ms] - #22 Require(18) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/config/config.default.js
+                                        ▇ [0ms] - #23 Require(19) config/config.default.ts
+                                        ▇ [1ms] - #24 Require(20) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/config/config.local.js
+                                        ▇ [0ms] - #25 Require(21) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/config/config.local.js
+                                        ▇ [0ms] - #26 Require(22) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/config/config.local.js
+                                        ▇ [0ms] - #27 Require(23) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/config/config.local.js
+                                        ▇ [0ms] - #28 Require(24) config/config.local.ts
+                                        ▇ [145ms] - #29 Load extend/agent.js
+                                        ▇ [5ms] - #30 Require(25) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/app/extend/agent.js
+                                        ▇ [114ms] - #31 Require(26) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/app/extend/agent.js
+                                         ▇ [4ms] - #32 Require(27) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/app/extend/agent.js
+                                         ▇ [121ms] - #33 Load extend/context.js
+                                         ▇ [35ms] - #34 Require(28) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/app/extend/context.js
+                                         ▇ [8ms] - #35 Require(29) E:/YSY/UG/node_modules/.pnpm/egg-jsonp@2.0.0/node_modules/egg-jsonp/app/extend/context.js
+                                         ▇ [1ms] - #36 Require(30) E:/YSY/UG/node_modules/.pnpm/egg-i18n@2.1.1/node_modules/egg-i18n/app/extend/context.js
+                                         ▇ [49ms] - #37 Require(31) E:/YSY/UG/node_modules/.pnpm/egg-multipart@3.5.0/node_modules/egg-multipart/app/extend/context.js
+                                          ▇ [2ms] - #38 Require(32) E:/YSY/UG/node_modules/.pnpm/egg-view@2.1.4/node_modules/egg-view/app/extend/context.js
+                                          ▇ [1ms] - #39 Require(33) E:/YSY/UG/node_modules/.pnpm/egg-validate@2.0.2/node_modules/egg-validate/app/extend/context.js
+                                          ▇ [6ms] - #40 Require(34) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/app/extend/context.js
+                                          ▇ [63ms] - #41 Load agent.js
+                                          ▇ [2ms] - #42 Require(35) E:/YSY/UG/node_modules/.pnpm/egg-security@3.7.0/node_modules/egg-security/agent.js
+                                          ▇ [0ms] - #43 Require(36) E:/YSY/UG/node_modules/.pnpm/egg-onerror@2.4.0/node_modules/egg-onerror/agent.js
+                                          ▇ [9ms] - #44 Require(37) E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/agent.js
+                                          ▇ [5ms] - #45 Require(38) E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/agent.js
+                                          ▇ [33ms] - #46 Require(39) E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/agent.js
+                                          ▇ [0ms] - #47 Require(40) E:/YSY/UG/node_modules/.pnpm/egg-logrotator@3.2.0/node_modules/egg-logrotator/agent.js
+                                          ▇ [0ms] - #48 Require(41) E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/agent.js
+                                          ▇ [0ms] - #49 Require(42) E:/YSY/UG/node_modules/.pnpm/egg@3.31.0/node_modules/egg/agent.js
+                                          ▇▇▇▇▇▇ [920ms] - #50 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-watcher@3.1.1/node_modules/egg-watcher/lib/init.js:15:14
+                                          ▇▇▇▇▇▇ [880ms] - #51 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-schedule@4.0.1/node_modules/egg-schedule/agent.js:12:9
+                                          ▇▇▇▇▇▇ [985ms] - #52 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-development@3.0.2/node_modules/egg-development/agent.js:9:9
+                                                ▇ [10ms] - #53 Load "Symbol(model)" to Application
+                                                ▇ [211ms] - #54 Before Start in E:/YSY/UG/node_modules/.pnpm/egg-sequelize@5.2.2/node_modules/egg-sequelize/lib/loader.js:39:7
+2025-09-11 01:44:37,034 INFO 23288 [egg:core] dump config after ready, 10ms
+2025-09-11 01:50:37,233 WARN 23288 [agent:development] reload worker because e:\YSY\UG\backend\config\config.default.ts change
+2025-09-11 01:50:37,011 INFO 23288 [egg-watcher] Received a change event from eventSource: {"event":"change","path":"e:\\YSY\\UG\\backend\\config\\config.default.ts","stat":{"dev":641402845,"mode":33206,"nlink":1,"uid":0,"gid":0,"rdev":0,"blksize":4096,"ino":3377699721122427,"size":563,"blocks":1,"atimeMs":1757526637008.6648,"mtimeMs":1757438291753.7915,"ctimeMs":1757523051350.641,"birthtimeMs":1757438291753.2869,"atime":"2025-09-10T17:50:37.009Z","mtime":"2025-09-09T17:18:11.754Z","ctime":"2025-09-10T16:50:51.351Z","birthtime":"2025-09-09T17:18:11.753Z"},"remove":false,"isDirectory":false,"isFile":true}
+2025-09-11 01:50:45,807 WARN 23288 [ClusterClient:Connection] socket is closed by other side while there were still unhandled data in the socket buffer
+2025-09-11 01:57:28,069 INFO 23288 [egg-watcher] Received a change event from eventSource: {"event":"change","path":"e:\\YSY\\UG\\backend\\app\\public","stat":{"dev":641402845,"mode":16822,"nlink":1,"uid":0,"gid":0,"rdev":0,"blksize":4096,"ino":1125899907708324,"size":0,"blocks":0,"atimeMs":1757527048067.2983,"mtimeMs":1757523435684.866,"ctimeMs":1757523435684.866,"birthtimeMs":1757523435684.866,"atime":"2025-09-10T17:57:28.067Z","mtime":"2025-09-10T16:57:15.685Z","ctime":"2025-09-10T16:57:15.685Z","birthtime":"2025-09-10T16:57:15.685Z"},"remove":false,"isDirectory":true,"isFile":false}
