@@ -15,6 +15,9 @@ export default [
       'node_modules/.pnpm/**/*',
       'node_modules/@umijs/**/*',
       'node_modules/umi/**/*',
+      // 忽略类型定义文件的检查
+      'typings.d.ts',
+      'src/**/*.d.ts',
     ],
   },
   {
