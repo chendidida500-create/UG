@@ -1,10 +1,21 @@
 {
-  "name": "ug-project",
+  "name": "ug",
   "version": "1.0.0",
   "description": "UG管理系统",
   "engines": {
     "node": "20.19.0",
     "pnpm": "8.15.8"
   },
-  "packageManager": "pnpm@8.15.8"
+  "packageManager": "pnpm@8.15.8",
+  "scripts": {
+    "dev": "pnpm --filter ug-frontend run dev",
+    "dev:backend": "pnpm --filter ug-backend run dev",
+    "build": "pnpm --filter ug-frontend run build",
+    "build:backend": "pnpm --filter ug-backend run build",
+    "lint": "pnpm --filter ug-frontend run lint && pnpm --filter ug-backend run lint",
+    "test": "pnpm --filter ug-frontend run test && pnpm --filter ug-backend run test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

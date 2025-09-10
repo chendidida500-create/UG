@@ -16,9 +16,12 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "ignoreDeprecations": "6.0",
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*", "typings.d.ts"],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    // 忽略所有第三方依赖的类型检查
+    "node_modules/**/*"
+  ]
 }

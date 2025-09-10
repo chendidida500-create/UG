@@ -1,9 +1,17 @@
 @echo off
-echo 正在进行类型检查...
-cd frontend
-echo 前端类型检查...
-pnpm tsc --noEmit
-cd ../backend
-echo 后端类型检查...
-pnpm tsc --noEmit
-echo 类型检查完成！
+echo UG管理系统自动类型检查脚本
+echo =========================
+
+echo.
+echo 1. 进入前端目录并运行TypeScript类型检查...
+cd /d "e:\YSY\UG\frontend"
+pnpm run type-check
+
+echo.
+echo 2. 进入后端目录并运行TypeScript类型检查...
+cd /d "e:\YSY\UG\backend"
+pnpm run type-check
+
+echo.
+echo 自动类型检查完成！
+pause

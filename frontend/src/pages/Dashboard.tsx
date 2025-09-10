@@ -10,9 +10,7 @@ const Dashboard: React.FC = () => {
       <Card>
         <Space direction="vertical" size="large" className={styles.content}>
           <Title level={2}>欢迎使用UG管理系统</Title>
-          <Paragraph>
-            这是一个基于UMI + Egg.js的全栈管理系统。
-          </Paragraph>
+          <Paragraph>这是一个基于UMI + Egg.js的全栈管理系统。</Paragraph>
           <Paragraph>
             前端技术栈：
             <ul>

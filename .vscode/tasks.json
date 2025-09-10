@@ -114,6 +114,42 @@
       "type": "shell",
       "command": "${workspaceFolder}/scripts/setup-backend-dependencies.bat",
       "group": "build"
+    },
+    {
+      "label": "完整自动化修复",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/full-auto-fix.bat",
+      "group": "build"
+    },
+    {
+      "label": "代码检查（忽略依赖警告）",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/lint-ignore-deps.bat",
+      "group": "build"
+    },
+    {
+      "label": "编码验证",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/verify-encoding.bat",
+      "group": "build"
+    },
+    {
+      "label": "设置UTF-8编码",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/set-utf8-encoding.cmd",
+      "group": "build"
+    },
+    {
+      "label": "忽略依赖错误",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/ignore-dependency-errors.bat",
+      "group": "build"
+    },
+    {
+      "label": "忽略所有依赖错误",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/ignore-all-dependency-errors.cmd",
+      "group": "build"
     }
   ]
 }

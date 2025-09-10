@@ -21,7 +21,8 @@
     "migrate:up": "egg-sequelize migration:up",
     "migrate:down": "egg-sequelize migration:down",
     "db:seed": "egg-sequelize db:seed:all",
-    "spellcheck": "cspell \"app/**/*.{ts,js,json,md}\""
+    "spellcheck": "cspell \"app/**/*.{ts,js,json,md}\"",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "egg": "^3.31.0",

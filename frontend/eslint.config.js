@@ -12,6 +12,10 @@ export default [
       'dist/**/*',
       '.umi/**/*',
       '.umi-production/**/*',
+      // 忽略所有第三方依赖的错误
+      'node_modules/.pnpm/**/*',
+      'node_modules/@umijs/**/*',
+      'node_modules/umi/**/*',
     ],
   },
   {
@@ -20,6 +24,14 @@ export default [
       'no-console': 'warn',
       'prefer-const': 'error',
       'no-var': 'error',
+      // UMI 编码规范相关规则
+      'no-unused-vars': 'error',
+      'no-undef': 'error',
+      'no-empty': 'error',
+      'no-duplicate-case': 'error',
+      'no-extra-semi': 'error',
+      'no-fallthrough': 'error',
+      'no-irregular-whitespace': 'error',
     },
   },
   {
@@ -28,6 +40,7 @@ export default [
       parser: tsparser,
       parserOptions: {
         project: './tsconfig.json',
+        warnOnUnsupportedTypeScriptVersion: true, // 保持 TypeScript 版本警告
       },
     },
     plugins: {
@@ -39,6 +52,10 @@ export default [
         { argsIgnorePattern: '^_' },
       ],
       '@typescript-eslint/no-explicit-any': 'error',
+      // TypeScript 相关规则
+      '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/no-parameter-properties': 'off',
+      '@typescript-eslint/no-use-before-define': 'off',
     },
   },
   {
@@ -55,6 +72,11 @@ export default [
     rules: {
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
+      // React 相关规则
+      'react/jsx-uses-react': 'error',
+      'react/jsx-uses-vars': 'error',
+      'react/jsx-no-undef': 'error',
+      'react/jsx-pascal-case': 'error',
     },
   },
   {
@@ -63,7 +85,14 @@ export default [
       prettier: prettier,
     },
     rules: {
-      'prettier/prettier': 'error',
+      'prettier/prettier': [
+        'error',
+        {
+          // 确保使用 UTF-8 编码
+          endOfLine: 'lf',
+          // 其他 Prettier 规则
+        },
+      ],
     },
   },
 ];

@@ -1,11 +1,20 @@
 @echo off
-echo 正在格式化和检查代码...
-cd frontend
-echo 格式化前端代码...
-pnpm format
-echo 检查前端代码...
-pnpm lint:fix
-cd ../backend
-echo 格式化后端代码...
-pnpm lint:fix
-echo 代码格式化和检查完成！
+echo UG管理系统自动格式化和代码检查脚本
+echo =========================
+
+echo.
+echo 1. 进入前端目录并运行ESLint修复...
+cd /d "e:\YSY\UG\frontend"
+pnpm run lint:fix
+
+echo.
+echo 2. 运行Prettier格式化...
+pnpm run format
+
+echo.
+echo 3. 运行TypeScript类型检查...
+pnpm run type-check
+
+echo.
+echo 自动格式化和代码检查完成！
+pause

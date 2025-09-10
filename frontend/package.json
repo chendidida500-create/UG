@@ -9,12 +9,13 @@
   },
   "packageManager": "pnpm@8.15.8",
   "scripts": {
-    "dev": "umi dev",
-    "build": "umi build",
+    "dev": "npx @umijs/max dev",
+    "build": "npx @umijs/max build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\"",
-    "spellcheck": "cspell \"src/**/*.{ts,tsx,js,jsx,json,md}\""
+    "spellcheck": "cspell \"src/**/*.{ts,tsx,js,jsx,json,md}\"",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@ant-design/icons": "^5.4.0",
