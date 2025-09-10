@@ -14,7 +14,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
       <Content className={styles.content}>
         <div className={styles.container}>
           <div className={styles.logo}>
-            <img src="/logo.png" alt="系统Logo" />
+            <img src="/logo.svg" alt="系统Logo" />
             <h1>UG管理系统</h1>
           </div>
           <Card className={styles.card}>{children}</Card>

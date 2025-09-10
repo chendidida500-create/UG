@@ -4,20 +4,25 @@
 import React from 'react';
 
 export async function getRoutes() {
-  const routes = {"1":{"path":"/auth","id":"1"},"2":{"path":"/auth/login","parentId":"1","id":"2"},"3":{"path":"/auth/register","parentId":"1","id":"3"},"4":{"path":"","parentId":"5","id":"4","originPath":"/"},"5":{"path":"/","isWrapper":true,"id":"5"},"6":{"path":"/dashboard","name":"仪表盘","icon":"DashboardOutlined","parentId":"4","id":"6"},"7":{"path":"/system","name":"系统管理","parentId":"4","id":"7"},"8":{"path":"/system/users","name":"用户管理","parentId":"7","id":"8"},"9":{"path":"/system/roles","name":"角色管理","parentId":"7","id":"9"},"10":{"path":"/system/permissions","name":"权限管理","parentId":"7","id":"10"}} as const;
+  const routes = {"1":{"path":"/","redirect":"/welcome","id":"1"},"2":{"path":"/welcome","name":"欢迎","icon":"smile","id":"2"},"3":{"path":"/auth","id":"3"},"4":{"path":"/auth/login","parentId":"3","id":"4"},"5":{"path":"/auth/register","parentId":"3","id":"5"},"6":{"path":"","parentId":"7","id":"6","originPath":"/"},"7":{"path":"/","isWrapper":true,"id":"7"},"8":{"path":"/dashboard","name":"仪表盘","icon":"DashboardOutlined","parentId":"6","id":"8"},"9":{"path":"/system","name":"系统管理","parentId":"6","id":"9"},"10":{"path":"/system/users","name":"用户管理","parentId":"9","id":"10"},"11":{"path":"/system/roles","name":"角色管理","parentId":"9","id":"11"},"12":{"path":"/system/permissions","name":"权限管理","parentId":"9","id":"12"},"13":{"path":"/admin","name":"管理页","icon":"crown","access":"canAdmin","id":"13"},"14":{"path":"/admin/sub-page-1","name":"分页一","icon":"smile","parentId":"13","id":"14"},"15":{"path":"/admin/sub-page-2","name":"分页二","icon":"smile","parentId":"13","id":"15"}} as const;
   return {
     routes,
     routeComponents: {
-'1': React.lazy(() => import(/* webpackChunkName: "layouts__AuthLayout__index" */'@/layouts/AuthLayout/index.tsx')),
-'2': React.lazy(() => import(/* webpackChunkName: "p__Auth__Login" */'@/pages/Auth/Login.tsx')),
-'3': React.lazy(() => import(/* webpackChunkName: "p__Auth__Register" */'@/pages/Auth/Register.tsx')),
-'4': React.lazy(() => import(/* webpackChunkName: "layouts__BasicLayout__index" */'@/layouts/BasicLayout/index.tsx')),
-'5': React.lazy(() => import(/* webpackChunkName: "wrappers__AuthWrapper" */'@/wrappers/AuthWrapper.tsx')),
-'6': React.lazy(() => import(/* webpackChunkName: "p__Dashboard" */'@/pages/Dashboard.tsx')),
-'7': React.lazy(() => import('./EmptyRoute')),
-'8': React.lazy(() => import(/* webpackChunkName: "p__System__User" */'@/pages/System/User.tsx')),
-'9': React.lazy(() => import(/* webpackChunkName: "p__System__Role" */'@/pages/System/Role.tsx')),
-'10': React.lazy(() => import(/* webpackChunkName: "p__System__Permission" */'@/pages/System/Permission.tsx')),
+'1': React.lazy(() => import('./EmptyRoute')),
+'2': React.lazy(() => import(/* webpackChunkName: "p__Welcome" */'@/pages/Welcome.tsx')),
+'3': React.lazy(() => import(/* webpackChunkName: "layouts__AuthLayout__index" */'@/layouts/AuthLayout/index.tsx')),
+'4': React.lazy(() => import(/* webpackChunkName: "p__Auth__Login" */'@/pages/Auth/Login.tsx')),
+'5': React.lazy(() => import(/* webpackChunkName: "p__Auth__Register" */'@/pages/Auth/Register.tsx')),
+'6': React.lazy(() => import(/* webpackChunkName: "layouts__BasicLayout__index" */'@/layouts/BasicLayout/index.tsx')),
+'7': React.lazy(() => import(/* webpackChunkName: "wrappers__AuthWrapper" */'@/wrappers/AuthWrapper.tsx')),
+'8': React.lazy(() => import(/* webpackChunkName: "p__Dashboard" */'@/pages/Dashboard.tsx')),
+'9': React.lazy(() => import('./EmptyRoute')),
+'10': React.lazy(() => import(/* webpackChunkName: "p__System__User" */'@/pages/System/User.tsx')),
+'11': React.lazy(() => import(/* webpackChunkName: "p__System__Role" */'@/pages/System/Role.tsx')),
+'12': React.lazy(() => import(/* webpackChunkName: "p__System__Permission" */'@/pages/System/Permission.tsx')),
+'13': React.lazy(() => import('./EmptyRoute')),
+'14': React.lazy(() => import(/* webpackChunkName: "p__Welcome" */'@/pages/Welcome.tsx')),
+'15': React.lazy(() => import(/* webpackChunkName: "p__Welcome" */'@/pages/Welcome.tsx')),
 },
   };
 }

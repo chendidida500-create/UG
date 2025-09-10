@@ -5,6 +5,7 @@
   -webkit-text-size-adjust: none; /* Safari 兼容 */
   -moz-text-size-adjust: none; /* Firefox 兼容 */
   -ms-text-size-adjust: none; /* IE 兼容 */
+  /* [text-size-adjust](file:///E:/YSY/UG/frontend/src/styles/global.css#L8-L8) is not supported by Firefox, Safari - using prefixed versions above */
   text-size-adjust: none; /* 标准写法 */
 }
 

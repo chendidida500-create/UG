@@ -8,13 +8,46 @@ export default {
       name: 'viewport',
       content: 'width=device-width, initial-scale=1',
     },
+    {
+      name: 'referrer',
+      content: 'origin',
+    },
   ],
 
   // 引入全局样式
   styles: ['@/styles/global.css'],
 
+  // 启用layout插件
+  plugins: ['@umijs/plugins/dist/layout'],
+  layout: {
+    locale: false,
+    title: 'UG管理系统',
+    logo: '@/assets/logo.svg',
+    theme: 'dark',
+    layout: 'mix',
+    contentWidth: 'Fluid',
+    fixedHeader: true,
+    fixSiderbar: true,
+    siderWidth: 208,
+    splitMenus: false,
+    menu: {
+      locale: false,
+      defaultOpenAll: true,
+    },
+  },
+
   // 路由配置
   routes: [
+    {
+      path: '/',
+      redirect: '/welcome',
+    },
+    {
+      path: '/welcome',
+      name: '欢迎',
+      icon: 'smile',
+      component: './Welcome',
+    },
     {
       path: '/auth',
       component: '@/layouts/AuthLayout',
@@ -22,38 +55,59 @@ export default {
         { path: '/auth/login', component: '@/pages/Auth/Login' },
         { path: '/auth/register', component: '@/pages/Auth/Register' },
       ],
+      layout: false,
     },
     {
-      path: '/',
-      component: '@/layouts/BasicLayout',
+      path: '/dashboard',
+      name: '仪表盘',
+      icon: 'DashboardOutlined',
+      component: '@/pages/Dashboard',
       wrappers: ['@/wrappers/AuthWrapper'],
+    },
+    {
+      path: '/system',
+      name: '系统管理',
+      icon: 'SettingOutlined',
       routes: [
         {
-          path: '/dashboard',
-          name: '仪表盘',
-          icon: 'DashboardOutlined',
-          component: '@/pages/Dashboard',
+          path: '/system/users',
+          name: '用户管理',
+          component: '@/pages/System/User',
+          wrappers: ['@/wrappers/AuthWrapper'],
         },
         {
-          path: '/system',
-          name: '系统管理',
-          routes: [
-            {
-              path: '/system/users',
-              name: '用户管理',
-              component: '@/pages/System/User',
-            },
-            {
-              path: '/system/roles',
-              name: '角色管理',
-              component: '@/pages/System/Role',
-            },
-            {
-              path: '/system/permissions',
-              name: '权限管理',
-              component: '@/pages/System/Permission',
-            },
-          ],
+          path: '/system/roles',
+          name: '角色管理',
+          component: '@/pages/System/Role',
+          wrappers: ['@/wrappers/AuthWrapper'],
+        },
+        {
+          path: '/system/permissions',
+          name: '权限管理',
+          component: '@/pages/System/Permission',
+          wrappers: ['@/wrappers/AuthWrapper'],
+        },
+      ],
+    },
+    {
+      path: '/admin',
+      name: '管理页',
+      icon: 'crown',
+      access: 'canAdmin',
+      routes: [
+        {
+          path: '/admin/sub-page-1',
+          name: '分页一',
+          icon: 'smile',
+          component: './Welcome',
+          wrappers: ['@/wrappers/AuthWrapper'],
+        },
+        {
+          path: '/admin/sub-page-2',
+          name: '分页二',
+          icon: 'smile',
+          component: './Welcome',
+          wrappers: ['@/wrappers/AuthWrapper'],
         },
       ],
     },
