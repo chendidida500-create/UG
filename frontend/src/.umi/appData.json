@@ -62,7 +62,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 82
+        "register": 66
       },
       "enableBy": "register",
       "type": "preset",
@@ -75,7 +75,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 39
+        "register": 42
       },
       "enableBy": "register",
       "type": "preset",
@@ -89,10 +89,10 @@
       "time": {
         "hooks": {
           "onStart": [
-            39
+            29
           ]
         },
-        "register": 23
+        "register": 25
       },
       "enableBy": "register",
       "type": "plugin",
@@ -106,10 +106,10 @@
       "time": {
         "hooks": {
           "onStart": [
-            6
+            5
           ]
         },
-        "register": 9
+        "register": 10
       },
       "enableBy": "register",
       "type": "plugin",
@@ -126,7 +126,7 @@
             0
           ]
         },
-        "register": 4
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -139,7 +139,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 7
+        "register": 6
       },
       "enableBy": "register",
       "type": "plugin",
@@ -153,10 +153,10 @@
       "time": {
         "hooks": {
           "modifyAppData": [
-            52
+            47
           ]
         },
-        "register": 83
+        "register": 64
       },
       "enableBy": "register",
       "type": "plugin",
@@ -169,7 +169,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -183,13 +183,13 @@
       "time": {
         "hooks": {
           "onCheckConfig": [
-            1
+            0
           ],
           "onCheck": [
-            1
+            0
           ]
         },
-        "register": 4
+        "register": 5
       },
       "enableBy": "register",
       "type": "plugin",
@@ -203,10 +203,10 @@
       "time": {
         "hooks": {
           "onCheck": [
-            0
+            1
           ]
         },
-        "register": 1
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -219,7 +219,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 6
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
@@ -233,10 +233,10 @@
       "time": {
         "hooks": {
           "modifyConfig": [
-            1
+            0
           ]
         },
-        "register": 53
+        "register": 44
       },
       "enableBy": "register",
       "type": "plugin",
@@ -772,7 +772,7 @@
       "enableBy": "register",
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 0
       }
     },
     "virtual: config-https": {
@@ -860,7 +860,7 @@
       "enableBy": "register",
       "time": {
         "hooks": {},
-        "register": 0
+        "register": 1
       }
     },
     "virtual: config-externals": {
@@ -1105,7 +1105,7 @@
             1
           ]
         },
-        "register": 4
+        "register": 6
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1118,7 +1118,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 6
+        "register": 4
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1131,7 +1131,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 168
+        "register": 148
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1144,7 +1144,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 452
+        "register": 525
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1157,7 +1157,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 76
+        "register": 136
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1174,7 +1174,7 @@
             0
           ]
         },
-        "register": 4
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1187,7 +1187,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 5
+        "register": 6
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1200,7 +1200,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 7
+        "register": 10
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1214,10 +1214,10 @@
       "time": {
         "hooks": {
           "onStart": [
-            3
+            2
           ]
         },
-        "register": 98
+        "register": 195
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/mock/mock.js",
@@ -1242,7 +1242,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 7
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/okam/okam.js",
@@ -1254,7 +1254,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 0
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1267,7 +1267,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 5
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1281,10 +1281,10 @@
       "time": {
         "hooks": {
           "modifyConfig": [
-            5
+            3
           ]
         },
-        "register": 11
+        "register": 15
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/polyfill/polyfill.js",
@@ -1309,7 +1309,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 8
+        "register": 15
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1322,7 +1322,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1335,7 +1335,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1348,7 +1348,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 16
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1361,7 +1361,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 35
+        "register": 52
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1374,7 +1374,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 7
+        "register": 9
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1387,7 +1387,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 3
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/routeProps/routeProps.js",
@@ -1399,7 +1399,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 12
+        "register": 18
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1412,7 +1412,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 16
+        "register": 17
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1425,7 +1425,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 16
+        "register": 12
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1438,7 +1438,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 13
+        "register": 9
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1464,7 +1464,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 33
+        "register": 29
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/apiRoute/apiRoute.js",
@@ -1476,7 +1476,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 58
+        "register": 53
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1553,7 +1553,7 @@
       "time": {
         "hooks": {
           "addOnDemandDeps": [
-            1
+            0
           ]
         },
         "register": 1
@@ -1581,7 +1581,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 3
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1594,7 +1594,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 11
+        "register": 12
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/hmrGuardian/hmrGuardian.js",
@@ -1618,7 +1618,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 7
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1631,7 +1631,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 9
+        "register": 8
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1644,7 +1644,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 22
+        "register": 28
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1657,7 +1657,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 112
+        "register": 102
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1671,13 +1671,13 @@
       "time": {
         "hooks": {
           "modifyAppData": [
-            70
+            48
           ],
           "onStart": [
             0
           ]
         },
-        "register": 173
+        "register": 164
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/dev/dev.js",
@@ -1715,7 +1715,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1728,7 +1728,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1741,7 +1741,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1754,7 +1754,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 8
+        "register": 11
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1793,7 +1793,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1806,7 +1806,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1832,7 +1832,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1845,7 +1845,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1871,7 +1871,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1884,7 +1884,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1910,7 +1910,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1923,7 +1923,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 61
+        "register": 52
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1936,7 +1936,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 5
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1949,7 +1949,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 23
+        "register": 19
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1996,7 +1996,7 @@
             0
           ]
         },
-        "register": 19
+        "register": 20
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/antd.js",
@@ -2008,7 +2008,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 29
+        "register": 30
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2036,7 +2036,7 @@
       },
       "time": {
         "hooks": {},
-        "register": 12
+        "register": 11
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2062,7 +2062,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 8
+        "register": 4
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2088,7 +2088,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2101,7 +2101,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 5
       },
       "enableBy": "register",
       "type": "plugin",
@@ -2126,7 +2126,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 10
+        "register": 7
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/qiankun/slave.js",
@@ -2138,7 +2138,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2151,7 +2151,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2164,7 +2164,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 5
+        "register": 4
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2221,7 +2221,7 @@
       "time": {
         "hooks": {
           "modifyAppData": [
-            0
+            1
           ]
         },
         "register": 1
@@ -2238,7 +2238,7 @@
       "time": {
         "hooks": {
           "onCheckPkgJSON": [
-            1
+            0
           ]
         },
         "register": 1
@@ -2271,6 +2271,15 @@
   },
   "userConfig": {
     "mfsu": false,
+    "metas": [
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1"
+      }
+    ],
+    "styles": [
+      "@/styles/global.css"
+    ],
     "routes": [
       {
         "path": "/auth",
@@ -2366,6 +2375,15 @@
       "antd": "E:\\YSY\\UG\\frontend\\node_modules\\antd",
       "@umijs/max": "@@/exports"
     },
+    "metas": [
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1"
+      }
+    ],
+    "styles": [
+      "@/styles/global.css"
+    ],
     "routes": [
       {
         "path": "/auth",
@@ -3396,7 +3414,7 @@
       "file": "@/wrappers/AuthWrapper.tsx",
       "id": "5",
       "absPath": "/",
-      "__content": "import React, { useEffect } from 'react';\nimport { useModel, useNavigate, useLocation } from 'umi';\nimport { Spin } from 'antd';\n\ninterface CurrentUser {\n  name?: string;\n  // 可以根据实际用户模型添加更多字段\n}\n\ninterface InitialState {\n  currentUser?: CurrentUser;\n}\n\ninterface AuthWrapperProps {\n  children: React.ReactNode;\n}\n\nconst AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {\n  const { initialState, loading } = useModel('@@initialState') as {\n    initialState: InitialState;\n    loading: boolean;\n  };\n  const navigate = useNavigate();\n  const location = useLocation();\n\n  useEffect(() => {\n    // 检查用户认证状态\n    if (!initialState?.currentUser && !loading) {\n      // 未登录则跳转到登录页\n      navigate('/auth/login', {\n        state: {\n          redirect: location.pathname,\n        },\n      });\n    }\n  }, [initialState, loading]);\n\n  if (loading) {\n    return (\n      <Spin size=\"large\" style={{ display: 'block', margin: '100px auto' }} />\n    );\n  }\n\n  return <>{children}</>;\n};\n\nexport default AuthWrapper;\n",
+      "__content": "import React, { useEffect } from 'react';\nimport { useModel, useNavigate, useLocation } from 'umi';\nimport { Spin } from 'antd';\nimport type { InitialState } from '@/models/initialState';\nimport styles from './AuthWrapper.module.css';\n\n// 定义useModel返回值的类型\ninterface InitialStateModel {\n  initialState?: InitialState;\n  loading?: boolean;\n  error?: Error;\n}\n\ninterface AuthWrapperProps {\n  children: React.ReactNode;\n}\n\nconst AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {\n  const model = useModel('@@initialState') as InitialStateModel | undefined;\n  const { initialState, loading, error } = model || {};\n  const navigate = useNavigate();\n  const location = useLocation();\n\n  // 确保initialState不为undefined\n  const safeInitialState = initialState;\n  const isLoading = loading !== undefined ? loading : true;\n\n  useEffect(() => {\n    // 检查用户认证状态\n    if (safeInitialState && !safeInitialState.currentUser && !isLoading) {\n      // 未登录则跳转到登录页\n      navigate('/auth/login', {\n        state: {\n          redirect: location.pathname,\n        },\n      });\n    }\n  }, [safeInitialState, isLoading, navigate, location.pathname]);\n\n  // 处理模型加载错误\n  if (error) {\n    console.error('Initial state model error:', error);\n    return (\n      <div className={styles.errorContainer}>\n        <p>加载用户信息失败</p>\n      </div>\n    );\n  }\n\n  if (isLoading) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  // 如果initialState为undefined，也显示加载状态\n  if (!safeInitialState) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  return <>{children}</>;\n};\n\nexport default AuthWrapper;\n",
       "__isJSFile": true,
       "__absFile": "E:/YSY/UG/frontend/src/wrappers/AuthWrapper.tsx"
     },

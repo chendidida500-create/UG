@@ -1,0 +1,18 @@
+.errorContainer {
+  display: block;
+  margin: 100px auto;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE */
+}
+
+.loadingSpinner {
+  display: block;
+  margin: 100px auto;
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE */
+}

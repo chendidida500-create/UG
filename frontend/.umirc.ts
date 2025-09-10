@@ -2,6 +2,17 @@ export default {
   // 禁用MFSU以避免编译问题
   mfsu: false,
 
+  // 添加viewport meta标签
+  metas: [
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1',
+    },
+  ],
+
+  // 引入全局样式
+  styles: ['@/styles/global.css'],
+
   // 路由配置
   routes: [
     {

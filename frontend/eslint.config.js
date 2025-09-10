@@ -22,6 +22,20 @@ export default [
   },
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+    languageOptions: {
+      // 添加环境定义，告诉 ESLint console 是全局可用的
+      globals: {
+        console: 'readonly',
+        // 其他浏览器全局对象
+        window: 'readonly',
+        document: 'readonly',
+        navigator: 'readonly',
+        location: 'readonly',
+        history: 'readonly',
+        localStorage: 'readonly',
+        sessionStorage: 'readonly',
+      },
+    },
     rules: {
       'no-console': 'off', // 允许使用console
       'prefer-const': 'error',
