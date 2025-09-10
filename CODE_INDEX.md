@@ -26,6 +26,9 @@
 - [docs/DEPENDENCY_MANAGEMENT.md](docs/DEPENDENCY_MANAGEMENT.md) - 依赖管理指南
 - [docs/DEPENDENCY_VERSION_REPORT.md](docs/DEPENDENCY_VERSION_REPORT.md) - 依赖版本检查报告
 - [docs/TYPESCRIPT_URILIB_ERROR_FIX.md](docs/TYPESCRIPT_URILIB_ERROR_FIX.md) - TypeScript urllib 私有标识符错误修复指南
+- [docs/PROJECT_COMPILATION.md](docs/PROJECT_COMPILATION.md) - 项目编译指南
+- [docs/AUTOMATION.md](docs/AUTOMATION.md) - 自动化功能指南
+- [docs/COMPILATION_RESULT.md](docs/COMPILATION_RESULT.md) - 项目编译结果报告
 
 ## 自动化脚本
 

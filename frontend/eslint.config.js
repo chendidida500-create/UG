@@ -42,7 +42,7 @@ export default [
       parser: tsparser,
       parserOptions: {
         project: './tsconfig.json',
-        warnOnUnsupportedTypeScriptVersion: true, // 保持 TypeScript 版本警告
+        warnOnUnsupportedTypeScriptVersion: false, // 忽略 TypeScript 版本警告
       },
     },
     plugins: {
