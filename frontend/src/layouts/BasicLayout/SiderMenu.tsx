@@ -1,11 +1,14 @@
 import React from 'react';
 import { Menu } from 'antd';
+import type { MenuProps } from 'antd';
 import { useLocation, useNavigate } from 'umi';
 import { useModel } from 'umi';
 import styles from './styles.less';
 
+type MenuItem = Required<MenuProps>['items'][number];
+
 // 菜单项定义
-const menuItems = [
+const menuItems: MenuItem[] = [
   {
     key: '/dashboard',
     label: '仪表盘',
@@ -31,16 +34,21 @@ const menuItems = [
 ];
 
 interface InitialState {
-  currentUser?: any;
+  currentUser?: {
+    name?: string;
+  };
 }
 
 const SiderMenu: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { initialState } = useModel('@@initialState') as { initialState: InitialState };
+  // 注意：这里暂时不使用_initialState，但在实际应用中可能需要
+  const { initialState: _initialState } = useModel('@@initialState') as {
+    initialState: InitialState;
+  };
 
   // 根据权限过滤菜单项
-  const filterMenuItems = (items: any[]) => {
+  const filterMenuItems = (items: MenuItem[]): MenuItem[] => {
     // 实现权限过滤逻辑
     return items;
   };

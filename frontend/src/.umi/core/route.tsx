@@ -4,12 +4,20 @@
 import React from 'react';
 
 export async function getRoutes() {
-  const routes = {"1":{"path":"/","redirect":"/dashboard","id":"1"},"2":{"name":"仪表盘","path":"/dashboard","id":"2"}} as const;
+  const routes = {"1":{"path":"/auth","id":"1"},"2":{"path":"/auth/login","parentId":"1","id":"2"},"3":{"path":"/auth/register","parentId":"1","id":"3"},"4":{"path":"","parentId":"5","id":"4","originPath":"/"},"5":{"path":"/","isWrapper":true,"id":"5"},"6":{"path":"/dashboard","name":"仪表盘","icon":"DashboardOutlined","parentId":"4","id":"6"},"7":{"path":"/system","name":"系统管理","parentId":"4","id":"7"},"8":{"path":"/system/users","name":"用户管理","parentId":"7","id":"8"},"9":{"path":"/system/roles","name":"角色管理","parentId":"7","id":"9"},"10":{"path":"/system/permissions","name":"权限管理","parentId":"7","id":"10"}} as const;
   return {
     routes,
     routeComponents: {
-'1': React.lazy(() => import('./EmptyRoute')),
-'2': React.lazy(() => import(/* webpackChunkName: "p__Dashboard" */'@/pages/Dashboard.tsx')),
+'1': React.lazy(() => import(/* webpackChunkName: "layouts__AuthLayout__index" */'@/layouts/AuthLayout/index.tsx')),
+'2': React.lazy(() => import(/* webpackChunkName: "p__Auth__Login" */'@/pages/Auth/Login.tsx')),
+'3': React.lazy(() => import(/* webpackChunkName: "p__Auth__Register" */'@/pages/Auth/Register.tsx')),
+'4': React.lazy(() => import(/* webpackChunkName: "layouts__BasicLayout__index" */'@/layouts/BasicLayout/index.tsx')),
+'5': React.lazy(() => import(/* webpackChunkName: "wrappers__AuthWrapper" */'@/wrappers/AuthWrapper.tsx')),
+'6': React.lazy(() => import(/* webpackChunkName: "p__Dashboard" */'@/pages/Dashboard.tsx')),
+'7': React.lazy(() => import('./EmptyRoute')),
+'8': React.lazy(() => import(/* webpackChunkName: "p__System__User" */'@/pages/System/User.tsx')),
+'9': React.lazy(() => import(/* webpackChunkName: "p__System__Role" */'@/pages/System/Role.tsx')),
+'10': React.lazy(() => import(/* webpackChunkName: "p__System__Permission" */'@/pages/System/Permission.tsx')),
 },
   };
 }

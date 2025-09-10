@@ -1,19 +1,50 @@
-import { defineConfig } from '@umijs/max';
-
-export default defineConfig({
+export default {
   // 禁用MFSU以避免编译问题
   mfsu: false,
 
   // 路由配置
   routes: [
     {
-      path: '/',
-      redirect: '/dashboard',
+      path: '/auth',
+      component: '@/layouts/AuthLayout',
+      routes: [
+        { path: '/auth/login', component: '@/pages/Auth/Login' },
+        { path: '/auth/register', component: '@/pages/Auth/Register' },
+      ],
     },
     {
-      name: '仪表盘',
-      path: '/dashboard',
-      component: './Dashboard',
+      path: '/',
+      component: '@/layouts/BasicLayout',
+      wrappers: ['@/wrappers/AuthWrapper'],
+      routes: [
+        {
+          path: '/dashboard',
+          name: '仪表盘',
+          icon: 'DashboardOutlined',
+          component: '@/pages/Dashboard',
+        },
+        {
+          path: '/system',
+          name: '系统管理',
+          routes: [
+            {
+              path: '/system/users',
+              name: '用户管理',
+              component: '@/pages/System/User',
+            },
+            {
+              path: '/system/roles',
+              name: '角色管理',
+              component: '@/pages/System/Role',
+            },
+            {
+              path: '/system/permissions',
+              name: '权限管理',
+              component: '@/pages/System/Permission',
+            },
+          ],
+        },
+      ],
     },
   ],
 
@@ -32,19 +63,12 @@ export default defineConfig({
   // 开发代理配置
   proxy: {
     '/api': {
-      target: process.env.API_BASE_URL || 'http://localhost:7001',
+      target: 'http://localhost:7001',
       changeOrigin: true,
       pathRewrite: { '^/api': '/api' },
     },
   },
 
-  // 环境变量定义
-  define: {
-    'process.env.API_BASE_URL': JSON.stringify(
-      process.env.API_BASE_URL || 'http://localhost:7001'
-    ),
-  },
-
   // npm客户端配置
   npmClient: 'pnpm',
-});
+};

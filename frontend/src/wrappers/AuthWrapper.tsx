@@ -2,8 +2,13 @@ import React, { useEffect } from 'react';
 import { useModel, useNavigate, useLocation } from 'umi';
 import { Spin } from 'antd';
 
+interface CurrentUser {
+  name?: string;
+  // 可以根据实际用户模型添加更多字段
+}
+
 interface InitialState {
-  currentUser?: any;
+  currentUser?: CurrentUser;
 }
 
 interface AuthWrapperProps {
@@ -11,7 +16,10 @@ interface AuthWrapperProps {
 }
 
 const AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {
-  const { initialState, loading } = useModel('@@initialState') as { initialState: InitialState; loading: boolean };
+  const { initialState, loading } = useModel('@@initialState') as {
+    initialState: InitialState;
+    loading: boolean;
+  };
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -28,7 +36,9 @@ const AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {
   }, [initialState, loading]);
 
   if (loading) {
-    return <Spin size="large" style={{ display: 'block', margin: '100px auto' }} />;
+    return (
+      <Spin size="large" style={{ display: 'block', margin: '100px auto' }} />
+    );
   }
 
   return <>{children}</>;

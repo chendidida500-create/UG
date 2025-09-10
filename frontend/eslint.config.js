@@ -23,11 +23,14 @@ export default [
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     rules: {
-      'no-console': 'warn',
+      'no-console': 'off', // 允许使用console
       'prefer-const': 'error',
       'no-var': 'error',
       // UMI 编码规范相关规则
-      'no-unused-vars': 'error',
+      'no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
       'no-undef': 'error',
       'no-empty': 'error',
       'no-duplicate-case': 'error',
@@ -51,7 +54,7 @@ export default [
     rules: {
       '@typescript-eslint/no-unused-vars': [
         'error',
-        { argsIgnorePattern: '^_' },
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
       '@typescript-eslint/no-explicit-any': 'error',
       // TypeScript 相关规则

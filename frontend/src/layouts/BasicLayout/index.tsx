@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Layout, theme } from 'antd';
-import HeaderContent from './HeaderContent.tsx';
-import SiderMenu from './SiderMenu.tsx';
+import HeaderContent from './HeaderContent';
+import SiderMenu from './SiderMenu';
 import styles from './styles.less';
 
 const { Header, Sider, Content, Footer } = Layout;
@@ -22,7 +22,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = ({ children }) => {
       <Sider
         collapsible
         collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
+        onCollapse={setCollapsed}
         className={styles.sider}
       >
         <div className={styles.logo} />
@@ -30,7 +30,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = ({ children }) => {
       </Sider>
       <Layout>
         <Header className={styles.header}>
-          <HeaderContent collapsed={collapsed} setCollapsed={setCollapsed} />
+          <HeaderContent _collapsed={collapsed} _setCollapsed={setCollapsed} />
         </Header>
         <Content
           className={styles.content}

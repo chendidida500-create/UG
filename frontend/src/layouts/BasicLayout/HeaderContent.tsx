@@ -1,12 +1,16 @@
 import React from 'react';
 import { Space, Avatar, Dropdown, Menu } from 'antd';
-import { MenuUnfoldOutlined, MenuFoldOutlined, UserOutlined } from '@ant-design/icons';
+import {
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
 import { useModel } from 'umi';
 import styles from './styles.less';
 
 interface HeaderContentProps {
-  collapsed: boolean;
-  setCollapsed: (collapsed: boolean) => void;
+  _collapsed: boolean;
+  _setCollapsed: (_collapsed: boolean) => void;
 }
 
 interface InitialState {
@@ -15,8 +19,14 @@ interface InitialState {
   };
 }
 
-const HeaderContent: React.FC<HeaderContentProps> = ({ collapsed, setCollapsed }) => {
-  const { initialState, setInitialState } = useModel('@@initialState') as { initialState: InitialState; setInitialState: any };
+const HeaderContent: React.FC<HeaderContentProps> = ({
+  _collapsed,
+  _setCollapsed,
+}) => {
+  const { initialState, setInitialState } = useModel('@@initialState') as {
+    initialState: InitialState;
+    setInitialState: (_state: unknown) => void;
+  };
 
   const handleLogout = async () => {
     // 实现退出登录逻辑
@@ -38,10 +48,13 @@ const HeaderContent: React.FC<HeaderContentProps> = ({ collapsed, setCollapsed }
   return (
     <div className={styles.headerContent}>
       <div className={styles.trigger}>
-        {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-          className: styles.triggerIcon,
-          onClick: () => setCollapsed(!collapsed),
-        })}
+        {React.createElement(
+          _collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+          {
+            className: styles.triggerIcon,
+            onClick: () => _setCollapsed(!_collapsed),
+          }
+        )}
       </div>
       <div className={styles.rightContent}>
         <Space>

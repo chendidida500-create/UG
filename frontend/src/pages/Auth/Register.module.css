@@ -1,0 +1,13 @@
+.registerCard {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.registerForm {
+  max-width: 400px;
+}
+
+.registerFormButton {
+  width: 100%;
+}
