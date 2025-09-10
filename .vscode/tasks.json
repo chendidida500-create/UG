@@ -108,6 +108,12 @@
       "type": "shell",
       "command": "${workspaceFolder}/scripts/fix-umi-config.bat",
       "group": "build"
+    },
+    {
+      "label": "安装后端依赖",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/setup-backend-dependencies.bat",
+      "group": "build"
     }
   ]
 }

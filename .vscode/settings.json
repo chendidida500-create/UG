@@ -17,5 +17,6 @@
       ],
       "icon": "terminal-cmd"
     }
-  }
+  },
+  "editor.codeActions.triggerOnFocusChange": true
 }

@@ -90,6 +90,13 @@ UG/
 └── docs/             # 文档
 ```
 
+## 文档
+
+- [解决Egg模块找不到问题.md](docs/解决Egg模块找不到问题.md) - 解决 Egg 模块找不到问题
+- [DEPENDENCY_MANAGEMENT.md](docs/DEPENDENCY_MANAGEMENT.md) - 依赖管理指南
+- [DEPENDENCY_VERSION_REPORT.md](docs/DEPENDENCY_VERSION_REPORT.md) - 依赖版本检查报告
+- [TYPESCRIPT_URILIB_ERROR_FIX.md](docs/TYPESCRIPT_URILIB_ERROR_FIX.md) - TypeScript urllib 私有标识符错误修复指南
+
 ## 自动化脚本
 
 - `scripts/auto-dev-server.bat` - 启动开发服务器

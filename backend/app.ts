@@ -1,4 +1,4 @@
-import { Application } from 'egg';
+import { Application } from "egg";
 
 export default class AppBootHook {
   private readonly app: Application;

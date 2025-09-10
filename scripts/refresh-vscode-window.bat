@@ -1,26 +1,20 @@
 @echo off
-echo UG管理系统VS Code窗口刷新脚本
-echo =========================
+echo 正在刷新VS Code窗口...
+echo.
+
+REM 关闭当前VS Code实例
+echo 关闭VS Code...
+taskkill /f /im Code.exe >nul 2>&1
+
+REM 等待2秒
+timeout /t 2 /nobreak >nul
+
+REM 重新启动VS Code
+echo 重新启动VS Code...
+cd /d "e:\YSY\UG"
+code .
 
 echo.
-echo 1. 清理TypeScript缓存...
-cd frontend
-pnpm exec tsc --clearCache
-cd ../backend
-pnpm exec tsc --clearCache
-
-echo.
-echo 2. 重新构建TypeScript文件...
-cd ../frontend
-pnpm exec tsc --noEmit --skipLibCheck
-cd ../backend
-pnpm exec tsc --noEmit --skipLibCheck
-
-echo.
-echo 3. 完成！
-echo 请在VS Code中执行以下操作：
-echo 1. 按 Ctrl+Shift+P
-echo 2. 输入 "Developer: Reload Window"
-echo 3. 选择并执行该命令
-echo.
-echo 或者直接关闭并重新打开VS Code窗口
+echo VS Code窗口已刷新完成！
+echo 请等待VS Code完全启动并重新加载工作区。
+pause

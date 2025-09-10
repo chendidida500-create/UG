@@ -20,6 +20,13 @@
 - [backend/tsconfig.json](backend/tsconfig.json) - 后端 TypeScript 配置
 - [frontend/typings.d.ts](frontend/typings.d.ts) - 前端类型声明文件
 
+## 文档
+
+- [docs/解决Egg模块找不到问题.md](docs/解决Egg模块找不到问题.md) - 解决 Egg 模块找不到问题
+- [docs/DEPENDENCY_MANAGEMENT.md](docs/DEPENDENCY_MANAGEMENT.md) - 依赖管理指南
+- [docs/DEPENDENCY_VERSION_REPORT.md](docs/DEPENDENCY_VERSION_REPORT.md) - 依赖版本检查报告
+- [docs/TYPESCRIPT_URILIB_ERROR_FIX.md](docs/TYPESCRIPT_URILIB_ERROR_FIX.md) - TypeScript urllib 私有标识符错误修复指南
+
 ## 自动化脚本
 
 - [scripts/auto-build.bat](scripts/auto-build.bat) - 自动构建脚本

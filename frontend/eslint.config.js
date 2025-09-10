@@ -1,15 +1,21 @@
+import pluginJs from '@eslint/js';
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsparser from '@typescript-eslint/parser';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import prettier from 'eslint-plugin-prettier';
+
 export default [
   {
+    ignores: [
+      'node_modules/**/*',
+      'dist/**/*',
+      '.umi/**/*',
+      '.umi-production/**/*',
+    ],
+  },
+  {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
-    languageOptions: {
-      ecmaVersion: 2020,
-      sourceType: 'module',
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-    },
     rules: {
       'no-console': 'warn',
       'prefer-const': 'error',
@@ -19,10 +25,13 @@ export default [
   {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      parser: '@typescript-eslint/parser',
+      parser: tsparser,
+      parserOptions: {
+        project: './tsconfig.json',
+      },
     },
     plugins: {
-      '@typescript-eslint': '@typescript-eslint/eslint-plugin',
+      '@typescript-eslint': tseslint,
     },
     rules: {
       '@typescript-eslint/no-unused-vars': [
@@ -35,8 +44,8 @@ export default [
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {
-      react: 'eslint-plugin-react',
-      'react-hooks': 'eslint-plugin-react-hooks',
+      react: react,
+      'react-hooks': reactHooks,
     },
     settings: {
       react: {
@@ -51,7 +60,7 @@ export default [
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {
-      prettier: 'eslint-plugin-prettier',
+      prettier: prettier,
     },
     rules: {
       'prettier/prettier': 'error',

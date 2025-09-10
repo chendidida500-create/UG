@@ -1,49 +1,34 @@
 @echo off
-echo UG管理系统诊断检查脚本
-echo =========================
+echo 正在诊断后端依赖...
+
+REM 切换到后端目录
+cd /d "%~dp0\..\backend"
 
 echo.
-echo 1. 检查Node.js和pnpm版本...
+echo === Node.js 和 pnpm 版本信息 ===
 node --version
 pnpm --version
 
 echo.
-echo 2. 检查前端依赖状态...
-cd frontend
-pnpm list --depth 0
+echo === 检查 package.json ===
+type package.json
 
 echo.
-echo 3. 检查后端依赖状态...
-cd ../backend
-pnpm list --depth 0
+echo === 检查依赖安装状态 ===
+pnpm list --depth=0
 
 echo.
-echo 4. 检查环境变量配置...
-echo MYSQL_HOST: %MYSQL_HOST%
-echo MYSQL_PORT: %MYSQL_PORT%
-echo MYSQL_DATABASE: %MYSQL_DATABASE%
+echo === 检查过时的依赖 ===
+pnpm outdated
 
 echo.
-echo 5. 检查数据库连接...
-node -e "
-const mysql = require('mysql2');
-const connection = mysql.createConnection({
-  host: process.env.MYSQL_HOST || '127.0.0.1',
-  port: process.env.MYSQL_PORT || 3306,
-  user: process.env.MYSQL_USERNAME || 'root',
-  password: process.env.MYSQL_PASSWORD || 'password',
-  database: process.env.MYSQL_DATABASE || 'ug_development'
-});
-
-connection.connect((err) => {
-  if (err) {
-    console.error('数据库连接失败: ' + err.stack);
-    process.exit(1);
-  }
-  console.log('数据库连接成功，连接ID: ' + connection.threadId);
-  connection.end();
-});
-"
+echo === 检查特定依赖 ===
+pnpm ls egg
+pnpm ls egg-sequelize
+pnpm ls egg-jwt
+pnpm ls egg-cors
+pnpm ls egg-validate
 
 echo.
-echo 诊断检查完成！
+echo 诊断完成！
+pause

@@ -2,6 +2,7 @@
   "name": "ug-frontend",
   "version": "1.0.0",
   "description": "UG管理系统前端",
+  "type": "module",
   "engines": {
     "node": "20.19.0",
     "pnpm": "8.15.8"
