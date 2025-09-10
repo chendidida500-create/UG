@@ -53,9 +53,11 @@ cd ../scripts && init-database.bat
    ```
    MYSQL_HOST=127.0.0.1
    MYSQL_PORT=3306
-   MYSQL_DATABASE=ug_development
-   MYSQL_USERNAME=your_username
-   MYSQL_PASSWORD=your_password
+   MYSQL_DATABASE=ug
+   MYSQL_USERNAME=ug
+   MYSQL_PASSWORD=zcn231101
+   JWT_SECRET=ug-jwt-secret-here
+   PORT=7001
    ```
 
 ### 3. 启动开发服务器
@@ -223,9 +225,9 @@ scripts\clean-and-rebuild.bat
 ```
 MYSQL_HOST=127.0.0.1
 MYSQL_PORT=3306
-MYSQL_DATABASE=ug_development
-MYSQL_USERNAME=root
-MYSQL_PASSWORD=password
+MYSQL_DATABASE=ug
+MYSQL_USERNAME=ug
+MYSQL_PASSWORD=zcn231101
 JWT_SECRET=ug-jwt-secret-here
 PORT=7001
 ```
@@ -235,4 +237,58 @@ PORT=7001
 ```
 API_BASE_URL=http://localhost:7001
 PORT=8000
+```
+
+## 数据库配置验证
+
+项目提供了数据库配置验证脚本，可以运行以下命令检查配置是否正确：
+
+```bash
+cd backend
+node scripts/validate-db-config.js
+```
+
+## 数据库构建和初始化
+
+项目使用 Sequelize ORM 管理数据库。以下是数据库构建和初始化的步骤：
+
+1. 确保 MySQL 服务正在运行
+2. 运行数据库初始化脚本：
+   ```bash
+   scripts\init-database.bat
+   ```
+
+或者手动执行以下步骤：
+
+```bash
+# 进入后端目录
+cd backend
+
+# 创建数据库
+pnpm sequelize db:create
+
+# 运行数据库迁移
+pnpm sequelize db:migrate
+
+# 填充种子数据
+pnpm sequelize db:seed:all
+```
+
+### 数据库结构
+
+数据库包含以下表：
+
+- Users: 用户表
+- Roles: 角色表
+- Permissions: 权限表
+- UserRoles: 用户角色关联表
+- RolePermissions: 角色权限关联表
+
+### 验证数据库状态
+
+可以使用以下命令验证数据库迁移状态：
+
+```bash
+cd backend
+pnpm sequelize db:migrate:status
 ```

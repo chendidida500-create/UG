@@ -5,15 +5,22 @@ echo.
 
 echo 创建数据库...
 cd backend
-pnpm egg-sequelize db:create
+pnpm sequelize db:create
 if %errorlevel% neq 0 (
     echo 警告: 数据库创建失败或数据库已存在
 )
 
 echo 运行数据库迁移...
-pnpm migrate:up
+pnpm sequelize db:migrate
 if %errorlevel% neq 0 (
     echo 错误: 数据库迁移失败
+    exit /b 1
+)
+
+echo 填充种子数据...
+pnpm sequelize db:seed:all
+if %errorlevel% neq 0 (
+    echo 错误: 种子数据填充失败
     exit /b 1
 )
 
