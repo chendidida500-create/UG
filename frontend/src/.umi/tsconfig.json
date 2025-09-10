@@ -15,6 +15,9 @@
     "strict": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
+    "ignoreDeprecations": "6.0",
+    // 添加 forceConsistentCasingInFileNames 选项以解决 ESLint 警告
+    "forceConsistentCasingInFileNames": true,
     "paths": {
       "@/*": ["src/*"],
       "@@/*": ["src/.umi/*"],

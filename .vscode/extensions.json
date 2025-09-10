@@ -36,6 +36,7 @@
     "yzane.markdown-pdf",
 
     // UMI开发所需的JavaScript调试工具
-    "ms-vscode.js-debug"
+    "ms-vscode.js-debug",
+    "github.copilot"
   ]
 }
