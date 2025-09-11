@@ -3,9 +3,7 @@ export default {
   mfsu: false,
 
   // 启用的插件
-  plugins: [
-    '@umijs/plugins/dist/layout',
-  ],
+  plugins: ['@umijs/plugins/dist/layout', '@umijs/plugins/dist/antd'],
 
   // Layout配置
   layout: {
@@ -23,6 +21,24 @@ export default {
       locale: false,
       defaultOpenAll: true,
     },
+  },
+
+  // Ant Design配置
+  antd: {
+    // 确保 pro-components 能正确加载
+    import: true,
+  },
+
+  // 添加别名配置，确保模块解析正确
+  alias: {
+    '@ant-design/pro-components': '@ant-design/pro-components',
+  },
+
+  // 添加额外的Webpack配置
+  chainWebpack(memo: unknown) {
+    // 确保能够正确解析 pro-components
+    (memo as any).resolve.modules.add('node_modules').end();
+    return memo;
   },
 
   // 添加viewport meta标签
@@ -116,9 +132,6 @@ export default {
       ],
     },
   ],
-
-  // Ant Design配置
-  antd: {},
 
   // 状态管理配置
   model: {},

@@ -1,7 +1,5 @@
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsparser from '@typescript-eslint/parser';
-import react from 'eslint-plugin-react';
-import reactHooks from 'eslint-plugin-react-hooks';
 import prettier from 'eslint-plugin-prettier';
 
 export default [
@@ -75,27 +73,6 @@ export default [
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/no-parameter-properties': 'off',
       '@typescript-eslint/no-use-before-define': 'off',
-    },
-  },
-  {
-    files: ['**/*.{js,jsx,ts,tsx}'],
-    plugins: {
-      react: react,
-      'react-hooks': reactHooks,
-    },
-    settings: {
-      react: {
-        version: 'detect',
-      },
-    },
-    rules: {
-      'react/react-in-jsx-scope': 'off',
-      'react/prop-types': 'off',
-      // React 相关规则
-      'react/jsx-uses-react': 'error',
-      'react/jsx-uses-vars': 'error',
-      'react/jsx-no-undef': 'error',
-      'react/jsx-pascal-case': 'error',
     },
   },
   {

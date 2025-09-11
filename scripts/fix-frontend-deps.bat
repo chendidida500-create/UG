@@ -1,4 +1,17 @@
 @echo off
+echo 正在修复前端依赖...
+
+echo 清理前端 node_modules...
+cd /d "e:\YSY\UG\frontend"
+if exist node_modules rmdir /s /q node_modules
+if exist pnpm-lock.yaml del pnpm-lock.yaml
+
+echo 重新安装前端依赖...
+pnpm install
+
+echo 前端依赖修复完成!
+pause
+
 echo UG管理系统前端依赖修复脚本
 echo =========================
 
