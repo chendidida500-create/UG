@@ -2,23 +2,12 @@ export default {
   // 禁用MFSU以避免编译问题
   mfsu: false,
 
-  // 添加viewport meta标签
-  metas: [
-    {
-      name: 'viewport',
-      content: 'width=device-width, initial-scale=1',
-    },
-    {
-      name: 'referrer',
-      content: 'origin',
-    },
+  // 启用的插件
+  plugins: [
+    '@umijs/plugins/dist/layout',
   ],
 
-  // 引入全局样式
-  styles: ['@/styles/global.css'],
-
-  // 启用layout插件
-  plugins: ['@umijs/plugins/dist/layout'],
+  // Layout配置
   layout: {
     locale: false,
     title: 'UG管理系统',
@@ -35,6 +24,21 @@ export default {
       defaultOpenAll: true,
     },
   },
+
+  // 添加viewport meta标签
+  metas: [
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1',
+    },
+    {
+      name: 'referrer',
+      content: 'origin',
+    },
+  ],
+
+  // 引入全局样式
+  styles: ['@/styles/global.css'],
 
   // 路由配置
   routes: [

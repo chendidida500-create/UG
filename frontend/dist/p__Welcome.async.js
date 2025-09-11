@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkug_frontend=self.webpackChunkug_frontend||[]).push([[185],{38292:function(c,n,e){e.r(n);var l=e(92379),u=e(651),t=function(){return(0,u.jsx)("div",{children:"Welcome Page"})};n.default=t}}]);

@@ -1,11 +1,71 @@
 // 运行时配置文件，可以在这里扩展运行时能力
 // 比如修改路由、修改 render 方法等
 
-import type { LayoutConfig, RequestConfig } from '@umijs/max';
-import type { InitialState } from './models/initialState';
+import type { RequestConfig } from '@@/plugin-request/types';
+import type {
+  AxiosRequestConfig,
+  AxiosResponse,
+  AxiosError,
+} from '@@/plugin-request/request';
+
+// 定义用户类型
+interface CurrentUser {
+  name?: string;
+  avatar?: string;
+  userid?: string;
+  email?: string;
+  signature?: string;
+  title?: string;
+  group?: string;
+  tags?: {
+    key: string;
+    label: string;
+  }[];
+  notifyCount?: number;
+  unreadCount?: number;
+  country?: string;
+  access?: string;
+  geographic?: {
+    province: {
+      label: string;
+      key: string;
+    };
+    city: {
+      label: string;
+      key: string;
+    };
+  };
+  address?: string;
+  phone?: string;
+}
+
+// 定义初始状态类型
+interface InitialState {
+  currentUser?: CurrentUser;
+  loading?: boolean;
+  fetchUserInfo?: () => Promise<CurrentUser | undefined>;
+}
+
+// 定义路由变更参数类型
+interface RouteChangeParams {
+  location: {
+    pathname: string;
+    search: string;
+    hash: string;
+    state: unknown;
+    key: string;
+  };
+  action: 'PUSH' | 'POP' | 'REPLACE';
+}
+
+// 定义layout配置返回值类型
+interface LayoutConfig {
+  logout: () => void;
+  rightRender: (_initialState: InitialState) => string | null;
+}
 
 // 全局初始化数据配置，用于 Layout 插件
-export const layout: LayoutConfig = () => {
+export const layout: () => LayoutConfig = () => {
   return {
     logout: () => {
       // 实现退出登录逻辑
@@ -13,11 +73,9 @@ export const layout: LayoutConfig = () => {
       // 在实际应用中，这里应该清除用户信息并跳转到登录页面
       // 例如: history.push('/auth/login');
     },
-    rightRender: (initialState: InitialState) => {
+    rightRender: (_initialState: InitialState) => {
       // 右上角渲染逻辑
-      if (initialState?.currentUser) {
-        return `欢迎，${initialState.currentUser.name}`;
-      }
+      // 这里可以根据初始状态渲染不同的内容
       return null;
     },
   };
@@ -28,20 +86,20 @@ export const request: RequestConfig = {
   timeout: 10000,
   // 其他请求配置
   errorConfig: {
-    errorHandler: (error: any) => {
+    errorHandler: (error: AxiosError | Error) => {
       console.error('请求错误', error);
       // 可以在这里添加全局错误处理逻辑
     },
   },
   requestInterceptors: [
-    (url: string, options: any) => {
+    (url: string, config: AxiosRequestConfig) => {
       // 请求拦截器
       // 可以在这里添加认证token等
-      return { url, options };
+      return { url, options: config };
     },
   ],
   responseInterceptors: [
-    (response: any) => {
+    (response: AxiosResponse) => {
       // 响应拦截器
       // 可以在这里统一处理响应数据
       return response;
@@ -66,7 +124,7 @@ export function onInitialStateResolved(initialState: InitialState) {
 }
 
 // 路由变更时触发
-export function onRouteChange({ location, action }: any) {
+export function onRouteChange(params: RouteChangeParams) {
   // 可以在这里添加路由变更时的逻辑
-  console.log('路由变更', location, action);
+  console.log('路由变更', params.location, params.action);
 }

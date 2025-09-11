@@ -11,6 +11,7 @@ export { useRequest, UseRequestProvider, request, getRequestInstance } from 'E:/
 // plugins types.d.ts
 export * from 'E:/YSY/UG/frontend/src/.umi-production/plugin-access/types.d';
 export * from 'E:/YSY/UG/frontend/src/.umi-production/plugin-antd/types.d';
+export * from 'E:/YSY/UG/frontend/src/.umi-production/plugin-layout/types.d';
 export * from 'E:/YSY/UG/frontend/src/.umi-production/plugin-request/types.d';
 // @umijs/renderer-*
 export { createBrowserHistory, createHashHistory, createMemoryHistory, Helmet, HelmetProvider, createSearchParams, generatePath, matchPath, matchRoutes, Navigate, NavLink, Outlet, resolvePath, useLocation, useMatch, useNavigate, useOutlet, useOutletContext, useParams, useResolvedPath, useRoutes, useSearchParams, useAppData, useClientLoaderData, useLoaderData, useRouteProps, useSelectedRoutes, useServerLoaderData, renderClient, __getRoot, Link, useRouteData, __useFetcher, withRouter } from 'E:/YSY/UG/node_modules/.pnpm/@umijs+renderer-react@4.4.12_react-dom@18.3.1_react@18.3.1/node_modules/@umijs/renderer-react';

@@ -7,7 +7,7 @@ import { renderClient } from 'E:/YSY/UG/node_modules/.pnpm/@umijs+renderer-react
 import { getRoutes } from './core/route';
 import { createPluginManager } from './core/plugin';
 import { createHistory } from './core/history';
-import Loading from 'e:/YSY/UG/frontend/src/loading.jsx';
+import Loading from 'E:/YSY/UG/frontend/src/loading.jsx';
 import { ApplyPluginsType } from 'umi';
 
 

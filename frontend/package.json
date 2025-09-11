@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.4.0",
-    "@ant-design/pro-components": "^2.7.0",
+    "@ant-design/pro-components": "^2.8.10",
     "@antv/g2plot": "^2.4.32",
     "@umijs/max": "^4.4.12",
     "@umijs/plugins": "^4.4.12",
@@ -27,6 +27,8 @@
     "antd": "^5.21.0",
     "dayjs": "^1.11.10",
     "lodash-es": "^4.17.21",
+    "react": "18",
+    "react-dom": "18",
     "zustand": "^4.5.0"
   },
   "devDependencies": {

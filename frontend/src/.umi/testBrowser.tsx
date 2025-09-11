@@ -9,7 +9,7 @@ import { createPluginManager } from './core/plugin';
 import { getRoutes } from './core/route';
 import type { Location } from 'history';
 
-import Loading from 'e:/YSY/UG/frontend/src/loading.jsx';
+import Loading from 'E:/YSY/UG/frontend/src/loading.jsx';
 
 import 'antd/dist/reset.css';
 const publicPath = '/';

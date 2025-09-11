@@ -21,13 +21,16 @@
     },
     "dependencies": {
       "@ant-design/icons": "^5.4.0",
-      "@ant-design/pro-components": "^2.7.0",
+      "@ant-design/pro-components": "^2.8.10",
       "@antv/g2plot": "^2.4.32",
       "@umijs/max": "^4.4.12",
+      "@umijs/plugins": "^4.4.12",
       "ahooks": "^3.8.0",
       "antd": "^5.21.0",
       "dayjs": "^1.11.10",
       "lodash-es": "^4.17.21",
+      "react": "18",
+      "react-dom": "18",
       "zustand": "^4.5.0"
     },
     "devDependencies": {
@@ -49,7 +52,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 4
       },
       "enableBy": "register",
       "type": "preset",
@@ -62,7 +65,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 72
+        "register": 120
       },
       "enableBy": "register",
       "type": "preset",
@@ -75,7 +78,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 38
+        "register": 62
       },
       "enableBy": "register",
       "type": "preset",
@@ -89,10 +92,10 @@
       "time": {
         "hooks": {
           "onStart": [
-            27
+            0
           ]
         },
-        "register": 14
+        "register": 28
       },
       "enableBy": "register",
       "type": "plugin",
@@ -106,7 +109,7 @@
       "time": {
         "hooks": {
           "onStart": [
-            7
+            15
           ]
         },
         "register": 7
@@ -126,7 +129,7 @@
             0
           ]
         },
-        "register": 2
+        "register": 8
       },
       "enableBy": "register",
       "type": "plugin",
@@ -139,7 +142,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 7
       },
       "enableBy": "register",
       "type": "plugin",
@@ -153,10 +156,10 @@
       "time": {
         "hooks": {
           "modifyAppData": [
-            63
+            135
           ]
         },
-        "register": 59
+        "register": 116
       },
       "enableBy": "register",
       "type": "plugin",
@@ -169,7 +172,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 3
       },
       "enableBy": "register",
       "type": "plugin",
@@ -186,10 +189,10 @@
             0
           ],
           "onCheck": [
-            2
+            0
           ]
         },
-        "register": 4
+        "register": 13
       },
       "enableBy": "register",
       "type": "plugin",
@@ -203,10 +206,10 @@
       "time": {
         "hooks": {
           "onCheck": [
-            0
+            1
           ]
         },
-        "register": 1
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -219,7 +222,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 9
       },
       "enableBy": "config",
       "type": "plugin",
@@ -236,7 +239,7 @@
             0
           ]
         },
-        "register": 40
+        "register": 89
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1071,8 +1074,8 @@
       "config": {
         "default": {
           "umi": "@@/exports",
-          "react": "E:\\YSY\\UG\\node_modules\\.pnpm\\react@18.3.1\\node_modules\\react",
-          "react-dom": "E:\\YSY\\UG\\node_modules\\.pnpm\\react-dom@18.3.1_react@18.3.1\\node_modules\\react-dom",
+          "react": "E:\\YSY\\UG\\frontend\\node_modules\\react",
+          "react-dom": "E:\\YSY\\UG\\frontend\\node_modules\\react-dom",
           "react-router": "E:\\YSY\\UG\\node_modules\\.pnpm\\react-router@6.3.0_react@18.3.1\\node_modules\\react-router",
           "react-router-dom": "E:\\YSY\\UG\\node_modules\\.pnpm\\react-router-dom@6.3.0_react-dom@18.3.1_react@18.3.1\\node_modules\\react-router-dom"
         }
@@ -1088,7 +1091,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1105,7 +1108,7 @@
             1
           ]
         },
-        "register": 4
+        "register": 8
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1131,7 +1134,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 177
+        "register": 298
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1144,7 +1147,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 415
+        "register": 540
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1157,7 +1160,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 51
+        "register": 66
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1171,7 +1174,7 @@
       "time": {
         "hooks": {
           "modifyAppData": [
-            0
+            1
           ]
         },
         "register": 1
@@ -1187,7 +1190,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 11
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1200,7 +1203,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 6
+        "register": 11
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1213,7 +1216,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 76
+        "register": 136
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/mock/mock.js",
@@ -1225,7 +1228,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 6
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1238,7 +1241,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 10
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/okam/okam.js",
@@ -1250,7 +1253,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 0
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1277,10 +1280,10 @@
       "time": {
         "hooks": {
           "modifyConfig": [
-            4
+            3
           ]
         },
-        "register": 8
+        "register": 15
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/polyfill/polyfill.js",
@@ -1305,7 +1308,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 10
+        "register": 19
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1318,7 +1321,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1331,7 +1334,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 4
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1344,7 +1347,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 6
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1357,7 +1360,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 19
+        "register": 39
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1370,7 +1373,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 7
+        "register": 14
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1383,7 +1386,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/routeProps/routeProps.js",
@@ -1395,7 +1398,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 12
+        "register": 17
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1408,7 +1411,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 13
+        "register": 30
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1421,7 +1424,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 13
+        "register": 27
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1434,7 +1437,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 10
+        "register": 11
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1447,7 +1450,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 8
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1460,7 +1463,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 28
+        "register": 48
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/apiRoute/apiRoute.js",
@@ -1472,7 +1475,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 50
+        "register": 58
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1485,7 +1488,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 5
+        "register": 8
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/test/test.js",
@@ -1497,7 +1500,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 6
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/clickToComponent/clickToComponent.js",
@@ -1509,7 +1512,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 10
+        "register": 9
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1522,7 +1525,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 3
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1535,7 +1538,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 4
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/webpack/webpack.js",
@@ -1564,7 +1567,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 12
+        "register": 14
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/ui/ui.js",
@@ -1589,7 +1592,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 9
+        "register": 16
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/hmrGuardian/hmrGuardian.js",
@@ -1601,7 +1604,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 7
+        "register": 11
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/features/routePreloadOnLoad/routePreloadOnLoad.js",
@@ -1626,7 +1629,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 6
+        "register": 14
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1639,7 +1642,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 22
+        "register": 28
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1652,7 +1655,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 94
+        "register": 128
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1665,7 +1668,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 161
+        "register": 231
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+preset-umi@4.4.12_@types+react@18.3.24_typescript@5.9.2_webpack@5.101.3/node_modules/@umijs/preset-umi/dist/commands/dev/dev.js",
@@ -1703,7 +1706,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 7
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1716,7 +1719,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 3
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1742,7 +1745,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 9
+        "register": 12
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1755,7 +1758,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1768,7 +1771,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1807,7 +1810,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1820,7 +1823,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1833,7 +1836,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1859,7 +1862,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 8
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1872,7 +1875,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1911,7 +1914,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 51
+        "register": 69
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1924,7 +1927,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 5
+        "register": 8
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1937,7 +1940,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 17
+        "register": 23
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1950,7 +1953,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 6
+        "register": 4
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1965,7 +1968,7 @@
       },
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 4
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/analytics.js",
@@ -1978,13 +1981,13 @@
       "time": {
         "hooks": {
           "modifyConfig": [
-            14
+            17
           ],
           "modifyAppData": [
             0
           ]
         },
-        "register": 21
+        "register": 24
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/antd.js",
@@ -1996,7 +1999,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 31
+        "register": 34
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2009,7 +2012,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2023,7 +2026,17 @@
         "onChange": "regenerateTmpFiles"
       },
       "time": {
-        "hooks": {},
+        "hooks": {
+          "modifyConfig": [
+            0
+          ],
+          "addLayouts": [
+            0
+          ],
+          "modifyAppData": [
+            2
+          ]
+        },
         "register": 13
       },
       "enableBy": "config",
@@ -2037,7 +2050,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 10
+        "register": 16
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2050,7 +2063,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 8
+        "register": 5
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2076,7 +2089,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 5
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2089,7 +2102,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 8
+        "register": 5
       },
       "enableBy": "register",
       "type": "plugin",
@@ -2102,7 +2115,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 3
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/qiankun/master.js",
@@ -2114,7 +2127,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 7
+        "register": 15
       },
       "type": "plugin",
       "path": "E:/YSY/UG/node_modules/.pnpm/@umijs+plugins@4.4.12_@babel+core@7.28.4_@types+react-dom@18.3.7_@types+react@18.3.24_antd@4._qmopqdpiwmztosljmno22r4giu/node_modules/@umijs/plugins/dist/qiankun/slave.js",
@@ -2126,7 +2139,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2139,7 +2152,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2152,7 +2165,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 5
+        "register": 7
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2165,7 +2178,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2178,7 +2191,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 3
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2242,7 +2255,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -2263,11 +2276,31 @@
       {
         "name": "viewport",
         "content": "width=device-width, initial-scale=1"
+      },
+      {
+        "name": "referrer",
+        "content": "origin"
       }
     ],
     "styles": [
       "@/styles/global.css"
     ],
+    "layout": {
+      "locale": false,
+      "title": "UG管理系统",
+      "logo": "@/assets/logo.svg",
+      "theme": "dark",
+      "layout": "mix",
+      "contentWidth": "Fluid",
+      "fixedHeader": true,
+      "fixSiderbar": true,
+      "siderWidth": 208,
+      "splitMenus": false,
+      "menu": {
+        "locale": false,
+        "defaultOpenAll": true
+      }
+    },
     "routes": [
       {
         "path": "/",
@@ -2291,40 +2324,45 @@
             "path": "/auth/register",
             "component": "@/pages/Auth/Register"
           }
+        ],
+        "layout": false
+      },
+      {
+        "path": "/dashboard",
+        "name": "仪表盘",
+        "icon": "DashboardOutlined",
+        "component": "@/pages/Dashboard",
+        "wrappers": [
+          "@/wrappers/AuthWrapper"
         ]
       },
       {
-        "path": "/",
-        "component": "@/layouts/BasicLayout",
-        "wrappers": [
-          "@/wrappers/AuthWrapper"
-        ],
+        "path": "/system",
+        "name": "系统管理",
+        "icon": "SettingOutlined",
         "routes": [
           {
-            "path": "/dashboard",
-            "name": "仪表盘",
-            "icon": "DashboardOutlined",
-            "component": "@/pages/Dashboard"
+            "path": "/system/users",
+            "name": "用户管理",
+            "component": "@/pages/System/User",
+            "wrappers": [
+              "@/wrappers/AuthWrapper"
+            ]
           },
           {
-            "path": "/system",
-            "name": "系统管理",
-            "routes": [
-              {
-                "path": "/system/users",
-                "name": "用户管理",
-                "component": "@/pages/System/User"
-              },
-              {
-                "path": "/system/roles",
-                "name": "角色管理",
-                "component": "@/pages/System/Role"
-              },
-              {
-                "path": "/system/permissions",
-                "name": "权限管理",
-                "component": "@/pages/System/Permission"
-              }
+            "path": "/system/roles",
+            "name": "角色管理",
+            "component": "@/pages/System/Role",
+            "wrappers": [
+              "@/wrappers/AuthWrapper"
+            ]
+          },
+          {
+            "path": "/system/permissions",
+            "name": "权限管理",
+            "component": "@/pages/System/Permission",
+            "wrappers": [
+              "@/wrappers/AuthWrapper"
             ]
           }
         ]
@@ -2339,13 +2377,19 @@
             "path": "/admin/sub-page-1",
             "name": "分页一",
             "icon": "smile",
-            "component": "./Welcome"
+            "component": "./Welcome",
+            "wrappers": [
+              "@/wrappers/AuthWrapper"
+            ]
           },
           {
             "path": "/admin/sub-page-2",
             "name": "分页二",
             "icon": "smile",
-            "component": "./Welcome"
+            "component": "./Welcome",
+            "wrappers": [
+              "@/wrappers/AuthWrapper"
+            ]
           }
         ]
       }
@@ -2389,8 +2433,8 @@
     "autoCSSModules": true,
     "alias": {
       "umi": "@@/exports",
-      "react": "E:\\YSY\\UG\\node_modules\\.pnpm\\react@18.3.1\\node_modules\\react",
-      "react-dom": "E:\\YSY\\UG\\node_modules\\.pnpm\\react-dom@18.3.1_react@18.3.1\\node_modules\\react-dom",
+      "react": "E:\\YSY\\UG\\frontend\\node_modules\\react",
+      "react-dom": "E:\\YSY\\UG\\frontend\\node_modules\\react-dom",
       "react-router": "E:\\YSY\\UG\\node_modules\\.pnpm\\react-router@6.3.0_react@18.3.1\\node_modules\\react-router",
       "react-router-dom": "E:\\YSY\\UG\\node_modules\\.pnpm\\react-router-dom@6.3.0_react-dom@18.3.1_react@18.3.1\\node_modules\\react-router-dom",
       "@": "E:/YSY/UG/frontend/src",
@@ -2403,11 +2447,31 @@
       {
         "name": "viewport",
         "content": "width=device-width, initial-scale=1"
+      },
+      {
+        "name": "referrer",
+        "content": "origin"
       }
     ],
     "styles": [
       "@/styles/global.css"
     ],
+    "layout": {
+      "locale": false,
+      "title": "UG管理系统",
+      "logo": "@/assets/logo.svg",
+      "theme": "dark",
+      "layout": "mix",
+      "contentWidth": "Fluid",
+      "fixedHeader": true,
+      "fixSiderbar": true,
+      "siderWidth": 208,
+      "splitMenus": false,
+      "menu": {
+        "locale": false,
+        "defaultOpenAll": true
+      }
+    },
     "routes": [
       {
         "path": "/",
@@ -2431,40 +2495,45 @@
             "path": "/auth/register",
             "component": "@/pages/Auth/Register"
           }
+        ],
+        "layout": false
+      },
+      {
+        "path": "/dashboard",
+        "name": "仪表盘",
+        "icon": "DashboardOutlined",
+        "component": "@/pages/Dashboard",
+        "wrappers": [
+          "@/wrappers/AuthWrapper"
         ]
       },
       {
-        "path": "/",
-        "component": "@/layouts/BasicLayout",
-        "wrappers": [
-          "@/wrappers/AuthWrapper"
-        ],
+        "path": "/system",
+        "name": "系统管理",
+        "icon": "SettingOutlined",
         "routes": [
           {
-            "path": "/dashboard",
-            "name": "仪表盘",
-            "icon": "DashboardOutlined",
-            "component": "@/pages/Dashboard"
+            "path": "/system/users",
+            "name": "用户管理",
+            "component": "@/pages/System/User",
+            "wrappers": [
+              "@/wrappers/AuthWrapper"
+            ]
           },
           {
-            "path": "/system",
-            "name": "系统管理",
-            "routes": [
-              {
-                "path": "/system/users",
-                "name": "用户管理",
-                "component": "@/pages/System/User"
-              },
-              {
-                "path": "/system/roles",
-                "name": "角色管理",
-                "component": "@/pages/System/Role"
-              },
-              {
-                "path": "/system/permissions",
-                "name": "权限管理",
-                "component": "@/pages/System/Permission"
-              }
+            "path": "/system/roles",
+            "name": "角色管理",
+            "component": "@/pages/System/Role",
+            "wrappers": [
+              "@/wrappers/AuthWrapper"
+            ]
+          },
+          {
+            "path": "/system/permissions",
+            "name": "权限管理",
+            "component": "@/pages/System/Permission",
+            "wrappers": [
+              "@/wrappers/AuthWrapper"
             ]
           }
         ]
@@ -2479,13 +2548,19 @@
             "path": "/admin/sub-page-1",
             "name": "分页一",
             "icon": "smile",
-            "component": "./Welcome"
+            "component": "./Welcome",
+            "wrappers": [
+              "@/wrappers/AuthWrapper"
+            ]
           },
           {
             "path": "/admin/sub-page-2",
             "name": "分页二",
             "icon": "smile",
-            "component": "./Welcome"
+            "component": "./Welcome",
+            "wrappers": [
+              "@/wrappers/AuthWrapper"
+            ]
           }
         ]
       }
@@ -3431,6 +3506,7 @@
     "1": {
       "path": "/",
       "redirect": "/welcome",
+      "parentId": "ant-design-pro-layout",
       "id": "1",
       "absPath": "/"
     },
@@ -3439,6 +3515,7 @@
       "name": "欢迎",
       "icon": "smile",
       "file": "@/pages/Welcome.tsx",
+      "parentId": "ant-design-pro-layout",
       "id": "2",
       "absPath": "/welcome",
       "__content": "import React from 'react';\n\nconst Welcome: React.FC = () => {\n  return <div>Welcome Page</div>;\n};\n\nexport default Welcome;\n",
@@ -3447,10 +3524,11 @@
     },
     "3": {
       "path": "/auth",
+      "layout": false,
       "file": "@/layouts/AuthLayout/index.tsx",
       "id": "3",
       "absPath": "/auth",
-      "__content": "import React from 'react';\nimport { Layout, Card } from 'antd';\nimport styles from './styles.less';\n\nconst { Content } = Layout;\n\ninterface AuthLayoutProps {\n  children: React.ReactNode;\n}\n\nconst AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {\n  return (\n    <Layout className={styles.layout}>\n      <Content className={styles.content}>\n        <div className={styles.container}>\n          <div className={styles.logo}>\n            <img src=\"/logo.png\" alt=\"系统Logo\" />\n            <h1>UG管理系统</h1>\n          </div>\n          <Card className={styles.card}>{children}</Card>\n        </div>\n      </Content>\n    </Layout>\n  );\n};\n\nexport default AuthLayout;\n",
+      "__content": "import React from 'react';\nimport { Layout, Card } from 'antd';\nimport styles from './styles.less';\n\nconst { Content } = Layout;\n\ninterface AuthLayoutProps {\n  children: React.ReactNode;\n}\n\nconst AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {\n  return (\n    <Layout className={styles.layout}>\n      <Content className={styles.content}>\n        <div className={styles.container}>\n          <div className={styles.logo}>\n            <img src=\"/logo.svg\" alt=\"系统Logo\" />\n            <h1>UG管理系统</h1>\n          </div>\n          <Card className={styles.card}>{children}</Card>\n        </div>\n      </Content>\n    </Layout>\n  );\n};\n\nexport default AuthLayout;\n",
       "__isJSFile": true,
       "__absFile": "E:/YSY/UG/frontend/src/layouts/AuthLayout/index.tsx"
     },
@@ -3476,108 +3554,169 @@
     },
     "6": {
       "path": "",
-      "file": "@/layouts/BasicLayout/index.tsx",
+      "name": "仪表盘",
+      "icon": "DashboardOutlined",
+      "file": "@/pages/Dashboard.tsx",
       "parentId": "7",
       "id": "6",
-      "absPath": "/",
-      "originPath": "/",
-      "__content": "import React, { useState } from 'react';\nimport { Layout, theme } from 'antd';\nimport HeaderContent from './HeaderContent';\nimport SiderMenu from './SiderMenu';\nimport styles from './styles.less';\n\nconst { Header, Sider, Content, Footer } = Layout;\n\ninterface BasicLayoutProps {\n  children: React.ReactNode;\n}\n\nconst BasicLayout: React.FC<BasicLayoutProps> = ({ children }) => {\n  const [collapsed, setCollapsed] = useState(false);\n\n  const {\n    token: { colorBgContainer, borderRadiusLG },\n  } = theme.useToken();\n\n  return (\n    <Layout className={styles.layout}>\n      <Sider\n        collapsible\n        collapsed={collapsed}\n        onCollapse={setCollapsed}\n        className={styles.sider}\n      >\n        <div className={styles.logo} />\n        <SiderMenu />\n      </Sider>\n      <Layout>\n        <Header className={styles.header}>\n          <HeaderContent _collapsed={collapsed} _setCollapsed={setCollapsed} />\n        </Header>\n        <Content\n          className={styles.content}\n          style={{\n            background: colorBgContainer,\n            borderRadius: borderRadiusLG,\n          }}\n        >\n          <div className={styles.contentInner}>{children}</div>\n        </Content>\n        <Footer className={styles.footer}>\n          UG管理系统 ©2025 Created by UG Team\n        </Footer>\n      </Layout>\n    </Layout>\n  );\n};\n\nexport default BasicLayout;\n",
+      "absPath": "/dashboard",
+      "originPath": "/dashboard",
+      "__content": "import React from 'react';\nimport { Card, Space, Typography } from 'antd';\nimport styles from './Dashboard.module.css';\n\nconst { Title, Paragraph } = Typography;\n\nconst Dashboard: React.FC = () => {\n  return (\n    <div className={styles.container}>\n      <Card>\n        <Space direction=\"vertical\" size=\"large\" className={styles.content}>\n          <Title level={2}>欢迎使用UG管理系统</Title>\n          <Paragraph>这是一个基于UMI + Egg.js的全栈管理系统。</Paragraph>\n          <Paragraph>\n            前端技术栈：\n            <ul>\n              <li>UMI 4.x</li>\n              <li>React 18</li>\n              <li>Ant Design 5.x</li>\n              <li>TypeScript</li>\n            </ul>\n          </Paragraph>\n          <Paragraph>\n            后端技术栈：\n            <ul>\n              <li>Egg.js 3.x</li>\n              <li>MySQL 8.0</li>\n              <li>Sequelize 6.x</li>\n              <li>JWT认证</li>\n            </ul>\n          </Paragraph>\n        </Space>\n      </Card>\n    </div>\n  );\n};\n\nexport default Dashboard;\n",
       "__isJSFile": true,
-      "__absFile": "E:/YSY/UG/frontend/src/layouts/BasicLayout/index.tsx"
+      "__absFile": "E:/YSY/UG/frontend/src/pages/Dashboard.tsx"
     },
     "7": {
-      "path": "/",
+      "path": "/dashboard",
       "isWrapper": true,
       "file": "@/wrappers/AuthWrapper.tsx",
+      "parentId": "ant-design-pro-layout",
       "id": "7",
-      "absPath": "/",
+      "absPath": "/dashboard",
       "__content": "import React, { useEffect } from 'react';\nimport { useModel, useNavigate, useLocation } from 'umi';\nimport { Spin } from 'antd';\nimport type { InitialState } from '@/models/initialState';\nimport styles from './AuthWrapper.module.css';\n\n// 定义useModel返回值的类型\ninterface InitialStateModel {\n  initialState?: InitialState;\n  loading?: boolean;\n  error?: Error;\n}\n\ninterface AuthWrapperProps {\n  children: React.ReactNode;\n}\n\nconst AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {\n  const model = useModel('@@initialState') as InitialStateModel | undefined;\n  const { initialState, loading, error } = model || {};\n  const navigate = useNavigate();\n  const location = useLocation();\n\n  // 确保initialState不为undefined\n  const safeInitialState = initialState;\n  const isLoading = loading !== undefined ? loading : false; // 默认为false而不是true\n\n  useEffect(() => {\n    // 检查用户认证状态\n    if (safeInitialState && !safeInitialState.currentUser && !isLoading) {\n      // 未登录则跳转到登录页\n      navigate('/auth/login', {\n        state: {\n          redirect: location.pathname,\n        },\n      });\n    }\n  }, [safeInitialState, isLoading, navigate, location.pathname]);\n\n  // 处理模型加载错误\n  if (error) {\n    console.error('Initial state model error:', error);\n    return (\n      <div className={styles.errorContainer}>\n        <p>加载用户信息失败</p>\n      </div>\n    );\n  }\n\n  // 如果正在加载，显示加载指示器\n  if (isLoading) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  // 如果initialState为undefined，也显示加载状态\n  if (!safeInitialState) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  // 如果没有当前用户信息，跳转到登录页面\n  if (!safeInitialState.currentUser) {\n    navigate('/auth/login', {\n      state: {\n        redirect: location.pathname,\n      },\n    });\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  return <>{children}</>;\n};\n\nexport default AuthWrapper;\n",
       "__isJSFile": true,
       "__absFile": "E:/YSY/UG/frontend/src/wrappers/AuthWrapper.tsx"
     },
     "8": {
-      "path": "/dashboard",
-      "name": "仪表盘",
-      "icon": "DashboardOutlined",
-      "file": "@/pages/Dashboard.tsx",
-      "parentId": "6",
-      "id": "8",
-      "absPath": "/dashboard",
-      "__content": "import React from 'react';\nimport { Card, Space, Typography } from 'antd';\nimport styles from './Dashboard.module.css';\n\nconst { Title, Paragraph } = Typography;\n\nconst Dashboard: React.FC = () => {\n  return (\n    <div className={styles.container}>\n      <Card>\n        <Space direction=\"vertical\" size=\"large\" className={styles.content}>\n          <Title level={2}>欢迎使用UG管理系统</Title>\n          <Paragraph>这是一个基于UMI + Egg.js的全栈管理系统。</Paragraph>\n          <Paragraph>\n            前端技术栈：\n            <ul>\n              <li>UMI 4.x</li>\n              <li>React 18</li>\n              <li>Ant Design 5.x</li>\n              <li>TypeScript</li>\n            </ul>\n          </Paragraph>\n          <Paragraph>\n            后端技术栈：\n            <ul>\n              <li>Egg.js 3.x</li>\n              <li>MySQL 8.0</li>\n              <li>Sequelize 6.x</li>\n              <li>JWT认证</li>\n            </ul>\n          </Paragraph>\n        </Space>\n      </Card>\n    </div>\n  );\n};\n\nexport default Dashboard;\n",
-      "__isJSFile": true,
-      "__absFile": "E:/YSY/UG/frontend/src/pages/Dashboard.tsx"
-    },
-    "9": {
       "path": "/system",
       "name": "系统管理",
-      "parentId": "6",
-      "id": "9",
+      "icon": "SettingOutlined",
+      "parentId": "ant-design-pro-layout",
+      "id": "8",
       "absPath": "/system"
     },
-    "10": {
-      "path": "/system/users",
+    "9": {
+      "path": "",
       "name": "用户管理",
       "file": "@/pages/System/User.tsx",
-      "parentId": "9",
-      "id": "10",
+      "parentId": "10",
+      "id": "9",
       "absPath": "/system/users",
+      "originPath": "/system/users",
       "__content": "import React from 'react';\nimport { Card, Space, Typography } from 'antd';\n\nconst { Title } = Typography;\n\nconst User: React.FC = () => {\n  return (\n    <Card>\n      <Space direction=\"vertical\" size=\"large\" style={{ width: '100%' }}>\n        <Title level={2}>用户管理</Title>\n        <p>用户管理页面</p>\n      </Space>\n    </Card>\n  );\n};\n\nexport default User;\n",
       "__isJSFile": true,
       "__absFile": "E:/YSY/UG/frontend/src/pages/System/User.tsx"
     },
+    "10": {
+      "path": "/system/users",
+      "isWrapper": true,
+      "file": "@/wrappers/AuthWrapper.tsx",
+      "parentId": "8",
+      "id": "10",
+      "absPath": "/system/users",
+      "__content": "import React, { useEffect } from 'react';\nimport { useModel, useNavigate, useLocation } from 'umi';\nimport { Spin } from 'antd';\nimport type { InitialState } from '@/models/initialState';\nimport styles from './AuthWrapper.module.css';\n\n// 定义useModel返回值的类型\ninterface InitialStateModel {\n  initialState?: InitialState;\n  loading?: boolean;\n  error?: Error;\n}\n\ninterface AuthWrapperProps {\n  children: React.ReactNode;\n}\n\nconst AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {\n  const model = useModel('@@initialState') as InitialStateModel | undefined;\n  const { initialState, loading, error } = model || {};\n  const navigate = useNavigate();\n  const location = useLocation();\n\n  // 确保initialState不为undefined\n  const safeInitialState = initialState;\n  const isLoading = loading !== undefined ? loading : false; // 默认为false而不是true\n\n  useEffect(() => {\n    // 检查用户认证状态\n    if (safeInitialState && !safeInitialState.currentUser && !isLoading) {\n      // 未登录则跳转到登录页\n      navigate('/auth/login', {\n        state: {\n          redirect: location.pathname,\n        },\n      });\n    }\n  }, [safeInitialState, isLoading, navigate, location.pathname]);\n\n  // 处理模型加载错误\n  if (error) {\n    console.error('Initial state model error:', error);\n    return (\n      <div className={styles.errorContainer}>\n        <p>加载用户信息失败</p>\n      </div>\n    );\n  }\n\n  // 如果正在加载，显示加载指示器\n  if (isLoading) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  // 如果initialState为undefined，也显示加载状态\n  if (!safeInitialState) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  // 如果没有当前用户信息，跳转到登录页面\n  if (!safeInitialState.currentUser) {\n    navigate('/auth/login', {\n      state: {\n        redirect: location.pathname,\n      },\n    });\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  return <>{children}</>;\n};\n\nexport default AuthWrapper;\n",
+      "__isJSFile": true,
+      "__absFile": "E:/YSY/UG/frontend/src/wrappers/AuthWrapper.tsx"
+    },
     "11": {
-      "path": "/system/roles",
+      "path": "",
       "name": "角色管理",
       "file": "@/pages/System/Role.tsx",
-      "parentId": "9",
+      "parentId": "12",
       "id": "11",
       "absPath": "/system/roles",
+      "originPath": "/system/roles",
       "__content": "import React from 'react';\nimport { Card, Space, Typography } from 'antd';\n\nconst { Title } = Typography;\n\nconst Role: React.FC = () => {\n  return (\n    <Card>\n      <Space direction=\"vertical\" size=\"large\" style={{ width: '100%' }}>\n        <Title level={2}>角色管理</Title>\n        <p>角色管理页面</p>\n      </Space>\n    </Card>\n  );\n};\n\nexport default Role;\n",
       "__isJSFile": true,
       "__absFile": "E:/YSY/UG/frontend/src/pages/System/Role.tsx"
     },
     "12": {
-      "path": "/system/permissions",
+      "path": "/system/roles",
+      "isWrapper": true,
+      "file": "@/wrappers/AuthWrapper.tsx",
+      "parentId": "8",
+      "id": "12",
+      "absPath": "/system/roles",
+      "__content": "import React, { useEffect } from 'react';\nimport { useModel, useNavigate, useLocation } from 'umi';\nimport { Spin } from 'antd';\nimport type { InitialState } from '@/models/initialState';\nimport styles from './AuthWrapper.module.css';\n\n// 定义useModel返回值的类型\ninterface InitialStateModel {\n  initialState?: InitialState;\n  loading?: boolean;\n  error?: Error;\n}\n\ninterface AuthWrapperProps {\n  children: React.ReactNode;\n}\n\nconst AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {\n  const model = useModel('@@initialState') as InitialStateModel | undefined;\n  const { initialState, loading, error } = model || {};\n  const navigate = useNavigate();\n  const location = useLocation();\n\n  // 确保initialState不为undefined\n  const safeInitialState = initialState;\n  const isLoading = loading !== undefined ? loading : false; // 默认为false而不是true\n\n  useEffect(() => {\n    // 检查用户认证状态\n    if (safeInitialState && !safeInitialState.currentUser && !isLoading) {\n      // 未登录则跳转到登录页\n      navigate('/auth/login', {\n        state: {\n          redirect: location.pathname,\n        },\n      });\n    }\n  }, [safeInitialState, isLoading, navigate, location.pathname]);\n\n  // 处理模型加载错误\n  if (error) {\n    console.error('Initial state model error:', error);\n    return (\n      <div className={styles.errorContainer}>\n        <p>加载用户信息失败</p>\n      </div>\n    );\n  }\n\n  // 如果正在加载，显示加载指示器\n  if (isLoading) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  // 如果initialState为undefined，也显示加载状态\n  if (!safeInitialState) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  // 如果没有当前用户信息，跳转到登录页面\n  if (!safeInitialState.currentUser) {\n    navigate('/auth/login', {\n      state: {\n        redirect: location.pathname,\n      },\n    });\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  return <>{children}</>;\n};\n\nexport default AuthWrapper;\n",
+      "__isJSFile": true,
+      "__absFile": "E:/YSY/UG/frontend/src/wrappers/AuthWrapper.tsx"
+    },
+    "13": {
+      "path": "",
       "name": "权限管理",
       "file": "@/pages/System/Permission.tsx",
-      "parentId": "9",
-      "id": "12",
+      "parentId": "14",
+      "id": "13",
       "absPath": "/system/permissions",
+      "originPath": "/system/permissions",
       "__content": "import React from 'react';\nimport { Card, Space, Typography } from 'antd';\n\nconst { Title } = Typography;\n\nconst Permission: React.FC = () => {\n  return (\n    <Card>\n      <Space direction=\"vertical\" size=\"large\" style={{ width: '100%' }}>\n        <Title level={2}>权限管理</Title>\n        <p>权限管理页面</p>\n      </Space>\n    </Card>\n  );\n};\n\nexport default Permission;\n",
       "__isJSFile": true,
       "__absFile": "E:/YSY/UG/frontend/src/pages/System/Permission.tsx"
     },
-    "13": {
+    "14": {
+      "path": "/system/permissions",
+      "isWrapper": true,
+      "file": "@/wrappers/AuthWrapper.tsx",
+      "parentId": "8",
+      "id": "14",
+      "absPath": "/system/permissions",
+      "__content": "import React, { useEffect } from 'react';\nimport { useModel, useNavigate, useLocation } from 'umi';\nimport { Spin } from 'antd';\nimport type { InitialState } from '@/models/initialState';\nimport styles from './AuthWrapper.module.css';\n\n// 定义useModel返回值的类型\ninterface InitialStateModel {\n  initialState?: InitialState;\n  loading?: boolean;\n  error?: Error;\n}\n\ninterface AuthWrapperProps {\n  children: React.ReactNode;\n}\n\nconst AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {\n  const model = useModel('@@initialState') as InitialStateModel | undefined;\n  const { initialState, loading, error } = model || {};\n  const navigate = useNavigate();\n  const location = useLocation();\n\n  // 确保initialState不为undefined\n  const safeInitialState = initialState;\n  const isLoading = loading !== undefined ? loading : false; // 默认为false而不是true\n\n  useEffect(() => {\n    // 检查用户认证状态\n    if (safeInitialState && !safeInitialState.currentUser && !isLoading) {\n      // 未登录则跳转到登录页\n      navigate('/auth/login', {\n        state: {\n          redirect: location.pathname,\n        },\n      });\n    }\n  }, [safeInitialState, isLoading, navigate, location.pathname]);\n\n  // 处理模型加载错误\n  if (error) {\n    console.error('Initial state model error:', error);\n    return (\n      <div className={styles.errorContainer}>\n        <p>加载用户信息失败</p>\n      </div>\n    );\n  }\n\n  // 如果正在加载，显示加载指示器\n  if (isLoading) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  // 如果initialState为undefined，也显示加载状态\n  if (!safeInitialState) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  // 如果没有当前用户信息，跳转到登录页面\n  if (!safeInitialState.currentUser) {\n    navigate('/auth/login', {\n      state: {\n        redirect: location.pathname,\n      },\n    });\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  return <>{children}</>;\n};\n\nexport default AuthWrapper;\n",
+      "__isJSFile": true,
+      "__absFile": "E:/YSY/UG/frontend/src/wrappers/AuthWrapper.tsx"
+    },
+    "15": {
       "path": "/admin",
       "name": "管理页",
       "icon": "crown",
       "access": "canAdmin",
-      "id": "13",
+      "parentId": "ant-design-pro-layout",
+      "id": "15",
       "absPath": "/admin"
     },
-    "14": {
-      "path": "/admin/sub-page-1",
+    "16": {
+      "path": "",
       "name": "分页一",
       "icon": "smile",
       "file": "@/pages/Welcome.tsx",
-      "parentId": "13",
-      "id": "14",
+      "parentId": "17",
+      "id": "16",
       "absPath": "/admin/sub-page-1",
+      "originPath": "/admin/sub-page-1",
       "__content": "import React from 'react';\n\nconst Welcome: React.FC = () => {\n  return <div>Welcome Page</div>;\n};\n\nexport default Welcome;\n",
       "__isJSFile": true,
       "__absFile": "E:/YSY/UG/frontend/src/pages/Welcome.tsx"
     },
-    "15": {
-      "path": "/admin/sub-page-2",
+    "17": {
+      "path": "/admin/sub-page-1",
+      "isWrapper": true,
+      "file": "@/wrappers/AuthWrapper.tsx",
+      "parentId": "15",
+      "id": "17",
+      "absPath": "/admin/sub-page-1",
+      "__content": "import React, { useEffect } from 'react';\nimport { useModel, useNavigate, useLocation } from 'umi';\nimport { Spin } from 'antd';\nimport type { InitialState } from '@/models/initialState';\nimport styles from './AuthWrapper.module.css';\n\n// 定义useModel返回值的类型\ninterface InitialStateModel {\n  initialState?: InitialState;\n  loading?: boolean;\n  error?: Error;\n}\n\ninterface AuthWrapperProps {\n  children: React.ReactNode;\n}\n\nconst AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {\n  const model = useModel('@@initialState') as InitialStateModel | undefined;\n  const { initialState, loading, error } = model || {};\n  const navigate = useNavigate();\n  const location = useLocation();\n\n  // 确保initialState不为undefined\n  const safeInitialState = initialState;\n  const isLoading = loading !== undefined ? loading : false; // 默认为false而不是true\n\n  useEffect(() => {\n    // 检查用户认证状态\n    if (safeInitialState && !safeInitialState.currentUser && !isLoading) {\n      // 未登录则跳转到登录页\n      navigate('/auth/login', {\n        state: {\n          redirect: location.pathname,\n        },\n      });\n    }\n  }, [safeInitialState, isLoading, navigate, location.pathname]);\n\n  // 处理模型加载错误\n  if (error) {\n    console.error('Initial state model error:', error);\n    return (\n      <div className={styles.errorContainer}>\n        <p>加载用户信息失败</p>\n      </div>\n    );\n  }\n\n  // 如果正在加载，显示加载指示器\n  if (isLoading) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  // 如果initialState为undefined，也显示加载状态\n  if (!safeInitialState) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  // 如果没有当前用户信息，跳转到登录页面\n  if (!safeInitialState.currentUser) {\n    navigate('/auth/login', {\n      state: {\n        redirect: location.pathname,\n      },\n    });\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  return <>{children}</>;\n};\n\nexport default AuthWrapper;\n",
+      "__isJSFile": true,
+      "__absFile": "E:/YSY/UG/frontend/src/wrappers/AuthWrapper.tsx"
+    },
+    "18": {
+      "path": "",
       "name": "分页二",
       "icon": "smile",
       "file": "@/pages/Welcome.tsx",
-      "parentId": "13",
-      "id": "15",
+      "parentId": "19",
+      "id": "18",
       "absPath": "/admin/sub-page-2",
+      "originPath": "/admin/sub-page-2",
       "__content": "import React from 'react';\n\nconst Welcome: React.FC = () => {\n  return <div>Welcome Page</div>;\n};\n\nexport default Welcome;\n",
       "__isJSFile": true,
       "__absFile": "E:/YSY/UG/frontend/src/pages/Welcome.tsx"
+    },
+    "19": {
+      "path": "/admin/sub-page-2",
+      "isWrapper": true,
+      "file": "@/wrappers/AuthWrapper.tsx",
+      "parentId": "15",
+      "id": "19",
+      "absPath": "/admin/sub-page-2",
+      "__content": "import React, { useEffect } from 'react';\nimport { useModel, useNavigate, useLocation } from 'umi';\nimport { Spin } from 'antd';\nimport type { InitialState } from '@/models/initialState';\nimport styles from './AuthWrapper.module.css';\n\n// 定义useModel返回值的类型\ninterface InitialStateModel {\n  initialState?: InitialState;\n  loading?: boolean;\n  error?: Error;\n}\n\ninterface AuthWrapperProps {\n  children: React.ReactNode;\n}\n\nconst AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {\n  const model = useModel('@@initialState') as InitialStateModel | undefined;\n  const { initialState, loading, error } = model || {};\n  const navigate = useNavigate();\n  const location = useLocation();\n\n  // 确保initialState不为undefined\n  const safeInitialState = initialState;\n  const isLoading = loading !== undefined ? loading : false; // 默认为false而不是true\n\n  useEffect(() => {\n    // 检查用户认证状态\n    if (safeInitialState && !safeInitialState.currentUser && !isLoading) {\n      // 未登录则跳转到登录页\n      navigate('/auth/login', {\n        state: {\n          redirect: location.pathname,\n        },\n      });\n    }\n  }, [safeInitialState, isLoading, navigate, location.pathname]);\n\n  // 处理模型加载错误\n  if (error) {\n    console.error('Initial state model error:', error);\n    return (\n      <div className={styles.errorContainer}>\n        <p>加载用户信息失败</p>\n      </div>\n    );\n  }\n\n  // 如果正在加载，显示加载指示器\n  if (isLoading) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  // 如果initialState为undefined，也显示加载状态\n  if (!safeInitialState) {\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  // 如果没有当前用户信息，跳转到登录页面\n  if (!safeInitialState.currentUser) {\n    navigate('/auth/login', {\n      state: {\n        redirect: location.pathname,\n      },\n    });\n    return <Spin size=\"large\" className={styles.loadingSpinner} />;\n  }\n\n  return <>{children}</>;\n};\n\nexport default AuthWrapper;\n",
+      "__isJSFile": true,
+      "__absFile": "E:/YSY/UG/frontend/src/wrappers/AuthWrapper.tsx"
+    },
+    "ant-design-pro-layout": {
+      "id": "ant-design-pro-layout",
+      "path": "/",
+      "file": "E:/YSY/UG/frontend/src/.umi-production/plugin-layout/Layout.tsx",
+      "absPath": "/",
+      "isLayout": true,
+      "__absFile": "E:/YSY/UG/frontend/src/.umi-production/plugin-layout/Layout.tsx"
     }
   },
   "apiRoutes": {},
@@ -3594,13 +3733,22 @@
   },
   "react": {
     "version": "18.3.1",
-    "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\react@18.3.1\\node_modules\\react"
+    "path": "E:\\YSY\\UG\\frontend\\node_modules\\react"
   },
   "react-dom": {
     "version": "18.3.1",
-    "path": "E:\\YSY\\UG\\node_modules\\.pnpm\\react-dom@18.3.1_react@18.3.1\\node_modules\\react-dom"
+    "path": "E:\\YSY\\UG\\frontend\\node_modules\\react-dom"
   },
-  "appJS": null,
+  "appJS": {
+    "path": "E:\\YSY\\UG\\frontend\\src\\app.ts",
+    "exports": [
+      "layout",
+      "request",
+      "getInitialState",
+      "onInitialStateResolved",
+      "onRouteChange"
+    ]
+  },
   "locale": "zh-CN",
   "globalCSS": [],
   "globalJS": [],
@@ -3619,5 +3767,9 @@
   "antd": {
     "pkgPath": "E:\\YSY\\UG\\frontend\\node_modules\\antd",
     "version": "5.27.3"
+  },
+  "pluginLayout": {
+    "pkgPath": "E:/YSY/UG/frontend/node_modules/@ant-design/pro-components",
+    "version": "2.8.10"
   }
 }
