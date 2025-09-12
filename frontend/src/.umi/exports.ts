@@ -16,7 +16,7 @@ export * from 'E:/YSY/UG/frontend/src/.umi/plugin-request/types.d';
 export { createBrowserHistory, createHashHistory, createMemoryHistory, Helmet, HelmetProvider, createSearchParams, generatePath, matchPath, matchRoutes, Navigate, NavLink, Outlet, resolvePath, useLocation, useMatch, useNavigate, useOutlet, useOutletContext, useParams, useResolvedPath, useRoutes, useSearchParams, useAppData, useClientLoaderData, useLoaderData, useRouteProps, useSelectedRoutes, useServerLoaderData, renderClient, __getRoot, Link, useRouteData, __useFetcher, withRouter } from 'E:/YSY/UG/node_modules/.pnpm/@umijs+renderer-react@4.4.12_react-dom@18.3.1_react@18.3.1/node_modules/@umijs/renderer-react';
 export type { History, ClientLoader } from 'E:/YSY/UG/node_modules/.pnpm/@umijs+renderer-react@4.4.12_react-dom@18.3.1_react@18.3.1/node_modules/@umijs/renderer-react'
 // umi/client/client/plugin
-export { ApplyPluginsType, PluginManager } from 'E:/YSY/UG/node_modules/.pnpm/umi@4.4.12_@babel+core@7.28.4_@types+react@18.3.24_eslint@8.35.0_jest@29.7.0_prettier@3.6.2_r_rlcgmr46sbmmjbylhdw53mmsli/node_modules/umi/client/client/plugin.js';
+export { ApplyPluginsType, PluginManager } from 'E:/YSY/UG/node_modules/.pnpm/umi@4.4.12_@babel+core@7.28.4_@types+node@20.19.13_@types+react@18.3.24_eslint@8.35.0_jest@29_cpoj4sm7sqlrpfbtsbqfspsuqi/node_modules/umi/client/client/plugin.js';
 export { history, createHistory } from './core/history';
 export { terminal } from './core/terminal';
 // react ssr

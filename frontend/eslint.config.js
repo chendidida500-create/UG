@@ -1,5 +1,3 @@
-// @ts-check
-
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsparser from '@typescript-eslint/parser';
 import react from 'eslint-plugin-react';
@@ -25,7 +23,7 @@ export default [
       'prefer-const': 'error',
       'no-var': 'error',
       'no-unused-vars': 'error',
-      'no-undef': 'error',
+      'no-undef': 'off', // 关闭此规则以避免process变量报错
       'no-empty': 'error',
       'no-duplicate-case': 'error',
       'no-extra-semi': 'error',

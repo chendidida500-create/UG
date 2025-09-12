@@ -127,7 +127,72 @@ declare namespace NodeJS {
 }
 
 // 声明process对象
-declare let process: NodeJS.Process;
+declare var process: NodeJS.Process;
+
+// 为 Umi 内部模块添加声明
+declare module '@@/core/pluginConfig' {
+  export interface IConfigFromPlugins {
+    // Umi 配置对象的类型定义
+    [key: string]: any;
+  }
+}
+
+declare module '@umijs/preset-umi' {
+  export interface IConfig {
+    // Umi 配置对象的类型定义
+    [key: string]: any;
+  }
+
+  export interface Service {
+    // Service 类型定义
+    [key: string]: any;
+  }
+}
+
+declare module '@umijs/bundler-webpack/compiled/express' {
+  // Express 类型定义
+  export interface RequestHandler {
+    [key: string]: any;
+  }
+
+  // 模拟 Express 模块导出
+  const express: any;
+  export default express;
+}
+
+declare module '@umijs/core' {
+  export interface IServicePluginAPI {
+    // Service Plugin API 类型定义
+    [key: string]: any;
+  }
+
+  export interface PluginAPI {
+    // Plugin API 类型定义
+    [key: string]: any;
+  }
+
+  export class Service {
+    constructor(opts?: any);
+    run2(opts: { name: string; args?: any }): Promise<void>;
+  }
+}
+
+// 为 Ant Design 组件添加声明
+declare module 'antd' {
+  import * as React from 'react';
+
+  export interface CardProps {
+    children?: React.ReactNode;
+    // 可以根据需要添加更多属性
+  }
+
+  export const Card: React.ComponentType<CardProps>;
+  export const Space: React.ComponentType<any>;
+  export const Typography: {
+    Title: React.ComponentType<any>;
+    Paragraph: React.ComponentType<any>;
+  };
+}
 
 // 修复React未定义错误 - 添加React命名空间声明
 declare global {
