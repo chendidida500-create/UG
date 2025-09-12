@@ -103,6 +103,7 @@ UG/
 - [AUTOMATION.md](docs/AUTOMATION.md) - 自动化功能指南
 - [COMPILATION_RESULT.md](docs/COMPILATION_RESULT.md) - 项目编译结果报告
 - [umijs-dependency-fix.md](docs/umijs-dependency-fix.md) - UmiJS 依赖问题修复指南
+- [umijs-max-conflict-fix.md](docs/umijs-max-conflict-fix.md) - UmiJS Max 与 Umi 冲突问题修复指南
 
 ## 自动化脚本
 

@@ -6,6 +6,20 @@
 
 ## 依赖版本管理
 
+### 前端依赖
+
+| 包名              | 版本     | 说明                                     |
+| ----------------- | -------- | ---------------------------------------- |
+| @umijs/max        | 4.4.12   | UmiJS 增强版，包含更多功能和插件         |
+| @umijs/plugins    | 4.4.12   | UmiJS 插件集，与 @umijs/max 版本保持一致 |
+| @umijs/utils      | 4.4.12   | UmiJS 工具库，与 @umijs/max 版本保持一致 |
+| antd              | ^5.21.0  | Ant Design 组件库                        |
+| @ant-design/icons | ^5.4.0   | Ant Design 图标库                        |
+| ahooks            | ^3.8.0   | React Hooks 库                           |
+| zustand           | ^4.5.0   | 状态管理库                               |
+| dayjs             | ^1.11.10 | 日期处理库                               |
+| lodash-es         | ^4.17.21 | 工具库                                   |
+
 ### 后端依赖
 
 | 包名          | 版本     | 说明                                                 |
@@ -46,11 +60,11 @@
 
 **问题**：安装依赖时提示 `No matching version found for egg-validate@^3.0.2`
 
-**原因**：[egg-validate](file:///e:/YSY/UG/backend/node_modules/egg-validate) 包的最新版本是 `2.0.2`，而不是 `3.0.2`
+**原因**：[egg-validate](file://e:\YSY\UG\backend\node_modules\egg-validate) 包的最新版本是 `2.0.2`，而不是 `3.0.2`
 
 **解决方案**：
 
-1. 将 [backend/package.json](file:///e:/YSY/UG/backend/package.json) 中的依赖版本从 `^3.0.2` 修改为 `^2.0.2`
+1. 将 [backend/package.json](file:///E:/YSY/UG/backend/package.json) 中的依赖版本从 `^3.0.2` 修改为 `^2.0.2`
 2. 删除 `node_modules` 和 `pnpm-lock.yaml`
 3. 重新安装依赖
 
@@ -62,7 +76,7 @@
 
 **解决方案**：
 
-1. 将 [backend/package.json](file:///e:/YSY/UG/backend/package.json) 中的依赖从 `egg-sequelize-cli` 修改为 `sequelize-cli`
+1. 将 [backend/package.json](file:///E:/YSY/UG/backend/package.json) 中的依赖从 `egg-sequelize-cli` 修改为 `sequelize-cli`
 2. 删除 `node_modules` 和 `pnpm-lock.yaml`
 3. 重新安装依赖
 
@@ -72,7 +86,7 @@
 
 **解决方案**：
 
-1. 在项目根目录创建 [.npmrc](file:///e:/YSY/UG/.npmrc) 文件
+1. 在项目根目录创建 [.npmrc](file:///E:/YSY/UG/.npmrc) 文件
 2. 配置合适的镜像源：
    ```
    registry=https://registry.npmjs.org/
@@ -81,15 +95,27 @@
    puppeteer_download_host=https://npmmirror.com/mirrors/puppeteer/
    ```
 
+### 4. UmiJS 依赖冲突
+
+**问题**：启动开发服务器时提示 `You are using @umijs/max, please remove umi from your dependencies`
+
+**原因**：同时安装了 `@umijs/max` 和 `umi` 两个包，它们存在功能冲突
+
+**解决方案**：
+
+1. 从 [frontend/package.json](file:///E:/YSY/UG/frontend/package.json) 中移除 `umi` 依赖
+2. 重新安装依赖
+3. 详细解决方案请参考 [umijs-max-conflict-fix.md](file:///E:/YSY/UG/docs/umijs-max-conflict-fix.md)
+
 ## 自动化脚本
 
 项目提供了以下依赖管理相关脚本：
 
-- [scripts/setup-backend-dependencies.bat](file:///e:/YSY/UG/scripts/setup-backend-dependencies.bat) - 安装后端依赖
-- [scripts/fix-backend-deps.bat](file:///e:/YSY/UG/scripts/fix-backend-deps.bat) - 修复后端依赖问题
-- [scripts/verify-backend-deps.bat](file:///e:/YSY/UG/scripts/verify-backend-deps.bat) - 验证后端依赖
-- [scripts/check-backend-dependencies.bat](file:///e:/YSY/UG/scripts/check-backend-dependencies.bat) - 检查后端依赖状态
-- [scripts/validate-backend-setup.bat](file:///e:/YSY/UG/scripts/validate-backend-setup.bat) - 验证后端设置
+- [scripts/setup-backend-dependencies.bat](file:///E:/YSY/UG/scripts/setup-backend-dependencies.bat) - 安装后端依赖
+- [scripts/fix-backend-deps.bat](file:///E:/YSY/UG/scripts/fix-backend-deps.bat) - 修复后端依赖问题
+- [scripts/verify-backend-deps.bat](file:///E:/YSY/UG/scripts/verify-backend-deps.bat) - 验证后端依赖
+- [scripts/check-backend-dependencies.bat](file:///E:/YSY/UG/scripts/check-backend-dependencies.bat) - 检查后端依赖状态
+- [scripts/validate-backend-setup.bat](file:///E:/YSY/UG/scripts/validate-backend-setup.bat) - 验证后端设置
 
 ## VS Code 任务
 
@@ -106,3 +132,4 @@
 3. **锁定版本**：使用 `pnpm-lock.yaml` 锁定依赖版本，确保团队成员使用相同版本
 4. **工作区配置**：使用 `pnpm-workspace.yaml` 管理多包项目
 5. **镜像源配置**：根据网络环境配置合适的镜像源
+6. **避免依赖冲突**：注意不要同时安装功能重复的包，如 `@umijs/max` 和 `umi`
