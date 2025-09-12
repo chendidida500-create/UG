@@ -1,16 +1,161 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "npm",
-			"script": "dev:backend",
-			"problemMatcher": [],
-			"label": "npm: dev:backend",
-			"detail": "pnpm --filter ug-backend run dev",
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "自动格式化和检查",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/auto-format-and-lint.bat",
+      "group": "build"
+    },
+    {
+      "label": "自动类型检查",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/auto-type-check.bat",
+      "group": "build"
+    },
+    {
+      "label": "自动构建项目",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/auto-build.bat",
+      "group": "build"
+    },
+    {
+      "label": "启动开发服务器",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/auto-dev-server.bat",
+      "group": "build"
+    },
+    {
+      "label": "环境设置",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/setup-environment.bat",
+      "group": "build"
+    },
+    {
+      "label": "数据库初始化",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/init-database.bat",
+      "group": "build"
+    },
+    {
+      "label": "诊断检查",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/diagnostic-checks.bat",
+      "group": "build"
+    },
+    {
+      "label": "性能分析",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/performance-analysis.bat",
+      "group": "build"
+    },
+    {
+      "label": "API接口测试",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/api-tests.bat",
+      "group": "test"
+    },
+    {
+      "label": "安全扫描",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/security-scan.bat",
+      "group": "build"
+    },
+    {
+      "label": "拼写检查",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/spellcheck.bat",
+      "group": "build"
+    },
+    {
+      "label": "终端编码测试",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/test-encoding.bat",
+      "group": "test"
+    },
+    {
+      "label": "修复TypeScript问题",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/fix-typescript-issues.bat",
+      "group": "build"
+    },
+    {
+      "label": "修复前端类型问题",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/fix-frontend-types.bat",
+      "group": "build"
+    },
+    {
+      "label": "刷新VS Code窗口",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/refresh-vscode-window.bat",
+      "group": "build"
+    },
+    {
+      "label": "清理和重建项目",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/clean-and-rebuild.bat",
+      "group": "build"
+    },
+    {
+      "label": "修复前端类型声明",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/fix-frontend-typings.bat",
+      "group": "build"
+    },
+    {
+      "label": "修复UMI配置",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/fix-umi-config.bat",
+      "group": "build"
+    },
+    {
+      "label": "安装后端依赖",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/setup-backend-dependencies.bat",
+      "group": "build"
+    },
+    {
+      "label": "完整自动化修复",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/full-auto-fix.bat",
+      "group": "build"
+    },
+    {
+      "label": "代码检查（忽略依赖警告）",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/lint-ignore-deps.bat",
+      "group": "build"
+    },
+    {
+      "label": "编码验证",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/verify-encoding.bat",
+      "group": "build"
+    },
+    {
+      "label": "设置UTF-8编码",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/set-utf8-encoding.cmd",
+      "group": "build"
+    },
+    {
+      "label": "忽略依赖错误",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/ignore-dependency-errors.bat",
+      "group": "build"
+    },
+    {
+      "label": "忽略所有依赖错误",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/ignore-all-dependency-errors.cmd",
+      "group": "build"
+    },
+    {
+      "label": "修复Qoder diff apply问题",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/fix-qoder-diff-apply.cmd",
+      "group": "build"
+    }
+  ]
 }
