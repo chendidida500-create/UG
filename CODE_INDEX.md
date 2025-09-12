@@ -8,7 +8,7 @@
 
 - [backend/.env](backend/.env) - 后端环境变量配置
 - [frontend/.env](frontend/.env) - 前端环境变量配置
-- [backend/config/config.default.ts](backend/config/config.default.ts) - 后端默认配置 (已更新为 TypeScript)
+- [backend/config/config.default.js](backend/config/config.default.js) - 后端默认配置
 - [backend/config/config.local.ts](backend/config/config.local.ts) - 后端本地配置 (已更新为 TypeScript)
 - [backend/config/plugin.js](backend/config/plugin.js) - 后端插件配置
 - [frontend/.umirc.ts](frontend/.umirc.ts) - 前端 UMI 配置 (已修复)

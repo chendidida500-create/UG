@@ -182,7 +182,7 @@ const HeaderContent: React.FC<HeaderContentProps> = ({ collapsed, setCollapsed }
       </div>
       <div className={styles.rightContent}>
         <Space>
-          <Dropdown menu={menu}>
+          <Dropdown overlay={menu}>
             <Space className={styles.action}>
               <Avatar icon={<UserOutlined />} />
               <span>{initialState?.currentUser?.name}</span>
@@ -495,7 +495,7 @@ routes: [
     component: '@/layouts/BasicLayout',
     wrappers: ['@/wrappers/AuthWrapper'],
     routes: [
-      { path: '/dashboard', name: '仪表盘', icon: 'DashboardOutlined', component: '@/pages/Dashboard' },
+      { path: '/dashboard', name: '仪表盘', icon: 'DashboardOutlined' },
       {
         path: '/system',
         name: '系统管理',
@@ -722,60 +722,8 @@ import { MenuUnfoldOutlined, MenuFoldOutlined, UserOutlined } from '@ant-design/
 
 开发人员可以在任何组件中便捷地引用图标集，无需额外配置。
 
-## 10. 进一步完善建议
-
-### 10.1 菜单配置动态化
-
-为了支持运行时动态调整菜单结构，建议将菜单配置从硬编码改为从后端API获取或通过配置文件管理：
-
-1. 创建菜单配置服务，支持从后端获取菜单数据
-2. 在SiderMenu组件中增加菜单数据的异步加载逻辑
-3. 实现菜单数据的本地缓存机制，提高页面加载速度
-
-### 10.2 国际化支持
-
-为支持多语言环境，建议在布局组件中增加国际化支持：
-
-1. 集成umi的国际化插件
-2. 创建语言包管理机制
-3. 在HeaderContent和SiderMenu组件中使用国际化文本
-
-### 10.3 主题定制扩展
-
-为了支持多种主题模式，建议扩展主题定制功能：
-
-1. 支持暗色主题切换
-2. 提供主题配置管理器
-3. 实现主题状态持久化
-
-### 10.4 响应式断点详细配置
-
-为了更好地适配不同设备，建议增加详细的响应式断点配置：
-
-1. 针对移动端的特殊布局优化
-2. 触摸设备的交互适配
-3. 不同屏幕尺寸下的组件行为调整
-
-### 10.5 错误边界处理
-
-为了提高系统的稳定性，建议在布局组件中增加错误边界处理：
-
-1. 在BasicLayout和AuthLayout组件中添加错误边界
-2. 实现友好的错误展示界面
-3. 提供错误日志上报机制
-
-### 10.6 性能监控
-
-为了持续优化布局组件性能，建议增加性能监控机制：
-
-1. 集成性能监控工具
-2. 监控关键组件的渲染性能
-3. 提供性能分析报告
-
-## 11. 总结
+## 10. 总结
 
 本设计文档定义了UG管理系统的布局规范，包括基础布局和认证布局的详细实现要求。通过遵循此规范，可以确保系统具有一致的用户界面和良好的用户体验。布局组件采用模块化设计，便于维护和扩展，同时集成了权限控制机制，确保系统的安全性。
 
 **重要承诺**：本设计严格遵循现有项目结构，仅在`frontend/src`目录下添加`layouts`和`wrappers`目录及相关组件，不改变任何现有目录结构和文件组织方式，确保与当前开发工作完全兼容。
-
-**编码规范**：本文档中的代码示例遵循项目UMI编码规范，使用UTF-8编码，LF换行符，2空格缩进，单引号引用，语句末尾添加分号。

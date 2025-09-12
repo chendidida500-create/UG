@@ -51,38 +51,16 @@ cd ../scripts && init-database.bat
 1. 确保 MySQL 服务正在运行
 2. 修改 `backend/.env` 文件中的数据库连接信息：
    ```
-   MYSQL_HOST=localhost
+   MYSQL_HOST=127.0.0.1
    MYSQL_PORT=3306
    MYSQL_DATABASE=ug
    MYSQL_USERNAME=ug
    MYSQL_PASSWORD=zcn231101
    JWT_SECRET=ug-jwt-secret-here
-   PORT=15001
+   PORT=7001
    ```
 
-### 3. 数据库测试
-
-项目提供了数据库连接和数据测试脚本，可以运行以下命令检查数据库连接是否正常：
-
-```bash
-scripts\test-database.bat
-```
-
-或者分别运行：
-
-```bash
-# 测试数据库连接
-cd backend
-node scripts/test-database-connection.js
-
-# 测试数据库表结构
-node scripts/test-database-schema.js
-
-# 测试数据库数据
-node scripts/test-database-data.js
-```
-
-### 4. 启动开发服务器
+### 3. 启动开发服务器
 
 ```bash
 # 使用自动化脚本启动前后端开发服务器
@@ -113,6 +91,37 @@ UG/
 ├── scripts/          # 自动化脚本
 └── docs/             # 文档
 ```
+
+## 文档
+
+- [解决Egg模块找不到问题.md](docs/解决Egg模块找不到问题.md) - 解决 Egg 模块找不到问题
+- [TYPESCRIPT_EGG_TYPE_DEFINITION_FIX.md](docs/TYPESCRIPT_EGG_TYPE_DEFINITION_FIX.md) - TypeScript Egg 类型定义问题修复指南
+- [DEPENDENCY_MANAGEMENT.md](docs/DEPENDENCY_MANAGEMENT.md) - 依赖管理指南
+- [DEPENDENCY_VERSION_REPORT.md](docs/DEPENDENCY_VERSION_REPORT.md) - 依赖版本检查报告
+- [TYPESCRIPT_URILIB_ERROR_FIX.md](docs/TYPESCRIPT_URILIB_ERROR_FIX.md) - TypeScript urllib 私有标识符错误修复指南
+- [PROJECT_COMPILATION.md](docs/PROJECT_COMPILATION.md) - 项目编译指南
+- [AUTOMATION.md](docs/AUTOMATION.md) - 自动化功能指南
+- [COMPILATION_RESULT.md](docs/COMPILATION_RESULT.md) - 项目编译结果报告
+
+## 自动化脚本
+
+- `scripts/auto-dev-server.bat` - 启动开发服务器
+- `scripts/auto-build.bat` - 构建项目
+- `scripts/auto-format-and-lint.bat` - 格式化和检查代码
+- `scripts/auto-type-check.bat` - 类型检查
+- `scripts/setup-environment.bat` - 环境设置
+- `scripts/init-database.bat` - 数据库初始化
+- `scripts/diagnostic-checks.bat` - 诊断检查
+- `scripts/performance-analysis.bat` - 性能分析
+- `scripts/api-tests.bat` - API 接口测试
+- `scripts/security-scan.bat` - 安全扫描
+- `scripts/spellcheck.bat` - 拼写检查
+- `scripts/fix-typescript-issues.bat` - 修复 TypeScript 问题
+- `scripts/fix-frontend-types.bat` - 修复前端类型问题
+- `scripts/refresh-vscode-window.bat` - 刷新 VS Code 窗口
+- `scripts/clean-and-rebuild.bat` - 清理和重建项目
+- `scripts/fix-frontend-typings.bat` - 修复前端类型声明
+- `scripts/fix-umi-config.bat` - 修复 UMI 配置
 
 ## VS Code 任务
 
@@ -217,21 +226,20 @@ scripts\clean-and-rebuild.bat
 ### 后端 (`backend/.env`)
 
 ```
-MYSQL_HOST=localhost
+MYSQL_HOST=127.0.0.1
 MYSQL_PORT=3306
 MYSQL_DATABASE=ug
 MYSQL_USERNAME=ug
 MYSQL_PASSWORD=zcn231101
 JWT_SECRET=ug-jwt-secret-here
-PORT=15001
+PORT=7001
 ```
 
 ### 前端 (`frontend/.env`)
 
 ```
-API_BASE_URL=http://localhost:15001
-PORT=15000
-HOST=0.0.0.0
+API_BASE_URL=http://localhost:7001
+PORT=8000
 ```
 
 ## 数据库配置验证
@@ -269,23 +277,21 @@ pnpm sequelize db:migrate
 pnpm sequelize db:seed:all
 ```
 
-## 构建分析
+### 数据库结构
 
-使用 `ANALYZE=1` 环境变量可以分析构建产物的源码构成：
+数据库包含以下表：
+
+- Users: 用户表
+- Roles: 角色表
+- Permissions: 权限表
+- UserRoles: 用户角色关联表
+- RolePermissions: 角色权限关联表
+
+### 验证数据库状态
+
+可以使用以下命令验证数据库迁移状态：
 
 ```bash
-# 使用自动化脚本进行构建分析
-scripts\analyze-build.bat
+cd backend
+pnpm sequelize db:migrate:status
 ```
-
-或者手动执行：
-
-```bash
-# 进入前端目录
-cd frontend
-
-# 设置环境变量并构建
-set ANALYZE=1 && npx @umijs/max build
-```
-
-构建分析完成后会自动打开浏览器显示分析报告，帮助您了解哪些模块占用了较多空间，从而进行优化。

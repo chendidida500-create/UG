@@ -17,8 +17,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@umijs/plugins": "^4.4.12"
-  }
+  "license": "ISC"
 }
