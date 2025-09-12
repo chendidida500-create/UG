@@ -109,6 +109,8 @@ UG/
 - `scripts/auto-build.bat` - 构建项目
 - `scripts/auto-format-and-lint.bat` - 格式化和检查代码
 - `scripts/auto-type-check.bat` - 类型检查
+- `scripts/test-prettier.bat` - 测试 Prettier 配置
+- `scripts/format-code.bat` - 使用 Prettier 格式化代码
 - `scripts/setup-environment.bat` - 环境设置
 - `scripts/init-database.bat` - 数据库初始化
 - `scripts/diagnostic-checks.bat` - 诊断检查
@@ -160,6 +162,41 @@ UG/
 - API 测试工具 (REST Client)
 - 文档支持 (更好的注释/Markdown 工具)
 - UMI 开发所需的 JavaScript 调试工具
+
+## Prettier 代码格式化
+
+项目已配置 Prettier 用于代码格式化，确保代码风格统一。
+
+### 配置文件
+
+- `frontend/.prettierrc.json` - 前端 Prettier 配置
+- `backend/.prettierrc.json` - 后端 Prettier 配置
+
+### VS Code 集成
+
+项目已配置 VS Code 在保存时自动使用 Prettier 格式化代码。确保安装了 Prettier VS Code 扩展 (esbenp.prettier-vscode)。
+
+### 手动格式化
+
+可以使用以下脚本手动格式化代码：
+
+```bash
+# 测试 Prettier 配置
+scripts\test-prettier.bat
+
+# 格式化所有代码
+scripts\format-code.bat
+```
+
+或者使用 npm 命令：
+
+```bash
+# 前端格式化
+cd frontend && pnpm format
+
+# 后端格式化
+cd backend && npx prettier --write "app/**/*.{ts,js,json}"
+```
 
 ## 常见问题解决
 

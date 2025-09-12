@@ -5,7 +5,7 @@ export default class HomeController extends Controller {
     const { ctx } = this;
     ctx.body = 'Welcome to UG Backend System';
   }
-  
+
   public async health() {
     const { ctx } = this;
     ctx.body = {

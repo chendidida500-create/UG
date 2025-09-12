@@ -10,5 +10,17 @@
     "typescript",
     "typescriptreact"
   ],
-  "typescript.preferences.includePackageJsonAutoImports": "auto"
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

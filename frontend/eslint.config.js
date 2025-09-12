@@ -1,9 +1,12 @@
+// @ts-check
+
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsparser from '@typescript-eslint/parser';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import prettier from 'eslint-plugin-prettier';
 
+// 简化的ESLint配置文件
 export default [
   {
     ignores: [
@@ -11,11 +14,6 @@ export default [
       'dist/**/*',
       '.umi/**/*',
       '.umi-production/**/*',
-      // 忽略所有第三方依赖的错误
-      'node_modules/.pnpm/**/*',
-      'node_modules/@umijs/**/*',
-      'node_modules/umi/**/*',
-      // 忽略类型定义文件的检查
       'typings.d.ts',
       'src/**/*.d.ts',
     ],
@@ -26,7 +24,6 @@ export default [
       'no-console': 'warn',
       'prefer-const': 'error',
       'no-var': 'error',
-      // UMI 编码规范相关规则
       'no-unused-vars': 'error',
       'no-undef': 'error',
       'no-empty': 'error',

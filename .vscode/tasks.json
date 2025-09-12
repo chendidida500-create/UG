@@ -156,6 +156,18 @@
       "type": "shell",
       "command": "${workspaceFolder}/scripts/fix-qoder-diff-apply.cmd",
       "group": "build"
+    },
+    {
+      "label": "测试Prettier配置",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/test-prettier.bat",
+      "group": "build"
+    },
+    {
+      "label": "使用Prettier格式化代码",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/format-code.bat",
+      "group": "build"
     }
   ]
 }
