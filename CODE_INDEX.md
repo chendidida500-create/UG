@@ -22,6 +22,7 @@
 
 ## 文档
 
+- [README.md](README.md) - 项目主文档
 - [docs/解决Egg模块找不到问题.md](docs/解决Egg模块找不到问题.md) - 解决 Egg 模块找不到问题
 - [docs/DEPENDENCY_MANAGEMENT.md](docs/DEPENDENCY_MANAGEMENT.md) - 依赖管理指南
 - [docs/DEPENDENCY_VERSION_REPORT.md](docs/DEPENDENCY_VERSION_REPORT.md) - 依赖版本检查报告
@@ -31,6 +32,9 @@
 - [docs/COMPILATION_RESULT.md](docs/COMPILATION_RESULT.md) - 项目编译结果报告
 - [docs/umijs-dependency-fix.md](docs/umijs-dependency-fix.md) - UmiJS 依赖问题修复指南
 - [docs/umijs-max-conflict-fix.md](docs/umijs-max-conflict-fix.md) - UmiJS Max 与 Umi 冲突问题修复指南
+- [docs/ESLINT_CONFIGURATION_FIX.md](docs/ESLINT_CONFIGURATION_FIX.md) - ESLint 配置修复文档
+- [docs/PROJECT_ERROR_CHECK.md](docs/PROJECT_ERROR_CHECK.md) - 项目全面错误检查报告
+- [docs/PAGE_STRUCTURE.md](docs/PAGE_STRUCTURE.md) - 页面结构文档
 
 ## 自动化脚本
 
@@ -57,6 +61,12 @@
 
 - [frontend/src/pages/Dashboard.tsx](frontend/src/pages/Dashboard.tsx) - 仪表盘页面
 - [frontend/src/pages/Dashboard.module.css](frontend/src/pages/Dashboard.module.css) - 仪表盘页面样式
+- [frontend/src/pages/Login.tsx](frontend/src/pages/Login.tsx) - 登录页面
+- [frontend/src/pages/Login.module.css](frontend/src/pages/Login.module.css) - 登录页面样式
+- [frontend/src/pages/UserManagement.tsx](frontend/src/pages/UserManagement.tsx) - 用户管理页面
+- [frontend/src/pages/UserManagement.module.css](frontend/src/pages/UserManagement.module.css) - 用户管理页面样式
+- [frontend/src/pages/SystemSettings.tsx](frontend/src/pages/SystemSettings.tsx) - 系统设置页面
+- [frontend/src/pages/SystemSettings.module.css](frontend/src/pages/SystemSettings.module.css) - 系统设置页面样式
 - [frontend/typings.d.ts](frontend/typings.d.ts) - 前端类型声明文件
 
 ## 后端代码

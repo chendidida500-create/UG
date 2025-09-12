@@ -4,12 +4,15 @@
 import React from 'react';
 
 export async function getRoutes() {
-  const routes = {"1":{"path":"/","redirect":"/dashboard","id":"1"},"2":{"name":"仪表盘","path":"/dashboard","id":"2"}} as const;
+  const routes = {"1":{"path":"/login","layout":false,"id":"1"},"2":{"path":"/","redirect":"/dashboard","id":"2"},"3":{"name":"仪表盘","path":"/dashboard","id":"3"},"4":{"name":"用户管理","path":"/users","id":"4"},"5":{"name":"系统设置","path":"/settings","id":"5"}} as const;
   return {
     routes,
     routeComponents: {
-'1': React.lazy(() => import('./EmptyRoute')),
-'2': React.lazy(() => import(/* webpackChunkName: "p__Dashboard" */'@/pages/Dashboard.tsx')),
+'1': React.lazy(() => import(/* webpackChunkName: "p__Login" */'@/pages/Login.tsx')),
+'2': React.lazy(() => import('./EmptyRoute')),
+'3': React.lazy(() => import(/* webpackChunkName: "p__Dashboard" */'@/pages/Dashboard.tsx')),
+'4': React.lazy(() => import(/* webpackChunkName: "p__UserManagement" */'@/pages/UserManagement.tsx')),
+'5': React.lazy(() => import(/* webpackChunkName: "p__SystemSettings" */'@/pages/SystemSettings.tsx')),
 },
   };
 }

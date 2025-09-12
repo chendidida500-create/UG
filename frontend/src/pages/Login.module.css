@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+}
+
+.content {
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+}
+
+.header h2 {
+  margin-bottom: 8px;
+}
+
+.header p {
+  color: #666;
+  margin: 0;
+}

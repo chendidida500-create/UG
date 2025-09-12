@@ -11,6 +11,11 @@ export default defineConfig({
   // 路由配置
   routes: [
     {
+      path: '/login',
+      component: './Login',
+      layout: false, // 不使用布局
+    },
+    {
       path: '/',
       redirect: '/dashboard',
     },
@@ -18,6 +23,16 @@ export default defineConfig({
       name: '仪表盘',
       path: '/dashboard',
       component: './Dashboard',
+    },
+    {
+      name: '用户管理',
+      path: '/users',
+      component: './UserManagement',
+    },
+    {
+      name: '系统设置',
+      path: '/settings',
+      component: './SystemSettings',
     },
   ],
 
