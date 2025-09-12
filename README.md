@@ -102,6 +102,7 @@ UG/
 - [PROJECT_COMPILATION.md](docs/PROJECT_COMPILATION.md) - 项目编译指南
 - [AUTOMATION.md](docs/AUTOMATION.md) - 自动化功能指南
 - [COMPILATION_RESULT.md](docs/COMPILATION_RESULT.md) - 项目编译结果报告
+- [umijs-dependency-fix.md](docs/umijs-dependency-fix.md) - UmiJS 依赖问题修复指南
 
 ## 自动化脚本
 
@@ -249,6 +250,10 @@ scripts\refresh-vscode-window.bat
 ```bash
 scripts\clean-and-rebuild.bat
 ```
+
+### UmiJS 依赖问题
+
+如果遇到 "Cannot find module '@umijs/utils'" 错误，可以参考 [umijs-dependency-fix.md](docs/umijs-dependency-fix.md) 文档进行修复。
 
 ### 内联样式警告
 
