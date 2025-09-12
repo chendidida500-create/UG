@@ -10,7 +10,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "moduleResolution": "bundler",
-    "importHelpers": true,
+    "importHelpers": false,
     "noEmit": true,
     "jsx": "react-jsx",
     "esModuleInterop": true,
@@ -27,7 +27,7 @@
         "src/.umi/*"
       ],
       "@umijs/max": [
-        "../../../node_modules/.pnpm/umi@4.4.12_@babel+core@7.28.4_@types+react@18.3.24_eslint@8.35.0_jest@29.7.0_prettier@3.6.2_r_rlcgmr46sbmmjbylhdw53mmsli/node_modules/umi"
+        "../../../node_modules/.pnpm/umi@4.4.12_@babel+core@7.28.4_@types+node@20.19.13_@types+react@18.3.24_eslint@8.35.0_jest@29_cpoj4sm7sqlrpfbtsbqfspsuqi/node_modules/umi"
       ],
       "@umijs/max/typings": [
         "src/.umi/typings"
