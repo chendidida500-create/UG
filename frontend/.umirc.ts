@@ -4,6 +4,9 @@ export default defineConfig({
   // 禁用MFSU以避免编译问题
   mfsu: false,
 
+  // 禁用dva插件以解决@umijs/utils模块找不到的问题
+  dva: false,
+
   // 路由配置
   routes: [
     {
