@@ -1,0 +1,11 @@
+node_modules/
+dist/
+build/
+frontend/dist/
+frontend/.umi/
+frontend/.umi-production/
+.qoder/
+monitoring/
+tools/
+*.min.js
+*.min.css

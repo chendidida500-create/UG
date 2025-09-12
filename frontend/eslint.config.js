@@ -23,7 +23,7 @@ export default [
       'prefer-const': 'error',
       'no-var': 'error',
       'no-unused-vars': 'error',
-      'no-undef': 'off', // 关闭此规则以避免process变量报错
+      'no-undef': 'off',
       'no-empty': 'error',
       'no-duplicate-case': 'error',
       'no-extra-semi': 'error',
@@ -53,6 +53,7 @@ export default [
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/no-parameter-properties': 'off',
       '@typescript-eslint/no-use-before-define': 'off',
+      'no-unused-vars': 'off', // 禁用基础规则，使用@typescript-eslint/no-unused-vars替代
     },
   },
   {
