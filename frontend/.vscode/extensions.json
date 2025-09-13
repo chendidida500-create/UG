@@ -1,0 +1,24 @@
+{
+  "recommendations": [
+    "ms-vscode.vscode-typescript-next",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-typescript-next",
+    "visualstudioexptteam.vscodeintellicode",
+    "ms-vscode.vscode-react",
+    "ms-vscode.vscode-jest",
+    "ms-vscode.vscode-npm",
+    "ms-vscode.vscode-yarn",
+    "ms-vscode.vscode-pnpm",
+    "ant-design.ant-design-vue-helper",
+    "vue.volar",
+    "bradlc.vscode-tailwindcss",
+    "ms-vscode.vscode-remote",
+    "ms-vscode.vscode-remote-extensionpack",
+    "ms-vscode.vscode-github",
+    "ms-vscode.vscode-github-actions",
+    "ms-azuretools.vscode-docker",
+    "ms-vscode.vscode-node-azure-pack"
+  ]
+}

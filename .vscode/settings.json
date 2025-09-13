@@ -52,5 +52,11 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "Lingma.DisplayLanguage": "简体中文",
+  "Lingma.PreferredLanguage for AI Chat": "简体中文",
+  "Lingma.PreferredLanguage forCommitMessage": "简体中文",
+  "Lingma.localMachineModelInferenceMode": "length",
+  "Lingma.cloudModelManualTriggerGenerateLength": "long",
+  "Lingma.cloudModelAutoTriggerGenerateLength": "long"
 }

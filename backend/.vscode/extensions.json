@@ -4,15 +4,9 @@
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
     "ms-vscode.vscode-json",
-    "bradlc.vscode-tailwindcss",
     "ms-vscode.vscode-typescript-next",
-    "ms-vscode.vscode-typescript-tslint-plugin",
     "visualstudioexptteam.vscodeintellicode",
-    "ms-vscode.vscode-react",
     "ms-vscode.vscode-node-azure-pack",
-    "ms-azuretools.vscode-docker",
-    "ms-vscode.vscode-github",
-    "ms-vscode.vscode-github-actions",
     "ms-vscode.vscode-jest",
     "ms-vscode.vscode-npm",
     "ms-vscode.vscode-yarn",
@@ -21,9 +15,9 @@
     "ms-vscode.vscode-postgresql",
     "ms-vscode.vscode-sqlite",
     "ms-vscode.vscode-remote",
-    "ms-vscode.vscode-remote-extensionpack"
-  ],
-  "unwantedRecommendations": [
-    "ms-vscode.vscode-typescript-tslint-plugin"
+    "ms-vscode.vscode-remote-extensionpack",
+    "ms-vscode.vscode-github",
+    "ms-vscode.vscode-github-actions",
+    "ms-azuretools.vscode-docker"
   ]
 }
