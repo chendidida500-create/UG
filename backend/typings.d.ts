@@ -19,12 +19,16 @@ declare namespace NodeJS {
 // 声明process对象
 declare let process: NodeJS.Process;
 
+import 'egg';
+
 declare module 'egg' {
   interface Application {
-    // 可以在这里添加自定义的应用程序属性类型
+    genHash(password: string): Promise<string>;
+    compareHash(password: string, hash: string): Promise<boolean>;
   }
 
   interface Context {
-    // 可以在这里添加自定义的上下文属性类型
+    genHash(password: string): Promise<string>;
+    compareHash(password: string, hash: string): Promise<boolean>;
   }
 }

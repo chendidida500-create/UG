@@ -10,28 +10,46 @@ import {
   message,
 } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { Helmet } from 'umi';
+import { Helmet, history, useModel } from 'umi';
 import styles from './Login.module.css';
 
 const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
+  const { initialState, setInitialState } = useModel('@@initialState');
 
   const onFinish = async (values: any) => {
     setLoading(true);
     try {
-      // 模拟登录请求
-      console.log('登录请求:', values);
-      // 这里应该调用实际的登录API
-      // const response = await login(values);
+      // 调用登录API
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
 
-      // 模拟延迟
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const result = await response.json();
 
-      message.success('登录成功');
-      // 登录成功后跳转到仪表盘
-      window.location.href = '/dashboard';
+      if (result.success) {
+        message.success('登录成功');
+        
+        // 保存token
+        localStorage.setItem('token', result.data.token);
+        
+        // 更新全局状态
+        setInitialState({
+          ...initialState,
+          currentUser: result.data.user,
+        });
+        
+        // 跳转到仪表盘
+        history.push('/dashboard');
+      } else {
+        message.error(result.message || '登录失败，请检查用户名和密码');
+      }
     } catch (error) {
-      message.error('登录失败，请检查用户名和密码');
+      message.error('登录失败，请检查网络连接');
     } finally {
       setLoading(false);
     }

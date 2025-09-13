@@ -1,6 +1,20 @@
-import { Application } from "egg";
+import { Application } from 'egg';
+import * as bcrypt from 'bcryptjs';
 
-export default class AppBootHook {
+export default (app: Application) => {
+  // 添加密码加密方法
+  app.genHash = async (password: string): Promise<string> => {
+    const saltRounds = 10;
+    return bcrypt.hash(password, saltRounds);
+  };
+
+  // 添加密码验证方法
+  app.compareHash = async (password: string, hash: string): Promise<boolean> => {
+    return bcrypt.compare(password, hash);
+  };
+};
+
+export class AppBootHook {
   private readonly app: Application;
 
   constructor(app: Application) {

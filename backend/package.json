@@ -22,7 +22,9 @@
     "migrate:down": "egg-sequelize migration:down",
     "db:seed": "egg-sequelize db:seed:all",
     "spellcheck": "cspell \"app/**/*.{ts,js,json,md}\"",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "egg-bin test",
+    "test-local": "egg-bin test-local"
   },
   "dependencies": {
     "egg": "^3.31.0",
@@ -30,6 +32,7 @@
     "egg-jwt": "^3.1.0",
     "egg-cors": "^3.0.1",
     "egg-validate": "^2.0.2",
+    "egg-redis": "^2.0.0",
     "mysql2": "^3.9.7",
     "bcryptjs": "^2.4.3",
     "lodash": "^4.17.21",
@@ -43,6 +46,8 @@
     "@types/node": "^20.12.7",
     "@types/bcryptjs": "^2.4.6",
     "@types/lodash": "^4.17.0",
-    "autod": "^3.1.1"
+    "autod": "^3.1.1",
+    "mm": "^3.4.0",
+    "egg-mock": "^3.26.0"
   }
 }
