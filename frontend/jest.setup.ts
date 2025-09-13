@@ -27,9 +27,9 @@ Object.defineProperty(window, 'localStorage', {
 });
 
 // Mock fetch
-window.fetch = function() {
+window.fetch = function (_input: RequestInfo | URL, _init?: RequestInit) {
   return Promise.resolve({
     json: () => Promise.resolve({}),
     ok: true,
-  });
+  } as Response);
 } as unknown as typeof fetch;

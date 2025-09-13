@@ -6,6 +6,7 @@ import prettier from 'eslint-plugin-prettier';
 
 // Umi 官方推荐的 ESLint 配置
 export default [
+  // 忽略的文件模式
   {
     ignores: [
       'node_modules/**/*',
@@ -16,6 +17,8 @@ export default [
       'src/**/*.d.ts',
     ],
   },
+
+  // JavaScript 基础规则
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     // 排除 .umi 目录中的文件
@@ -33,6 +36,8 @@ export default [
       'no-irregular-whitespace': 'error',
     },
   },
+
+  // TypeScript 特定规则
   {
     files: ['**/*.{ts,tsx}'],
     // 排除 .umi 目录中的文件
@@ -60,6 +65,8 @@ export default [
       'no-unused-vars': 'off', // 禁用基础规则，使用@typescript-eslint/no-unused-vars替代
     },
   },
+
+  // React 相关规则
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     // 排除 .umi 目录中的文件
@@ -83,6 +90,8 @@ export default [
       'react/jsx-pascal-case': 'error',
     },
   },
+
+  // Prettier 集成
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     // 排除 .umi 目录中的文件
@@ -101,6 +110,8 @@ export default [
       ],
     },
   },
+
+  // 测试文件特定规则
   {
     files: ['**/*.{test,spec}.{js,jsx,ts,tsx}'],
     languageOptions: {

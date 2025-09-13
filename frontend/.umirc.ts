@@ -23,7 +23,6 @@ export default defineConfig({
       name: '仪表盘',
       path: '/dashboard',
       component: './Dashboard',
-      access: 'canViewReports',
     },
     {
       name: '任务管理',
@@ -34,37 +33,31 @@ export default defineConfig({
       name: '用户管理',
       path: '/users',
       component: './UserManagement',
-      access: 'canUserManage',
     },
     {
       name: '角色管理',
       path: '/roles',
       component: './RoleManagement',
-      access: 'canRoleManage',
     },
     {
       name: '权限管理',
       path: '/permissions',
       component: './PermissionManagement',
-      access: 'canPermissionManage',
     },
     {
       name: '系统监控',
       path: '/monitor',
       component: './SystemMonitor',
-      access: 'canSystemMonitor',
     },
     {
       name: '报表管理',
       path: '/reports',
       component: './Report',
-      access: 'canViewReports',
     },
     {
       name: '系统配置',
       path: '/config',
       component: './SystemConfig',
-      access: 'isAdmin',
     },
     {
       name: '字典管理',
@@ -93,9 +86,6 @@ export default defineConfig({
 
   // 状态管理配置
   model: {},
-
-  // 权限控制配置
-  access: {},
 
   // 请求配置
   request: {},
