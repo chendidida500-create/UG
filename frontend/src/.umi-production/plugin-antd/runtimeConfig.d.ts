@@ -2,5 +2,5 @@
 // DO NOT CHANGE IT MANUALLY!
 import type { RuntimeAntdConfig } from './types.d';
 export type IRuntimeConfig = {
-  antd?: RuntimeAntdConfig
+  antd?: RuntimeAntdConfig;
 };

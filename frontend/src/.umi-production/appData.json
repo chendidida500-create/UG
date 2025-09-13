@@ -93,9 +93,7 @@
       "config": {},
       "time": {
         "hooks": {
-          "onStart": [
-            0
-          ]
+          "onStart": [0]
         },
         "register": 14
       },
@@ -110,9 +108,7 @@
       "config": {},
       "time": {
         "hooks": {
-          "onStart": [
-            5
-          ]
+          "onStart": [5]
         },
         "register": 7
       },
@@ -127,9 +123,7 @@
       "config": {},
       "time": {
         "hooks": {
-          "modifyRoutes": [
-            0
-          ]
+          "modifyRoutes": [0]
         },
         "register": 1
       },
@@ -157,9 +151,7 @@
       "config": {},
       "time": {
         "hooks": {
-          "modifyAppData": [
-            140
-          ]
+          "modifyAppData": [140]
         },
         "register": 68
       },
@@ -187,12 +179,8 @@
       "config": {},
       "time": {
         "hooks": {
-          "onCheckConfig": [
-            0
-          ],
-          "onCheck": [
-            0
-          ]
+          "onCheckConfig": [0],
+          "onCheck": [0]
         },
         "register": 5
       },
@@ -207,9 +195,7 @@
       "config": {},
       "time": {
         "hooks": {
-          "onCheck": [
-            0
-          ]
+          "onCheck": [0]
         },
         "register": 1
       },
@@ -237,9 +223,7 @@
       "config": {},
       "time": {
         "hooks": {
-          "modifyConfig": [
-            0
-          ]
+          "modifyConfig": [0]
         },
         "register": 45
       },
@@ -1106,9 +1090,7 @@
       "config": {},
       "time": {
         "hooks": {
-          "onStart": [
-            1
-          ]
+          "onStart": [1]
         },
         "register": 7
       },
@@ -1175,9 +1157,7 @@
       "config": {},
       "time": {
         "hooks": {
-          "modifyAppData": [
-            0
-          ]
+          "modifyAppData": [0]
         },
         "register": 1
       },
@@ -1281,9 +1261,7 @@
       "config": {},
       "time": {
         "hooks": {
-          "modifyConfig": [
-            4
-          ]
+          "modifyConfig": [4]
         },
         "register": 9
       },
@@ -1552,9 +1530,7 @@
       "config": {},
       "time": {
         "hooks": {
-          "addOnDemandDeps": [
-            1
-          ]
+          "addOnDemandDeps": [1]
         },
         "register": 1
       },
@@ -1982,12 +1958,8 @@
       "config": {},
       "time": {
         "hooks": {
-          "modifyConfig": [
-            10
-          ],
-          "modifyAppData": [
-            0
-          ]
+          "modifyConfig": [10],
+          "modifyAppData": [0]
         },
         "register": 16
       },
@@ -2196,9 +2168,7 @@
       "config": {},
       "time": {
         "hooks": {
-          "modifyConfig": [
-            0
-          ]
+          "modifyConfig": [0]
         },
         "register": 1
       },
@@ -2213,9 +2183,7 @@
       "config": {},
       "time": {
         "hooks": {
-          "modifyAppData": [
-            0
-          ]
+          "modifyAppData": [0]
         },
         "register": 1
       },
@@ -2230,9 +2198,7 @@
       "config": {},
       "time": {
         "hooks": {
-          "onCheckPkgJSON": [
-            0
-          ]
+          "onCheckPkgJSON": [0]
         },
         "register": 1
       },

@@ -5,6 +5,6 @@ import React from 'react';
 import { HelmetProvider } from 'E:/YSY/UG/node_modules/.pnpm/@umijs+renderer-react@4.4.12_react-dom@18.3.1_react@18.3.1/node_modules/@umijs/renderer-react';
 import { context } from './helmetContext';
 
-export const innerProvider = (container) => {
+export const innerProvider = container => {
   return React.createElement(HelmetProvider, { context }, container);
-}
+};

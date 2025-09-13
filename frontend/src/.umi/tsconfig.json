@@ -39,6 +39,15 @@
     "../../.umirc.*.ts",
     "../../**/*.d.ts",
     "../../**/*.ts",
-    "../../**/*.tsx"
+    "../../pages/**/*.tsx",
+    "../../components/**/*.tsx",
+    "../../layouts/**/*.tsx"
+  ],
+  "exclude": [
+    "../../**/node_modules/**",
+    "../../**/dist/**",
+    "../../**/build/**",
+    "../../TestDictionary.tsx",
+    "../../test.tsx"
   ]
 }

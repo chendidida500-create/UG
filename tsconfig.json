@@ -8,8 +8,10 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": [
+    "frontend/src/pages/**/*.tsx",
+    "frontend/src/components/**/*.tsx",
+    "frontend/src/layouts/**/*.tsx",
     "frontend/src/**/*.ts",
-    "frontend/src/**/*.tsx",
     "backend/**/*.ts"
   ],
   "exclude": [

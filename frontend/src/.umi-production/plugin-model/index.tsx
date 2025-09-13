@@ -24,7 +24,7 @@ class Dispatcher {
   data: Record<Namespaces, unknown> = {};
   update = (namespace: Namespaces) => {
     if (this.callbacks[namespace]) {
-      this.callbacks[namespace].forEach((cb) => {
+      this.callbacks[namespace].forEach(cb => {
         try {
           const data = this.data[namespace];
           cb(data);
@@ -54,7 +54,7 @@ function Executor(props: ExecutorProps) {
   } catch (e) {
     console.error(
       `plugin-model: Invoking '${namespace || 'unknown'}' model failed:`,
-      e,
+      e
     );
   }
 
@@ -83,13 +83,13 @@ export function Provider(props: {
 }) {
   return (
     <Context.Provider value={{ dispatcher }}>
-      {Object.keys(props.models).map((namespace) => {
+      {Object.keys(props.models).map(namespace => {
         return (
           <Executor
             key={namespace}
             hook={props.models[namespace]}
             namespace={namespace}
-            onUpdate={(val) => {
+            onUpdate={val => {
               dispatcher.data[namespace] = val;
               dispatcher.update(namespace);
             }}
@@ -122,12 +122,12 @@ export function useModel<N extends Namespaces>(namespace: N): Model<N>;
 
 export function useModel<N extends Namespaces, S>(
   namespace: N,
-  selector: Selector<N, S>,
+  selector: Selector<N, S>
 ): SelectedModel<N, typeof selector>;
 
 export function useModel<N extends Namespaces, S>(
   namespace: N,
-  selector?: Selector<N, S>,
+  selector?: Selector<N, S>
 ): SelectedModel<N, typeof selector> {
   const { dispatcher } = useContext<{ dispatcher: Dispatcher }>(Context);
   const selectorRef = useRef(selector);
@@ -135,7 +135,7 @@ export function useModel<N extends Namespaces, S>(
   const [state, setState] = useState(() =>
     selectorRef.current
       ? selectorRef.current(dispatcher.data[namespace])
-      : dispatcher.data[namespace],
+      : dispatcher.data[namespace]
   );
   const stateRef = useRef<any>(state);
   stateRef.current = state;

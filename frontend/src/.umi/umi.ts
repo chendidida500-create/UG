@@ -9,8 +9,7 @@ import { createPluginManager } from './core/plugin';
 import { createHistory } from './core/history';
 import { ApplyPluginsType } from 'umi';
 
-
-const publicPath = "/";
+const publicPath = '/';
 const runtimePublicPath = false;
 
 async function render() {
@@ -42,7 +41,7 @@ async function render() {
     ...contextOpts.historyOpts,
   });
 
-  return (pluginManager.applyPlugins({
+  return pluginManager.applyPlugins({
     key: 'render',
     type: ApplyPluginsType.compose,
     initialValue() {
@@ -58,7 +57,10 @@ async function render() {
         history,
         historyType,
         basename,
-        __INTERNAL_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: {"pureApp":false,"pureHtml":false},
+        __INTERNAL_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: {
+          pureApp: false,
+          pureHtml: false,
+        },
         callback: contextOpts.callback,
       };
       const modifiedContext = pluginManager.applyPlugins({
@@ -68,14 +70,13 @@ async function render() {
       });
       return renderClient(modifiedContext);
     },
-  }))();
+  })();
 }
-
 
 render();
 
-    if (typeof window !== 'undefined') {
-      window.g_umi = {
-        version: '4.4.12',
-      };
-    }
+if (typeof window !== 'undefined') {
+  window.g_umi = {
+    version: '4.4.12',
+  };
+}

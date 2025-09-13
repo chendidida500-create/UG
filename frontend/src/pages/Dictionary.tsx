@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+const { useState, useEffect } = React;
 import {
   Button,
   Space,
@@ -436,6 +437,11 @@ const Dictionary: React.FC = () => {
     },
   ];
 
+  // 修复类型错误的辅助函数
+  const renderCellValue = (value: string | number) => {
+    return typeof value === 'number' ? value.toString() : value;
+  };
+
   return (
     <div className={styles.container}>
       <Typography.Title level={3} style={{ marginBottom: 24 }}>
@@ -497,10 +503,18 @@ const Dictionary: React.FC = () => {
                         >
                           {column.render
                             ? column.render(
-                                type[column.dataIndex as keyof DictionaryType],
+                                renderCellValue(
+                                  (type as DictionaryType)[
+                                    column.dataIndex as keyof DictionaryType
+                                  ]
+                                ),
                                 type
                               )
-                            : type[column.dataIndex as keyof DictionaryType]}
+                            : renderCellValue(
+                                (type as DictionaryType)[
+                                  column.dataIndex as keyof DictionaryType
+                                ]
+                              )}
                         </td>
                       ))}
                     </tr>
@@ -565,10 +579,18 @@ const Dictionary: React.FC = () => {
                         >
                           {column.render
                             ? column.render(
-                                item[column.dataIndex as keyof DictionaryItem],
+                                renderCellValue(
+                                  (item as DictionaryItem)[
+                                    column.dataIndex as keyof DictionaryItem
+                                  ]
+                                ),
                                 item
                               )
-                            : item[column.dataIndex as keyof DictionaryItem]}
+                            : renderCellValue(
+                                (item as DictionaryItem)[
+                                  column.dataIndex as keyof DictionaryItem
+                                ]
+                              )}
                         </td>
                       ))}
                     </tr>

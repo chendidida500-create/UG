@@ -13,4 +13,5 @@ export type {
   ErrorInterceptor,
   ResponseInterceptor,
   RequestOptions,
-  Request } from './request';
+  Request,
+} from './request';

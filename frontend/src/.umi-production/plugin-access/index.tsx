@@ -13,12 +13,17 @@ export interface AccessProps {
   accessible: boolean;
   fallback?: React.ReactNode;
 }
-export const Access: React.FC<PropsWithChildren<AccessProps>> = (props) => {
-  if (process.env.NODE_ENV === 'development' && typeof props.accessible !== 'boolean') {
-    throw new Error('[access] the `accessible` property on <Access /> should be a boolean');
+export const Access: React.FC<PropsWithChildren<AccessProps>> = props => {
+  if (
+    process.env.NODE_ENV === 'development' &&
+    typeof props.accessible !== 'boolean'
+  ) {
+    throw new Error(
+      '[access] the `accessible` property on <Access /> should be a boolean'
+    );
   }
 
-  return <>{ props.accessible ? props.children : props.fallback }</>;
+  return <>{props.accessible ? props.children : props.fallback}</>;
 };
 
 export const useAccessMarkedRoutes = (routes: IRoute[]) => {
@@ -51,11 +56,14 @@ export const useAccessMarkedRoutes = (routes: IRoute[]) => {
 
       // check children access code
       if (route.children?.length) {
-        const isNoAccessibleChild = !route.children.reduce((hasAccessibleChild, child) => {
-          process(child, accessCode, route);
+        const isNoAccessibleChild = !route.children.reduce(
+          (hasAccessibleChild, child) => {
+            process(child, accessCode, route);
 
-          return hasAccessibleChild || !child.unaccessible;
-        }, false);
+            return hasAccessibleChild || !child.unaccessible;
+          },
+          false
+        );
 
         // make sure parent route is unaccessible if all children are unaccessible
         if (isNoAccessibleChild) {
@@ -65,11 +73,14 @@ export const useAccessMarkedRoutes = (routes: IRoute[]) => {
 
       // check children access code
       if (route.routes?.length) {
-        const isNoAccessibleChild = !route.routes.reduce((hasAccessibleChild, child) => {
-          process(child, accessCode, route);
+        const isNoAccessibleChild = !route.routes.reduce(
+          (hasAccessibleChild, child) => {
+            process(child, accessCode, route);
 
-          return hasAccessibleChild || !child.unaccessible;
-        }, false);
+            return hasAccessibleChild || !child.unaccessible;
+          },
+          false
+        );
 
         // make sure parent route is unaccessible if all children are unaccessible
         if (isNoAccessibleChild) {
@@ -78,10 +89,10 @@ export const useAccessMarkedRoutes = (routes: IRoute[]) => {
       }
 
       return route;
-    }
+    };
 
     return routes.map(route => process(route));
   }, [routes.length, access]);
 
   return markdedRoutes;
-}
+};

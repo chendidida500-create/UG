@@ -3,12 +3,14 @@
 // DO NOT CHANGE IT MANUALLY!
 import React, { useEffect, useState } from 'react';
 import { ApplyPluginsType } from 'umi';
-import { renderClient, RenderClientOpts } from 'E:/YSY/UG/node_modules/.pnpm/@umijs+renderer-react@4.4.12_react-dom@18.3.1_react@18.3.1/node_modules/@umijs/renderer-react';
+import {
+  renderClient,
+  RenderClientOpts,
+} from 'E:/YSY/UG/node_modules/.pnpm/@umijs+renderer-react@4.4.12_react-dom@18.3.1_react@18.3.1/node_modules/@umijs/renderer-react';
 import { createHistory } from './core/history';
 import { createPluginManager } from './core/plugin';
 import { getRoutes } from './core/route';
 import type { Location } from 'history';
-
 
 import 'antd/dist/antd.less';
 const publicPath = '/';
@@ -64,7 +66,7 @@ export function TestBrowser(props: TestBrowserProps) {
       });
       return modifiedContext;
     };
-    genContext().then((context) => {
+    genContext().then(context => {
       setContext(context);
       if (props.location) {
         context?.history?.push(props.location);

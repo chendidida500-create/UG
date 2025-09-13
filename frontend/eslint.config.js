@@ -18,6 +18,8 @@ export default [
   },
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+    // 排除 .umi 目录中的文件
+    ignores: ['.umi/**/*', '.umi-production/**/*'],
     rules: {
       'no-console': 'warn',
       'prefer-const': 'error',
@@ -33,6 +35,8 @@ export default [
   },
   {
     files: ['**/*.{ts,tsx}'],
+    // 排除 .umi 目录中的文件
+    ignores: ['.umi/**/*', '.umi-production/**/*'],
     languageOptions: {
       parser: tsparser,
       parserOptions: {
@@ -58,6 +62,8 @@ export default [
   },
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
+    // 排除 .umi 目录中的文件
+    ignores: ['.umi/**/*', '.umi-production/**/*'],
     plugins: {
       react: react,
       'react-hooks': reactHooks,
@@ -79,6 +85,8 @@ export default [
   },
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
+    // 排除 .umi 目录中的文件
+    ignores: ['.umi/**/*', '.umi-production/**/*'],
     plugins: {
       prettier: prettier,
     },

@@ -9,11 +9,11 @@ function Provider(props) {
 
   return (
     <AccessContext.Provider value={access}>
-      { props.children }
+      {props.children}
     </AccessContext.Provider>
   );
 }
 
 export function accessProvider(container) {
-  return <Provider>{ container }</Provider>;
+  return <Provider>{container}</Provider>;
 }
