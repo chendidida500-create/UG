@@ -1,41 +1,25 @@
-"typescript"，
-  “凑得”： “2305”，
-    “severIT业”： 8，
-      “没事撒个”： “模块“、”他的、“”没有导出的成员“”Table”，
-        “苏如厕”： “他”，
-          “撒认同Lin而Number”： 4，
-            “仨人TCO路面呢”： 3，
-              “耳朵Lin而Number”： 4，
-                “耳朵C欧陆美女”： 8
-                ｝，｛
-                  “热搜如厕”： “、e:/YSY/UG/frontend/src/pages/Dashboard.tsx",  ”欧尼尔“： ”调配script“，
-                    ”吃的“： ”2305“，
-                      ”sve日太阳“： 8，
-                        ”没事撒个“： ”模块“、“他的、””没有导出的成员“”Tag“，
-                          ”苏如厕“： ”他“，
-                            ”startLin而Number“： 6，
-                              ”仨人TCO路面呢“： 3，
-                                ”耳朵Lin而Number“： 6，
-                                  ”耳朵C欧陆美女“： 6
-                                  ｝，｛
-                                    ”热搜如厕“： ”、额；、YSY、UG、佛闹腾的、输出、怕个啥、Dashboard.tsx",  “欧尼尔”： “调配script”，
-                                      “吃的”： “2305”，
-                                        “sve日太阳”： 8，
-                                          “没事撒个”： “模块“、”他的、“”没有导出的成员“”没事撒个”，
-                                            “苏如厕”： “他”，
-                                              “撒认同Lin而Number”： 7，
-                                                “仨人TCO路面呢”： 3，
-                                                  “耳朵Lin而Number”： 7，
-                                                    “耳朵C欧陆美女”： 10
-                                                    ｝，｛
-                                                      “热搜如厕”： “、额；、YSY、UG、佛闹腾的、输出、怕个啥、Dashboard.tsx",  ”欧尼尔“： ”调配script“，
-                                                        ”吃的“： ”2305“，
-                                                          ”sve日太阳“： 8，
-                                                            ”没事撒个“： ”模块“、“他的、””没有导出的成员“”DatePic客人“，
-                                                              ”苏如厕“： ”他“，
-                                                                ”撒认同Lin而Number“： 8，
-                                                                  ”.container {
+.container {
   padding: 24px;
   background-color: #f5f5f5;
   min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.chartContainer {
+  background: #fff;
+  padding: 24px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+}
+
+.tableContainer {
+  background: #fff;
+  padding: 24px;
+  border-radius: 4px;
 }

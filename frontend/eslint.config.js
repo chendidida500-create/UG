@@ -3,7 +3,6 @@ import tsparser from '@typescript-eslint/parser';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import prettier from 'eslint-plugin-prettier';
-import umi from '@umijs/lint';
 
 // Umi 官方推荐的 ESLint 配置
 export default [
@@ -18,8 +17,6 @@ export default [
     ],
   },
   {
-    // 继承 Umi 官方 ESLint 配置
-    extends: [require.resolve('@umijs/lint/dist/config/eslint')],
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     rules: {
       'no-console': 'warn',
