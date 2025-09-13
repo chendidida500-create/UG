@@ -51,6 +51,7 @@ declare module '@umijs/max' {
     (params: Record<string, string>) => void,
   ];
   export function useSelectedRoutes(): unknown[];
+  export const Helmet: React.ComponentType<any>;
 }
 
 // 声明CSS模块
@@ -181,17 +182,83 @@ declare module '@umijs/core' {
 declare module 'antd' {
   import * as React from 'react';
 
-  export interface CardProps {
-    children?: React.ReactNode;
-    // 可以根据需要添加更多属性
-  }
-
-  export const Card: React.ComponentType<CardProps>;
+  // 导出所有需要的组件类型
+  export const Table: React.ComponentType<any>;
+  export const Button: React.ComponentType<any>;
   export const Space: React.ComponentType<any>;
+  export const Tag: React.ComponentType<any>;
+  export const Modal: React.ComponentType<any>;
+  export const Form: React.ComponentType<any> & {
+    useForm: () => [any, any];
+    Item: React.ComponentType<any>;
+  };
+  export const Input: React.ComponentType<any> & {
+    TextArea: React.ComponentType<any>;
+  };
+  export const message: {
+    success: (content: string) => void;
+    error: (content: string) => void;
+    info: (content: string) => void;
+    warning: (content: string) => void;
+    loading: (content: string) => void;
+  };
+  export const Card: React.ComponentType<any>;
   export const Typography: {
     Title: React.ComponentType<any>;
     Paragraph: React.ComponentType<any>;
   };
+  export const Select: React.ComponentType<any> & {
+    Option: React.ComponentType<any>;
+  };
+  export const Popconfirm: React.ComponentType<any>;
+  export const Row: React.ComponentType<any>;
+  export const Col: React.ComponentType<any>;
+  export const DatePicker: React.ComponentType<any>;
+  export const Layout: React.ComponentType<any> & {
+    Header: React.ComponentType<any>;
+    Content: React.ComponentType<any>;
+    Sider: React.ComponentType<any>;
+    Footer: React.ComponentType<any>;
+  };
+  export const Menu: React.ComponentType<any>;
+  export const Statistic: React.ComponentType<any>;
+  export const Checkbox: React.ComponentType<any>;
+  export const Tree: React.ComponentType<any>;
+  export const Switch: React.ComponentType<any>;
+  export const Progress: React.ComponentType<any>;
+  export const InputNumber: React.ComponentType<any>;
+}
+
+declare module '@ant-design/icons' {
+  import * as React from 'react';
+
+  export const PlusOutlined: React.ComponentType<any>;
+  export const EditOutlined: React.ComponentType<any>;
+  export const DeleteOutlined: React.ComponentType<any>;
+  export const UserSwitchOutlined: React.ComponentType<any>;
+  export const EyeOutlined: React.ComponentType<any>;
+  export const DashboardOutlined: React.ComponentType<any>;
+  export const FileOutlined: React.ComponentType<any>;
+  export const UserOutlined: React.ComponentType<any>;
+  export const TeamOutlined: React.ComponentType<any>;
+  export const SafetyCertificateOutlined: React.ComponentType<any>;
+  export const MonitorOutlined: React.ComponentType<any>;
+  export const BarChartOutlined: React.ComponentType<any>;
+  export const SettingOutlined: React.ComponentType<any>;
+  export const BookOutlined: React.ComponentType<any>;
+  export const NotificationOutlined: React.ComponentType<any>;
+  export const DownloadOutlined: React.ComponentType<any>;
+  export const FileExcelOutlined: React.ComponentType<any>;
+  export const FilePdfOutlined: React.ComponentType<any>;
+  export const FileWordOutlined: React.ComponentType<any>;
+  export const ApartmentOutlined: React.ComponentType<any>;
+  export const SaveOutlined: React.ComponentType<any>;
+  export const ReloadOutlined: React.ComponentType<any>;
+  export const DesktopOutlined: React.ComponentType<any>;
+  export const DatabaseOutlined: React.ComponentType<any>;
+  export const CloudOutlined: React.ComponentType<any>;
+  export const CheckCircleOutlined: React.ComponentType<any>;
+  export const LockOutlined: React.ComponentType<any>;
 }
 
 // 修复React未定义错误 - 添加React命名空间声明

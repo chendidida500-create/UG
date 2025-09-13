@@ -30,6 +30,13 @@ interface Role {
   updatedAt: string;
 }
 
+// 用户数据类型
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
 const RoleManagement: React.FC = () => {
   const [roles, setRoles] = useState<Role[]>([]);
   const [loading, setLoading] = useState(false);
@@ -297,9 +304,9 @@ const RoleUserManagement: React.FC<RoleUserManagementProps> = ({
   roleId,
   roleName,
 }) => {
-  const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
-  const [availableUsers, setAvailableUsers] = useState<any[]>([]);
+  const [availableUsers, setAvailableUsers] = useState<User[]>([]);
 
   // 模拟获取角色用户数据
   useEffect(() => {
@@ -316,7 +323,7 @@ const RoleUserManagement: React.FC<RoleUserManagementProps> = ({
       await new Promise(resolve => setTimeout(resolve, 500));
 
       // 模拟数据
-      const mockUsers = [
+      const mockUsers: User[] = [
         {
           id: 1,
           name: '张三',
@@ -343,7 +350,7 @@ const RoleUserManagement: React.FC<RoleUserManagementProps> = ({
       await new Promise(resolve => setTimeout(resolve, 300));
 
       // 模拟数据
-      const mockUsers = [
+      const mockUsers: User[] = [
         {
           id: 3,
           name: '王五',
@@ -423,7 +430,7 @@ const RoleUserManagement: React.FC<RoleUserManagementProps> = ({
           {
             title: '操作',
             key: 'action',
-            render: (_, record) => (
+            render: (_: any, record: User) => (
               <Button
                 type="link"
                 danger
@@ -463,7 +470,7 @@ const RoleUserManagement: React.FC<RoleUserManagementProps> = ({
           {
             title: '操作',
             key: 'action',
-            render: (_, record) => (
+            render: (_: any, record: User) => (
               <Button
                 type="link"
                 onClick={() => handleAddUserToRole(record.id)}

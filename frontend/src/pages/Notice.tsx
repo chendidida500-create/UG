@@ -11,6 +11,10 @@ import {
   Typography,
   Select,
   Popconfirm,
+  Row,
+  Col,
+  DatePicker,
+  Table,
 } from 'antd';
 import {
   PlusOutlined,
@@ -40,7 +44,6 @@ interface Notice {
 
 const Notice: React.FC = () => {
   const [notices, setNotices] = useState<Notice[]>([]);
-  const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [detailModalVisible, setDetailModalVisible] = useState(false);
   const [editingNotice, setEditingNotice] = useState<Notice | null>(null);
@@ -53,7 +56,6 @@ const Notice: React.FC = () => {
   }, []);
 
   const fetchNotices = async () => {
-    setLoading(true);
     try {
       // 模拟API调用
       await new Promise(resolve => setTimeout(resolve, 500));
@@ -102,8 +104,6 @@ const Notice: React.FC = () => {
       setNotices(mockNotices);
     } catch (error) {
       message.error('获取通知公告数据失败');
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -199,7 +199,10 @@ const Notice: React.FC = () => {
       } else {
         // 添加新通知公告
         const newNotice = {
-          id: notices.length > 0 ? Math.max(...notices.map(n => n.id)) + 1 : 1,
+          id:
+            notices.length > 0
+              ? Math.max(...notices.map((n: Notice) => n.id)) + 1
+              : 1,
           ...values,
           creator: '当前用户',
           createdAt: new Date()
@@ -218,6 +221,7 @@ const Notice: React.FC = () => {
       setModalVisible(false);
       form.resetFields();
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('表单验证失败:', error);
     }
   };
@@ -395,49 +399,14 @@ const Notice: React.FC = () => {
           </div>
         }
       >
-        <div style={{ height: 500, overflow: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr>
-                {columns.map(column => (
-                  <th
-                    key={column.key}
-                    style={{
-                      padding: '16px 8px',
-                      textAlign: column.key === 'action' ? 'center' : 'left',
-                      borderBottom: '1px solid #f0f0f0',
-                    }}
-                  >
-                    {column.title}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {notices.map(notice => (
-                <tr key={notice.id}>
-                  {columns.map(column => (
-                    <td
-                      key={column.key}
-                      style={{
-                        padding: '16px 8px',
-                        borderBottom: '1px solid #f0f0f0',
-                        textAlign: column.key === 'action' ? 'center' : 'left',
-                      }}
-                    >
-                      {column.render
-                        ? column.render(
-                            notice[column.dataIndex as keyof Notice],
-                            notice
-                          )
-                        : notice[column.dataIndex as keyof Notice]}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <Table
+          dataSource={notices}
+          columns={columns}
+          rowKey="id"
+          pagination={{
+            pageSize: 10,
+          }}
+        />
       </Card>
 
       {/* 通知公告编辑模态框 */}
