@@ -1,16 +1,37 @@
 {
   "version": "0.2",
-  "language": "zh-CN",
+  "language": "en, zh",
   "words": [
-    "aitk",
-    "chat",
-    "mode",
-    "purpose",
-    "should",
-    "behave",
-    "style",
-    "focus",
-    "areas",
-    "instructions"
+    "chcp",
+    "echo",
+    "pause",
+    "errorlevel",
+    "call",
+    "Bypass",
+    "setup",
+    "pnpm",
+    "sequelize",
+    "migrate",
+    "Copilot",
+    "React",
+    "Sequelize",
+    "docs",
+    "Tful",
+    "pages",
+    "LASTEXITCODE",
+    "PowerShell",
+    "NoProfile",
+    "ExecutionPolicy"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "dist/**",
+    "build/**",
+    ".git/**",
+    ".vscode/**",
+    "coverage/**"
+  ],
+  "import": [
+    "./node_modules/@cspell/dict-zh_cn/cspell-ext.json"
   ]
 }

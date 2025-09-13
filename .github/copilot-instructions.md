@@ -1,4 +1,4 @@
-# Copilot Instructions for UG Codebase
+# GitHub Copilot Instructions for UG Codebase
 
 ## 项目架构
 

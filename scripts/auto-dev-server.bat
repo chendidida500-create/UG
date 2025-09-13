@@ -1,7 +1,9 @@
 @echo off
-echo 启动开发服务器...
-echo 启动后端开发服务器...
-start "Backend Server" /D "../backend" pnpm dev
-echo 启动前端开发服务器...
-start "Frontend Server" /D "../frontend" pnpm dev
-echo 开发服务器启动命令已执行，请稍候...
+chcp 65001 > nul
+PowerShell -NoProfile -ExecutionPolicy Bypass -File "%~dp0\auto-dev-server.ps1"
+if %errorlevel% neq 0 (
+    echo 开发服务器启动失败，请检查错误信息
+    pause
+    exit /b %errorlevel%
+)
+pause
