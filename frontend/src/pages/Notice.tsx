@@ -128,7 +128,7 @@ const Notice: React.FC = () => {
     try {
       // 模拟API调用
       await new Promise(resolve => setTimeout(resolve, 300));
-      setNotices(notices.filter(notice => notice.id !== noticeId));
+      setNotices(notices.filter((notice: Notice) => notice.id !== noticeId));
       message.success('通知公告删除成功');
     } catch (error) {
       message.error('删除通知公告失败');
@@ -140,7 +140,7 @@ const Notice: React.FC = () => {
       // 模拟API调用
       await new Promise(resolve => setTimeout(resolve, 300));
 
-      const updatedNotices = notices.map(notice =>
+      const updatedNotices = notices.map((notice: Notice) =>
         notice.id === noticeId
           ? {
               ...notice,
@@ -165,7 +165,7 @@ const Notice: React.FC = () => {
       // 模拟API调用
       await new Promise(resolve => setTimeout(resolve, 300));
 
-      const updatedNotices = notices.map(notice =>
+      const updatedNotices = notices.map((notice: Notice) =>
         notice.id === noticeId ? { ...notice, status: 'archived' } : notice
       );
 
@@ -182,7 +182,7 @@ const Notice: React.FC = () => {
 
       if (editingNotice) {
         // 更新通知公告
-        const updatedNotices = notices.map(notice =>
+        const updatedNotices = notices.map((notice: Notice) =>
           notice.id === editingNotice.id
             ? {
                 ...notice,
@@ -329,7 +329,7 @@ const Notice: React.FC = () => {
     {
       title: '操作',
       key: 'action',
-      render: (_: any, record: Notice) => (
+      render: (_: unknown, record: Notice) => (
         <Space size="middle">
           <Button
             type="link"

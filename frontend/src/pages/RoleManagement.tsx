@@ -106,7 +106,7 @@ const RoleManagement: React.FC = () => {
     try {
       // 模拟API调用
       await new Promise(resolve => setTimeout(resolve, 300));
-      setRoles(roles.filter(role => role.id !== roleId));
+      setRoles(roles.filter((role: Role) => role.id !== roleId));
       message.success('角色删除成功');
     } catch (error) {
       message.error('删除角色失败');
@@ -124,7 +124,7 @@ const RoleManagement: React.FC = () => {
 
       if (editingRole) {
         // 更新角色
-        const updatedRoles = roles.map(role =>
+        const updatedRoles = roles.map((role: Role) =>
           role.id === editingRole.id
             ? {
                 ...role,
@@ -194,7 +194,7 @@ const RoleManagement: React.FC = () => {
     {
       title: '操作',
       key: 'action',
-      render: (_: any, record: Role) => (
+      render: (_: unknown, record: Role) => (
         <Space size="middle">
           <Button
             type="link"
@@ -302,7 +302,7 @@ interface RoleUserManagementProps {
 
 const RoleUserManagement: React.FC<RoleUserManagementProps> = ({
   roleId,
-  roleName,
+  roleName: _roleName, // 未使用的参数加上前缀下划线以符合eslint规则
 }) => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
@@ -374,10 +374,12 @@ const RoleUserManagement: React.FC<RoleUserManagementProps> = ({
       // 模拟API调用
       await new Promise(resolve => setTimeout(resolve, 300));
 
-      const userToAdd = availableUsers.find(user => user.id === userId);
+      const userToAdd = availableUsers.find((user: User) => user.id === userId);
       if (userToAdd) {
         setUsers([...users, userToAdd]);
-        setAvailableUsers(availableUsers.filter(user => user.id !== userId));
+        setAvailableUsers(
+          availableUsers.filter((user: User) => user.id !== userId)
+        );
         message.success('用户添加成功');
       }
     } catch (error) {
@@ -390,9 +392,9 @@ const RoleUserManagement: React.FC<RoleUserManagementProps> = ({
       // 模拟API调用
       await new Promise(resolve => setTimeout(resolve, 300));
 
-      const userToRemove = users.find(user => user.id === userId);
+      const userToRemove = users.find((user: User) => user.id === userId);
       if (userToRemove) {
-        setUsers(users.filter(user => user.id !== userId));
+        setUsers(users.filter((user: User) => user.id !== userId));
         setAvailableUsers([...availableUsers, userToRemove]);
         message.success('用户移除成功');
       }
@@ -430,7 +432,7 @@ const RoleUserManagement: React.FC<RoleUserManagementProps> = ({
           {
             title: '操作',
             key: 'action',
-            render: (_: any, record: User) => (
+            render: (_: unknown, record: User) => (
               <Button
                 type="link"
                 danger
@@ -470,7 +472,7 @@ const RoleUserManagement: React.FC<RoleUserManagementProps> = ({
           {
             title: '操作',
             key: 'action',
-            render: (_: any, record: User) => (
+            render: (_: unknown, record: User) => (
               <Button
                 type="link"
                 onClick={() => handleAddUserToRole(record.id)}

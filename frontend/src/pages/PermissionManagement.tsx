@@ -171,7 +171,7 @@ const PermissionManagement: React.FC = () => {
     try {
       // 模拟API调用
       await new Promise(resolve => setTimeout(resolve, 300));
-      const updatedPermissions = permissions.filter(p => p.id !== permissionId);
+      const updatedPermissions = permissions.filter((p: Permission) => p.id !== permissionId);
       setPermissions(updatedPermissions);
       generateTreeData(updatedPermissions);
       message.success('权限删除成功');
@@ -186,7 +186,7 @@ const PermissionManagement: React.FC = () => {
 
       if (editingPermission) {
         // 更新权限
-        const updatedPermissions = permissions.map(permission =>
+        const updatedPermissions = permissions.map((permission: Permission) =>
           permission.id === editingPermission.id
             ? {
                 ...permission,
@@ -203,7 +203,7 @@ const PermissionManagement: React.FC = () => {
         const newPermission = {
           id:
             permissions.length > 0
-              ? Math.max(...permissions.map(p => p.id)) + 1
+              ? Math.max(...permissions.map((p: Permission) => p.id)) + 1
               : 1,
           ...values,
           createdAt: new Date().toISOString().split('T')[0],
@@ -392,7 +392,7 @@ const PermissionManagement: React.FC = () => {
 
           <Form.Item name="parentId" label="父级权限">
             <Select allowClear>
-              {permissions.map(permission => (
+              {permissions.map((permission: Permission) => (
                 <Option key={permission.id} value={permission.id}>
                   {permission.name}
                 </Option>

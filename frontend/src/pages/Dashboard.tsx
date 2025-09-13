@@ -14,7 +14,7 @@ import {
 import {
   UserOutlined,
   TeamOutlined,
-  FileDoneOutlined,
+  FileOutlined,
   BarChartOutlined,
 } from '@ant-design/icons';
 import {
@@ -169,7 +169,7 @@ const Dashboard: React.FC = () => {
           id: 3,
           title: '总任务数',
           value: 42,
-          icon: <FileDoneOutlined />,
+          icon: <FileOutlined />,
           color: '#faad14',
         },
         {
@@ -333,7 +333,7 @@ const Dashboard: React.FC = () => {
 
       {/* 统计数据 */}
       <Row gutter={16} style={{ marginBottom: 24 }}>
-        {statistics.map((stat, index) => (
+        {statistics.map((stat: StatisticData, index: number) => (
           <Col span={6} key={index}>
             <Card>
               <Statistic
@@ -390,7 +390,7 @@ const Dashboard: React.FC = () => {
                   fill="#8884d8"
                   dataKey="value"
                 >
-                  {taskStatusData.map((entry, index) => (
+                  {taskStatusData.map((entry: ChartData, index: number) => (
                     <Cell
                       key={`cell-${index}`}
                       fill={COLORS[index % COLORS.length]}

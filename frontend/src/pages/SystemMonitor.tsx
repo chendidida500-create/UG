@@ -48,7 +48,7 @@ const SystemMonitor: React.FC = () => {
   });
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [performanceData, setPerformanceData] = useState<PerformanceData[]>([]);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   // 模拟获取系统状态数据
   useEffect(() => {
@@ -404,7 +404,7 @@ const SystemMonitor: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {logs.map(log => (
+                  {logs.map((log: LogEntry) => (
                     <tr key={log.id}>
                       {logColumns.map(column => (
                         <td
@@ -416,8 +416,7 @@ const SystemMonitor: React.FC = () => {
                         >
                           {column.render
                             ? column.render(
-                                log[column.dataIndex as keyof LogEntry],
-                                log
+                                log[column.dataIndex as keyof LogEntry]
                               )
                             : log[column.dataIndex as keyof LogEntry]}
                         </td>
@@ -453,7 +452,7 @@ const SystemMonitor: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {performanceData.map(data => (
+                  {performanceData.map((data: PerformanceData) => (
                     <tr key={data.id}>
                       {performanceColumns.map(column => (
                         <td
@@ -465,8 +464,7 @@ const SystemMonitor: React.FC = () => {
                         >
                           {column.render
                             ? column.render(
-                                data[column.dataIndex as keyof PerformanceData],
-                                data
+                                data[column.dataIndex as keyof PerformanceData]
                               )
                             : data[column.dataIndex as keyof PerformanceData]}
                         </td>
