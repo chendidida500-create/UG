@@ -35,6 +35,7 @@
 - [docs/ESLINT_CONFIGURATION_FIX.md](docs/ESLINT_CONFIGURATION_FIX.md) - ESLint 配置修复文档
 - [docs/PROJECT_ERROR_CHECK.md](docs/PROJECT_ERROR_CHECK.md) - 项目全面错误检查报告
 - [docs/PAGE_STRUCTURE.md](docs/PAGE_STRUCTURE.md) - 页面结构文档
+- [docs/TASK_MANAGEMENT.md](docs/TASK_MANAGEMENT.md) - 任务管理功能文档
 
 ## 自动化脚本
 
@@ -67,6 +68,8 @@
 - [frontend/src/pages/UserManagement.module.css](frontend/src/pages/UserManagement.module.css) - 用户管理页面样式
 - [frontend/src/pages/SystemSettings.tsx](frontend/src/pages/SystemSettings.tsx) - 系统设置页面
 - [frontend/src/pages/SystemSettings.module.css](frontend/src/pages/SystemSettings.module.css) - 系统设置页面样式
+- [frontend/src/pages/TaskManagement.tsx](frontend/src/pages/TaskManagement.tsx) - 任务管理页面
+- [frontend/src/pages/TaskManagement.module.css](frontend/src/pages/TaskManagement.module.css) - 任务管理页面样式
 - [frontend/typings.d.ts](frontend/typings.d.ts) - 前端类型声明文件
 
 ## 后端代码

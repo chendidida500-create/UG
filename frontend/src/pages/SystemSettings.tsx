@@ -9,12 +9,10 @@ import {
   message,
   Space,
   Typography,
-  Divider,
 } from 'antd';
 import { SaveOutlined } from '@ant-design/icons';
 import styles from './SystemSettings.module.css';
 
-const { Title, Text } = Typography;
 const { Option } = Select;
 
 const SystemSettings: React.FC = () => {
@@ -38,8 +36,7 @@ const SystemSettings: React.FC = () => {
   return (
     <div className={styles.container}>
       <Card>
-        <Title level={3}>系统设置</Title>
-        <Divider />
+        <Typography.Title level={3}>系统设置</Typography.Title>
 
         <Form
           form={form}
@@ -55,71 +52,75 @@ const SystemSettings: React.FC = () => {
             backupFrequency: 'daily',
           }}
         >
-          <Title level={4}>基本信息</Title>
-          <Form.Item
-            name="siteName"
-            label="系统名称"
-            rules={[{ required: true, message: '请输入系统名称!' }]}
-          >
-            <Input placeholder="请输入系统名称" />
-          </Form.Item>
+          <div style={{ marginBottom: 24 }}>
+            <Typography.Title level={4}>基本信息</Typography.Title>
+            <Form.Item
+              name="siteName"
+              label="系统名称"
+              rules={[{ required: true, message: '请输入系统名称!' }]}
+            >
+              <Input placeholder="请输入系统名称" />
+            </Form.Item>
 
-          <Form.Item name="siteDescription" label="系统描述">
-            <Input.TextArea placeholder="请输入系统描述" rows={3} />
-          </Form.Item>
+            <Form.Item name="siteDescription" label="系统描述">
+              <Input.TextArea placeholder="请输入系统描述" rows={3} />
+            </Form.Item>
+          </div>
 
-          <Divider />
+          <div style={{ marginBottom: 24 }}>
+            <Typography.Title level={4}>界面设置</Typography.Title>
+            <Form.Item name="theme" label="主题">
+              <Select>
+                <Option value="light">浅色主题</Option>
+                <Option value="dark">深色主题</Option>
+              </Select>
+            </Form.Item>
 
-          <Title level={4}>界面设置</Title>
-          <Form.Item name="theme" label="主题">
-            <Select>
-              <Option value="light">浅色主题</Option>
-              <Option value="dark">深色主题</Option>
-            </Select>
-          </Form.Item>
+            <Form.Item name="language" label="语言">
+              <Select>
+                <Option value="zh-CN">简体中文</Option>
+                <Option value="en-US">English</Option>
+              </Select>
+            </Form.Item>
+          </div>
 
-          <Form.Item name="language" label="语言">
-            <Select>
-              <Option value="zh-CN">简体中文</Option>
-              <Option value="en-US">English</Option>
-            </Select>
-          </Form.Item>
+          <div style={{ marginBottom: 24 }}>
+            <Typography.Title level={4}>功能设置</Typography.Title>
+            <Form.Item
+              name="notifications"
+              label="消息通知"
+              valuePropName="checked"
+            >
+              <Switch />
+            </Form.Item>
 
-          <Divider />
+            <Form.Item
+              name="autoBackup"
+              label="自动备份"
+              valuePropName="checked"
+            >
+              <Switch />
+            </Form.Item>
 
-          <Title level={4}>功能设置</Title>
-          <Form.Item
-            name="notifications"
-            label="消息通知"
-            valuePropName="checked"
-          >
-            <Switch />
-          </Form.Item>
-
-          <Form.Item name="autoBackup" label="自动备份" valuePropName="checked">
-            <Switch />
-          </Form.Item>
-
-          <Form.Item
-            noStyle
-            shouldUpdate={(prevValues, currentValues) =>
-              prevValues.autoBackup !== currentValues.autoBackup
-            }
-          >
-            {({ getFieldValue }) =>
-              getFieldValue('autoBackup') ? (
-                <Form.Item name="backupFrequency" label="备份频率">
-                  <Select>
-                    <Option value="daily">每天</Option>
-                    <Option value="weekly">每周</Option>
-                    <Option value="monthly">每月</Option>
-                  </Select>
-                </Form.Item>
-              ) : null
-            }
-          </Form.Item>
-
-          <Divider />
+            <Form.Item
+              noStyle
+              shouldUpdate={(prevValues: any, currentValues: any) =>
+                prevValues.autoBackup !== currentValues.autoBackup
+              }
+            >
+              {({ getFieldValue }) =>
+                getFieldValue('autoBackup') ? (
+                  <Form.Item name="backupFrequency" label="备份频率">
+                    <Select>
+                      <Option value="daily">每天</Option>
+                      <Option value="weekly">每周</Option>
+                      <Option value="monthly">每月</Option>
+                    </Select>
+                  </Form.Item>
+                ) : null
+              }
+            </Form.Item>
+          </div>
 
           <Form.Item>
             <Space>

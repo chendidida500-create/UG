@@ -1,0 +1,13 @@
+.container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.container :global(.ant-card) {
+  height: 100%;
+}
+
+.container :global(.ant-card-body) {
+  height: calc(100% - 56px);
+  overflow: auto;
+}

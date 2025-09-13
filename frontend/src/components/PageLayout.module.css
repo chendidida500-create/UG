@@ -1,0 +1,31 @@
+.layout {
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  background: #001529;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.sider {
+  background: #fff;
+  border-right: 1px solid #f0f0f0;
+}
+
+.contentLayout {
+  overflow: auto;
+}
+
+.content {
+  margin: 24px;
+  padding: 24px;
+  background: #fff;
+  overflow: auto;
+}

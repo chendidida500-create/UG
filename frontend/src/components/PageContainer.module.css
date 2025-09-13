@@ -1,0 +1,21 @@
+.container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.content {
+  margin: 24px;
+  height: calc(100% - 48px);
+  overflow: auto;
+}
+
+.card {
+  height: 100%;
+  overflow: hidden;
+}
+
+.card :global(.ant-card-body) {
+  height: calc(100% - 56px);
+  padding: 24px;
+  overflow: auto;
+}

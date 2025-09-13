@@ -25,9 +25,49 @@ export default defineConfig({
       component: './Dashboard',
     },
     {
+      name: '任务管理',
+      path: '/tasks',
+      component: './TaskManagement',
+    },
+    {
       name: '用户管理',
       path: '/users',
       component: './UserManagement',
+    },
+    {
+      name: '角色管理',
+      path: '/roles',
+      component: './RoleManagement',
+    },
+    {
+      name: '权限管理',
+      path: '/permissions',
+      component: './PermissionManagement',
+    },
+    {
+      name: '系统监控',
+      path: '/monitor',
+      component: './SystemMonitor',
+    },
+    {
+      name: '报表管理',
+      path: '/reports',
+      component: './Report',
+    },
+    {
+      name: '系统配置',
+      path: '/config',
+      component: './SystemConfig',
+    },
+    {
+      name: '字典管理',
+      path: '/dict',
+      component: './Dictionary',
+    },
+    {
+      name: '通知公告',
+      path: '/notice',
+      component: './Notice',
     },
     {
       name: '系统设置',

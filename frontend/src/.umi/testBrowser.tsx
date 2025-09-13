@@ -10,7 +10,7 @@ import { getRoutes } from './core/route';
 import type { Location } from 'history';
 
 
-import 'antd/dist/reset.css';
+import 'antd/dist/antd.less';
 const publicPath = '/';
 const runtimePublicPath = false;
 

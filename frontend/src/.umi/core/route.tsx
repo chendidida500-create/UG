@@ -4,15 +4,24 @@
 import React from 'react';
 
 export async function getRoutes() {
-  const routes = {"1":{"path":"/login","layout":false,"id":"1"},"2":{"path":"/","redirect":"/dashboard","id":"2"},"3":{"name":"仪表盘","path":"/dashboard","id":"3"},"4":{"name":"用户管理","path":"/users","id":"4"},"5":{"name":"系统设置","path":"/settings","id":"5"}} as const;
+  const routes = {"1":{"path":"/login","layout":false,"id":"1"},"2":{"path":"/","redirect":"/dashboard","parentId":"@@/global-layout","id":"2"},"3":{"name":"仪表盘","path":"/dashboard","parentId":"@@/global-layout","id":"3"},"4":{"name":"任务管理","path":"/tasks","parentId":"@@/global-layout","id":"4"},"5":{"name":"用户管理","path":"/users","parentId":"@@/global-layout","id":"5"},"6":{"name":"角色管理","path":"/roles","parentId":"@@/global-layout","id":"6"},"7":{"name":"权限管理","path":"/permissions","parentId":"@@/global-layout","id":"7"},"8":{"name":"系统监控","path":"/monitor","parentId":"@@/global-layout","id":"8"},"9":{"name":"报表管理","path":"/reports","parentId":"@@/global-layout","id":"9"},"10":{"name":"系统配置","path":"/config","parentId":"@@/global-layout","id":"10"},"11":{"name":"字典管理","path":"/dict","parentId":"@@/global-layout","id":"11"},"12":{"name":"通知公告","path":"/notice","parentId":"@@/global-layout","id":"12"},"13":{"name":"系统设置","path":"/settings","parentId":"@@/global-layout","id":"13"},"@@/global-layout":{"id":"@@/global-layout","path":"/","isLayout":true}} as const;
   return {
     routes,
     routeComponents: {
 '1': React.lazy(() => import(/* webpackChunkName: "p__Login" */'@/pages/Login.tsx')),
 '2': React.lazy(() => import('./EmptyRoute')),
 '3': React.lazy(() => import(/* webpackChunkName: "p__Dashboard" */'@/pages/Dashboard.tsx')),
-'4': React.lazy(() => import(/* webpackChunkName: "p__UserManagement" */'@/pages/UserManagement.tsx')),
-'5': React.lazy(() => import(/* webpackChunkName: "p__SystemSettings" */'@/pages/SystemSettings.tsx')),
+'4': React.lazy(() => import(/* webpackChunkName: "p__TaskManagement" */'@/pages/TaskManagement.tsx')),
+'5': React.lazy(() => import(/* webpackChunkName: "p__UserManagement" */'@/pages/UserManagement.tsx')),
+'6': React.lazy(() => import(/* webpackChunkName: "p__RoleManagement" */'@/pages/RoleManagement.tsx')),
+'7': React.lazy(() => import(/* webpackChunkName: "p__PermissionManagement" */'@/pages/PermissionManagement.tsx')),
+'8': React.lazy(() => import(/* webpackChunkName: "p__SystemMonitor" */'@/pages/SystemMonitor.tsx')),
+'9': React.lazy(() => import(/* webpackChunkName: "p__Report" */'@/pages/Report.tsx')),
+'10': React.lazy(() => import(/* webpackChunkName: "p__SystemConfig" */'@/pages/SystemConfig.tsx')),
+'11': React.lazy(() => import(/* webpackChunkName: "p__Dictionary" */'@/pages/Dictionary.tsx')),
+'12': React.lazy(() => import(/* webpackChunkName: "p__Notice" */'@/pages/Notice.tsx')),
+'13': React.lazy(() => import(/* webpackChunkName: "p__SystemSettings" */'@/pages/SystemSettings.tsx')),
+'@@/global-layout': React.lazy(() => import(/* webpackChunkName: "layouts__index" */'E:/YSY/UG/frontend/src/layouts/index.tsx')),
 },
   };
 }

@@ -10,9 +10,8 @@ import {
   message,
 } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { Helmet } from 'umi';
 import styles from './Login.module.css';
-
-const { Title } = Typography;
 
 const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -40,10 +39,13 @@ const Login: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <Card className={styles.loginCard}>
+      <Helmet>
+        <title>登录</title>
+      </Helmet>
+      <Card className={styles.card}>
         <Space direction="vertical" size="large" className={styles.content}>
           <div className={styles.header}>
-            <Title level={2}>UG管理系统</Title>
+            <Typography.Title level={2}>UG管理系统</Typography.Title>
             <p>请登录您的账户</p>
           </div>
           <Form

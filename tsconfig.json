@@ -8,14 +8,13 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx"
+    "frontend/src/**/*.ts",
+    "frontend/src/**/*.tsx",
+    "backend/**/*.ts"
   ],
   "exclude": [
     "node_modules",
     "dist",
-    "build",
-    "frontend",
-    "backend"
+    "build"
   ]
 }

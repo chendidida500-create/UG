@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Table,
   Button,
   Space,
   Tag,
@@ -9,16 +8,16 @@ import {
   Input,
   Select,
   message,
-  Card,
   Typography,
+  Table,
 } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Helmet } from 'umi';
 import styles from './UserManagement.module.css';
 
-const { Title } = Typography;
 const { Option } = Select;
 
-// 模拟用户数据类型
+// 用户数据类型
 interface User {
   id: number;
   name: string;
@@ -216,28 +215,29 @@ const UserManagement: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <Card>
-        <div className={styles.header}>
-          <Title level={3}>用户管理</Title>
-          <Button
-            type="primary"
-            icon={<PlusOutlined />}
-            onClick={handleAddUser}
-          >
-            添加用户
-          </Button>
-        </div>
+      <Helmet>
+        <title>用户管理</title>
+      </Helmet>
+      <div className={styles.header}>
+        <Typography.Title level={3} style={{ margin: 0 }}>
+          用户管理
+        </Typography.Title>
+        <Button type="primary" icon={<PlusOutlined />} onClick={handleAddUser}>
+          添加用户
+        </Button>
+      </div>
 
-        <Table
-          columns={columns}
-          dataSource={users}
-          loading={loading}
-          rowKey="id"
-          pagination={{
-            pageSize: 10,
-          }}
-        />
-      </Card>
+      <Table
+        dataSource={users}
+        columns={columns}
+        loading={loading}
+        rowKey="id"
+        pagination={{
+          pageSize: 10,
+          showSizeChanger: true,
+          showQuickJumper: true,
+        }}
+      />
 
       <Modal
         title={editingUser ? '编辑用户' : '添加用户'}

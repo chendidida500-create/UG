@@ -1,0 +1,22 @@
+.container {
+  padding: 24px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header h3 {
+  margin: 0;
+}
+
+.description {
+  color: #666;
+  font-size: 12px;
+  margin-top: 4px;
+}
