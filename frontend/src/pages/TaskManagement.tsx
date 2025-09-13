@@ -144,7 +144,7 @@ const TaskManagement: React.FC = () => {
         try {
           // 模拟API调用
           await new Promise(resolve => setTimeout(resolve, 300));
-          setTasks(tasks.filter(task => task.id !== taskId));
+          setTasks(tasks.filter((task: Task) => task.id !== taskId));
           message.success('任务删除成功');
         } catch (error) {
           message.error('删除任务失败');
@@ -155,7 +155,7 @@ const TaskManagement: React.FC = () => {
 
   const handleCompleteTask = (taskId: number) => {
     setTasks(
-      tasks.map(task =>
+      tasks.map((task: Task) =>
         task.id === taskId ? { ...task, status: 'done' } : task
       )
     );
@@ -176,7 +176,7 @@ const TaskManagement: React.FC = () => {
 
       if (editingTask) {
         // 更新任务
-        const updatedTasks = tasks.map(task =>
+        const updatedTasks = tasks.map((task: Task) =>
           task.id === editingTask.id ? { ...task, ...taskData } : task
         );
         setTasks(updatedTasks);

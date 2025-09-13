@@ -103,7 +103,7 @@ const UserManagement: React.FC = () => {
         try {
           // 模拟API调用
           await new Promise(resolve => setTimeout(resolve, 300));
-          setUsers(users.filter(user => user.id !== userId));
+          setUsers(users.filter((user: User) => user.id !== userId));
           message.success('用户删除成功');
         } catch (error) {
           message.error('删除用户失败');
@@ -118,7 +118,7 @@ const UserManagement: React.FC = () => {
 
       if (editingUser) {
         // 更新用户
-        const updatedUsers = users.map(user =>
+        const updatedUsers = users.map((user: User) =>
           user.id === editingUser.id ? { ...user, ...values } : user
         );
         setUsers(updatedUsers);

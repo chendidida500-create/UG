@@ -7,6 +7,9 @@
       "DOM",
       "DOM.Iterable"
     ],
+    "types": [
+      "node"
+    ],
     "module": "Node16",
     "skipLibCheck": true,
     "moduleResolution": "Node16",

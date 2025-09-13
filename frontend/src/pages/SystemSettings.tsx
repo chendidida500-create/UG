@@ -108,7 +108,7 @@ const SystemSettings: React.FC = () => {
                 prevValues.autoBackup !== currentValues.autoBackup
               }
             >
-              {({ getFieldValue }) =>
+              {({ getFieldValue }: { getFieldValue: (name: string) => any }) =>
                 getFieldValue('autoBackup') ? (
                   <Form.Item name="backupFrequency" label="备份频率">
                     <Select>

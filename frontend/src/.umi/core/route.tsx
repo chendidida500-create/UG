@@ -21,7 +21,7 @@ export async function getRoutes() {
 '11': React.lazy(() => import(/* webpackChunkName: "p__Dictionary" */'@/pages/Dictionary.tsx')),
 '12': React.lazy(() => import(/* webpackChunkName: "p__Notice" */'@/pages/Notice.tsx')),
 '13': React.lazy(() => import(/* webpackChunkName: "p__SystemSettings" */'@/pages/SystemSettings.tsx')),
-'@@/global-layout': React.lazy(() => import(/* webpackChunkName: "layouts__index" */'E:/YSY/UG/frontend/src/layouts/index.tsx')),
+'@@/global-layout': React.lazy(() => import(/* webpackChunkName: "layouts__index" */'e:/YSY/UG/frontend/src/layouts/index.tsx')),
 },
   };
 }

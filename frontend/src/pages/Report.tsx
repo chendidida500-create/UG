@@ -131,7 +131,9 @@ const Report: React.FC = () => {
       ];
 
       setReportItems(mockReportItems);
-      setSelectedReport(reports.find(report => report.id === reportId) || null);
+      setSelectedReport(
+        reports.find((report: ReportData) => report.id === reportId) || null
+      );
     } catch (error) {
       message.error('获取报表详情失败');
     } finally {
@@ -363,7 +365,7 @@ const Report: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {reports.map(report => (
+              {reports.map((report: ReportData) => (
                 <tr key={report.id}>
                   {reportColumns.map(column => (
                     <td
@@ -373,7 +375,7 @@ const Report: React.FC = () => {
                         borderBottom: '1px solid #f0f0f0',
                       }}
                     >
-                      {column.render
+                      {'render' in column && column.render
                         ? column.render(
                             report[column.dataIndex as keyof ReportData],
                             report
@@ -413,7 +415,7 @@ const Report: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {reportItems.map(item => (
+                {reportItems.map((item: ReportItem) => (
                   <tr key={item.id}>
                     {reportItemColumns.map(column => (
                       <td
@@ -423,7 +425,7 @@ const Report: React.FC = () => {
                           borderBottom: '1px solid #f0f0f0',
                         }}
                       >
-                        {column.render
+                        {'render' in column && column.render
                           ? column.render(
                               item[column.dataIndex as keyof ReportItem],
                               item
