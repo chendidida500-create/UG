@@ -171,7 +171,9 @@ const PermissionManagement: React.FC = () => {
     try {
       // 模拟API调用
       await new Promise(resolve => setTimeout(resolve, 300));
-      const updatedPermissions = permissions.filter((p: Permission) => p.id !== permissionId);
+      const updatedPermissions = permissions.filter(
+        (p: Permission) => p.id !== permissionId
+      );
       setPermissions(updatedPermissions);
       generateTreeData(updatedPermissions);
       message.success('权限删除成功');
