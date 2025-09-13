@@ -173,7 +173,14 @@ export const UserManagementPage: React.FC = () => {
     form.resetFields();
   };
 
-  const columns = [
+  const handleTableChange = (page: number, pageSize?: number) => {
+    setPagination(prev => ({
+      ...prev,
+      page,
+      pageSize: pageSize || prev.pageSize,
+    }));
+  };
+
   const columns = [
     {
       title: 'ID',
@@ -216,17 +223,18 @@ export const UserManagementPage: React.FC = () => {
       render: (_: any, record: User) => (
         <Space size="middle">
           <Button
-            type="link"
+            type="primary"
             icon={<EditOutlined />}
             onClick={() => handleEditUser(record)}
+            size="small"
           >
             编辑
           </Button>
           <Button
-            type="link"
             danger
             icon={<DeleteOutlined />}
             onClick={() => handleDeleteUser(record.id)}
+            size="small"
           >
             删除
           </Button>
@@ -261,12 +269,11 @@ export const UserManagementPage: React.FC = () => {
       />
 
       <Modal
-        title={editingUser ? '编辑用户' : '添加用户'}
+        title={editingUser ? '编辑用户' : '新增用户'}
         open={modalVisible}
         onOk={handleModalOk}
         onCancel={handleModalCancel}
-        okText="确认"
-        cancelText="取消"
+        width={600}
       >
         <Form
           form={form}
@@ -309,7 +316,7 @@ export const UserManagementPage: React.FC = () => {
               label="新密码"
               rules={[
                 {
-                  validator: (_, value) => {
+                  validator: (_: any, value: string) => {
                     if (!value) {
                       return Promise.resolve();
                     }
@@ -331,7 +338,7 @@ export const UserManagementPage: React.FC = () => {
             dependencies={['password']}
             rules={[
               {
-                validator: (_, value) => {
+                validator: (_: any, value: string) => {
                   if (!editingUser && !value) {
                     return Promise.reject('请确认密码');
                   }

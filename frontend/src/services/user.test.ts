@@ -1,4 +1,12 @@
-import { getUserList, getUserById, createUser, updateUser, deleteUser } from './user';
+/// <reference types="jest" />
+
+import {
+  getUserList,
+  getUserById,
+  createUser,
+  updateUser,
+  deleteUser,
+} from './user';
 
 // Mock fetch
 global.fetch = jest.fn();
@@ -27,7 +35,10 @@ describe('UserService', () => {
 
     const result = await getUserList({ page: 1, pageSize: 10 });
     expect(result).toEqual(mockResponse);
-    expect(fetch).toHaveBeenCalledWith('/api/users?page=1&pageSize=10', undefined);
+    expect(fetch).toHaveBeenCalledWith(
+      '/api/users?page=1&pageSize=10',
+      undefined
+    );
   });
 
   it('should get user by id', async () => {

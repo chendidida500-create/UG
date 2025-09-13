@@ -19,7 +19,7 @@ export default class PermissionController extends Controller {
         data: result.permissions,
         pagination: result.pagination,
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -40,7 +40,7 @@ export default class PermissionController extends Controller {
         success: true,
         data: permission,
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -71,7 +71,7 @@ export default class PermissionController extends Controller {
         data: permission,
         message: '权限创建成功',
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -94,7 +94,7 @@ export default class PermissionController extends Controller {
         data: permission,
         message: '权限更新成功',
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -115,7 +115,7 @@ export default class PermissionController extends Controller {
         success: true,
         message: '权限删除成功',
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,

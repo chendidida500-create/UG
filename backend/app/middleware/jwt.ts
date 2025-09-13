@@ -1,7 +1,7 @@
-import { Context } from 'egg';
+import { Context, Next } from 'egg';
 
 export default function jwtMiddleware(): any {
-  return async (ctx: Context, next: () => Promise<any>) => {
+  return async (ctx: Context, next: Next) => {
     // 对于某些路径跳过JWT验证
     const publicPaths = [
       '/api/health',

@@ -27,11 +27,13 @@ export interface UserListResponse {
   success: boolean;
   data: UserListItem[];
   pagination: Pagination;
+  message?: string;
 }
 
 export interface UserResponse {
   success: boolean;
   data: UserListItem;
+  message?: string;
 }
 
 export interface CreateUserParams {

@@ -19,7 +19,7 @@ export default class RoleController extends Controller {
         data: result.roles,
         pagination: result.pagination,
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -40,7 +40,7 @@ export default class RoleController extends Controller {
         success: true,
         data: role,
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -71,7 +71,7 @@ export default class RoleController extends Controller {
         data: role,
         message: '角色创建成功',
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -94,7 +94,7 @@ export default class RoleController extends Controller {
         data: role,
         message: '角色更新成功',
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -115,7 +115,7 @@ export default class RoleController extends Controller {
         success: true,
         message: '角色删除成功',
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -137,7 +137,7 @@ export default class RoleController extends Controller {
         success: true,
         message: '权限分配成功',
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,

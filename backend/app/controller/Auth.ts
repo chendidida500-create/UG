@@ -24,7 +24,7 @@ export default class AuthController extends Controller {
         data: result,
         message: '登录成功',
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -42,7 +42,7 @@ export default class AuthController extends Controller {
         success: true,
         message: '登出成功',
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -64,7 +64,7 @@ export default class AuthController extends Controller {
         success: true,
         data: user,
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,

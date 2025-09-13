@@ -32,7 +32,6 @@ export default class AuthService extends Service {
     // 生成JWT token
     const token = ctx.app.jwt.sign(
       {
-        userId: user.id,
         id: user.id,
         username: user.username,
       },

@@ -1,0 +1,25 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node", "jest", "@testing-library/jest-dom", "@types/react", "@types/react-dom"]
+  },
+  "include": [
+    "src/pages/**/*",
+    "src/components/**/*",
+    "src/layouts/**/*",
+    "src/utils/**/*",
+    "src/services/**/*",
+    "src/models/**/*",
+    "src/assets/**/*",
+    "src/styles/**/*",
+    "src/types/**/*",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/.umi/**/*.d.ts",
+    "typings.d.ts",
+    "jest.config.ts",
+    "jest.setup.ts",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx"
+  ]
+}

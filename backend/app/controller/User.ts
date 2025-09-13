@@ -19,7 +19,7 @@ export default class UserController extends Controller {
         data: result.users,
         pagination: result.pagination,
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -40,7 +40,7 @@ export default class UserController extends Controller {
         success: true,
         data: user,
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -71,7 +71,7 @@ export default class UserController extends Controller {
         data: user,
         message: '用户创建成功',
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -94,7 +94,7 @@ export default class UserController extends Controller {
         data: user,
         message: '用户更新成功',
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -115,7 +115,7 @@ export default class UserController extends Controller {
         success: true,
         message: '用户删除成功',
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,
@@ -137,7 +137,7 @@ export default class UserController extends Controller {
         success: true,
         message: '角色分配成功',
       };
-    } catch (error: any) {
+    } catch (error) {
       ctx.body = {
         success: false,
         message: error.message,

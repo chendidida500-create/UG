@@ -36,7 +36,9 @@
     "mysql2": "^3.9.7",
     "bcryptjs": "^2.4.3",
     "lodash": "^4.17.21",
-    "moment": "^2.30.1"
+    "moment": "^2.30.1",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/lodash": "^4.17.0"
   },
   "devDependencies": {
     "egg-bin": "^6.10.0",
@@ -44,8 +46,6 @@
     "sequelize-cli": "^6.6.2",
     "egg-ts-helper": "^2.1.0",
     "@types/node": "^20.12.7",
-    "@types/bcryptjs": "^2.4.6",
-    "@types/lodash": "^4.17.0",
     "autod": "^3.1.1",
     "mm": "^3.4.0",
     "egg-mock": "^3.26.0"

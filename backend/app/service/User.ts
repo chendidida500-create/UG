@@ -182,15 +182,16 @@ export default class UserService extends Service {
     }
 
     // 更新密码（如果提供了新密码）
+    let hashedPassword;
     if (password) {
-      password = await ctx.genHash(password);
+      hashedPassword = await ctx.genHash(password);
     }
 
     // 更新用户信息
     await user.update({
       username,
       email,
-      password,
+      password: hashedPassword,
     });
 
     // 清除相关缓存

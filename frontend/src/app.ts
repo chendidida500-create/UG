@@ -1,8 +1,13 @@
 import { RequestConfig, history } from 'umi';
 import { message } from 'antd';
 
+// 定义全局初始化状态的返回类型
+interface InitialState {
+  currentUser: any;
+}
+
 // 全局初始化状态
-export async function getInitialState() {
+export async function getInitialState(): Promise<InitialState> {
   const token = localStorage.getItem('token');
   if (!token) {
     return {

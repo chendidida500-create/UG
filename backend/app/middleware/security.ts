@@ -1,7 +1,7 @@
-import { Context } from 'egg';
+import { Context, Next } from 'egg';
 
 export default function securityMiddleware(): any {
-  return async (ctx: Context, next: () => Promise<any>) => {
+  return async (ctx: Context, next: Next) => {
     // 添加安全头
     ctx.set('X-Content-Type-Options', 'nosniff');
     ctx.set('X-Frame-Options', 'DENY');

@@ -1,7 +1,5 @@
-import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
-
-export default (appInfo: EggAppInfo) => {
-  const config = {} as PowerPartial<EggAppConfig>;
+export default (appInfo) => {
+  const config = {};
 
   // override config from framework / plugin
   config.keys = appInfo.name + '_1725926400000_0';

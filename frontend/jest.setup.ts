@@ -1,3 +1,5 @@
+/// <reference types="jest" />
+
 import '@testing-library/jest-dom';
 
 // Mock localStorage
@@ -25,9 +27,9 @@ Object.defineProperty(window, 'localStorage', {
 });
 
 // Mock fetch
-global.fetch = jest.fn(() =>
-  Promise.resolve({
+window.fetch = function() {
+  return Promise.resolve({
     json: () => Promise.resolve({}),
     ok: true,
-  } as Response)
-);
+  });
+} as unknown as typeof fetch;

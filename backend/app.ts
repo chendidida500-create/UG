@@ -14,7 +14,7 @@ export default (app: Application) => {
   };
 };
 
-export class AppBootHook {
+export default class AppBootHook {
   private readonly app: Application;
 
   constructor(app: Application) {

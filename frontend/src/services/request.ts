@@ -1,11 +1,10 @@
 import { extend } from 'umi-request';
-import { notification } from 'antd';
+import { notification, message } from 'antd';
 
 // 创建请求实例
 const request = extend({
   credentials: 'include', // 默认请求是否带上cookie
   prefix: '/api',
-  timeout: 10000, // 添加超时设置
 });
 
 // 错误统一处理
@@ -41,40 +40,43 @@ const errorHandler = (error: any) => {
 };
 
 // 响应拦截器
-request.interceptors.response.use(async (response, options) => {
+request.interceptors.response.use(async (response) => {
   try {
     const data = await response.clone().json();
-    
+
     // 如果返回401，跳转到登录页
     if (response.status === 401) {
       localStorage.removeItem('token');
       window.location.href = '/login';
       return Promise.reject(new Error('未授权'));
     }
-    
+
     return response;
   } catch (error) {
     return Promise.reject(error);
   }
-}, errorHandler);
+});
 
 // 请求拦截器
-request.interceptors.request.use((url: string, options: any) => {
+request.interceptors.request.use((url, options) => {
   const token = localStorage.getItem('token');
   
   if (token) {
-    options.headers = {
-      ...options.headers,
+    const headers = {
+      ...(options.headers || {}),
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json;charset=UTF-8',
     };
+    
+    return {
+      url,
+      options: {
+        ...options,
+        headers,
+        interceptors: true,
+      },
+    };
   }
-  
-  // 添加请求时间戳
-  options.params = {
-    ...options.params,
-    _t: Date.now(),
-  };
   
   return {
     url,

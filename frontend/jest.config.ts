@@ -1,13 +1,10 @@
-import { Config, configUmiAlias, createConfig } from '@umijs/max/test';
-
 export default async () => {
-  const config: Config = {
-    ...createConfig({
-      jsTransformer: 'esbuild',
-      displayName: 'UNIT',
-    }),
+  const config = {
+    testEnvironment: 'jsdom',
+    displayName: 'UNIT',
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   };
 
-  return configUmiAlias(config);
+  // Since we're using Umi's built-in test configuration, we don't need to call configUmiAlias
+  return config;
 };

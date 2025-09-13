@@ -40,7 +40,7 @@ export default [
     languageOptions: {
       parser: tsparser,
       parserOptions: {
-        project: './tsconfig.json',
+        project: ['./tsconfig.json', './tsconfig.test.json'],
         warnOnUnsupportedTypeScriptVersion: false, // 忽略 TypeScript 版本警告
       },
     },
@@ -99,6 +99,30 @@ export default [
           // 其他 Prettier 规则
         },
       ],
+    },
+  },
+  {
+    files: ['**/*.{test,spec}.{js,jsx,ts,tsx}'],
+    languageOptions: {
+      parser: tsparser,
+      parserOptions: {
+        project: ['./tsconfig.test.json'],
+      },
+    },
+    rules: {
+      'no-console': 'off', // 允许测试中使用 console
+      'prefer-const': 'off', // 允许测试中使用 var/let
+      'no-var': 'off',
+      'no-unused-vars': 'off', // 允许测试中存在未使用的变量
+      '@typescript-eslint/no-unused-vars': 'off',
+      // 添加 Jest 相关规则
+      'jest/no-disabled-tests': 'warn',
+      'jest/no-focused-tests': 'error',
+      'jest/no-identical-title': 'error',
+      'jest/prefer-expect-assertions': 'warn',
+    },
+    env: {
+      jest: true, // 启用 Jest 全局变量
     },
   },
 ];

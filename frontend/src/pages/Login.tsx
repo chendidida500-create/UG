@@ -10,12 +10,11 @@ import {
   message,
 } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { Helmet, history, useModel } from 'umi';
+import { history } from 'umi';
 import styles from './Login.module.css';
 
 const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  const { initialState, setInitialState } = useModel('@@initialState');
 
   const onFinish = async (values: any) => {
     setLoading(true);
@@ -29,7 +28,7 @@ const Login: React.FC = () => {
         body: JSON.stringify(values),
       });
 
-      const result = await response.json();
+      const result: { success: boolean; message?: string; data?: { token: string; user: any } } = await response.json();
 
       if (result.success) {
         message.success('登录成功');
