@@ -15,7 +15,7 @@ const PageContainer: React.FC<PageContainerProps> = ({
   title,
   children,
   className = '',
-}) => {
+}: PageContainerProps) => {
   return (
     <Layout className={`${styles.container} ${className}`}>
       <Helmet>

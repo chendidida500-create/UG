@@ -21,7 +21,9 @@ interface PageLayoutProps {
   children: React.ReactNode;
 }
 
-const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
+const PageLayout: React.FC<PageLayoutProps> = ({ 
+  children 
+}: PageLayoutProps) => {
   const navigate = useNavigate();
   const location = useLocation();
 

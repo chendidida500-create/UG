@@ -43,9 +43,9 @@ interface DictionaryItem {
 const Dictionary: React.FC = () => {
   const [dictTypes, setDictTypes] = useState<DictionaryType[]>([]);
   const [dictItems, setDictItems] = useState<DictionaryItem[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [typeModalVisible, setTypeModalVisible] = useState(false);
-  const [itemModalVisible, setItemModalVisible] = useState(false);
+  // 移除未使用的loading状态
+  const [typeModalVisible, setTypeModalVisible] = useState<boolean>(false);
+  const [itemModalVisible, setItemModalVisible] = useState<boolean>(false);
   const [editingType, setEditingType] = useState<DictionaryType | null>(null);
   const [editingItem, setEditingItem] = useState<DictionaryItem | null>(null);
   const [selectedTypeId, setSelectedTypeId] = useState<number | null>(null);
@@ -58,7 +58,6 @@ const Dictionary: React.FC = () => {
   }, []);
 
   const fetchDictTypes = async () => {
-    setLoading(true);
     try {
       // 模拟API调用
       await new Promise(resolve => setTimeout(resolve, 500));
@@ -94,13 +93,10 @@ const Dictionary: React.FC = () => {
       setDictTypes(mockTypes);
     } catch (error) {
       message.error('获取字典类型数据失败');
-    } finally {
-      setLoading(false);
     }
   };
 
   const fetchDictItems = async (typeId: number) => {
-    setLoading(true);
     try {
       // 模拟API调用
       await new Promise(resolve => setTimeout(resolve, 500));
@@ -169,8 +165,6 @@ const Dictionary: React.FC = () => {
       setSelectedTypeId(typeId);
     } catch (error) {
       message.error('获取字典项数据失败');
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -190,7 +184,9 @@ const Dictionary: React.FC = () => {
     try {
       // 模拟API调用
       await new Promise(resolve => setTimeout(resolve, 300));
-      setDictTypes(dictTypes.filter(type => type.id !== typeId));
+      setDictTypes(
+        dictTypes.filter((type: DictionaryType) => type.id !== typeId)
+      );
       message.success('字典类型删除成功');
     } catch (error) {
       message.error('删除字典类型失败');
@@ -217,7 +213,9 @@ const Dictionary: React.FC = () => {
     try {
       // 模拟API调用
       await new Promise(resolve => setTimeout(resolve, 300));
-      setDictItems(dictItems.filter(item => item.id !== itemId));
+      setDictItems(
+        dictItems.filter((item: DictionaryItem) => item.id !== itemId)
+      );
       message.success('字典项删除成功');
     } catch (error) {
       message.error('删除字典项失败');
@@ -230,7 +228,7 @@ const Dictionary: React.FC = () => {
 
       if (editingType) {
         // 更新字典类型
-        const updatedTypes = dictTypes.map(type =>
+        const updatedTypes = dictTypes.map((type: DictionaryType) =>
           type.id === editingType.id ? { ...type, ...values } : type
         );
         setDictTypes(updatedTypes);
@@ -259,14 +257,16 @@ const Dictionary: React.FC = () => {
 
       if (editingItem) {
         // 更新字典项
-        const updatedItems = dictItems.map(item =>
+        const updatedItems = dictItems.map((item: DictionaryItem) =>
           item.id === editingItem.id ? { ...item, ...values } : item
         );
         setDictItems(updatedItems);
         message.success('字典项更新成功');
       } else {
         // 添加新字典项
-        const selectedType = dictTypes.find(type => type.id === selectedTypeId);
+        const selectedType = dictTypes.find(
+          (type: DictionaryType) => type.id === selectedTypeId
+        );
         const newItem = {
           id: dictItems.length + 1,
           typeId: selectedTypeId || 0,
@@ -342,7 +342,7 @@ const Dictionary: React.FC = () => {
     {
       title: '操作',
       key: 'action',
-      render: (_: any, record: DictionaryType) => (
+      render: (_: unknown, record: DictionaryType) => (
         <Space size="middle">
           <Button type="link" onClick={() => fetchDictItems(record.id)}>
             查看字典项
@@ -411,7 +411,7 @@ const Dictionary: React.FC = () => {
     {
       title: '操作',
       key: 'action',
-      render: (_: any, record: DictionaryItem) => (
+      render: (_: unknown, record: DictionaryItem) => (
         <Space size="middle">
           <Button
             type="link"
@@ -485,7 +485,7 @@ const Dictionary: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {dictTypes.map(type => (
+                  {dictTypes.map((type: DictionaryType) => (
                     <tr key={type.id}>
                       {typeColumns.map(column => (
                         <td
@@ -553,7 +553,7 @@ const Dictionary: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {dictItems.map(item => (
+                  {dictItems.map((item: DictionaryItem) => (
                     <tr key={item.id}>
                       {itemColumns.map(column => (
                         <td

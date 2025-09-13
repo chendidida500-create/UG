@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'umi';
-import PageLayout from '@/components/PageLayout';
+import PageLayout from '@/components/PageLayout.tsx';
 import styles from './index.module.css';
 
 const Layout: React.FC = () => {
